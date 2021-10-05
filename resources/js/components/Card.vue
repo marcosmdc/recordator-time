@@ -2,7 +2,7 @@
     <div>
        <input  type="text" v-model="item.name" @click="alert()" />
        <!-- <t-button>Press me</tbutton> -->
-<button class="duration-100 ease-in-out transform bg-orange-500 shadow">Press me</button>
+<button class="duration-100 ease-in-out transform bg-orange-500 shadow" @click="loadData()">Press me</button>
 
 <!-- <t-alert show>Hello world</talert> -->
 <div class="flex w-full p-4 text-sm bg-blue-100 border-l-4 border-blue-700 rounded">
@@ -40,19 +40,28 @@ export default{
        }
    },
    methods:{
-       alert(){
+     loadData(){
+       //alert("cargar")
+      // this.item.name="nada"
+        axios.post('/getDataFill',{
+        item: this.item
+       })
+       .then( response =>{
+           //alert(response)
+           console.log(response.data[0].details)
+           this.item.name=response.data[0].details
+       })
+     }
+      /*  alert(){
            if( this.item.name == ''){
-               alert("nada")
-           }
-
-        axios.post('/getData',{
+               //alert("nada")
+           } */
+        /* axios.post('/getData',{
         item: this.item
        })
        .then( response =>{
            
-       })
-       }
-
+       }) */
      
    }
 }

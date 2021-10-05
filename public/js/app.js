@@ -2134,25 +2134,31 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    alert: function (_alert) {
-      function alert() {
-        return _alert.apply(this, arguments);
-      }
+    loadData: function loadData() {
+      var _this = this;
 
-      alert.toString = function () {
-        return _alert.toString();
-      };
-
-      return alert;
-    }(function () {
-      if (this.item.name == '') {
-        alert("nada");
-      }
-
-      axios.post('/getData', {
+      //alert("cargar")
+      // this.item.name="nada"
+      axios.post('/getDataFill', {
         item: this.item
-      }).then(function (response) {});
+      }).then(function (response) {
+        //alert(response)
+        console.log(response.data[0].details);
+        _this.item.name = response.data[0].details;
+      });
+    }
+    /*  alert(){
+         if( this.item.name == ''){
+             //alert("nada")
+         } */
+
+    /* axios.post('/getData',{
+    item: this.item
     })
+    .then( response =>{
+       
+    }) */
+
   }
 });
 
@@ -19998,7 +20004,12 @@ var render = function() {
     _c(
       "button",
       {
-        staticClass: "duration-100 ease-in-out transform bg-orange-500 shadow"
+        staticClass: "duration-100 ease-in-out transform bg-orange-500 shadow",
+        on: {
+          click: function($event) {
+            return _vm.loadData()
+          }
+        }
       },
       [_vm._v("Press me")]
     ),
