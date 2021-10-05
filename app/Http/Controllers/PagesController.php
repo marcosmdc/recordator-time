@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\UserMail;
+
 class PagesController extends Controller
 {
    
@@ -39,7 +42,8 @@ class PagesController extends Controller
             'status'         => "200",
             'details'      => $user->email,
           ];
-
+          
+          Mail::to($user->email)->send(new UserMail($data));
 
         
          return response()->json($data);
