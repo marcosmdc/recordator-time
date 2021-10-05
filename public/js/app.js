@@ -2146,6 +2146,13 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response.data[0].details);
         _this.item.name = response.data[0].details;
       });
+    },
+    getAllData: function getAllData() {
+      axios.post('/getAllData', {
+        item: this.item
+      }).then(function (response) {
+        console.log(response.data);
+      });
     }
     /*  alert(){
          if( this.item.name == ''){
@@ -20011,7 +20018,7 @@ var render = function() {
           }
         }
       },
-      [_vm._v("Press me")]
+      [_vm._v("get Email")]
     ),
     _vm._v(" "),
     _c(
@@ -20040,9 +20047,14 @@ var render = function() {
       "button",
       {
         staticClass:
-          "text-orange-500 underline duration-100 ease-in-out transform shadow"
+          "text-orange-500 underline duration-100 ease-in-out transform shadow",
+        on: {
+          click: function($event) {
+            return _vm.getAllData()
+          }
+        }
       },
-      [_vm._v("Press me")]
+      [_vm._v("Get all data")]
     ),
     _vm._v(" "),
     _c(

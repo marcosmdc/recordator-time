@@ -50,6 +50,15 @@ class PagesController extends Controller
 
     }
 
+    public function getAllData(){
+ 
+         $user = User::find(1)
+         ->get();
+ 
+          return response()->json($user);
+ 
+     }
+
 
 
 }

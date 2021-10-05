@@ -2,7 +2,7 @@
     <div>
        <input  type="text" v-model="item.name" @click="alert()" />
        <!-- <t-button>Press me</tbutton> -->
-<button class="duration-100 ease-in-out transform bg-orange-500 shadow" @click="loadData()">Press me</button>
+<button class="duration-100 ease-in-out transform bg-orange-500 shadow" @click="loadData()">get Email</button>
 
 <!-- <t-alert show>Hello world</talert> -->
 <div class="flex w-full p-4 text-sm bg-blue-100 border-l-4 border-blue-700 rounded">
@@ -16,7 +16,7 @@
 
 
 <!-- <t-button variant="secondary">Press me</tbutton> -->
-<button class="text-orange-500 underline duration-100 ease-in-out transform shadow">Press me</button>
+<button class="text-orange-500 underline duration-100 ease-in-out transform shadow" @click="getAllData()">Get all data</button>
 
 <!-- <t-alert variant="error" show>Hello world</talert> -->
 <div class="flex w-full p-4 text-sm bg-red-100 border-l-4 border-red-700 rounded">
@@ -50,6 +50,14 @@ export default{
            //alert(response)
            console.log(response.data[0].details)
            this.item.name=response.data[0].details
+       })
+     },
+      getAllData(){
+        axios.post('/getAllData',{
+        item: this.item
+       })
+       .then( response =>{
+           console.log(response.data)
        })
      }
       /*  alert(){
