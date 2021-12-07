@@ -43,7 +43,7 @@ class PagesController extends Controller
             'details'      => $user->email,
           ];
           
-          Mail::to($user->email)->send(new UserMail($data));
+          //Mail::to($user->email)->send(new UserMail($data));
 
         
          return response()->json($data);

@@ -29,3 +29,4 @@ Route::post('/api/item/store', function() {
 Route::post('/getData', [PagesController::class, 'getData']);
 Route::post('/getDataFill', [PagesController::class, 'getDataFill']);
 Route::post('/getAllData', [PagesController::class, 'getAllData']);
+Route::post('register', [UserController::class, 'register']);

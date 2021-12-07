@@ -4,6 +4,8 @@ import Vue from 'vue'
 
 import VueRouter from 'vue-router'
 
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 
 Vue.use(VueRouter)
@@ -14,6 +16,8 @@ import App from './components/App'
 import Hello from './components/Hello'
 import Home from './components/Home'
 import Card from './components/Card'
+import Alumno from './components/Alumno'
+import Register from './components/Register'
 
 const router = new VueRouter({
     mode: 'history',
@@ -32,6 +36,16 @@ const router = new VueRouter({
             path: '/card',
             name: 'card',
             component: Card,
+        },
+        {
+            path: '/alumno',
+            name: 'alumno',
+            component: Alumno,
+        },
+        {
+            path: '/register',
+            name: 'register',
+            component: Register,
         },
     ],
 });
