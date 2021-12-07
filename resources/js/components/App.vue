@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div id="app"  :class="$style.container">
         <h1>Vue Router Demo App</h1>
         <p>
             <router-link :to="{ name: 'home' }">Home</router-link> |
@@ -19,3 +19,11 @@
     }
 </script>
 
+<style module>
+.container {
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+
+</style>
