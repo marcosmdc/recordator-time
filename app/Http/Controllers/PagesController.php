@@ -8,7 +8,7 @@ use App\Mail\UserMail;
 
 class PagesController extends Controller
 {
-   
+
     public function __construct()
     {
 
@@ -20,7 +20,20 @@ class PagesController extends Controller
     }
 
     public function getData(){
-        return [1, 2, 3];
+        //return [1, 2, 3];
+        $user = User::where('id', 1)
+        ->first();
+        //->get();
+        //dd($user);
+
+        $data[]       = [
+            'id'         => "1",
+            'name'         => "$user->name",
+            'email'      => $user->email,
+          ];
+
+         return response()->json($data);
+
     }
 
     public function getDataFill(){
@@ -42,21 +55,21 @@ class PagesController extends Controller
             'status'         => "200",
             'details'      => $user->email,
           ];
-          
+
           //Mail::to($user->email)->send(new UserMail($data));
 
-        
+
          return response()->json($data);
 
     }
 
     public function getAllData(){
- 
+
          $user = User::find(1)
          ->get();
- 
+
           return response()->json($user);
- 
+
      }
 
 

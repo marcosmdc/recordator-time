@@ -5,17 +5,15 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>Product Title</th>
-            <th>Product Price</th>
-            <th>Created On</th>
+            <th>Name</th>
+            <th>Email</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="item in products" :key="item.id">
             <td>{{item.id}}</td>
-            <td>{{item.product_title}}</td>
-            <td>{{item.product_price}}</td>
-            <td>{{item.created_at}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.email}}</td>
           </tr>
 
         </tbody>

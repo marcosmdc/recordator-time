@@ -20,6 +20,7 @@ import Alumno from './components/Alumno'
 import Register from './components/Register'
 import Clase from './components/Clase'
 import Asistencia from './components/Asistencia'
+//import JqueryTable from './components/JqueryTable.vue'
 
 const router = new VueRouter({
     mode: 'history',

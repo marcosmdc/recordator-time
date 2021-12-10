@@ -5287,8 +5287,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
@@ -5589,6 +5587,7 @@ vue__WEBPACK_IMPORTED_MODULE_2__["default"].use(vue_router__WEBPACK_IMPORTED_MOD
 
 
 
+ //import JqueryTable from './components/JqueryTable.vue'
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]({
   mode: 'history',
@@ -56358,11 +56357,9 @@ var render = function() {
           return _c("tr", { key: item.id }, [
             _c("td", [_vm._v(_vm._s(item.id))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(item.product_title))]),
+            _c("td", [_vm._v(_vm._s(item.name))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(item.product_price))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(item.created_at))])
+            _c("td", [_vm._v(_vm._s(item.email))])
           ])
         }),
         0
@@ -56379,11 +56376,9 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("ID")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Product Title")]),
+        _c("th", [_vm._v("Name")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Product Price")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Created On")])
+        _c("th", [_vm._v("Email")])
       ])
     ])
   }
