@@ -3,11 +3,12 @@
         <h1>Asistencia - WebApp</h1>
         <p>
             <router-link :to="{ name: 'home' }"><button type="button" class="btn btn-primary">Inicio</button></router-link> |
-            <router-link :to="{ name: 'hello' }"><button type="button" class="btn btn-primary">Hello World</button></router-link>
-            <router-link :to="{ name: 'card' }"><button type="button" class="btn btn-primary">Card</button></router-link>
+            <!-- <router-link :to="{ name: 'hello' }"><button type="button" class="btn btn-primary">Hello World</button></router-link> -->
+           <!--  <router-link :to="{ name: 'card' }"><button type="button" class="btn btn-primary">Card</button></router-link> -->
             <router-link :to="{ name: 'alumno' }"><button type="button" class="btn btn-primary">Alumno</button></router-link>
             <router-link :to="{ name: 'clase' }"><button type="button" class="btn btn-primary">Clase</button></router-link>
-            <router-link :to="{ name: 'register' }"><button type="button" class="btn btn-primary">Register</button></router-link>
+            <router-link :to="{ name: 'asistencia' }"><button type="button" class="btn btn-primary">Asistencia</button></router-link>
+           <!--  <router-link :to="{ name: 'register' }"><button type="button" class="btn btn-primary">Register</button></router-link> -->
 
         </p>
         <div class="container">

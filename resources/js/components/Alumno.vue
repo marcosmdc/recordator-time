@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h2>Implement jQuery DataTable in Vue Js</h2>
+      <h2>Alumnos</h2>
       <table class="table" id="datatable">
         <thead>
           <tr>
@@ -17,19 +17,19 @@
             <td>{{item.product_price}}</td>
             <td>{{item.created_at}}</td>
           </tr>
-          
+
         </tbody>
-      </table>    
+      </table>
   </div>
 </template>
- 
+
 <script>
 import 'jquery/dist/jquery.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "datatables.net-dt/js/dataTables.dataTables"
 import "datatables.net-dt/css/jquery.dataTables.min.css"
 import axios from 'axios';
-import $ from 'jquery'; 
+import $ from 'jquery';
 
 
 

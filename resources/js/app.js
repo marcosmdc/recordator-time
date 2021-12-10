@@ -19,6 +19,7 @@ import Card from './components/Card'
 import Alumno from './components/Alumno'
 import Register from './components/Register'
 import Clase from './components/Clase'
+import Asistencia from './components/Asistencia'
 
 const router = new VueRouter({
     mode: 'history',
@@ -52,6 +53,11 @@ const router = new VueRouter({
             path: '/clase',
             name: 'clase',
             component: Clase,
+        },
+        {
+            path: '/asistencia',
+            name: 'asistencia',
+            component: Asistencia,
         },
     ],
 });
