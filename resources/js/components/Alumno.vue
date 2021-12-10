@@ -32,14 +32,14 @@ import $ from 'jquery';
 
 
 export default {
-  mounted(){
-    axios
-    .get("getData")
-    .then((response)=>
-    {
-      this.products = response.data;
-      $('#datatable').DataTable();
-    })
+  async mounted(){
+        await  axios.post('/getData',{
+        item: this.item
+       })
+       .then( response =>{
+           this.products = response.data;
+             $('#datatable').DataTable();
+       })
   },
   data: function() {
         return {
