@@ -11,13 +11,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 Vue.use(VueRouter)
 
 
-  
+
 import App from './components/App'
 import Hello from './components/Hello'
 import Home from './components/Home'
 import Card from './components/Card'
 import Alumno from './components/Alumno'
 import Register from './components/Register'
+import Clase from './components/Clase'
 
 const router = new VueRouter({
     mode: 'history',
@@ -46,6 +47,11 @@ const router = new VueRouter({
             path: '/register',
             name: 'register',
             component: Register,
+        },
+        {
+            path: '/clase',
+            name: 'clase',
+            component: Clase,
         },
     ],
 });
