@@ -72,6 +72,27 @@ class PagesController extends Controller
 
      }
 
+     public function getDataAlumnos(){
+        //return [1, 2, 3];
+       /*  $user = User::all();
+       // dd($user);
+
+        $data[]       = [
+            'id'         => $user->id,
+            'name'         => $user->name,
+            'email'      => $user->email,
+          ]; */
+
+        // return response()->json($data);
+
+         $result = User::select()
+                ->get();
+
+
+        return $result;
+
+    }
+
 
 
 }

@@ -21,7 +21,7 @@ Route::get('/{any}', [PagesController::class, 'spa'])->where('any', '.*');
 /* Route::post('/api/item/store', function () {
     return view('welcome');
 }); */
-/* 
+/*
 Route::post('/api/item/store', function() {
     return [1, 2, 3];
 }); */
@@ -30,3 +30,6 @@ Route::post('/getData', [PagesController::class, 'getData']);
 Route::post('/getDataFill', [PagesController::class, 'getDataFill']);
 Route::post('/getAllData', [PagesController::class, 'getAllData']);
 Route::post('register', [UserController::class, 'register']);
+
+
+Route::post('/getDataAlumnos', [PagesController::class, 'getDataAlumnos']);

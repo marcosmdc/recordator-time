@@ -33,7 +33,7 @@ import $ from 'jquery';
 
 export default {
   async mounted(){
-        await  axios.post('/getData',{
+        await  axios.post('/getDataAlumnos',{
         item: this.item
        })
        .then( response =>{
