@@ -18,6 +18,10 @@ use App\Http\Controllers\PagesController;
 /* Route::get('/', [PagesController::class, 'spa']); */
 Route::get('/{any}', [PagesController::class, 'spa'])->where('any', '.*');
 
+/* Route::get('{any}', function () {
+    return view('app');
+})->where('any', '.*'); */
+
 /* Route::post('/api/item/store', function () {
     return view('welcome');
 }); */

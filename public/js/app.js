@@ -462,7 +462,7 @@ function getClippingParents(element) {
 
 
   return clippingParents.filter(function (clippingParent) {
-    return (0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_4__.isElement)(clippingParent) && (0,_contains_js__WEBPACK_IMPORTED_MODULE_11__["default"])(clippingParent, clipperElement) && (0,_getNodeName_js__WEBPACK_IMPORTED_MODULE_12__["default"])(clippingParent) !== 'body' && (canEscapeClipping ? (0,_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_9__["default"])(clippingParent).position !== 'static' : true);
+    return (0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_4__.isElement)(clippingParent) && (0,_contains_js__WEBPACK_IMPORTED_MODULE_11__["default"])(clippingParent, clipperElement) && (0,_getNodeName_js__WEBPACK_IMPORTED_MODULE_12__["default"])(clippingParent) !== 'body';
   });
 } // Gets the maximum area that the element is visible in due to any number of
 // clipping parents
@@ -1603,13 +1603,21 @@ function mapToStyles(_ref2) {
       adaptive = _ref2.adaptive,
       roundOffsets = _ref2.roundOffsets,
       isFixed = _ref2.isFixed;
+  var _offsets$x = offsets.x,
+      x = _offsets$x === void 0 ? 0 : _offsets$x,
+      _offsets$y = offsets.y,
+      y = _offsets$y === void 0 ? 0 : _offsets$y;
 
-  var _ref3 = roundOffsets === true ? roundOffsetsByDPR(offsets) : typeof roundOffsets === 'function' ? roundOffsets(offsets) : offsets,
-      _ref3$x = _ref3.x,
-      x = _ref3$x === void 0 ? 0 : _ref3$x,
-      _ref3$y = _ref3.y,
-      y = _ref3$y === void 0 ? 0 : _ref3$y;
+  var _ref3 = typeof roundOffsets === 'function' ? roundOffsets({
+    x: x,
+    y: y
+  }) : {
+    x: x,
+    y: y
+  };
 
+  x = _ref3.x;
+  y = _ref3.y;
   var hasX = offsets.hasOwnProperty('x');
   var hasY = offsets.hasOwnProperty('y');
   var sideX = _enums_js__WEBPACK_IMPORTED_MODULE_1__.left;
@@ -1654,6 +1662,17 @@ function mapToStyles(_ref2) {
     position: position
   }, adaptive && unsetSides);
 
+  var _ref4 = roundOffsets === true ? roundOffsetsByDPR({
+    x: x,
+    y: y
+  }) : {
+    x: x,
+    y: y
+  };
+
+  x = _ref4.x;
+  y = _ref4.y;
+
   if (gpuAcceleration) {
     var _Object$assign;
 
@@ -1663,9 +1682,9 @@ function mapToStyles(_ref2) {
   return Object.assign({}, commonStyles, (_Object$assign2 = {}, _Object$assign2[sideY] = hasY ? y + "px" : '', _Object$assign2[sideX] = hasX ? x + "px" : '', _Object$assign2.transform = '', _Object$assign2));
 }
 
-function computeStyles(_ref4) {
-  var state = _ref4.state,
-      options = _ref4.options;
+function computeStyles(_ref5) {
+  var state = _ref5.state,
+      options = _ref5.options;
   var _options$gpuAccelerat = options.gpuAcceleration,
       gpuAcceleration = _options$gpuAccelerat === void 0 ? true : _options$gpuAccelerat,
       _options$adaptive = options.adaptive,
@@ -5254,48 +5273,54 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
 /* harmony import */ var jquery_dist_jquery_min_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jquery/dist/jquery.min.js */ "./node_modules/jquery/dist/jquery.min.js");
 /* harmony import */ var jquery_dist_jquery_min_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery_dist_jquery_min_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
-/* harmony import */ var datatables_net_dt_js_dataTables_dataTables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! datatables.net-dt/js/dataTables.dataTables */ "./node_modules/datatables.net-dt/js/dataTables.dataTables.js");
-/* harmony import */ var datatables_net_dt_js_dataTables_dataTables__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(datatables_net_dt_js_dataTables_dataTables__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var datatables_net_dt_css_jquery_dataTables_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! datatables.net-dt/css/jquery.dataTables.min.css */ "./node_modules/datatables.net-dt/css/jquery.dataTables.min.css");
+/* harmony import */ var datatables_net_dt_js_dataTables_dataTables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! datatables.net-dt/js/dataTables.dataTables */ "./node_modules/datatables.net-dt/js/dataTables.dataTables.js");
+/* harmony import */ var datatables_net_dt_js_dataTables_dataTables__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(datatables_net_dt_js_dataTables_dataTables__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var datatables_net_dt_css_jquery_dataTables_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! datatables.net-dt/css/jquery.dataTables.min.css */ "./node_modules/datatables.net-dt/css/jquery.dataTables.min.css");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_6__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//Bootstrap and jQuery libraries
 
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
+ //Datatable Modules
 
 
 
@@ -5305,31 +5330,42 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   mounted: function mounted() {
     var _this = this;
 
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _context.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_5___default().post('/getDataAlumnos', {
-                item: _this.item
-              }).then(function (response) {
-                _this.products = response.data;
-                jquery__WEBPACK_IMPORTED_MODULE_6___default()('#datatable').DataTable();
-              });
-
-            case 2:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }))();
+    //API Call
+    axios__WEBPACK_IMPORTED_MODULE_5___default().post("/getAllData").then(function (res) {
+      _this.users = res.data;
+      jquery__WEBPACK_IMPORTED_MODULE_4___default()('#example').DataTable();
+    });
   },
   data: function data() {
     return {
-      products: []
+      users: []
     };
+  },
+  methods: {
+    addUser: function addUser() {
+      //console.log("clicked");
+      alert("agregar modal para agregar");
+      var postData = {
+        "fields": {
+          "firstname": jquery__WEBPACK_IMPORTED_MODULE_4___default()("#userFirstName_add").val(),
+          "lastname": jquery__WEBPACK_IMPORTED_MODULE_4___default()("#userLastName_add").val(),
+          "email": jquery__WEBPACK_IMPORTED_MODULE_4___default()("#userEmail_add").val(),
+          "password": jquery__WEBPACK_IMPORTED_MODULE_4___default()("#userPass_add").val(),
+          "cmd": "create"
+        }
+      };
+    },
+    showModal: function showModal() {
+      this.$refs['my-modal'].show();
+    },
+    hideModal: function hideModal() {
+      this.$refs['my-modal'].hide();
+    },
+    toggleModal: function toggleModal() {
+      // We pass the ID of the button that we want to return focus to
+      // when the modal has hidden
+      this.$refs['my-modal'].toggle('#toggle-btn');
+    }
   }
 });
 
@@ -5476,6 +5512,107 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Login.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Login.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      email: "",
+      password: "",
+      error: null
+    };
+  },
+  methods: {
+    handleSubmit: function handleSubmit(e) {
+      var _this = this;
+
+      e.preventDefault();
+
+      if (this.password.length > 0) {
+        axios.get('/sanctum/csrf-cookie').then(function (response) {
+          axios.post('api/login', {
+            email: _this.email,
+            password: _this.password
+          }).then(function (response) {
+            console.log(response.data);
+
+            if (response.data.success) {
+              //alert("exitoso");
+              window.location.href = "/";
+            } else {
+              _this.error = response.data.message;
+            }
+          })["catch"](function (error) {
+            console.error(error);
+          });
+        });
+      }
+    }
+  },
+  beforeRouteEnter: function beforeRouteEnter(to, from, next) {
+    if (window.Laravel.isLoggedin) {
+      return next('/');
+    }
+
+    next();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Register.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Register.vue?vue&type=script&lang=js& ***!
@@ -5589,14 +5726,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
 /* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
-/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/App */ "./resources/js/components/App.vue");
-/* harmony import */ var _components_Hello__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Hello */ "./resources/js/components/Hello.vue");
-/* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/Home */ "./resources/js/components/Home.vue");
-/* harmony import */ var _components_Card__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/Card */ "./resources/js/components/Card.vue");
-/* harmony import */ var _components_Alumno__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/Alumno */ "./resources/js/components/Alumno.vue");
-/* harmony import */ var _components_Register__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/Register */ "./resources/js/components/Register.vue");
-/* harmony import */ var _components_Clase__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/Clase */ "./resources/js/components/Clase.vue");
-/* harmony import */ var _components_Asistencia__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/Asistencia */ "./resources/js/components/Asistencia.vue");
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/components/button/button.js");
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/components/modal/modal.js");
+/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/App */ "./resources/js/components/App.vue");
+/* harmony import */ var _components_Hello__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/Hello */ "./resources/js/components/Hello.vue");
+/* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/Home */ "./resources/js/components/Home.vue");
+/* harmony import */ var _components_Card__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/Card */ "./resources/js/components/Card.vue");
+/* harmony import */ var _components_Alumno__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/Alumno */ "./resources/js/components/Alumno.vue");
+/* harmony import */ var _components_Register__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/Register */ "./resources/js/components/Register.vue");
+/* harmony import */ var _components_Login__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/Login */ "./resources/js/components/Login.vue");
+/* harmony import */ var _components_Clase__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/Clase */ "./resources/js/components/Clase.vue");
+/* harmony import */ var _components_Asistencia__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/Asistencia */ "./resources/js/components/Asistencia.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -5605,50 +5745,60 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 vue__WEBPACK_IMPORTED_MODULE_2__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]);
 
+vue__WEBPACK_IMPORTED_MODULE_2__["default"].component('b-button', bootstrap_vue__WEBPACK_IMPORTED_MODULE_4__.BButton);
+
+vue__WEBPACK_IMPORTED_MODULE_2__["default"].component('b-modal', bootstrap_vue__WEBPACK_IMPORTED_MODULE_5__.BModal); //Vue.component('v-b-modal', BModal)
 
 
 
 
 
 
- //import JqueryTable from './components/JqueryTable.vue'
+
+
+
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]({
   mode: 'history',
   routes: [{
     path: '/',
     name: 'home',
-    component: _components_Home__WEBPACK_IMPORTED_MODULE_6__["default"]
+    component: _components_Home__WEBPACK_IMPORTED_MODULE_8__["default"]
   }, {
     path: '/hello',
     name: 'hello',
-    component: _components_Hello__WEBPACK_IMPORTED_MODULE_5__["default"]
+    component: _components_Hello__WEBPACK_IMPORTED_MODULE_7__["default"]
   }, {
     path: '/card',
     name: 'card',
-    component: _components_Card__WEBPACK_IMPORTED_MODULE_7__["default"]
+    component: _components_Card__WEBPACK_IMPORTED_MODULE_9__["default"]
   }, {
     path: '/alumno',
     name: 'alumno',
-    component: _components_Alumno__WEBPACK_IMPORTED_MODULE_8__["default"]
+    component: _components_Alumno__WEBPACK_IMPORTED_MODULE_10__["default"]
   }, {
     path: '/register',
     name: 'register',
-    component: _components_Register__WEBPACK_IMPORTED_MODULE_9__["default"]
+    component: _components_Register__WEBPACK_IMPORTED_MODULE_11__["default"]
   }, {
-    path: '/clase',
+    name: 'login',
+    path: '/login',
+    component: _components_Login__WEBPACK_IMPORTED_MODULE_12__["default"]
+  }, {
     name: 'clase',
-    component: _components_Clase__WEBPACK_IMPORTED_MODULE_10__["default"]
+    path: '/clase',
+    component: _components_Clase__WEBPACK_IMPORTED_MODULE_13__["default"]
   }, {
-    path: '/asistencia',
     name: 'asistencia',
-    component: _components_Asistencia__WEBPACK_IMPORTED_MODULE_11__["default"]
+    path: '/asistencia',
+    component: _components_Asistencia__WEBPACK_IMPORTED_MODULE_14__["default"]
   }]
-});
+}); //store.dispatch('checkAuth');
+
 var app = new vue__WEBPACK_IMPORTED_MODULE_2__["default"]({
   el: '#app',
   components: {
-    App: _components_App__WEBPACK_IMPORTED_MODULE_4__["default"]
+    App: _components_App__WEBPACK_IMPORTED_MODULE_6__["default"]
   },
   router: router
 });
@@ -5683,6 +5833,5605 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/components/button/button-close.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/components/button/button-close.js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "props": () => (/* binding */ props),
+/* harmony export */   "BButtonClose": () => (/* binding */ BButtonClose)
+/* harmony export */ });
+/* harmony import */ var _vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var _vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../vue */ "./node_modules/vue-functional-data-merge/dist/lib.esm.js");
+/* harmony import */ var _constants_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../constants/components */ "./node_modules/bootstrap-vue/esm/constants/components.js");
+/* harmony import */ var _constants_props__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../constants/props */ "./node_modules/bootstrap-vue/esm/constants/props.js");
+/* harmony import */ var _constants_slots__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../constants/slots */ "./node_modules/bootstrap-vue/esm/constants/slots.js");
+/* harmony import */ var _utils_events__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/events */ "./node_modules/bootstrap-vue/esm/utils/events.js");
+/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _utils_props__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/props */ "./node_modules/bootstrap-vue/esm/utils/props.js");
+/* harmony import */ var _utils_normalize_slot__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/normalize-slot */ "./node_modules/bootstrap-vue/esm/utils/normalize-slot.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+ // --- Props ---
+
+var props = (0,_utils_props__WEBPACK_IMPORTED_MODULE_0__.makePropsConfigurable)({
+  ariaLabel: (0,_utils_props__WEBPACK_IMPORTED_MODULE_0__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING, 'Close'),
+  content: (0,_utils_props__WEBPACK_IMPORTED_MODULE_0__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING, '&times;'),
+  disabled: (0,_utils_props__WEBPACK_IMPORTED_MODULE_0__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_BOOLEAN, false),
+  textVariant: (0,_utils_props__WEBPACK_IMPORTED_MODULE_0__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING)
+}, _constants_components__WEBPACK_IMPORTED_MODULE_2__.NAME_BUTTON_CLOSE); // --- Main component ---
+// @vue/component
+
+var BButtonClose = /*#__PURE__*/_vue__WEBPACK_IMPORTED_MODULE_3__["default"].extend({
+  name: _constants_components__WEBPACK_IMPORTED_MODULE_2__.NAME_BUTTON_CLOSE,
+  functional: true,
+  props: props,
+  render: function render(h, _ref) {
+    var props = _ref.props,
+        data = _ref.data,
+        slots = _ref.slots,
+        scopedSlots = _ref.scopedSlots;
+    var $slots = slots();
+    var $scopedSlots = scopedSlots || {};
+    var componentData = {
+      staticClass: 'close',
+      class: _defineProperty({}, "text-".concat(props.textVariant), props.textVariant),
+      attrs: {
+        type: 'button',
+        disabled: props.disabled,
+        'aria-label': props.ariaLabel ? String(props.ariaLabel) : null
+      },
+      on: {
+        click: function click(event) {
+          // Ensure click on button HTML content is also disabled
+
+          /* istanbul ignore if: bug in JSDOM still emits click on inner element */
+          if (props.disabled && (0,_utils_inspect__WEBPACK_IMPORTED_MODULE_4__.isEvent)(event)) {
+            (0,_utils_events__WEBPACK_IMPORTED_MODULE_5__.stopEvent)(event);
+          }
+        }
+      }
+    }; // Careful not to override the default slot with innerHTML
+
+    if (!(0,_utils_normalize_slot__WEBPACK_IMPORTED_MODULE_6__.hasNormalizedSlot)(_constants_slots__WEBPACK_IMPORTED_MODULE_7__.SLOT_NAME_DEFAULT, $scopedSlots, $slots)) {
+      componentData.domProps = {
+        innerHTML: props.content
+      };
+    }
+
+    return h('button', (0,_vue__WEBPACK_IMPORTED_MODULE_8__.mergeData)(data, componentData), (0,_utils_normalize_slot__WEBPACK_IMPORTED_MODULE_6__.normalizeSlot)(_constants_slots__WEBPACK_IMPORTED_MODULE_7__.SLOT_NAME_DEFAULT, {}, $scopedSlots, $slots));
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/components/button/button.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/components/button/button.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "props": () => (/* binding */ props),
+/* harmony export */   "BButton": () => (/* binding */ BButton)
+/* harmony export */ });
+/* harmony import */ var _vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var _vue__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../vue */ "./node_modules/vue-functional-data-merge/dist/lib.esm.js");
+/* harmony import */ var _constants_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../constants/components */ "./node_modules/bootstrap-vue/esm/constants/components.js");
+/* harmony import */ var _constants_key_codes__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../constants/key-codes */ "./node_modules/bootstrap-vue/esm/constants/key-codes.js");
+/* harmony import */ var _constants_props__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../constants/props */ "./node_modules/bootstrap-vue/esm/constants/props.js");
+/* harmony import */ var _utils_array__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils/array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
+/* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
+/* harmony import */ var _utils_events__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utils/events */ "./node_modules/bootstrap-vue/esm/utils/events.js");
+/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
+/* harmony import */ var _utils_props__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/props */ "./node_modules/bootstrap-vue/esm/utils/props.js");
+/* harmony import */ var _utils_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/router */ "./node_modules/bootstrap-vue/esm/utils/router.js");
+/* harmony import */ var _link_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../link/link */ "./node_modules/bootstrap-vue/esm/components/link/link.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+
+
+
+
+ // --- Props ---
+
+var linkProps = (0,_utils_object__WEBPACK_IMPORTED_MODULE_0__.omit)(_link_link__WEBPACK_IMPORTED_MODULE_1__.props, ['event', 'routerTag']);
+delete linkProps.href.default;
+delete linkProps.to.default;
+var props = (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makePropsConfigurable)((0,_utils_object__WEBPACK_IMPORTED_MODULE_0__.sortKeys)(_objectSpread(_objectSpread({}, linkProps), {}, {
+  block: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_BOOLEAN, false),
+  disabled: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_BOOLEAN, false),
+  pill: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_BOOLEAN, false),
+  // Tri-state: `true`, `false` or `null`
+  // => On, off, not a toggle
+  pressed: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_BOOLEAN, null),
+  size: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_STRING),
+  squared: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_BOOLEAN, false),
+  tag: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_STRING, 'button'),
+  type: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_STRING, 'button'),
+  variant: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_STRING, 'secondary')
+})), _constants_components__WEBPACK_IMPORTED_MODULE_4__.NAME_BUTTON); // --- Helper methods ---
+// Focus handler for toggle buttons
+// Needs class of 'focus' when focused
+
+var handleFocus = function handleFocus(event) {
+  if (event.type === 'focusin') {
+    (0,_utils_dom__WEBPACK_IMPORTED_MODULE_5__.addClass)(event.target, 'focus');
+  } else if (event.type === 'focusout') {
+    (0,_utils_dom__WEBPACK_IMPORTED_MODULE_5__.removeClass)(event.target, 'focus');
+  }
+}; // Is the requested button a link?
+// If tag prop is set to `a`, we use a <b-link> to get proper disabled handling
+
+
+var isLink = function isLink(props) {
+  return (0,_utils_router__WEBPACK_IMPORTED_MODULE_6__.isLink)(props) || (0,_utils_dom__WEBPACK_IMPORTED_MODULE_5__.isTag)(props.tag, 'a');
+}; // Is the button to be a toggle button?
+
+
+var isToggle = function isToggle(props) {
+  return (0,_utils_inspect__WEBPACK_IMPORTED_MODULE_7__.isBoolean)(props.pressed);
+}; // Is the button "really" a button?
+
+
+var isButton = function isButton(props) {
+  return !(isLink(props) || props.tag && !(0,_utils_dom__WEBPACK_IMPORTED_MODULE_5__.isTag)(props.tag, 'button'));
+}; // Is the requested tag not a button or link?
+
+
+var isNonStandardTag = function isNonStandardTag(props) {
+  return !isLink(props) && !isButton(props);
+}; // Compute required classes (non static classes)
+
+
+var computeClass = function computeClass(props) {
+  var _ref;
+
+  return ["btn-".concat(props.variant || 'secondary'), (_ref = {}, _defineProperty(_ref, "btn-".concat(props.size), props.size), _defineProperty(_ref, 'btn-block', props.block), _defineProperty(_ref, 'rounded-pill', props.pill), _defineProperty(_ref, 'rounded-0', props.squared && !props.pill), _defineProperty(_ref, "disabled", props.disabled), _defineProperty(_ref, "active", props.pressed), _ref)];
+}; // Compute the link props to pass to b-link (if required)
+
+
+var computeLinkProps = function computeLinkProps(props) {
+  return isLink(props) ? (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.pluckProps)(linkProps, props) : {};
+}; // Compute the attributes for a button
+
+
+var computeAttrs = function computeAttrs(props, data) {
+  var button = isButton(props);
+  var link = isLink(props);
+  var toggle = isToggle(props);
+  var nonStandardTag = isNonStandardTag(props);
+  var hashLink = link && props.href === '#';
+  var role = data.attrs && data.attrs.role ? data.attrs.role : null;
+  var tabindex = data.attrs ? data.attrs.tabindex : null;
+
+  if (nonStandardTag || hashLink) {
+    tabindex = '0';
+  }
+
+  return {
+    // Type only used for "real" buttons
+    type: button && !link ? props.type : null,
+    // Disabled only set on "real" buttons
+    disabled: button ? props.disabled : null,
+    // We add a role of button when the tag is not a link or button for ARIA
+    // Don't bork any role provided in `data.attrs` when `isLink` or `isButton`
+    // Except when link has `href` of `#`
+    role: nonStandardTag || hashLink ? 'button' : role,
+    // We set the `aria-disabled` state for non-standard tags
+    'aria-disabled': nonStandardTag ? String(props.disabled) : null,
+    // For toggles, we need to set the pressed state for ARIA
+    'aria-pressed': toggle ? String(props.pressed) : null,
+    // `autocomplete="off"` is needed in toggle mode to prevent some browsers
+    // from remembering the previous setting when using the back button
+    autocomplete: toggle ? 'off' : null,
+    // `tabindex` is used when the component is not a button
+    // Links are tabbable, but don't allow disabled, while non buttons or links
+    // are not tabbable, so we mimic that functionality by disabling tabbing
+    // when disabled, and adding a `tabindex="0"` to non buttons or non links
+    tabindex: props.disabled && !button ? '-1' : tabindex
+  };
+}; // --- Main component ---
+// @vue/component
+
+
+var BButton = /*#__PURE__*/_vue__WEBPACK_IMPORTED_MODULE_8__["default"].extend({
+  name: _constants_components__WEBPACK_IMPORTED_MODULE_4__.NAME_BUTTON,
+  functional: true,
+  props: props,
+  render: function render(h, _ref2) {
+    var props = _ref2.props,
+        data = _ref2.data,
+        listeners = _ref2.listeners,
+        children = _ref2.children;
+    var toggle = isToggle(props);
+    var link = isLink(props);
+    var nonStandardTag = isNonStandardTag(props);
+    var hashLink = link && props.href === '#';
+    var on = {
+      keydown: function keydown(event) {
+        // When the link is a `href="#"` or a non-standard tag (has `role="button"`),
+        // we add a keydown handlers for CODE_SPACE/CODE_ENTER
+
+        /* istanbul ignore next */
+        if (props.disabled || !(nonStandardTag || hashLink)) {
+          return;
+        }
+
+        var keyCode = event.keyCode; // Add CODE_SPACE handler for `href="#"` and CODE_ENTER handler for non-standard tags
+
+        if (keyCode === _constants_key_codes__WEBPACK_IMPORTED_MODULE_9__.CODE_SPACE || keyCode === _constants_key_codes__WEBPACK_IMPORTED_MODULE_9__.CODE_ENTER && nonStandardTag) {
+          var target = event.currentTarget || event.target;
+          (0,_utils_events__WEBPACK_IMPORTED_MODULE_10__.stopEvent)(event, {
+            propagation: false
+          });
+          target.click();
+        }
+      },
+      click: function click(event) {
+        /* istanbul ignore if: blink/button disabled should handle this */
+        if (props.disabled && (0,_utils_inspect__WEBPACK_IMPORTED_MODULE_7__.isEvent)(event)) {
+          (0,_utils_events__WEBPACK_IMPORTED_MODULE_10__.stopEvent)(event);
+        } else if (toggle && listeners && listeners['update:pressed']) {
+          // Send `.sync` updates to any "pressed" prop (if `.sync` listeners)
+          // `concat()` will normalize the value to an array without
+          // double wrapping an array value in an array
+          (0,_utils_array__WEBPACK_IMPORTED_MODULE_11__.concat)(listeners['update:pressed']).forEach(function (fn) {
+            if ((0,_utils_inspect__WEBPACK_IMPORTED_MODULE_7__.isFunction)(fn)) {
+              fn(!props.pressed);
+            }
+          });
+        }
+      }
+    };
+
+    if (toggle) {
+      on.focusin = handleFocus;
+      on.focusout = handleFocus;
+    }
+
+    var componentData = {
+      staticClass: 'btn',
+      class: computeClass(props),
+      props: computeLinkProps(props),
+      attrs: computeAttrs(props, data),
+      on: on
+    };
+    return h(link ? _link_link__WEBPACK_IMPORTED_MODULE_1__.BLink : props.tag, (0,_vue__WEBPACK_IMPORTED_MODULE_12__.mergeData)(data, componentData), children);
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/components/link/link.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/components/link/link.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "routerLinkProps": () => (/* binding */ routerLinkProps),
+/* harmony export */   "nuxtLinkProps": () => (/* binding */ nuxtLinkProps),
+/* harmony export */   "props": () => (/* binding */ props),
+/* harmony export */   "BLink": () => (/* binding */ BLink)
+/* harmony export */ });
+/* harmony import */ var _vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var _constants_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../constants/components */ "./node_modules/bootstrap-vue/esm/constants/components.js");
+/* harmony import */ var _constants_events__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../constants/events */ "./node_modules/bootstrap-vue/esm/constants/events.js");
+/* harmony import */ var _constants_props__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../constants/props */ "./node_modules/bootstrap-vue/esm/constants/props.js");
+/* harmony import */ var _utils_array__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../utils/array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
+/* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
+/* harmony import */ var _utils_events__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/events */ "./node_modules/bootstrap-vue/esm/utils/events.js");
+/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
+/* harmony import */ var _utils_props__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/props */ "./node_modules/bootstrap-vue/esm/utils/props.js");
+/* harmony import */ var _utils_router__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils/router */ "./node_modules/bootstrap-vue/esm/utils/router.js");
+/* harmony import */ var _mixins_attrs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../mixins/attrs */ "./node_modules/bootstrap-vue/esm/mixins/attrs.js");
+/* harmony import */ var _mixins_listen_on_root__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../mixins/listen-on-root */ "./node_modules/bootstrap-vue/esm/mixins/listen-on-root.js");
+/* harmony import */ var _mixins_listeners__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../mixins/listeners */ "./node_modules/bootstrap-vue/esm/mixins/listeners.js");
+/* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // --- Constants ---
+
+var ROOT_EVENT_NAME_CLICKED = (0,_utils_events__WEBPACK_IMPORTED_MODULE_0__.getRootEventName)(_constants_components__WEBPACK_IMPORTED_MODULE_1__.NAME_LINK, 'clicked'); // --- Props ---
+// `<router-link>` specific props
+
+var routerLinkProps = {
+  activeClass: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_STRING),
+  append: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_BOOLEAN, false),
+  event: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_ARRAY_STRING, _constants_events__WEBPACK_IMPORTED_MODULE_4__.EVENT_NAME_CLICK),
+  exact: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_BOOLEAN, false),
+  exactActiveClass: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_STRING),
+  replace: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_BOOLEAN, false),
+  routerTag: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_STRING, 'a'),
+  to: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_OBJECT_STRING)
+}; // `<nuxt-link>` specific props
+
+var nuxtLinkProps = {
+  noPrefetch: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_BOOLEAN, false),
+  // Must be `null` to fall back to the value defined in the
+  // `nuxt.config.js` configuration file for `router.prefetchLinks`
+  // We convert `null` to `undefined`, so that Nuxt.js will use the
+  // compiled default
+  // Vue treats `undefined` as default of `false` for Boolean props,
+  // so we must set it as `null` here to be a true tri-state prop
+  prefetch: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_BOOLEAN, null)
+}; // All `<b-link>` props
+
+var props = (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makePropsConfigurable)((0,_utils_object__WEBPACK_IMPORTED_MODULE_5__.sortKeys)(_objectSpread(_objectSpread(_objectSpread({}, nuxtLinkProps), routerLinkProps), {}, {
+  active: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_BOOLEAN, false),
+  disabled: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_BOOLEAN, false),
+  href: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_STRING),
+  // Must be `null` if no value provided
+  rel: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_STRING, null),
+  // To support 3rd party router links based on `<router-link>` (i.e. `g-link` for Gridsome)
+  // Default is to auto choose between `<router-link>` and `<nuxt-link>`
+  // Gridsome doesn't provide a mechanism to auto detect and has caveats
+  // such as not supporting FQDN URLs or hash only URLs
+  routerComponentName: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_STRING),
+  target: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_STRING, '_self')
+})), _constants_components__WEBPACK_IMPORTED_MODULE_1__.NAME_LINK); // --- Main component ---
+// @vue/component
+
+var BLink = /*#__PURE__*/_vue__WEBPACK_IMPORTED_MODULE_6__["default"].extend({
+  name: _constants_components__WEBPACK_IMPORTED_MODULE_1__.NAME_LINK,
+  // Mixin order is important!
+  mixins: [_mixins_attrs__WEBPACK_IMPORTED_MODULE_7__.attrsMixin, _mixins_listeners__WEBPACK_IMPORTED_MODULE_8__.listenersMixin, _mixins_listen_on_root__WEBPACK_IMPORTED_MODULE_9__.listenOnRootMixin, _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_10__.normalizeSlotMixin],
+  inheritAttrs: false,
+  props: props,
+  computed: {
+    computedTag: function computedTag() {
+      // We don't pass `this` as the first arg as we need reactivity of the props
+      var to = this.to,
+          disabled = this.disabled,
+          routerComponentName = this.routerComponentName;
+      return (0,_utils_router__WEBPACK_IMPORTED_MODULE_11__.computeTag)({
+        to: to,
+        disabled: disabled,
+        routerComponentName: routerComponentName
+      }, this);
+    },
+    isRouterLink: function isRouterLink() {
+      return (0,_utils_router__WEBPACK_IMPORTED_MODULE_11__.isRouterLink)(this.computedTag);
+    },
+    computedRel: function computedRel() {
+      // We don't pass `this` as the first arg as we need reactivity of the props
+      var target = this.target,
+          rel = this.rel;
+      return (0,_utils_router__WEBPACK_IMPORTED_MODULE_11__.computeRel)({
+        target: target,
+        rel: rel
+      });
+    },
+    computedHref: function computedHref() {
+      // We don't pass `this` as the first arg as we need reactivity of the props
+      var to = this.to,
+          href = this.href;
+      return (0,_utils_router__WEBPACK_IMPORTED_MODULE_11__.computeHref)({
+        to: to,
+        href: href
+      }, this.computedTag);
+    },
+    computedProps: function computedProps() {
+      var prefetch = this.prefetch;
+      return this.isRouterLink ? _objectSpread(_objectSpread({}, (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.pluckProps)(_objectSpread(_objectSpread({}, routerLinkProps), nuxtLinkProps), this)), {}, {
+        // Coerce `prefetch` value `null` to be `undefined`
+        prefetch: (0,_utils_inspect__WEBPACK_IMPORTED_MODULE_12__.isBoolean)(prefetch) ? prefetch : undefined,
+        // Pass `router-tag` as `tag` prop
+        tag: this.routerTag
+      }) : {};
+    },
+    computedAttrs: function computedAttrs() {
+      var bvAttrs = this.bvAttrs,
+          href = this.computedHref,
+          rel = this.computedRel,
+          disabled = this.disabled,
+          target = this.target,
+          routerTag = this.routerTag,
+          isRouterLink = this.isRouterLink;
+      return _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, bvAttrs), href ? {
+        href: href
+      } : {}), isRouterLink && !(0,_utils_dom__WEBPACK_IMPORTED_MODULE_13__.isTag)(routerTag, 'a') ? {} : {
+        rel: rel,
+        target: target
+      }), {}, {
+        tabindex: disabled ? '-1' : (0,_utils_inspect__WEBPACK_IMPORTED_MODULE_12__.isUndefined)(bvAttrs.tabindex) ? null : bvAttrs.tabindex,
+        'aria-disabled': disabled ? 'true' : null
+      });
+    },
+    computedListeners: function computedListeners() {
+      return _objectSpread(_objectSpread({}, this.bvListeners), {}, {
+        // We want to overwrite any click handler since our callback
+        // will invoke the user supplied handler(s) if `!this.disabled`
+        click: this.onClick
+      });
+    }
+  },
+  methods: {
+    onClick: function onClick(event) {
+      var _arguments = arguments;
+      var eventIsEvent = (0,_utils_inspect__WEBPACK_IMPORTED_MODULE_12__.isEvent)(event);
+      var isRouterLink = this.isRouterLink;
+      var suppliedHandler = this.bvListeners.click;
+
+      if (eventIsEvent && this.disabled) {
+        // Stop event from bubbling up
+        // Kill the event loop attached to this specific `EventTarget`
+        // Needed to prevent `vue-router` for doing its thing
+        (0,_utils_events__WEBPACK_IMPORTED_MODULE_0__.stopEvent)(event, {
+          immediatePropagation: true
+        });
+      } else {
+        /* istanbul ignore next: difficult to test, but we know it works */
+        if (isRouterLink && event.currentTarget.__vue__) {
+          // Router links do not emit instance `click` events, so we
+          // add in an `$emit('click', event)` on its Vue instance
+          event.currentTarget.__vue__.$emit(_constants_events__WEBPACK_IMPORTED_MODULE_4__.EVENT_NAME_CLICK, event);
+        } // Call the suppliedHandler(s), if any provided
+
+
+        (0,_utils_array__WEBPACK_IMPORTED_MODULE_14__.concat)(suppliedHandler).filter(function (h) {
+          return (0,_utils_inspect__WEBPACK_IMPORTED_MODULE_12__.isFunction)(h);
+        }).forEach(function (handler) {
+          handler.apply(void 0, _toConsumableArray(_arguments));
+        }); // Emit the global `$root` click event
+
+        this.emitOnRoot(ROOT_EVENT_NAME_CLICKED, event); // TODO: Remove deprecated 'clicked::link' event with next major release
+
+        this.emitOnRoot('clicked::link', event);
+      } // Stop scroll-to-top behavior or navigation on
+      // regular links when href is just '#'
+
+
+      if (eventIsEvent && !isRouterLink && this.computedHref === '#') {
+        (0,_utils_events__WEBPACK_IMPORTED_MODULE_0__.stopEvent)(event, {
+          propagation: false
+        });
+      }
+    },
+    focus: function focus() {
+      (0,_utils_dom__WEBPACK_IMPORTED_MODULE_13__.attemptFocus)(this.$el);
+    },
+    blur: function blur() {
+      (0,_utils_dom__WEBPACK_IMPORTED_MODULE_13__.attemptBlur)(this.$el);
+    }
+  },
+  render: function render(h) {
+    var active = this.active,
+        disabled = this.disabled;
+    return h(this.computedTag, _defineProperty({
+      class: {
+        active: active,
+        disabled: disabled
+      },
+      attrs: this.computedAttrs,
+      props: this.computedProps
+    }, this.isRouterLink ? 'nativeOn' : 'on', this.computedListeners), this.normalizeSlot());
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/components/modal/helpers/bv-modal-event.class.js":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/components/modal/helpers/bv-modal-event.class.js ***!
+  \*****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "BvModalEvent": () => (/* binding */ BvModalEvent)
+/* harmony export */ });
+/* harmony import */ var _utils_bv_event_class__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utils/bv-event.class */ "./node_modules/bootstrap-vue/esm/utils/bv-event.class.js");
+/* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var BvModalEvent = /*#__PURE__*/function (_BvEvent) {
+  _inherits(BvModalEvent, _BvEvent);
+
+  var _super = _createSuper(BvModalEvent);
+
+  function BvModalEvent(type) {
+    var _this;
+
+    var eventInit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    _classCallCheck(this, BvModalEvent);
+
+    _this = _super.call(this, type, eventInit); // Freeze our new props as readonly, but leave them enumerable
+
+    (0,_utils_object__WEBPACK_IMPORTED_MODULE_0__.defineProperties)(_assertThisInitialized(_this), {
+      trigger: (0,_utils_object__WEBPACK_IMPORTED_MODULE_0__.readonlyDescriptor)()
+    });
+    return _this;
+  }
+
+  _createClass(BvModalEvent, null, [{
+    key: "Defaults",
+    get: function get() {
+      return _objectSpread(_objectSpread({}, _get(_getPrototypeOf(BvModalEvent), "Defaults", this)), {}, {
+        trigger: null
+      });
+    }
+  }]);
+
+  return BvModalEvent;
+}(_utils_bv_event_class__WEBPACK_IMPORTED_MODULE_1__.BvEvent); // Named exports
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/components/modal/helpers/modal-manager.js":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/components/modal/helpers/modal-manager.js ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "modalManager": () => (/* binding */ modalManager)
+/* harmony export */ });
+/* harmony import */ var _vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var _constants_env__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../constants/env */ "./node_modules/bootstrap-vue/esm/constants/env.js");
+/* harmony import */ var _constants_events__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../constants/events */ "./node_modules/bootstrap-vue/esm/constants/events.js");
+/* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
+/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _utils_number__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../utils/number */ "./node_modules/bootstrap-vue/esm/utils/number.js");
+/**
+ * Private ModalManager helper
+ * Handles controlling modal stacking zIndexes and body adjustments/classes
+ */
+
+
+
+
+
+ // --- Constants ---
+// Default modal backdrop z-index
+
+var DEFAULT_ZINDEX = 1040; // Selectors for padding/margin adjustments
+
+var SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top';
+var SELECTOR_STICKY_CONTENT = '.sticky-top';
+var SELECTOR_NAVBAR_TOGGLER = '.navbar-toggler'; // --- Main component ---
+// @vue/component
+
+var ModalManager = /*#__PURE__*/_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  data: function data() {
+    return {
+      modals: [],
+      baseZIndex: null,
+      scrollbarWidth: null,
+      isBodyOverflowing: false
+    };
+  },
+  computed: {
+    modalCount: function modalCount() {
+      return this.modals.length;
+    },
+    modalsAreOpen: function modalsAreOpen() {
+      return this.modalCount > 0;
+    }
+  },
+  watch: {
+    modalCount: function modalCount(newCount, oldCount) {
+      if (_constants_env__WEBPACK_IMPORTED_MODULE_1__.IS_BROWSER) {
+        this.getScrollbarWidth();
+
+        if (newCount > 0 && oldCount === 0) {
+          // Transitioning to modal(s) open
+          this.checkScrollbar();
+          this.setScrollbar();
+          (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.addClass)(document.body, 'modal-open');
+        } else if (newCount === 0 && oldCount > 0) {
+          // Transitioning to modal(s) closed
+          this.resetScrollbar();
+          (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.removeClass)(document.body, 'modal-open');
+        }
+
+        (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.setAttr)(document.body, 'data-modal-open-count', String(newCount));
+      }
+    },
+    modals: function modals(newValue) {
+      var _this = this;
+
+      this.checkScrollbar();
+      (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.requestAF)(function () {
+        _this.updateModals(newValue || []);
+      });
+    }
+  },
+  methods: {
+    // Public methods
+    registerModal: function registerModal(modal) {
+      var _this2 = this;
+
+      // Register the modal if not already registered
+      if (modal && this.modals.indexOf(modal) === -1) {
+        // Add modal to modals array
+        this.modals.push(modal);
+        modal.$once(_constants_events__WEBPACK_IMPORTED_MODULE_3__.HOOK_EVENT_NAME_BEFORE_DESTROY, function () {
+          _this2.unregisterModal(modal);
+        });
+      }
+    },
+    unregisterModal: function unregisterModal(modal) {
+      var index = this.modals.indexOf(modal);
+
+      if (index > -1) {
+        // Remove modal from modals array
+        this.modals.splice(index, 1); // Reset the modal's data
+
+        if (!(modal._isBeingDestroyed || modal._isDestroyed)) {
+          this.resetModal(modal);
+        }
+      }
+    },
+    getBaseZIndex: function getBaseZIndex() {
+      if ((0,_utils_inspect__WEBPACK_IMPORTED_MODULE_4__.isNull)(this.baseZIndex) && _constants_env__WEBPACK_IMPORTED_MODULE_1__.IS_BROWSER) {
+        // Create a temporary `div.modal-backdrop` to get computed z-index
+        var div = document.createElement('div');
+        (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.addClass)(div, 'modal-backdrop');
+        (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.addClass)(div, 'd-none');
+        (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.setStyle)(div, 'display', 'none');
+        document.body.appendChild(div);
+        this.baseZIndex = (0,_utils_number__WEBPACK_IMPORTED_MODULE_5__.toInteger)((0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.getCS)(div).zIndex, DEFAULT_ZINDEX);
+        document.body.removeChild(div);
+      }
+
+      return this.baseZIndex || DEFAULT_ZINDEX;
+    },
+    getScrollbarWidth: function getScrollbarWidth() {
+      if ((0,_utils_inspect__WEBPACK_IMPORTED_MODULE_4__.isNull)(this.scrollbarWidth) && _constants_env__WEBPACK_IMPORTED_MODULE_1__.IS_BROWSER) {
+        // Create a temporary `div.measure-scrollbar` to get computed z-index
+        var div = document.createElement('div');
+        (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.addClass)(div, 'modal-scrollbar-measure');
+        document.body.appendChild(div);
+        this.scrollbarWidth = (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.getBCR)(div).width - div.clientWidth;
+        document.body.removeChild(div);
+      }
+
+      return this.scrollbarWidth || 0;
+    },
+    // Private methods
+    updateModals: function updateModals(modals) {
+      var _this3 = this;
+
+      var baseZIndex = this.getBaseZIndex();
+      var scrollbarWidth = this.getScrollbarWidth();
+      modals.forEach(function (modal, index) {
+        // We update data values on each modal
+        modal.zIndex = baseZIndex + index;
+        modal.scrollbarWidth = scrollbarWidth;
+        modal.isTop = index === _this3.modals.length - 1;
+        modal.isBodyOverflowing = _this3.isBodyOverflowing;
+      });
+    },
+    resetModal: function resetModal(modal) {
+      if (modal) {
+        modal.zIndex = this.getBaseZIndex();
+        modal.isTop = true;
+        modal.isBodyOverflowing = false;
+      }
+    },
+    checkScrollbar: function checkScrollbar() {
+      // Determine if the body element is overflowing
+      var _getBCR = (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.getBCR)(document.body),
+          left = _getBCR.left,
+          right = _getBCR.right;
+
+      this.isBodyOverflowing = left + right < window.innerWidth;
+    },
+    setScrollbar: function setScrollbar() {
+      var body = document.body; // Storage place to cache changes to margins and padding
+      // Note: This assumes the following element types are not added to the
+      // document after the modal has opened.
+
+      body._paddingChangedForModal = body._paddingChangedForModal || [];
+      body._marginChangedForModal = body._marginChangedForModal || [];
+
+      if (this.isBodyOverflowing) {
+        var scrollbarWidth = this.scrollbarWidth; // Adjust fixed content padding
+
+        /* istanbul ignore next: difficult to test in JSDOM */
+
+        (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.selectAll)(SELECTOR_FIXED_CONTENT).forEach(function (el) {
+          var actualPadding = (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.getStyle)(el, 'paddingRight') || '';
+          (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.setAttr)(el, 'data-padding-right', actualPadding);
+          (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.setStyle)(el, 'paddingRight', "".concat((0,_utils_number__WEBPACK_IMPORTED_MODULE_5__.toFloat)((0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.getCS)(el).paddingRight, 0) + scrollbarWidth, "px"));
+
+          body._paddingChangedForModal.push(el);
+        }); // Adjust sticky content margin
+
+        /* istanbul ignore next: difficult to test in JSDOM */
+
+        (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.selectAll)(SELECTOR_STICKY_CONTENT).forEach(function (el)
+        /* istanbul ignore next */
+        {
+          var actualMargin = (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.getStyle)(el, 'marginRight') || '';
+          (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.setAttr)(el, 'data-margin-right', actualMargin);
+          (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.setStyle)(el, 'marginRight', "".concat((0,_utils_number__WEBPACK_IMPORTED_MODULE_5__.toFloat)((0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.getCS)(el).marginRight, 0) - scrollbarWidth, "px"));
+
+          body._marginChangedForModal.push(el);
+        }); // Adjust <b-navbar-toggler> margin
+
+        /* istanbul ignore next: difficult to test in JSDOM */
+
+        (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.selectAll)(SELECTOR_NAVBAR_TOGGLER).forEach(function (el)
+        /* istanbul ignore next */
+        {
+          var actualMargin = (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.getStyle)(el, 'marginRight') || '';
+          (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.setAttr)(el, 'data-margin-right', actualMargin);
+          (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.setStyle)(el, 'marginRight', "".concat((0,_utils_number__WEBPACK_IMPORTED_MODULE_5__.toFloat)((0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.getCS)(el).marginRight, 0) + scrollbarWidth, "px"));
+
+          body._marginChangedForModal.push(el);
+        }); // Adjust body padding
+
+        var actualPadding = (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.getStyle)(body, 'paddingRight') || '';
+        (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.setAttr)(body, 'data-padding-right', actualPadding);
+        (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.setStyle)(body, 'paddingRight', "".concat((0,_utils_number__WEBPACK_IMPORTED_MODULE_5__.toFloat)((0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.getCS)(body).paddingRight, 0) + scrollbarWidth, "px"));
+      }
+    },
+    resetScrollbar: function resetScrollbar() {
+      var body = document.body;
+
+      if (body._paddingChangedForModal) {
+        // Restore fixed content padding
+        body._paddingChangedForModal.forEach(function (el) {
+          /* istanbul ignore next: difficult to test in JSDOM */
+          if ((0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.hasAttr)(el, 'data-padding-right')) {
+            (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.setStyle)(el, 'paddingRight', (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.getAttr)(el, 'data-padding-right') || '');
+            (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.removeAttr)(el, 'data-padding-right');
+          }
+        });
+      }
+
+      if (body._marginChangedForModal) {
+        // Restore sticky content and navbar-toggler margin
+        body._marginChangedForModal.forEach(function (el) {
+          /* istanbul ignore next: difficult to test in JSDOM */
+          if ((0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.hasAttr)(el, 'data-margin-right')) {
+            (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.setStyle)(el, 'marginRight', (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.getAttr)(el, 'data-margin-right') || '');
+            (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.removeAttr)(el, 'data-margin-right');
+          }
+        });
+      }
+
+      body._paddingChangedForModal = null;
+      body._marginChangedForModal = null; // Restore body padding
+
+      if ((0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.hasAttr)(body, 'data-padding-right')) {
+        (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.setStyle)(body, 'paddingRight', (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.getAttr)(body, 'data-padding-right') || '');
+        (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.removeAttr)(body, 'data-padding-right');
+      }
+    }
+  }
+}); // Create and export our modal manager instance
+
+var modalManager = new ModalManager();
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/components/modal/modal.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/components/modal/modal.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "props": () => (/* binding */ props),
+/* harmony export */   "BModal": () => (/* binding */ BModal)
+/* harmony export */ });
+/* harmony import */ var _vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var _vue__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../../vue */ "./node_modules/bootstrap-vue/esm/vue.js");
+/* harmony import */ var _constants_components__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../constants/components */ "./node_modules/bootstrap-vue/esm/constants/components.js");
+/* harmony import */ var _constants_env__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../../constants/env */ "./node_modules/bootstrap-vue/esm/constants/env.js");
+/* harmony import */ var _constants_events__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../constants/events */ "./node_modules/bootstrap-vue/esm/constants/events.js");
+/* harmony import */ var _constants_key_codes__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../constants/key-codes */ "./node_modules/bootstrap-vue/esm/constants/key-codes.js");
+/* harmony import */ var _constants_props__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../constants/props */ "./node_modules/bootstrap-vue/esm/constants/props.js");
+/* harmony import */ var _constants_safe_types__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../constants/safe-types */ "./node_modules/bootstrap-vue/esm/constants/safe-types.js");
+/* harmony import */ var _constants_slots__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../constants/slots */ "./node_modules/bootstrap-vue/esm/constants/slots.js");
+/* harmony import */ var _utils_array__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
+/* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
+/* harmony import */ var _utils_events__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../utils/events */ "./node_modules/bootstrap-vue/esm/utils/events.js");
+/* harmony import */ var _utils_html__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../../utils/html */ "./node_modules/bootstrap-vue/esm/utils/html.js");
+/* harmony import */ var _utils_identity__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../utils/identity */ "./node_modules/bootstrap-vue/esm/utils/identity.js");
+/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _utils_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/model */ "./node_modules/bootstrap-vue/esm/utils/model.js");
+/* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
+/* harmony import */ var _utils_observe_dom__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../utils/observe-dom */ "./node_modules/bootstrap-vue/esm/utils/observe-dom.js");
+/* harmony import */ var _utils_props__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/props */ "./node_modules/bootstrap-vue/esm/utils/props.js");
+/* harmony import */ var _mixins_attrs__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../mixins/attrs */ "./node_modules/bootstrap-vue/esm/mixins/attrs.js");
+/* harmony import */ var _mixins_id__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../mixins/id */ "./node_modules/bootstrap-vue/esm/mixins/id.js");
+/* harmony import */ var _mixins_listen_on_document__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../mixins/listen-on-document */ "./node_modules/bootstrap-vue/esm/mixins/listen-on-document.js");
+/* harmony import */ var _mixins_listen_on_root__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../mixins/listen-on-root */ "./node_modules/bootstrap-vue/esm/mixins/listen-on-root.js");
+/* harmony import */ var _mixins_listen_on_window__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../mixins/listen-on-window */ "./node_modules/bootstrap-vue/esm/mixins/listen-on-window.js");
+/* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
+/* harmony import */ var _mixins_scoped_style__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../mixins/scoped-style */ "./node_modules/bootstrap-vue/esm/mixins/scoped-style.js");
+/* harmony import */ var _button_button__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../button/button */ "./node_modules/bootstrap-vue/esm/components/button/button.js");
+/* harmony import */ var _button_button_close__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../button/button-close */ "./node_modules/bootstrap-vue/esm/components/button/button-close.js");
+/* harmony import */ var _transition_bv_transition__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../transition/bv-transition */ "./node_modules/bootstrap-vue/esm/components/transition/bv-transition.js");
+/* harmony import */ var _transporter_transporter__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ../transporter/transporter */ "./node_modules/bootstrap-vue/esm/components/transporter/transporter.js");
+/* harmony import */ var _helpers_bv_modal_event_class__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./helpers/bv-modal-event.class */ "./node_modules/bootstrap-vue/esm/components/modal/helpers/bv-modal-event.class.js");
+/* harmony import */ var _helpers_modal_manager__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./helpers/modal-manager */ "./node_modules/bootstrap-vue/esm/components/modal/helpers/modal-manager.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // --- Constants ---
+
+var _makeModelMixin = (0,_utils_model__WEBPACK_IMPORTED_MODULE_0__.makeModelMixin)('visible', {
+  type: _constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_BOOLEAN,
+  defaultValue: false,
+  event: _constants_events__WEBPACK_IMPORTED_MODULE_2__.EVENT_NAME_CHANGE
+}),
+    modelMixin = _makeModelMixin.mixin,
+    modelProps = _makeModelMixin.props,
+    MODEL_PROP_NAME = _makeModelMixin.prop,
+    MODEL_EVENT_NAME = _makeModelMixin.event;
+
+var TRIGGER_BACKDROP = 'backdrop';
+var TRIGGER_ESC = 'esc';
+var TRIGGER_FORCE = 'FORCE';
+var TRIGGER_TOGGLE = 'toggle';
+var BUTTON_CANCEL = 'cancel'; // TODO: This should be renamed to 'close'
+
+var BUTTON_CLOSE = 'headerclose';
+var BUTTON_OK = 'ok';
+var BUTTONS = [BUTTON_CANCEL, BUTTON_CLOSE, BUTTON_OK]; // `ObserveDom` config to detect changes in modal content
+// so that we can adjust the modal padding if needed
+
+var OBSERVER_CONFIG = {
+  subtree: true,
+  childList: true,
+  characterData: true,
+  attributes: true,
+  attributeFilter: ['style', 'class']
+}; // --- Props ---
+
+var props = (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makePropsConfigurable)((0,_utils_object__WEBPACK_IMPORTED_MODULE_4__.sortKeys)(_objectSpread(_objectSpread(_objectSpread({}, _mixins_id__WEBPACK_IMPORTED_MODULE_5__.props), modelProps), {}, {
+  ariaLabel: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING),
+  autoFocusButton: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING, null,
+  /* istanbul ignore next */
+  function (value) {
+    return (0,_utils_inspect__WEBPACK_IMPORTED_MODULE_6__.isUndefinedOrNull)(value) || (0,_utils_array__WEBPACK_IMPORTED_MODULE_7__.arrayIncludes)(BUTTONS, value);
+  }),
+  bodyBgVariant: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING),
+  bodyClass: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_ARRAY_OBJECT_STRING),
+  bodyTextVariant: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING),
+  busy: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_BOOLEAN, false),
+  buttonSize: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING),
+  cancelDisabled: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_BOOLEAN, false),
+  cancelTitle: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING, 'Cancel'),
+  cancelTitleHtml: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING),
+  cancelVariant: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING, 'secondary'),
+  centered: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_BOOLEAN, false),
+  contentClass: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_ARRAY_OBJECT_STRING),
+  dialogClass: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_ARRAY_OBJECT_STRING),
+  footerBgVariant: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING),
+  footerBorderVariant: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING),
+  footerClass: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_ARRAY_OBJECT_STRING),
+  footerTextVariant: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING),
+  headerBgVariant: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING),
+  headerBorderVariant: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING),
+  headerClass: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_ARRAY_OBJECT_STRING),
+  headerCloseContent: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING, '&times;'),
+  headerCloseLabel: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING, 'Close'),
+  headerCloseVariant: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING),
+  headerTextVariant: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING),
+  // TODO: Rename to `noBackdrop` and deprecate `hideBackdrop`
+  hideBackdrop: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_BOOLEAN, false),
+  // TODO: Rename to `noFooter` and deprecate `hideFooter`
+  hideFooter: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_BOOLEAN, false),
+  // TODO: Rename to `noHeader` and deprecate `hideHeader`
+  hideHeader: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_BOOLEAN, false),
+  // TODO: Rename to `noHeaderClose` and deprecate `hideHeaderClose`
+  hideHeaderClose: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_BOOLEAN, false),
+  ignoreEnforceFocusSelector: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_ARRAY_STRING),
+  lazy: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_BOOLEAN, false),
+  modalClass: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_ARRAY_OBJECT_STRING),
+  noCloseOnBackdrop: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_BOOLEAN, false),
+  noCloseOnEsc: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_BOOLEAN, false),
+  noEnforceFocus: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_BOOLEAN, false),
+  noFade: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_BOOLEAN, false),
+  noStacking: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_BOOLEAN, false),
+  okDisabled: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_BOOLEAN, false),
+  okOnly: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_BOOLEAN, false),
+  okTitle: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING, 'OK'),
+  okTitleHtml: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING),
+  okVariant: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING, 'primary'),
+  // HTML Element, CSS selector string or Vue component instance
+  returnFocus: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)([_constants_safe_types__WEBPACK_IMPORTED_MODULE_8__.HTMLElement, _constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_OBJECT, _constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING]),
+  scrollable: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_BOOLEAN, false),
+  size: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING, 'md'),
+  static: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_BOOLEAN, false),
+  title: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING),
+  titleClass: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_ARRAY_OBJECT_STRING),
+  titleHtml: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING),
+  titleSrOnly: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_BOOLEAN, false),
+  titleTag: (0,_utils_props__WEBPACK_IMPORTED_MODULE_3__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING, 'h5')
+})), _constants_components__WEBPACK_IMPORTED_MODULE_9__.NAME_MODAL); // --- Main component ---
+// @vue/component
+
+var BModal = /*#__PURE__*/_vue__WEBPACK_IMPORTED_MODULE_10__["default"].extend({
+  name: _constants_components__WEBPACK_IMPORTED_MODULE_9__.NAME_MODAL,
+  mixins: [_mixins_attrs__WEBPACK_IMPORTED_MODULE_11__.attrsMixin, _mixins_id__WEBPACK_IMPORTED_MODULE_5__.idMixin, modelMixin, _mixins_listen_on_document__WEBPACK_IMPORTED_MODULE_12__.listenOnDocumentMixin, _mixins_listen_on_root__WEBPACK_IMPORTED_MODULE_13__.listenOnRootMixin, _mixins_listen_on_window__WEBPACK_IMPORTED_MODULE_14__.listenOnWindowMixin, _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_15__.normalizeSlotMixin, _mixins_scoped_style__WEBPACK_IMPORTED_MODULE_16__.scopedStyleMixin],
+  inheritAttrs: false,
+  props: props,
+  data: function data() {
+    return {
+      isHidden: true,
+      // If modal should not be in document
+      isVisible: false,
+      // Controls modal visible state
+      isTransitioning: false,
+      // Used for style control
+      isShow: false,
+      // Used for style control
+      isBlock: false,
+      // Used for style control
+      isOpening: false,
+      // To signal that the modal is in the process of opening
+      isClosing: false,
+      // To signal that the modal is in the process of closing
+      ignoreBackdropClick: false,
+      // Used to signify if click out listener should ignore the click
+      isModalOverflowing: false,
+      // The following items are controlled by the modalManager instance
+      scrollbarWidth: 0,
+      zIndex: _helpers_modal_manager__WEBPACK_IMPORTED_MODULE_17__.modalManager.getBaseZIndex(),
+      isTop: true,
+      isBodyOverflowing: false
+    };
+  },
+  computed: {
+    modalId: function modalId() {
+      return this.safeId();
+    },
+    modalOuterId: function modalOuterId() {
+      return this.safeId('__BV_modal_outer_');
+    },
+    modalHeaderId: function modalHeaderId() {
+      return this.safeId('__BV_modal_header_');
+    },
+    modalBodyId: function modalBodyId() {
+      return this.safeId('__BV_modal_body_');
+    },
+    modalTitleId: function modalTitleId() {
+      return this.safeId('__BV_modal_title_');
+    },
+    modalContentId: function modalContentId() {
+      return this.safeId('__BV_modal_content_');
+    },
+    modalFooterId: function modalFooterId() {
+      return this.safeId('__BV_modal_footer_');
+    },
+    modalBackdropId: function modalBackdropId() {
+      return this.safeId('__BV_modal_backdrop_');
+    },
+    modalClasses: function modalClasses() {
+      return [{
+        fade: !this.noFade,
+        show: this.isShow
+      }, this.modalClass];
+    },
+    modalStyles: function modalStyles() {
+      var sbWidth = "".concat(this.scrollbarWidth, "px");
+      return {
+        paddingLeft: !this.isBodyOverflowing && this.isModalOverflowing ? sbWidth : '',
+        paddingRight: this.isBodyOverflowing && !this.isModalOverflowing ? sbWidth : '',
+        // Needed to fix issue https://github.com/bootstrap-vue/bootstrap-vue/issues/3457
+        // Even though we are using v-show, we must ensure 'none' is restored in the styles
+        display: this.isBlock ? 'block' : 'none'
+      };
+    },
+    dialogClasses: function dialogClasses() {
+      var _ref;
+
+      return [(_ref = {}, _defineProperty(_ref, "modal-".concat(this.size), this.size), _defineProperty(_ref, 'modal-dialog-centered', this.centered), _defineProperty(_ref, 'modal-dialog-scrollable', this.scrollable), _ref), this.dialogClass];
+    },
+    headerClasses: function headerClasses() {
+      var _ref2;
+
+      return [(_ref2 = {}, _defineProperty(_ref2, "bg-".concat(this.headerBgVariant), this.headerBgVariant), _defineProperty(_ref2, "text-".concat(this.headerTextVariant), this.headerTextVariant), _defineProperty(_ref2, "border-".concat(this.headerBorderVariant), this.headerBorderVariant), _ref2), this.headerClass];
+    },
+    titleClasses: function titleClasses() {
+      return [{
+        'sr-only': this.titleSrOnly
+      }, this.titleClass];
+    },
+    bodyClasses: function bodyClasses() {
+      var _ref3;
+
+      return [(_ref3 = {}, _defineProperty(_ref3, "bg-".concat(this.bodyBgVariant), this.bodyBgVariant), _defineProperty(_ref3, "text-".concat(this.bodyTextVariant), this.bodyTextVariant), _ref3), this.bodyClass];
+    },
+    footerClasses: function footerClasses() {
+      var _ref4;
+
+      return [(_ref4 = {}, _defineProperty(_ref4, "bg-".concat(this.footerBgVariant), this.footerBgVariant), _defineProperty(_ref4, "text-".concat(this.footerTextVariant), this.footerTextVariant), _defineProperty(_ref4, "border-".concat(this.footerBorderVariant), this.footerBorderVariant), _ref4), this.footerClass];
+    },
+    modalOuterStyle: function modalOuterStyle() {
+      // Styles needed for proper stacking of modals
+      return {
+        position: 'absolute',
+        zIndex: this.zIndex
+      };
+    },
+    slotScope: function slotScope() {
+      return {
+        cancel: this.onCancel,
+        close: this.onClose,
+        hide: this.hide,
+        ok: this.onOk,
+        visible: this.isVisible
+      };
+    },
+    computeIgnoreEnforceFocusSelector: function computeIgnoreEnforceFocusSelector() {
+      // Normalize to an single selector with selectors separated by `,`
+      return (0,_utils_array__WEBPACK_IMPORTED_MODULE_7__.concat)(this.ignoreEnforceFocusSelector).filter(_utils_identity__WEBPACK_IMPORTED_MODULE_18__.identity).join(',').trim();
+    },
+    computedAttrs: function computedAttrs() {
+      // If the parent has a scoped style attribute, and the modal
+      // is portalled, add the scoped attribute to the modal wrapper
+      var scopedStyleAttrs = !this.static ? this.scopedStyleAttrs : {};
+      return _objectSpread(_objectSpread(_objectSpread({}, scopedStyleAttrs), this.bvAttrs), {}, {
+        id: this.modalOuterId
+      });
+    },
+    computedModalAttrs: function computedModalAttrs() {
+      var isVisible = this.isVisible,
+          ariaLabel = this.ariaLabel;
+      return {
+        id: this.modalId,
+        role: 'dialog',
+        'aria-hidden': isVisible ? null : 'true',
+        'aria-modal': isVisible ? 'true' : null,
+        'aria-label': ariaLabel,
+        'aria-labelledby': this.hideHeader || ariaLabel || // TODO: Rename slot to `title` and deprecate `modal-title`
+        !(this.hasNormalizedSlot(_constants_slots__WEBPACK_IMPORTED_MODULE_19__.SLOT_NAME_MODAL_TITLE) || this.titleHtml || this.title) ? null : this.modalTitleId,
+        'aria-describedby': this.modalBodyId
+      };
+    }
+  },
+  watch: _defineProperty({}, MODEL_PROP_NAME, function (newValue, oldValue) {
+    if (newValue !== oldValue) {
+      this[newValue ? 'show' : 'hide']();
+    }
+  }),
+  created: function created() {
+    // Define non-reactive properties
+    this.$_observer = null;
+    this.$_returnFocus = this.returnFocus || null;
+  },
+  mounted: function mounted() {
+    // Set initial z-index as queried from the DOM
+    this.zIndex = _helpers_modal_manager__WEBPACK_IMPORTED_MODULE_17__.modalManager.getBaseZIndex(); // Listen for events from others to either open or close ourselves
+    // and listen to all modals to enable/disable enforce focus
+
+    this.listenOnRoot((0,_utils_events__WEBPACK_IMPORTED_MODULE_20__.getRootActionEventName)(_constants_components__WEBPACK_IMPORTED_MODULE_9__.NAME_MODAL, _constants_events__WEBPACK_IMPORTED_MODULE_2__.EVENT_NAME_SHOW), this.showHandler);
+    this.listenOnRoot((0,_utils_events__WEBPACK_IMPORTED_MODULE_20__.getRootActionEventName)(_constants_components__WEBPACK_IMPORTED_MODULE_9__.NAME_MODAL, _constants_events__WEBPACK_IMPORTED_MODULE_2__.EVENT_NAME_HIDE), this.hideHandler);
+    this.listenOnRoot((0,_utils_events__WEBPACK_IMPORTED_MODULE_20__.getRootActionEventName)(_constants_components__WEBPACK_IMPORTED_MODULE_9__.NAME_MODAL, _constants_events__WEBPACK_IMPORTED_MODULE_2__.EVENT_NAME_TOGGLE), this.toggleHandler); // Listen for `bv:modal::show events`, and close ourselves if the
+    // opening modal not us
+
+    this.listenOnRoot((0,_utils_events__WEBPACK_IMPORTED_MODULE_20__.getRootEventName)(_constants_components__WEBPACK_IMPORTED_MODULE_9__.NAME_MODAL, _constants_events__WEBPACK_IMPORTED_MODULE_2__.EVENT_NAME_SHOW), this.modalListener); // Initially show modal?
+
+    if (this[MODEL_PROP_NAME] === true) {
+      this.$nextTick(this.show);
+    }
+  },
+  beforeDestroy: function beforeDestroy() {
+    // Ensure everything is back to normal
+    this.setObserver(false);
+
+    if (this.isVisible) {
+      this.isVisible = false;
+      this.isShow = false;
+      this.isTransitioning = false;
+    }
+  },
+  methods: {
+    setObserver: function setObserver() {
+      var on = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+      this.$_observer && this.$_observer.disconnect();
+      this.$_observer = null;
+
+      if (on) {
+        this.$_observer = (0,_utils_observe_dom__WEBPACK_IMPORTED_MODULE_21__.observeDom)(this.$refs.content, this.checkModalOverflow.bind(this), OBSERVER_CONFIG);
+      }
+    },
+    // Private method to update the v-model
+    updateModel: function updateModel(value) {
+      if (value !== this[MODEL_PROP_NAME]) {
+        this.$emit(MODEL_EVENT_NAME, value);
+      }
+    },
+    // Private method to create a BvModalEvent object
+    buildEvent: function buildEvent(type) {
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      return new _helpers_bv_modal_event_class__WEBPACK_IMPORTED_MODULE_22__.BvModalEvent(type, _objectSpread(_objectSpread({
+        // Default options
+        cancelable: false,
+        target: this.$refs.modal || this.$el || null,
+        relatedTarget: null,
+        trigger: null
+      }, options), {}, {
+        // Options that can't be overridden
+        vueTarget: this,
+        componentId: this.modalId
+      }));
+    },
+    // Public method to show modal
+    show: function show() {
+      if (this.isVisible || this.isOpening) {
+        // If already open, or in the process of opening, do nothing
+
+        /* istanbul ignore next */
+        return;
+      }
+      /* istanbul ignore next */
+
+
+      if (this.isClosing) {
+        // If we are in the process of closing, wait until hidden before re-opening
+
+        /* istanbul ignore next */
+        this.$once(_constants_events__WEBPACK_IMPORTED_MODULE_2__.EVENT_NAME_HIDDEN, this.show);
+        /* istanbul ignore next */
+
+        return;
+      }
+
+      this.isOpening = true; // Set the element to return focus to when closed
+
+      this.$_returnFocus = this.$_returnFocus || this.getActiveElement();
+      var showEvt = this.buildEvent(_constants_events__WEBPACK_IMPORTED_MODULE_2__.EVENT_NAME_SHOW, {
+        cancelable: true
+      });
+      this.emitEvent(showEvt); // Don't show if canceled
+
+      if (showEvt.defaultPrevented || this.isVisible) {
+        this.isOpening = false; // Ensure the v-model reflects the current state
+
+        this.updateModel(false);
+        return;
+      } // Show the modal
+
+
+      this.doShow();
+    },
+    // Public method to hide modal
+    hide: function hide() {
+      var trigger = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+      if (!this.isVisible || this.isClosing) {
+        /* istanbul ignore next */
+        return;
+      }
+
+      this.isClosing = true;
+      var hideEvt = this.buildEvent(_constants_events__WEBPACK_IMPORTED_MODULE_2__.EVENT_NAME_HIDE, {
+        cancelable: trigger !== TRIGGER_FORCE,
+        trigger: trigger || null
+      }); // We emit specific event for one of the three built-in buttons
+
+      if (trigger === BUTTON_OK) {
+        this.$emit(_constants_events__WEBPACK_IMPORTED_MODULE_2__.EVENT_NAME_OK, hideEvt);
+      } else if (trigger === BUTTON_CANCEL) {
+        this.$emit(_constants_events__WEBPACK_IMPORTED_MODULE_2__.EVENT_NAME_CANCEL, hideEvt);
+      } else if (trigger === BUTTON_CLOSE) {
+        this.$emit(_constants_events__WEBPACK_IMPORTED_MODULE_2__.EVENT_NAME_CLOSE, hideEvt);
+      }
+
+      this.emitEvent(hideEvt); // Hide if not canceled
+
+      if (hideEvt.defaultPrevented || !this.isVisible) {
+        this.isClosing = false; // Ensure v-model reflects current state
+
+        this.updateModel(true);
+        return;
+      } // Stop observing for content changes
+
+
+      this.setObserver(false); // Trigger the hide transition
+
+      this.isVisible = false; // Update the v-model
+
+      this.updateModel(false);
+    },
+    // Public method to toggle modal visibility
+    toggle: function toggle(triggerEl) {
+      if (triggerEl) {
+        this.$_returnFocus = triggerEl;
+      }
+
+      if (this.isVisible) {
+        this.hide(TRIGGER_TOGGLE);
+      } else {
+        this.show();
+      }
+    },
+    // Private method to get the current document active element
+    getActiveElement: function getActiveElement() {
+      // Returning focus to `document.body` may cause unwanted scrolls,
+      // so we exclude setting focus on body
+      var activeElement = (0,_utils_dom__WEBPACK_IMPORTED_MODULE_23__.getActiveElement)(_constants_env__WEBPACK_IMPORTED_MODULE_24__.IS_BROWSER ? [document.body] : []); // Preset the fallback return focus value if it is not set
+      // `document.activeElement` should be the trigger element that was clicked or
+      // in the case of using the v-model, which ever element has current focus
+      // Will be overridden by some commands such as toggle, etc.
+      // Note: On IE 11, `document.activeElement` may be `null`
+      // So we test it for truthiness first
+      // https://github.com/bootstrap-vue/bootstrap-vue/issues/3206
+
+
+      return activeElement && activeElement.focus ? activeElement : null;
+    },
+    // Private method to finish showing modal
+    doShow: function doShow() {
+      var _this = this;
+
+      /* istanbul ignore next: commenting out for now until we can test stacking */
+      if (_helpers_modal_manager__WEBPACK_IMPORTED_MODULE_17__.modalManager.modalsAreOpen && this.noStacking) {
+        // If another modal(s) is already open, wait for it(them) to close
+        this.listenOnRootOnce((0,_utils_events__WEBPACK_IMPORTED_MODULE_20__.getRootEventName)(_constants_components__WEBPACK_IMPORTED_MODULE_9__.NAME_MODAL, _constants_events__WEBPACK_IMPORTED_MODULE_2__.EVENT_NAME_HIDDEN), this.doShow);
+        return;
+      }
+
+      _helpers_modal_manager__WEBPACK_IMPORTED_MODULE_17__.modalManager.registerModal(this); // Place modal in DOM
+
+      this.isHidden = false;
+      this.$nextTick(function () {
+        // We do this in `$nextTick()` to ensure the modal is in DOM first
+        // before we show it
+        _this.isVisible = true;
+        _this.isOpening = false; // Update the v-model
+
+        _this.updateModel(true);
+
+        _this.$nextTick(function () {
+          // Observe changes in modal content and adjust if necessary
+          // In a `$nextTick()` in case modal content is lazy
+          _this.setObserver(true);
+        });
+      });
+    },
+    // Transition handlers
+    onBeforeEnter: function onBeforeEnter() {
+      this.isTransitioning = true;
+      this.setResizeEvent(true);
+    },
+    onEnter: function onEnter() {
+      var _this2 = this;
+
+      this.isBlock = true; // We add the `show` class 1 frame later
+      // `requestAF()` runs the callback before the next repaint, so we need
+      // two calls to guarantee the next frame has been rendered
+
+      (0,_utils_dom__WEBPACK_IMPORTED_MODULE_23__.requestAF)(function () {
+        (0,_utils_dom__WEBPACK_IMPORTED_MODULE_23__.requestAF)(function () {
+          _this2.isShow = true;
+        });
+      });
+    },
+    onAfterEnter: function onAfterEnter() {
+      var _this3 = this;
+
+      this.checkModalOverflow();
+      this.isTransitioning = false; // We use `requestAF()` to allow transition hooks to complete
+      // before passing control over to the other handlers
+      // This will allow users to not have to use `$nextTick()` or `requestAF()`
+      // when trying to pre-focus an element
+
+      (0,_utils_dom__WEBPACK_IMPORTED_MODULE_23__.requestAF)(function () {
+        _this3.emitEvent(_this3.buildEvent(_constants_events__WEBPACK_IMPORTED_MODULE_2__.EVENT_NAME_SHOWN));
+
+        _this3.setEnforceFocus(true);
+
+        _this3.$nextTick(function () {
+          // Delayed in a `$nextTick()` to allow users time to pre-focus
+          // an element if the wish
+          _this3.focusFirst();
+        });
+      });
+    },
+    onBeforeLeave: function onBeforeLeave() {
+      this.isTransitioning = true;
+      this.setResizeEvent(false);
+      this.setEnforceFocus(false);
+    },
+    onLeave: function onLeave() {
+      // Remove the 'show' class
+      this.isShow = false;
+    },
+    onAfterLeave: function onAfterLeave() {
+      var _this4 = this;
+
+      this.isBlock = false;
+      this.isTransitioning = false;
+      this.isModalOverflowing = false;
+      this.isHidden = true;
+      this.$nextTick(function () {
+        _this4.isClosing = false;
+        _helpers_modal_manager__WEBPACK_IMPORTED_MODULE_17__.modalManager.unregisterModal(_this4);
+
+        _this4.returnFocusTo(); // TODO: Need to find a way to pass the `trigger` property
+        //       to the `hidden` event, not just only the `hide` event
+
+
+        _this4.emitEvent(_this4.buildEvent(_constants_events__WEBPACK_IMPORTED_MODULE_2__.EVENT_NAME_HIDDEN));
+      });
+    },
+    emitEvent: function emitEvent(bvEvent) {
+      var type = bvEvent.type; // We emit on `$root` first in case a global listener wants to cancel
+      // the event first before the instance emits its event
+
+      this.emitOnRoot((0,_utils_events__WEBPACK_IMPORTED_MODULE_20__.getRootEventName)(_constants_components__WEBPACK_IMPORTED_MODULE_9__.NAME_MODAL, type), bvEvent, bvEvent.componentId);
+      this.$emit(type, bvEvent);
+    },
+    // UI event handlers
+    onDialogMousedown: function onDialogMousedown() {
+      var _this5 = this;
+
+      // Watch to see if the matching mouseup event occurs outside the dialog
+      // And if it does, cancel the clickOut handler
+      var modal = this.$refs.modal;
+
+      var onceModalMouseup = function onceModalMouseup(event) {
+        (0,_utils_events__WEBPACK_IMPORTED_MODULE_20__.eventOff)(modal, 'mouseup', onceModalMouseup, _constants_events__WEBPACK_IMPORTED_MODULE_2__.EVENT_OPTIONS_NO_CAPTURE);
+
+        if (event.target === modal) {
+          _this5.ignoreBackdropClick = true;
+        }
+      };
+
+      (0,_utils_events__WEBPACK_IMPORTED_MODULE_20__.eventOn)(modal, 'mouseup', onceModalMouseup, _constants_events__WEBPACK_IMPORTED_MODULE_2__.EVENT_OPTIONS_NO_CAPTURE);
+    },
+    onClickOut: function onClickOut(event) {
+      if (this.ignoreBackdropClick) {
+        // Click was initiated inside the modal content, but finished outside.
+        // Set by the above onDialogMousedown handler
+        this.ignoreBackdropClick = false;
+        return;
+      } // Do nothing if not visible, backdrop click disabled, or element
+      // that generated click event is no longer in document body
+
+
+      if (!this.isVisible || this.noCloseOnBackdrop || !(0,_utils_dom__WEBPACK_IMPORTED_MODULE_23__.contains)(document.body, event.target)) {
+        return;
+      } // If backdrop clicked, hide modal
+
+
+      if (!(0,_utils_dom__WEBPACK_IMPORTED_MODULE_23__.contains)(this.$refs.content, event.target)) {
+        this.hide(TRIGGER_BACKDROP);
+      }
+    },
+    onOk: function onOk() {
+      this.hide(BUTTON_OK);
+    },
+    onCancel: function onCancel() {
+      this.hide(BUTTON_CANCEL);
+    },
+    onClose: function onClose() {
+      this.hide(BUTTON_CLOSE);
+    },
+    onEsc: function onEsc(event) {
+      // If ESC pressed, hide modal
+      if (event.keyCode === _constants_key_codes__WEBPACK_IMPORTED_MODULE_25__.CODE_ESC && this.isVisible && !this.noCloseOnEsc) {
+        this.hide(TRIGGER_ESC);
+      }
+    },
+    // Document focusin listener
+    focusHandler: function focusHandler(event) {
+      // If focus leaves modal content, bring it back
+      var content = this.$refs.content;
+      var target = event.target;
+
+      if (this.noEnforceFocus || !this.isTop || !this.isVisible || !content || document === target || (0,_utils_dom__WEBPACK_IMPORTED_MODULE_23__.contains)(content, target) || this.computeIgnoreEnforceFocusSelector && (0,_utils_dom__WEBPACK_IMPORTED_MODULE_23__.closest)(this.computeIgnoreEnforceFocusSelector, target, true)) {
+        return;
+      }
+
+      var tabables = (0,_utils_dom__WEBPACK_IMPORTED_MODULE_23__.getTabables)(this.$refs.content);
+      var bottomTrap = this.$refs['bottom-trap'];
+      var topTrap = this.$refs['top-trap'];
+
+      if (bottomTrap && target === bottomTrap) {
+        // If user pressed TAB out of modal into our bottom trab trap element
+        // Find the first tabable element in the modal content and focus it
+        if ((0,_utils_dom__WEBPACK_IMPORTED_MODULE_23__.attemptFocus)(tabables[0])) {
+          // Focus was successful
+          return;
+        }
+      } else if (topTrap && target === topTrap) {
+        // If user pressed CTRL-TAB out of modal and into our top tab trap element
+        // Find the last tabable element in the modal content and focus it
+        if ((0,_utils_dom__WEBPACK_IMPORTED_MODULE_23__.attemptFocus)(tabables[tabables.length - 1])) {
+          // Focus was successful
+          return;
+        }
+      } // Otherwise focus the modal content container
+
+
+      (0,_utils_dom__WEBPACK_IMPORTED_MODULE_23__.attemptFocus)(content, {
+        preventScroll: true
+      });
+    },
+    // Turn on/off focusin listener
+    setEnforceFocus: function setEnforceFocus(on) {
+      this.listenDocument(on, 'focusin', this.focusHandler);
+    },
+    // Resize listener
+    setResizeEvent: function setResizeEvent(on) {
+      this.listenWindow(on, 'resize', this.checkModalOverflow);
+      this.listenWindow(on, 'orientationchange', this.checkModalOverflow);
+    },
+    // Root listener handlers
+    showHandler: function showHandler(id, triggerEl) {
+      if (id === this.modalId) {
+        this.$_returnFocus = triggerEl || this.getActiveElement();
+        this.show();
+      }
+    },
+    hideHandler: function hideHandler(id) {
+      if (id === this.modalId) {
+        this.hide('event');
+      }
+    },
+    toggleHandler: function toggleHandler(id, triggerEl) {
+      if (id === this.modalId) {
+        this.toggle(triggerEl);
+      }
+    },
+    modalListener: function modalListener(bvEvent) {
+      // If another modal opens, close this one if stacking not permitted
+      if (this.noStacking && bvEvent.vueTarget !== this) {
+        this.hide();
+      }
+    },
+    // Focus control handlers
+    focusFirst: function focusFirst() {
+      var _this6 = this;
+
+      // Don't try and focus if we are SSR
+      if (_constants_env__WEBPACK_IMPORTED_MODULE_24__.IS_BROWSER) {
+        (0,_utils_dom__WEBPACK_IMPORTED_MODULE_23__.requestAF)(function () {
+          var modal = _this6.$refs.modal;
+          var content = _this6.$refs.content;
+
+          var activeElement = _this6.getActiveElement(); // If the modal contains the activeElement, we don't do anything
+
+
+          if (modal && content && !(activeElement && (0,_utils_dom__WEBPACK_IMPORTED_MODULE_23__.contains)(content, activeElement))) {
+            var ok = _this6.$refs['ok-button'];
+            var cancel = _this6.$refs['cancel-button'];
+            var close = _this6.$refs['close-button']; // Focus the appropriate button or modal content wrapper
+
+            var autoFocus = _this6.autoFocusButton;
+            /* istanbul ignore next */
+
+            var el = autoFocus === BUTTON_OK && ok ? ok.$el || ok : autoFocus === BUTTON_CANCEL && cancel ? cancel.$el || cancel : autoFocus === BUTTON_CLOSE && close ? close.$el || close : content; // Focus the element
+
+            (0,_utils_dom__WEBPACK_IMPORTED_MODULE_23__.attemptFocus)(el);
+
+            if (el === content) {
+              // Make sure top of modal is showing (if longer than the viewport)
+              _this6.$nextTick(function () {
+                modal.scrollTop = 0;
+              });
+            }
+          }
+        });
+      }
+    },
+    returnFocusTo: function returnFocusTo() {
+      // Prefer `returnFocus` prop over event specified
+      // `return_focus` value
+      var el = this.returnFocus || this.$_returnFocus || null;
+      this.$_returnFocus = null;
+      this.$nextTick(function () {
+        // Is el a string CSS selector?
+        el = (0,_utils_inspect__WEBPACK_IMPORTED_MODULE_6__.isString)(el) ? (0,_utils_dom__WEBPACK_IMPORTED_MODULE_23__.select)(el) : el;
+
+        if (el) {
+          // Possibly could be a component reference
+          el = el.$el || el;
+          (0,_utils_dom__WEBPACK_IMPORTED_MODULE_23__.attemptFocus)(el);
+        }
+      });
+    },
+    checkModalOverflow: function checkModalOverflow() {
+      if (this.isVisible) {
+        var modal = this.$refs.modal;
+        this.isModalOverflowing = modal.scrollHeight > document.documentElement.clientHeight;
+      }
+    },
+    makeModal: function makeModal(h) {
+      // Modal header
+      var $header = h();
+
+      if (!this.hideHeader) {
+        // TODO: Rename slot to `header` and deprecate `modal-header`
+        var $modalHeader = this.normalizeSlot(_constants_slots__WEBPACK_IMPORTED_MODULE_19__.SLOT_NAME_MODAL_HEADER, this.slotScope);
+
+        if (!$modalHeader) {
+          var $closeButton = h();
+
+          if (!this.hideHeaderClose) {
+            $closeButton = h(_button_button_close__WEBPACK_IMPORTED_MODULE_26__.BButtonClose, {
+              props: {
+                content: this.headerCloseContent,
+                disabled: this.isTransitioning,
+                ariaLabel: this.headerCloseLabel,
+                textVariant: this.headerCloseVariant || this.headerTextVariant
+              },
+              on: {
+                click: this.onClose
+              },
+              ref: 'close-button'
+            }, // TODO: Rename slot to `header-close` and deprecate `modal-header-close`
+            [this.normalizeSlot(_constants_slots__WEBPACK_IMPORTED_MODULE_19__.SLOT_NAME_MODAL_HEADER_CLOSE)]);
+          }
+
+          $modalHeader = [h(this.titleTag, {
+            staticClass: 'modal-title',
+            class: this.titleClasses,
+            attrs: {
+              id: this.modalTitleId
+            },
+            // TODO: Rename slot to `title` and deprecate `modal-title`
+            domProps: this.hasNormalizedSlot(_constants_slots__WEBPACK_IMPORTED_MODULE_19__.SLOT_NAME_MODAL_TITLE) ? {} : (0,_utils_html__WEBPACK_IMPORTED_MODULE_27__.htmlOrText)(this.titleHtml, this.title)
+          }, // TODO: Rename slot to `title` and deprecate `modal-title`
+          this.normalizeSlot(_constants_slots__WEBPACK_IMPORTED_MODULE_19__.SLOT_NAME_MODAL_TITLE, this.slotScope)), $closeButton];
+        }
+
+        $header = h('header', {
+          staticClass: 'modal-header',
+          class: this.headerClasses,
+          attrs: {
+            id: this.modalHeaderId
+          },
+          ref: 'header'
+        }, [$modalHeader]);
+      } // Modal body
+
+
+      var $body = h('div', {
+        staticClass: 'modal-body',
+        class: this.bodyClasses,
+        attrs: {
+          id: this.modalBodyId
+        },
+        ref: 'body'
+      }, this.normalizeSlot(_constants_slots__WEBPACK_IMPORTED_MODULE_19__.SLOT_NAME_DEFAULT, this.slotScope)); // Modal footer
+
+      var $footer = h();
+
+      if (!this.hideFooter) {
+        // TODO: Rename slot to `footer` and deprecate `modal-footer`
+        var $modalFooter = this.normalizeSlot(_constants_slots__WEBPACK_IMPORTED_MODULE_19__.SLOT_NAME_MODAL_FOOTER, this.slotScope);
+
+        if (!$modalFooter) {
+          var $cancelButton = h();
+
+          if (!this.okOnly) {
+            $cancelButton = h(_button_button__WEBPACK_IMPORTED_MODULE_28__.BButton, {
+              props: {
+                variant: this.cancelVariant,
+                size: this.buttonSize,
+                disabled: this.cancelDisabled || this.busy || this.isTransitioning
+              },
+              // TODO: Rename slot to `cancel-button` and deprecate `modal-cancel`
+              domProps: this.hasNormalizedSlot(_constants_slots__WEBPACK_IMPORTED_MODULE_19__.SLOT_NAME_MODAL_CANCEL) ? {} : (0,_utils_html__WEBPACK_IMPORTED_MODULE_27__.htmlOrText)(this.cancelTitleHtml, this.cancelTitle),
+              on: {
+                click: this.onCancel
+              },
+              ref: 'cancel-button'
+            }, // TODO: Rename slot to `cancel-button` and deprecate `modal-cancel`
+            this.normalizeSlot(_constants_slots__WEBPACK_IMPORTED_MODULE_19__.SLOT_NAME_MODAL_CANCEL));
+          }
+
+          var $okButton = h(_button_button__WEBPACK_IMPORTED_MODULE_28__.BButton, {
+            props: {
+              variant: this.okVariant,
+              size: this.buttonSize,
+              disabled: this.okDisabled || this.busy || this.isTransitioning
+            },
+            // TODO: Rename slot to `ok-button` and deprecate `modal-ok`
+            domProps: this.hasNormalizedSlot(_constants_slots__WEBPACK_IMPORTED_MODULE_19__.SLOT_NAME_MODAL_OK) ? {} : (0,_utils_html__WEBPACK_IMPORTED_MODULE_27__.htmlOrText)(this.okTitleHtml, this.okTitle),
+            on: {
+              click: this.onOk
+            },
+            ref: 'ok-button'
+          }, // TODO: Rename slot to `ok-button` and deprecate `modal-ok`
+          this.normalizeSlot(_constants_slots__WEBPACK_IMPORTED_MODULE_19__.SLOT_NAME_MODAL_OK));
+          $modalFooter = [$cancelButton, $okButton];
+        }
+
+        $footer = h('footer', {
+          staticClass: 'modal-footer',
+          class: this.footerClasses,
+          attrs: {
+            id: this.modalFooterId
+          },
+          ref: 'footer'
+        }, [$modalFooter]);
+      } // Assemble modal content
+
+
+      var $modalContent = h('div', {
+        staticClass: 'modal-content',
+        class: this.contentClass,
+        attrs: {
+          id: this.modalContentId,
+          tabindex: '-1'
+        },
+        ref: 'content'
+      }, [$header, $body, $footer]); // Tab traps to prevent page from scrolling to next element in
+      // tab index during enforce-focus tab cycle
+
+      var $tabTrapTop = h();
+      var $tabTrapBottom = h();
+
+      if (this.isVisible && !this.noEnforceFocus) {
+        $tabTrapTop = h('span', {
+          attrs: {
+            tabindex: '0'
+          },
+          ref: 'top-trap'
+        });
+        $tabTrapBottom = h('span', {
+          attrs: {
+            tabindex: '0'
+          },
+          ref: 'bottom-trap'
+        });
+      } // Modal dialog wrapper
+
+
+      var $modalDialog = h('div', {
+        staticClass: 'modal-dialog',
+        class: this.dialogClasses,
+        on: {
+          mousedown: this.onDialogMousedown
+        },
+        ref: 'dialog'
+      }, [$tabTrapTop, $modalContent, $tabTrapBottom]); // Modal
+
+      var $modal = h('div', {
+        staticClass: 'modal',
+        class: this.modalClasses,
+        style: this.modalStyles,
+        attrs: this.computedModalAttrs,
+        on: {
+          keydown: this.onEsc,
+          click: this.onClickOut
+        },
+        directives: [{
+          name: 'show',
+          value: this.isVisible
+        }],
+        ref: 'modal'
+      }, [$modalDialog]); // Wrap modal in transition
+      // Sadly, we can't use `BVTransition` here due to the differences in
+      // transition durations for `.modal` and `.modal-dialog`
+      // At least until https://github.com/vuejs/vue/issues/9986 is resolved
+
+      $modal = h('transition', {
+        props: {
+          enterClass: '',
+          enterToClass: '',
+          enterActiveClass: '',
+          leaveClass: '',
+          leaveActiveClass: '',
+          leaveToClass: ''
+        },
+        on: {
+          beforeEnter: this.onBeforeEnter,
+          enter: this.onEnter,
+          afterEnter: this.onAfterEnter,
+          beforeLeave: this.onBeforeLeave,
+          leave: this.onLeave,
+          afterLeave: this.onAfterLeave
+        }
+      }, [$modal]); // Modal backdrop
+
+      var $backdrop = h();
+
+      if (!this.hideBackdrop && this.isVisible) {
+        $backdrop = h('div', {
+          staticClass: 'modal-backdrop',
+          attrs: {
+            id: this.modalBackdropId
+          }
+        }, // TODO: Rename slot to `backdrop` and deprecate `modal-backdrop`
+        this.normalizeSlot(_constants_slots__WEBPACK_IMPORTED_MODULE_19__.SLOT_NAME_MODAL_BACKDROP));
+      }
+
+      $backdrop = h(_transition_bv_transition__WEBPACK_IMPORTED_MODULE_29__.BVTransition, {
+        props: {
+          noFade: this.noFade
+        }
+      }, [$backdrop]); // Assemble modal and backdrop in an outer <div>
+
+      return h('div', {
+        style: this.modalOuterStyle,
+        attrs: this.computedAttrs,
+        key: "modal-outer-".concat(this[_vue__WEBPACK_IMPORTED_MODULE_30__.COMPONENT_UID_KEY])
+      }, [$modal, $backdrop]);
+    }
+  },
+  render: function render(h) {
+    if (this.static) {
+      return this.lazy && this.isHidden ? h() : this.makeModal(h);
+    } else {
+      return this.isHidden ? h() : h(_transporter_transporter__WEBPACK_IMPORTED_MODULE_31__.BVTransporter, [this.makeModal(h)]);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/components/transition/bv-transition.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/components/transition/bv-transition.js ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "props": () => (/* binding */ props),
+/* harmony export */   "BVTransition": () => (/* binding */ BVTransition)
+/* harmony export */ });
+/* harmony import */ var _vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var _vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../vue */ "./node_modules/vue-functional-data-merge/dist/lib.esm.js");
+/* harmony import */ var _constants_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../constants/components */ "./node_modules/bootstrap-vue/esm/constants/components.js");
+/* harmony import */ var _constants_props__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../constants/props */ "./node_modules/bootstrap-vue/esm/constants/props.js");
+/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _utils_props__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/props */ "./node_modules/bootstrap-vue/esm/utils/props.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+// Generic Bootstrap v4 fade (no-fade) transition component
+//
+// Assumes that `show` class is not required when
+// the transition has finished the enter transition
+// (show and fade classes are only applied during transition)
+
+
+
+
+ // --- Constants ---
+
+var NO_FADE_PROPS = {
+  name: '',
+  enterClass: '',
+  enterActiveClass: '',
+  enterToClass: 'show',
+  leaveClass: 'show',
+  leaveActiveClass: '',
+  leaveToClass: ''
+};
+
+var FADE_PROPS = _objectSpread(_objectSpread({}, NO_FADE_PROPS), {}, {
+  enterActiveClass: 'fade',
+  leaveActiveClass: 'fade'
+}); // --- Props ---
+
+
+var props = {
+  // Has no effect if `trans-props` provided
+  appear: (0,_utils_props__WEBPACK_IMPORTED_MODULE_0__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_BOOLEAN, false),
+  // Can be overridden by user supplied `trans-props`
+  mode: (0,_utils_props__WEBPACK_IMPORTED_MODULE_0__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING),
+  // Only applicable to the built in transition
+  // Has no effect if `trans-props` provided
+  noFade: (0,_utils_props__WEBPACK_IMPORTED_MODULE_0__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_BOOLEAN, false),
+  // For user supplied transitions (if needed)
+  transProps: (0,_utils_props__WEBPACK_IMPORTED_MODULE_0__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_OBJECT)
+}; // --- Main component ---
+// @vue/component
+
+var BVTransition = /*#__PURE__*/_vue__WEBPACK_IMPORTED_MODULE_2__["default"].extend({
+  name: _constants_components__WEBPACK_IMPORTED_MODULE_3__.NAME_TRANSITION,
+  functional: true,
+  props: props,
+  render: function render(h, _ref) {
+    var children = _ref.children,
+        data = _ref.data,
+        props = _ref.props;
+    var transProps = props.transProps;
+
+    if (!(0,_utils_inspect__WEBPACK_IMPORTED_MODULE_4__.isPlainObject)(transProps)) {
+      transProps = props.noFade ? NO_FADE_PROPS : FADE_PROPS;
+
+      if (props.appear) {
+        // Default the appear classes to equal the enter classes
+        transProps = _objectSpread(_objectSpread({}, transProps), {}, {
+          appear: true,
+          appearClass: transProps.enterClass,
+          appearActiveClass: transProps.enterActiveClass,
+          appearToClass: transProps.enterToClass
+        });
+      }
+    }
+
+    transProps = _objectSpread(_objectSpread({
+      mode: props.mode
+    }, transProps), {}, {
+      // We always need `css` true
+      css: true
+    });
+    return h('transition', // Any transition event listeners will get merged here
+    (0,_vue__WEBPACK_IMPORTED_MODULE_5__.mergeData)(data, {
+      props: transProps
+    }), children);
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/components/transporter/transporter.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/components/transporter/transporter.js ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "props": () => (/* binding */ props),
+/* harmony export */   "BVTransporter": () => (/* binding */ BVTransporter)
+/* harmony export */ });
+/* harmony import */ var _vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var _constants_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../constants/components */ "./node_modules/bootstrap-vue/esm/constants/components.js");
+/* harmony import */ var _constants_env__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../constants/env */ "./node_modules/bootstrap-vue/esm/constants/env.js");
+/* harmony import */ var _constants_props__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../constants/props */ "./node_modules/bootstrap-vue/esm/constants/props.js");
+/* harmony import */ var _constants_safe_types__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../constants/safe-types */ "./node_modules/bootstrap-vue/esm/constants/safe-types.js");
+/* harmony import */ var _utils_array__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
+/* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
+/* harmony import */ var _utils_identity__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/identity */ "./node_modules/bootstrap-vue/esm/utils/identity.js");
+/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
+/* harmony import */ var _utils_props__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/props */ "./node_modules/bootstrap-vue/esm/utils/props.js");
+
+
+
+
+
+
+
+
+
+
+ // --- Helper components ---
+// BVTransporter/BVTransporterTarget:
+//
+// Single root node portaling of content, which retains parent/child hierarchy
+// Unlike Portal-Vue where portaled content is no longer a descendent of its
+// intended parent components
+//
+// Private components for use by Tooltips, Popovers and Modals
+//
+// Based on vue-simple-portal
+// https://github.com/LinusBorg/vue-simple-portal
+// Transporter target used by BVTransporter
+// Supports only a single root element
+// @vue/component
+
+var BVTransporterTarget = /*#__PURE__*/_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  // As an abstract component, it doesn't appear in the $parent chain of
+  // components, which means the next parent of any component rendered inside
+  // of this one will be the parent from which is was portal'd
+  abstract: true,
+  name: _constants_components__WEBPACK_IMPORTED_MODULE_1__.NAME_TRANSPORTER_TARGET,
+  props: {
+    // Even though we only support a single root element,
+    // VNodes are always passed as an array
+    nodes: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_ARRAY_FUNCTION)
+  },
+  data: function data(vm) {
+    return {
+      updatedNodes: vm.nodes
+    };
+  },
+  destroyed: function destroyed() {
+    (0,_utils_dom__WEBPACK_IMPORTED_MODULE_4__.removeNode)(this.$el);
+  },
+  render: function render(h) {
+    var updatedNodes = this.updatedNodes;
+    var $nodes = (0,_utils_inspect__WEBPACK_IMPORTED_MODULE_5__.isFunction)(updatedNodes) ? updatedNodes({}) : updatedNodes;
+    $nodes = (0,_utils_array__WEBPACK_IMPORTED_MODULE_6__.concat)($nodes).filter(_utils_identity__WEBPACK_IMPORTED_MODULE_7__.identity);
+
+    if ($nodes && $nodes.length > 0 && !$nodes[0].text) {
+      return $nodes[0];
+    }
+    /* istanbul ignore next */
+
+
+    return h();
+  }
+}); // --- Props ---
+
+var props = {
+  // String: CSS selector,
+  // HTMLElement: Element reference
+  // Mainly needed for tooltips/popovers inside modals
+  container: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)([_constants_safe_types__WEBPACK_IMPORTED_MODULE_8__.HTMLElement, _constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_STRING], 'body'),
+  disabled: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_BOOLEAN, false),
+  // This should be set to match the root element type
+  tag: (0,_utils_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_3__.PROP_TYPE_STRING, 'div')
+}; // --- Main component ---
+// @vue/component
+
+var BVTransporter = /*#__PURE__*/_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  name: _constants_components__WEBPACK_IMPORTED_MODULE_1__.NAME_TRANSPORTER,
+  mixins: [_mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_9__.normalizeSlotMixin],
+  props: props,
+  watch: {
+    disabled: {
+      immediate: true,
+      handler: function handler(disabled) {
+        disabled ? this.unmountTarget() : this.$nextTick(this.mountTarget);
+      }
+    }
+  },
+  created: function created() {
+    // Create private non-reactive props
+    this.$_defaultFn = null;
+    this.$_target = null;
+  },
+  beforeMount: function beforeMount() {
+    this.mountTarget();
+  },
+  updated: function updated() {
+    // We need to make sure that all children have completed updating
+    // before rendering in the target
+    // `vue-simple-portal` has the this in a `$nextTick()`,
+    // while `portal-vue` doesn't
+    // Just trying to see if the `$nextTick()` delay is required or not
+    // Since all slots in Vue 2.6.x are always functions
+    this.updateTarget();
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.unmountTarget();
+    this.$_defaultFn = null;
+  },
+  methods: {
+    // Get the element which the target should be appended to
+    getContainer: function getContainer() {
+      /* istanbul ignore else */
+      if (_constants_env__WEBPACK_IMPORTED_MODULE_10__.IS_BROWSER) {
+        var container = this.container;
+        return (0,_utils_inspect__WEBPACK_IMPORTED_MODULE_5__.isString)(container) ? (0,_utils_dom__WEBPACK_IMPORTED_MODULE_4__.select)(container) : container;
+      } else {
+        return null;
+      }
+    },
+    // Mount the target
+    mountTarget: function mountTarget() {
+      if (!this.$_target) {
+        var $container = this.getContainer();
+
+        if ($container) {
+          var $el = document.createElement('div');
+          $container.appendChild($el);
+          this.$_target = new BVTransporterTarget({
+            el: $el,
+            parent: this,
+            propsData: {
+              // Initial nodes to be rendered
+              nodes: (0,_utils_array__WEBPACK_IMPORTED_MODULE_6__.concat)(this.normalizeSlot())
+            }
+          });
+        }
+      }
+    },
+    // Update the content of the target
+    updateTarget: function updateTarget() {
+      if (_constants_env__WEBPACK_IMPORTED_MODULE_10__.IS_BROWSER && this.$_target) {
+        var defaultFn = this.$scopedSlots.default;
+
+        if (!this.disabled) {
+          /* istanbul ignore else: only applicable in Vue 2.5.x */
+          if (defaultFn && this.$_defaultFn !== defaultFn) {
+            // We only update the target component if the scoped slot
+            // function is a fresh one. The new slot syntax (since Vue 2.6)
+            // can cache unchanged slot functions and we want to respect that here
+            this.$_target.updatedNodes = defaultFn;
+          } else if (!defaultFn) {
+            // We also need to be back compatible with non-scoped default slot (i.e. 2.5.x)
+            this.$_target.updatedNodes = this.$slots.default;
+          }
+        } // Update the scoped slot function cache
+
+
+        this.$_defaultFn = defaultFn;
+      }
+    },
+    // Unmount the target
+    unmountTarget: function unmountTarget() {
+      this.$_target && this.$_target.$destroy();
+      this.$_target = null;
+    }
+  },
+  render: function render(h) {
+    // This component has no root element, so only a single VNode is allowed
+    if (this.disabled) {
+      var $nodes = (0,_utils_array__WEBPACK_IMPORTED_MODULE_6__.concat)(this.normalizeSlot()).filter(_utils_identity__WEBPACK_IMPORTED_MODULE_7__.identity);
+
+      if ($nodes.length > 0 && !$nodes[0].text) {
+        return $nodes[0];
+      }
+    }
+
+    return h();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/constants/components.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/constants/components.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "NAME_ALERT": () => (/* binding */ NAME_ALERT),
+/* harmony export */   "NAME_ASPECT": () => (/* binding */ NAME_ASPECT),
+/* harmony export */   "NAME_AVATAR": () => (/* binding */ NAME_AVATAR),
+/* harmony export */   "NAME_AVATAR_GROUP": () => (/* binding */ NAME_AVATAR_GROUP),
+/* harmony export */   "NAME_BADGE": () => (/* binding */ NAME_BADGE),
+/* harmony export */   "NAME_BREADCRUMB": () => (/* binding */ NAME_BREADCRUMB),
+/* harmony export */   "NAME_BREADCRUMB_ITEM": () => (/* binding */ NAME_BREADCRUMB_ITEM),
+/* harmony export */   "NAME_BREADCRUMB_LINK": () => (/* binding */ NAME_BREADCRUMB_LINK),
+/* harmony export */   "NAME_BUTTON": () => (/* binding */ NAME_BUTTON),
+/* harmony export */   "NAME_BUTTON_CLOSE": () => (/* binding */ NAME_BUTTON_CLOSE),
+/* harmony export */   "NAME_BUTTON_GROUP": () => (/* binding */ NAME_BUTTON_GROUP),
+/* harmony export */   "NAME_BUTTON_TOOLBAR": () => (/* binding */ NAME_BUTTON_TOOLBAR),
+/* harmony export */   "NAME_CALENDAR": () => (/* binding */ NAME_CALENDAR),
+/* harmony export */   "NAME_CARD": () => (/* binding */ NAME_CARD),
+/* harmony export */   "NAME_CARD_BODY": () => (/* binding */ NAME_CARD_BODY),
+/* harmony export */   "NAME_CARD_FOOTER": () => (/* binding */ NAME_CARD_FOOTER),
+/* harmony export */   "NAME_CARD_GROUP": () => (/* binding */ NAME_CARD_GROUP),
+/* harmony export */   "NAME_CARD_HEADER": () => (/* binding */ NAME_CARD_HEADER),
+/* harmony export */   "NAME_CARD_IMG": () => (/* binding */ NAME_CARD_IMG),
+/* harmony export */   "NAME_CARD_IMG_LAZY": () => (/* binding */ NAME_CARD_IMG_LAZY),
+/* harmony export */   "NAME_CARD_SUB_TITLE": () => (/* binding */ NAME_CARD_SUB_TITLE),
+/* harmony export */   "NAME_CARD_TEXT": () => (/* binding */ NAME_CARD_TEXT),
+/* harmony export */   "NAME_CARD_TITLE": () => (/* binding */ NAME_CARD_TITLE),
+/* harmony export */   "NAME_CAROUSEL": () => (/* binding */ NAME_CAROUSEL),
+/* harmony export */   "NAME_CAROUSEL_SLIDE": () => (/* binding */ NAME_CAROUSEL_SLIDE),
+/* harmony export */   "NAME_COL": () => (/* binding */ NAME_COL),
+/* harmony export */   "NAME_COLLAPSE": () => (/* binding */ NAME_COLLAPSE),
+/* harmony export */   "NAME_CONTAINER": () => (/* binding */ NAME_CONTAINER),
+/* harmony export */   "NAME_DROPDOWN": () => (/* binding */ NAME_DROPDOWN),
+/* harmony export */   "NAME_DROPDOWN_DIVIDER": () => (/* binding */ NAME_DROPDOWN_DIVIDER),
+/* harmony export */   "NAME_DROPDOWN_FORM": () => (/* binding */ NAME_DROPDOWN_FORM),
+/* harmony export */   "NAME_DROPDOWN_GROUP": () => (/* binding */ NAME_DROPDOWN_GROUP),
+/* harmony export */   "NAME_DROPDOWN_HEADER": () => (/* binding */ NAME_DROPDOWN_HEADER),
+/* harmony export */   "NAME_DROPDOWN_ITEM": () => (/* binding */ NAME_DROPDOWN_ITEM),
+/* harmony export */   "NAME_DROPDOWN_ITEM_BUTTON": () => (/* binding */ NAME_DROPDOWN_ITEM_BUTTON),
+/* harmony export */   "NAME_DROPDOWN_TEXT": () => (/* binding */ NAME_DROPDOWN_TEXT),
+/* harmony export */   "NAME_EMBED": () => (/* binding */ NAME_EMBED),
+/* harmony export */   "NAME_FORM": () => (/* binding */ NAME_FORM),
+/* harmony export */   "NAME_FORM_CHECKBOX": () => (/* binding */ NAME_FORM_CHECKBOX),
+/* harmony export */   "NAME_FORM_CHECKBOX_GROUP": () => (/* binding */ NAME_FORM_CHECKBOX_GROUP),
+/* harmony export */   "NAME_FORM_DATALIST": () => (/* binding */ NAME_FORM_DATALIST),
+/* harmony export */   "NAME_FORM_DATEPICKER": () => (/* binding */ NAME_FORM_DATEPICKER),
+/* harmony export */   "NAME_FORM_FILE": () => (/* binding */ NAME_FORM_FILE),
+/* harmony export */   "NAME_FORM_GROUP": () => (/* binding */ NAME_FORM_GROUP),
+/* harmony export */   "NAME_FORM_INPUT": () => (/* binding */ NAME_FORM_INPUT),
+/* harmony export */   "NAME_FORM_INVALID_FEEDBACK": () => (/* binding */ NAME_FORM_INVALID_FEEDBACK),
+/* harmony export */   "NAME_FORM_RADIO": () => (/* binding */ NAME_FORM_RADIO),
+/* harmony export */   "NAME_FORM_RADIO_GROUP": () => (/* binding */ NAME_FORM_RADIO_GROUP),
+/* harmony export */   "NAME_FORM_RATING": () => (/* binding */ NAME_FORM_RATING),
+/* harmony export */   "NAME_FORM_ROW": () => (/* binding */ NAME_FORM_ROW),
+/* harmony export */   "NAME_FORM_SELECT": () => (/* binding */ NAME_FORM_SELECT),
+/* harmony export */   "NAME_FORM_SELECT_OPTION": () => (/* binding */ NAME_FORM_SELECT_OPTION),
+/* harmony export */   "NAME_FORM_SELECT_OPTION_GROUP": () => (/* binding */ NAME_FORM_SELECT_OPTION_GROUP),
+/* harmony export */   "NAME_FORM_SPINBUTTON": () => (/* binding */ NAME_FORM_SPINBUTTON),
+/* harmony export */   "NAME_FORM_TAG": () => (/* binding */ NAME_FORM_TAG),
+/* harmony export */   "NAME_FORM_TAGS": () => (/* binding */ NAME_FORM_TAGS),
+/* harmony export */   "NAME_FORM_TEXT": () => (/* binding */ NAME_FORM_TEXT),
+/* harmony export */   "NAME_FORM_TEXTAREA": () => (/* binding */ NAME_FORM_TEXTAREA),
+/* harmony export */   "NAME_FORM_TIMEPICKER": () => (/* binding */ NAME_FORM_TIMEPICKER),
+/* harmony export */   "NAME_FORM_VALID_FEEDBACK": () => (/* binding */ NAME_FORM_VALID_FEEDBACK),
+/* harmony export */   "NAME_ICON": () => (/* binding */ NAME_ICON),
+/* harmony export */   "NAME_ICONSTACK": () => (/* binding */ NAME_ICONSTACK),
+/* harmony export */   "NAME_ICON_BASE": () => (/* binding */ NAME_ICON_BASE),
+/* harmony export */   "NAME_IMG": () => (/* binding */ NAME_IMG),
+/* harmony export */   "NAME_IMG_LAZY": () => (/* binding */ NAME_IMG_LAZY),
+/* harmony export */   "NAME_INPUT_GROUP": () => (/* binding */ NAME_INPUT_GROUP),
+/* harmony export */   "NAME_INPUT_GROUP_ADDON": () => (/* binding */ NAME_INPUT_GROUP_ADDON),
+/* harmony export */   "NAME_INPUT_GROUP_APPEND": () => (/* binding */ NAME_INPUT_GROUP_APPEND),
+/* harmony export */   "NAME_INPUT_GROUP_PREPEND": () => (/* binding */ NAME_INPUT_GROUP_PREPEND),
+/* harmony export */   "NAME_INPUT_GROUP_TEXT": () => (/* binding */ NAME_INPUT_GROUP_TEXT),
+/* harmony export */   "NAME_JUMBOTRON": () => (/* binding */ NAME_JUMBOTRON),
+/* harmony export */   "NAME_LINK": () => (/* binding */ NAME_LINK),
+/* harmony export */   "NAME_LIST_GROUP": () => (/* binding */ NAME_LIST_GROUP),
+/* harmony export */   "NAME_LIST_GROUP_ITEM": () => (/* binding */ NAME_LIST_GROUP_ITEM),
+/* harmony export */   "NAME_MEDIA": () => (/* binding */ NAME_MEDIA),
+/* harmony export */   "NAME_MEDIA_ASIDE": () => (/* binding */ NAME_MEDIA_ASIDE),
+/* harmony export */   "NAME_MEDIA_BODY": () => (/* binding */ NAME_MEDIA_BODY),
+/* harmony export */   "NAME_MODAL": () => (/* binding */ NAME_MODAL),
+/* harmony export */   "NAME_MSG_BOX": () => (/* binding */ NAME_MSG_BOX),
+/* harmony export */   "NAME_NAV": () => (/* binding */ NAME_NAV),
+/* harmony export */   "NAME_NAVBAR": () => (/* binding */ NAME_NAVBAR),
+/* harmony export */   "NAME_NAVBAR_BRAND": () => (/* binding */ NAME_NAVBAR_BRAND),
+/* harmony export */   "NAME_NAVBAR_NAV": () => (/* binding */ NAME_NAVBAR_NAV),
+/* harmony export */   "NAME_NAVBAR_TOGGLE": () => (/* binding */ NAME_NAVBAR_TOGGLE),
+/* harmony export */   "NAME_NAV_FORM": () => (/* binding */ NAME_NAV_FORM),
+/* harmony export */   "NAME_NAV_ITEM": () => (/* binding */ NAME_NAV_ITEM),
+/* harmony export */   "NAME_NAV_ITEM_DROPDOWN": () => (/* binding */ NAME_NAV_ITEM_DROPDOWN),
+/* harmony export */   "NAME_NAV_TEXT": () => (/* binding */ NAME_NAV_TEXT),
+/* harmony export */   "NAME_OVERLAY": () => (/* binding */ NAME_OVERLAY),
+/* harmony export */   "NAME_PAGINATION": () => (/* binding */ NAME_PAGINATION),
+/* harmony export */   "NAME_PAGINATION_NAV": () => (/* binding */ NAME_PAGINATION_NAV),
+/* harmony export */   "NAME_POPOVER": () => (/* binding */ NAME_POPOVER),
+/* harmony export */   "NAME_PROGRESS": () => (/* binding */ NAME_PROGRESS),
+/* harmony export */   "NAME_PROGRESS_BAR": () => (/* binding */ NAME_PROGRESS_BAR),
+/* harmony export */   "NAME_ROW": () => (/* binding */ NAME_ROW),
+/* harmony export */   "NAME_SIDEBAR": () => (/* binding */ NAME_SIDEBAR),
+/* harmony export */   "NAME_SKELETON": () => (/* binding */ NAME_SKELETON),
+/* harmony export */   "NAME_SKELETON_ICON": () => (/* binding */ NAME_SKELETON_ICON),
+/* harmony export */   "NAME_SKELETON_IMG": () => (/* binding */ NAME_SKELETON_IMG),
+/* harmony export */   "NAME_SKELETON_TABLE": () => (/* binding */ NAME_SKELETON_TABLE),
+/* harmony export */   "NAME_SKELETON_WRAPPER": () => (/* binding */ NAME_SKELETON_WRAPPER),
+/* harmony export */   "NAME_SPINNER": () => (/* binding */ NAME_SPINNER),
+/* harmony export */   "NAME_TAB": () => (/* binding */ NAME_TAB),
+/* harmony export */   "NAME_TABLE": () => (/* binding */ NAME_TABLE),
+/* harmony export */   "NAME_TABLE_CELL": () => (/* binding */ NAME_TABLE_CELL),
+/* harmony export */   "NAME_TABLE_LITE": () => (/* binding */ NAME_TABLE_LITE),
+/* harmony export */   "NAME_TABLE_SIMPLE": () => (/* binding */ NAME_TABLE_SIMPLE),
+/* harmony export */   "NAME_TABS": () => (/* binding */ NAME_TABS),
+/* harmony export */   "NAME_TBODY": () => (/* binding */ NAME_TBODY),
+/* harmony export */   "NAME_TFOOT": () => (/* binding */ NAME_TFOOT),
+/* harmony export */   "NAME_TH": () => (/* binding */ NAME_TH),
+/* harmony export */   "NAME_THEAD": () => (/* binding */ NAME_THEAD),
+/* harmony export */   "NAME_TIME": () => (/* binding */ NAME_TIME),
+/* harmony export */   "NAME_TOAST": () => (/* binding */ NAME_TOAST),
+/* harmony export */   "NAME_TOASTER": () => (/* binding */ NAME_TOASTER),
+/* harmony export */   "NAME_TOOLTIP": () => (/* binding */ NAME_TOOLTIP),
+/* harmony export */   "NAME_TR": () => (/* binding */ NAME_TR),
+/* harmony export */   "NAME_COLLAPSE_HELPER": () => (/* binding */ NAME_COLLAPSE_HELPER),
+/* harmony export */   "NAME_FORM_BUTTON_LABEL_CONTROL": () => (/* binding */ NAME_FORM_BUTTON_LABEL_CONTROL),
+/* harmony export */   "NAME_FORM_RATING_STAR": () => (/* binding */ NAME_FORM_RATING_STAR),
+/* harmony export */   "NAME_POPOVER_HELPER": () => (/* binding */ NAME_POPOVER_HELPER),
+/* harmony export */   "NAME_POPOVER_TEMPLATE": () => (/* binding */ NAME_POPOVER_TEMPLATE),
+/* harmony export */   "NAME_POPPER": () => (/* binding */ NAME_POPPER),
+/* harmony export */   "NAME_TAB_BUTTON_HELPER": () => (/* binding */ NAME_TAB_BUTTON_HELPER),
+/* harmony export */   "NAME_TOAST_POP": () => (/* binding */ NAME_TOAST_POP),
+/* harmony export */   "NAME_TOOLTIP_HELPER": () => (/* binding */ NAME_TOOLTIP_HELPER),
+/* harmony export */   "NAME_TOOLTIP_TEMPLATE": () => (/* binding */ NAME_TOOLTIP_TEMPLATE),
+/* harmony export */   "NAME_TRANSITION": () => (/* binding */ NAME_TRANSITION),
+/* harmony export */   "NAME_TRANSPORTER": () => (/* binding */ NAME_TRANSPORTER),
+/* harmony export */   "NAME_TRANSPORTER_TARGET": () => (/* binding */ NAME_TRANSPORTER_TARGET)
+/* harmony export */ });
+// Component names
+var NAME_ALERT = 'BAlert';
+var NAME_ASPECT = 'BAspect';
+var NAME_AVATAR = 'BAvatar';
+var NAME_AVATAR_GROUP = 'BAvatarGroup';
+var NAME_BADGE = 'BBadge';
+var NAME_BREADCRUMB = 'BBreadcrumb';
+var NAME_BREADCRUMB_ITEM = 'BBreadcrumbItem';
+var NAME_BREADCRUMB_LINK = 'BBreadcrumbLink';
+var NAME_BUTTON = 'BButton';
+var NAME_BUTTON_CLOSE = 'BButtonClose';
+var NAME_BUTTON_GROUP = 'BButtonGroup';
+var NAME_BUTTON_TOOLBAR = 'BButtonToolbar';
+var NAME_CALENDAR = 'BCalendar';
+var NAME_CARD = 'BCard';
+var NAME_CARD_BODY = 'BCardBody';
+var NAME_CARD_FOOTER = 'BCardFooter';
+var NAME_CARD_GROUP = 'BCardGroup';
+var NAME_CARD_HEADER = 'BCardHeader';
+var NAME_CARD_IMG = 'BCardImg';
+var NAME_CARD_IMG_LAZY = 'BCardImgLazy';
+var NAME_CARD_SUB_TITLE = 'BCardSubTitle';
+var NAME_CARD_TEXT = 'BCardText';
+var NAME_CARD_TITLE = 'BCardTitle';
+var NAME_CAROUSEL = 'BCarousel';
+var NAME_CAROUSEL_SLIDE = 'BCarouselSlide';
+var NAME_COL = 'BCol';
+var NAME_COLLAPSE = 'BCollapse';
+var NAME_CONTAINER = 'BContainer';
+var NAME_DROPDOWN = 'BDropdown';
+var NAME_DROPDOWN_DIVIDER = 'BDropdownDivider';
+var NAME_DROPDOWN_FORM = 'BDropdownForm';
+var NAME_DROPDOWN_GROUP = 'BDropdownGroup';
+var NAME_DROPDOWN_HEADER = 'BDropdownHeader';
+var NAME_DROPDOWN_ITEM = 'BDropdownItem';
+var NAME_DROPDOWN_ITEM_BUTTON = 'BDropdownItemButton';
+var NAME_DROPDOWN_TEXT = 'BDropdownText';
+var NAME_EMBED = 'BEmbed';
+var NAME_FORM = 'BForm';
+var NAME_FORM_CHECKBOX = 'BFormCheckbox';
+var NAME_FORM_CHECKBOX_GROUP = 'BFormCheckboxGroup';
+var NAME_FORM_DATALIST = 'BFormDatalist';
+var NAME_FORM_DATEPICKER = 'BFormDatepicker';
+var NAME_FORM_FILE = 'BFormFile';
+var NAME_FORM_GROUP = 'BFormGroup';
+var NAME_FORM_INPUT = 'BFormInput';
+var NAME_FORM_INVALID_FEEDBACK = 'BFormInvalidFeedback';
+var NAME_FORM_RADIO = 'BFormRadio';
+var NAME_FORM_RADIO_GROUP = 'BFormRadioGroup';
+var NAME_FORM_RATING = 'BFormRating';
+var NAME_FORM_ROW = 'BFormRow';
+var NAME_FORM_SELECT = 'BFormSelect';
+var NAME_FORM_SELECT_OPTION = 'BFormSelectOption';
+var NAME_FORM_SELECT_OPTION_GROUP = 'BFormSelectOptionGroup';
+var NAME_FORM_SPINBUTTON = 'BFormSpinbutton';
+var NAME_FORM_TAG = 'BFormTag';
+var NAME_FORM_TAGS = 'BFormTags';
+var NAME_FORM_TEXT = 'BFormText';
+var NAME_FORM_TEXTAREA = 'BFormTextarea';
+var NAME_FORM_TIMEPICKER = 'BFormTimepicker';
+var NAME_FORM_VALID_FEEDBACK = 'BFormValidFeedback';
+var NAME_ICON = 'BIcon';
+var NAME_ICONSTACK = 'BIconstack';
+var NAME_ICON_BASE = 'BIconBase';
+var NAME_IMG = 'BImg';
+var NAME_IMG_LAZY = 'BImgLazy';
+var NAME_INPUT_GROUP = 'BInputGroup';
+var NAME_INPUT_GROUP_ADDON = 'BInputGroupAddon';
+var NAME_INPUT_GROUP_APPEND = 'BInputGroupAppend';
+var NAME_INPUT_GROUP_PREPEND = 'BInputGroupPrepend';
+var NAME_INPUT_GROUP_TEXT = 'BInputGroupText';
+var NAME_JUMBOTRON = 'BJumbotron';
+var NAME_LINK = 'BLink';
+var NAME_LIST_GROUP = 'BListGroup';
+var NAME_LIST_GROUP_ITEM = 'BListGroupItem';
+var NAME_MEDIA = 'BMedia';
+var NAME_MEDIA_ASIDE = 'BMediaAside';
+var NAME_MEDIA_BODY = 'BMediaBody';
+var NAME_MODAL = 'BModal';
+var NAME_MSG_BOX = 'BMsgBox';
+var NAME_NAV = 'BNav';
+var NAME_NAVBAR = 'BNavbar';
+var NAME_NAVBAR_BRAND = 'BNavbarBrand';
+var NAME_NAVBAR_NAV = 'BNavbarNav';
+var NAME_NAVBAR_TOGGLE = 'BNavbarToggle';
+var NAME_NAV_FORM = 'BNavForm';
+var NAME_NAV_ITEM = 'BNavItem';
+var NAME_NAV_ITEM_DROPDOWN = 'BNavItemDropdown';
+var NAME_NAV_TEXT = 'BNavText';
+var NAME_OVERLAY = 'BOverlay';
+var NAME_PAGINATION = 'BPagination';
+var NAME_PAGINATION_NAV = 'BPaginationNav';
+var NAME_POPOVER = 'BPopover';
+var NAME_PROGRESS = 'BProgress';
+var NAME_PROGRESS_BAR = 'BProgressBar';
+var NAME_ROW = 'BRow';
+var NAME_SIDEBAR = 'BSidebar';
+var NAME_SKELETON = 'BSkeleton';
+var NAME_SKELETON_ICON = 'BSkeletonIcon';
+var NAME_SKELETON_IMG = 'BSkeletonImg';
+var NAME_SKELETON_TABLE = 'BSkeletonTable';
+var NAME_SKELETON_WRAPPER = 'BSkeletonWrapper';
+var NAME_SPINNER = 'BSpinner';
+var NAME_TAB = 'BTab';
+var NAME_TABLE = 'BTable';
+var NAME_TABLE_CELL = 'BTableCell';
+var NAME_TABLE_LITE = 'BTableLite';
+var NAME_TABLE_SIMPLE = 'BTableSimple';
+var NAME_TABS = 'BTabs';
+var NAME_TBODY = 'BTbody';
+var NAME_TFOOT = 'BTfoot';
+var NAME_TH = 'BTh';
+var NAME_THEAD = 'BThead';
+var NAME_TIME = 'BTime';
+var NAME_TOAST = 'BToast';
+var NAME_TOASTER = 'BToaster';
+var NAME_TOOLTIP = 'BTooltip';
+var NAME_TR = 'BTr'; // Helper component names
+
+var NAME_COLLAPSE_HELPER = 'BVCollapse';
+var NAME_FORM_BUTTON_LABEL_CONTROL = 'BVFormBtnLabelControl';
+var NAME_FORM_RATING_STAR = 'BVFormRatingStar';
+var NAME_POPOVER_HELPER = 'BVPopover';
+var NAME_POPOVER_TEMPLATE = 'BVPopoverTemplate';
+var NAME_POPPER = 'BVPopper';
+var NAME_TAB_BUTTON_HELPER = 'BVTabButton';
+var NAME_TOAST_POP = 'BVToastPop';
+var NAME_TOOLTIP_HELPER = 'BVTooltip';
+var NAME_TOOLTIP_TEMPLATE = 'BVTooltipTemplate';
+var NAME_TRANSITION = 'BVTransition';
+var NAME_TRANSPORTER = 'BVTransporter';
+var NAME_TRANSPORTER_TARGET = 'BVTransporterTarget';
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/constants/config.js":
+/*!************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/constants/config.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "NAME": () => (/* binding */ NAME),
+/* harmony export */   "PROP_NAME": () => (/* binding */ PROP_NAME),
+/* harmony export */   "DEFAULT_BREAKPOINT": () => (/* binding */ DEFAULT_BREAKPOINT)
+/* harmony export */ });
+var NAME = 'BvConfig';
+var PROP_NAME = '$bvConfig';
+var DEFAULT_BREAKPOINT = ['xs', 'sm', 'md', 'lg', 'xl'];
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/constants/env.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/constants/env.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "HAS_WINDOW_SUPPORT": () => (/* binding */ HAS_WINDOW_SUPPORT),
+/* harmony export */   "HAS_DOCUMENT_SUPPORT": () => (/* binding */ HAS_DOCUMENT_SUPPORT),
+/* harmony export */   "HAS_NAVIGATOR_SUPPORT": () => (/* binding */ HAS_NAVIGATOR_SUPPORT),
+/* harmony export */   "HAS_PROMISE_SUPPORT": () => (/* binding */ HAS_PROMISE_SUPPORT),
+/* harmony export */   "HAS_MUTATION_OBSERVER_SUPPORT": () => (/* binding */ HAS_MUTATION_OBSERVER_SUPPORT),
+/* harmony export */   "IS_BROWSER": () => (/* binding */ IS_BROWSER),
+/* harmony export */   "WINDOW": () => (/* binding */ WINDOW),
+/* harmony export */   "DOCUMENT": () => (/* binding */ DOCUMENT),
+/* harmony export */   "NAVIGATOR": () => (/* binding */ NAVIGATOR),
+/* harmony export */   "USER_AGENT": () => (/* binding */ USER_AGENT),
+/* harmony export */   "IS_JSDOM": () => (/* binding */ IS_JSDOM),
+/* harmony export */   "IS_IE": () => (/* binding */ IS_IE),
+/* harmony export */   "HAS_PASSIVE_EVENT_SUPPORT": () => (/* binding */ HAS_PASSIVE_EVENT_SUPPORT),
+/* harmony export */   "HAS_TOUCH_SUPPORT": () => (/* binding */ HAS_TOUCH_SUPPORT),
+/* harmony export */   "HAS_POINTER_EVENT_SUPPORT": () => (/* binding */ HAS_POINTER_EVENT_SUPPORT),
+/* harmony export */   "HAS_INTERACTION_OBSERVER_SUPPORT": () => (/* binding */ HAS_INTERACTION_OBSERVER_SUPPORT)
+/* harmony export */ });
+var HAS_WINDOW_SUPPORT = typeof window !== 'undefined';
+var HAS_DOCUMENT_SUPPORT = typeof document !== 'undefined';
+var HAS_NAVIGATOR_SUPPORT = typeof navigator !== 'undefined';
+var HAS_PROMISE_SUPPORT = typeof Promise !== 'undefined';
+/* istanbul ignore next: JSDOM always returns false */
+
+var HAS_MUTATION_OBSERVER_SUPPORT = typeof MutationObserver !== 'undefined' || typeof WebKitMutationObserver !== 'undefined' || typeof MozMutationObserver !== 'undefined';
+var IS_BROWSER = HAS_WINDOW_SUPPORT && HAS_DOCUMENT_SUPPORT && HAS_NAVIGATOR_SUPPORT;
+var WINDOW = HAS_WINDOW_SUPPORT ? window : {};
+var DOCUMENT = HAS_DOCUMENT_SUPPORT ? document : {};
+var NAVIGATOR = HAS_NAVIGATOR_SUPPORT ? navigator : {};
+var USER_AGENT = (NAVIGATOR.userAgent || '').toLowerCase();
+var IS_JSDOM = USER_AGENT.indexOf('jsdom') > 0;
+var IS_IE = /msie|trident/.test(USER_AGENT); // Determine if the browser supports the option passive for events
+
+var HAS_PASSIVE_EVENT_SUPPORT = function () {
+  var passiveEventSupported = false;
+
+  if (IS_BROWSER) {
+    try {
+      var options = {
+        // This function will be called when the browser
+        // attempts to access the passive property
+        get passive() {
+          /* istanbul ignore next: will never be called in JSDOM */
+          passiveEventSupported = true;
+        }
+
+      };
+      WINDOW.addEventListener('test', options, options);
+      WINDOW.removeEventListener('test', options, options);
+    } catch (_unused) {
+      /* istanbul ignore next: will never be called in JSDOM */
+      passiveEventSupported = false;
+    }
+  }
+
+  return passiveEventSupported;
+}();
+var HAS_TOUCH_SUPPORT = IS_BROWSER && ('ontouchstart' in DOCUMENT.documentElement || NAVIGATOR.maxTouchPoints > 0);
+var HAS_POINTER_EVENT_SUPPORT = IS_BROWSER && Boolean(WINDOW.PointerEvent || WINDOW.MSPointerEvent);
+/* istanbul ignore next: JSDOM only checks for 'IntersectionObserver' */
+
+var HAS_INTERACTION_OBSERVER_SUPPORT = IS_BROWSER && 'IntersectionObserver' in WINDOW && 'IntersectionObserverEntry' in WINDOW && // Edge 15 and UC Browser lack support for `isIntersecting`
+// but we an use `intersectionRatio > 0` instead
+// 'isIntersecting' in window.IntersectionObserverEntry.prototype &&
+'intersectionRatio' in WINDOW.IntersectionObserverEntry.prototype;
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/constants/events.js":
+/*!************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/constants/events.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "EVENT_NAME_ACTIVATE_TAB": () => (/* binding */ EVENT_NAME_ACTIVATE_TAB),
+/* harmony export */   "EVENT_NAME_BLUR": () => (/* binding */ EVENT_NAME_BLUR),
+/* harmony export */   "EVENT_NAME_CANCEL": () => (/* binding */ EVENT_NAME_CANCEL),
+/* harmony export */   "EVENT_NAME_CHANGE": () => (/* binding */ EVENT_NAME_CHANGE),
+/* harmony export */   "EVENT_NAME_CHANGED": () => (/* binding */ EVENT_NAME_CHANGED),
+/* harmony export */   "EVENT_NAME_CLICK": () => (/* binding */ EVENT_NAME_CLICK),
+/* harmony export */   "EVENT_NAME_CLOSE": () => (/* binding */ EVENT_NAME_CLOSE),
+/* harmony export */   "EVENT_NAME_CONTEXT": () => (/* binding */ EVENT_NAME_CONTEXT),
+/* harmony export */   "EVENT_NAME_CONTEXT_CHANGED": () => (/* binding */ EVENT_NAME_CONTEXT_CHANGED),
+/* harmony export */   "EVENT_NAME_DESTROYED": () => (/* binding */ EVENT_NAME_DESTROYED),
+/* harmony export */   "EVENT_NAME_DISABLE": () => (/* binding */ EVENT_NAME_DISABLE),
+/* harmony export */   "EVENT_NAME_DISABLED": () => (/* binding */ EVENT_NAME_DISABLED),
+/* harmony export */   "EVENT_NAME_DISMISSED": () => (/* binding */ EVENT_NAME_DISMISSED),
+/* harmony export */   "EVENT_NAME_DISMISS_COUNT_DOWN": () => (/* binding */ EVENT_NAME_DISMISS_COUNT_DOWN),
+/* harmony export */   "EVENT_NAME_ENABLE": () => (/* binding */ EVENT_NAME_ENABLE),
+/* harmony export */   "EVENT_NAME_ENABLED": () => (/* binding */ EVENT_NAME_ENABLED),
+/* harmony export */   "EVENT_NAME_FILTERED": () => (/* binding */ EVENT_NAME_FILTERED),
+/* harmony export */   "EVENT_NAME_FIRST": () => (/* binding */ EVENT_NAME_FIRST),
+/* harmony export */   "EVENT_NAME_FOCUSIN": () => (/* binding */ EVENT_NAME_FOCUSIN),
+/* harmony export */   "EVENT_NAME_FOCUSOUT": () => (/* binding */ EVENT_NAME_FOCUSOUT),
+/* harmony export */   "EVENT_NAME_HEAD_CLICKED": () => (/* binding */ EVENT_NAME_HEAD_CLICKED),
+/* harmony export */   "EVENT_NAME_HIDDEN": () => (/* binding */ EVENT_NAME_HIDDEN),
+/* harmony export */   "EVENT_NAME_HIDE": () => (/* binding */ EVENT_NAME_HIDE),
+/* harmony export */   "EVENT_NAME_IMG_ERROR": () => (/* binding */ EVENT_NAME_IMG_ERROR),
+/* harmony export */   "EVENT_NAME_INPUT": () => (/* binding */ EVENT_NAME_INPUT),
+/* harmony export */   "EVENT_NAME_LAST": () => (/* binding */ EVENT_NAME_LAST),
+/* harmony export */   "EVENT_NAME_MOUSEENTER": () => (/* binding */ EVENT_NAME_MOUSEENTER),
+/* harmony export */   "EVENT_NAME_MOUSELEAVE": () => (/* binding */ EVENT_NAME_MOUSELEAVE),
+/* harmony export */   "EVENT_NAME_NEXT": () => (/* binding */ EVENT_NAME_NEXT),
+/* harmony export */   "EVENT_NAME_OK": () => (/* binding */ EVENT_NAME_OK),
+/* harmony export */   "EVENT_NAME_OPEN": () => (/* binding */ EVENT_NAME_OPEN),
+/* harmony export */   "EVENT_NAME_PAGE_CLICK": () => (/* binding */ EVENT_NAME_PAGE_CLICK),
+/* harmony export */   "EVENT_NAME_PAUSED": () => (/* binding */ EVENT_NAME_PAUSED),
+/* harmony export */   "EVENT_NAME_PREV": () => (/* binding */ EVENT_NAME_PREV),
+/* harmony export */   "EVENT_NAME_REFRESH": () => (/* binding */ EVENT_NAME_REFRESH),
+/* harmony export */   "EVENT_NAME_REFRESHED": () => (/* binding */ EVENT_NAME_REFRESHED),
+/* harmony export */   "EVENT_NAME_REMOVE": () => (/* binding */ EVENT_NAME_REMOVE),
+/* harmony export */   "EVENT_NAME_ROW_CLICKED": () => (/* binding */ EVENT_NAME_ROW_CLICKED),
+/* harmony export */   "EVENT_NAME_ROW_CONTEXTMENU": () => (/* binding */ EVENT_NAME_ROW_CONTEXTMENU),
+/* harmony export */   "EVENT_NAME_ROW_DBLCLICKED": () => (/* binding */ EVENT_NAME_ROW_DBLCLICKED),
+/* harmony export */   "EVENT_NAME_ROW_HOVERED": () => (/* binding */ EVENT_NAME_ROW_HOVERED),
+/* harmony export */   "EVENT_NAME_ROW_MIDDLE_CLICKED": () => (/* binding */ EVENT_NAME_ROW_MIDDLE_CLICKED),
+/* harmony export */   "EVENT_NAME_ROW_SELECTED": () => (/* binding */ EVENT_NAME_ROW_SELECTED),
+/* harmony export */   "EVENT_NAME_ROW_UNHOVERED": () => (/* binding */ EVENT_NAME_ROW_UNHOVERED),
+/* harmony export */   "EVENT_NAME_SELECTED": () => (/* binding */ EVENT_NAME_SELECTED),
+/* harmony export */   "EVENT_NAME_SHOW": () => (/* binding */ EVENT_NAME_SHOW),
+/* harmony export */   "EVENT_NAME_SHOWN": () => (/* binding */ EVENT_NAME_SHOWN),
+/* harmony export */   "EVENT_NAME_SLIDING_END": () => (/* binding */ EVENT_NAME_SLIDING_END),
+/* harmony export */   "EVENT_NAME_SLIDING_START": () => (/* binding */ EVENT_NAME_SLIDING_START),
+/* harmony export */   "EVENT_NAME_SORT_CHANGED": () => (/* binding */ EVENT_NAME_SORT_CHANGED),
+/* harmony export */   "EVENT_NAME_TAG_STATE": () => (/* binding */ EVENT_NAME_TAG_STATE),
+/* harmony export */   "EVENT_NAME_TOGGLE": () => (/* binding */ EVENT_NAME_TOGGLE),
+/* harmony export */   "EVENT_NAME_UNPAUSED": () => (/* binding */ EVENT_NAME_UNPAUSED),
+/* harmony export */   "EVENT_NAME_UPDATE": () => (/* binding */ EVENT_NAME_UPDATE),
+/* harmony export */   "HOOK_EVENT_NAME_BEFORE_DESTROY": () => (/* binding */ HOOK_EVENT_NAME_BEFORE_DESTROY),
+/* harmony export */   "HOOK_EVENT_NAME_DESTROYED": () => (/* binding */ HOOK_EVENT_NAME_DESTROYED),
+/* harmony export */   "MODEL_EVENT_NAME_PREFIX": () => (/* binding */ MODEL_EVENT_NAME_PREFIX),
+/* harmony export */   "ROOT_EVENT_NAME_PREFIX": () => (/* binding */ ROOT_EVENT_NAME_PREFIX),
+/* harmony export */   "ROOT_EVENT_NAME_SEPARATOR": () => (/* binding */ ROOT_EVENT_NAME_SEPARATOR),
+/* harmony export */   "EVENT_OPTIONS_PASSIVE": () => (/* binding */ EVENT_OPTIONS_PASSIVE),
+/* harmony export */   "EVENT_OPTIONS_NO_CAPTURE": () => (/* binding */ EVENT_OPTIONS_NO_CAPTURE)
+/* harmony export */ });
+var EVENT_NAME_ACTIVATE_TAB = 'activate-tab';
+var EVENT_NAME_BLUR = 'blur';
+var EVENT_NAME_CANCEL = 'cancel';
+var EVENT_NAME_CHANGE = 'change';
+var EVENT_NAME_CHANGED = 'changed';
+var EVENT_NAME_CLICK = 'click';
+var EVENT_NAME_CLOSE = 'close';
+var EVENT_NAME_CONTEXT = 'context';
+var EVENT_NAME_CONTEXT_CHANGED = 'context-changed';
+var EVENT_NAME_DESTROYED = 'destroyed';
+var EVENT_NAME_DISABLE = 'disable';
+var EVENT_NAME_DISABLED = 'disabled';
+var EVENT_NAME_DISMISSED = 'dismissed';
+var EVENT_NAME_DISMISS_COUNT_DOWN = 'dismiss-count-down';
+var EVENT_NAME_ENABLE = 'enable';
+var EVENT_NAME_ENABLED = 'enabled';
+var EVENT_NAME_FILTERED = 'filtered';
+var EVENT_NAME_FIRST = 'first';
+var EVENT_NAME_FOCUSIN = 'focusin';
+var EVENT_NAME_FOCUSOUT = 'focusout';
+var EVENT_NAME_HEAD_CLICKED = 'head-clicked';
+var EVENT_NAME_HIDDEN = 'hidden';
+var EVENT_NAME_HIDE = 'hide';
+var EVENT_NAME_IMG_ERROR = 'img-error';
+var EVENT_NAME_INPUT = 'input';
+var EVENT_NAME_LAST = 'last';
+var EVENT_NAME_MOUSEENTER = 'mouseenter';
+var EVENT_NAME_MOUSELEAVE = 'mouseleave';
+var EVENT_NAME_NEXT = 'next';
+var EVENT_NAME_OK = 'ok';
+var EVENT_NAME_OPEN = 'open';
+var EVENT_NAME_PAGE_CLICK = 'page-click';
+var EVENT_NAME_PAUSED = 'paused';
+var EVENT_NAME_PREV = 'prev';
+var EVENT_NAME_REFRESH = 'refresh';
+var EVENT_NAME_REFRESHED = 'refreshed';
+var EVENT_NAME_REMOVE = 'remove';
+var EVENT_NAME_ROW_CLICKED = 'row-clicked';
+var EVENT_NAME_ROW_CONTEXTMENU = 'row-contextmenu';
+var EVENT_NAME_ROW_DBLCLICKED = 'row-dblclicked';
+var EVENT_NAME_ROW_HOVERED = 'row-hovered';
+var EVENT_NAME_ROW_MIDDLE_CLICKED = 'row-middle-clicked';
+var EVENT_NAME_ROW_SELECTED = 'row-selected';
+var EVENT_NAME_ROW_UNHOVERED = 'row-unhovered';
+var EVENT_NAME_SELECTED = 'selected';
+var EVENT_NAME_SHOW = 'show';
+var EVENT_NAME_SHOWN = 'shown';
+var EVENT_NAME_SLIDING_END = 'sliding-end';
+var EVENT_NAME_SLIDING_START = 'sliding-start';
+var EVENT_NAME_SORT_CHANGED = 'sort-changed';
+var EVENT_NAME_TAG_STATE = 'tag-state';
+var EVENT_NAME_TOGGLE = 'toggle';
+var EVENT_NAME_UNPAUSED = 'unpaused';
+var EVENT_NAME_UPDATE = 'update';
+var HOOK_EVENT_NAME_BEFORE_DESTROY = 'hook:beforeDestroy';
+var HOOK_EVENT_NAME_DESTROYED = 'hook:destroyed';
+var MODEL_EVENT_NAME_PREFIX = 'update:';
+var ROOT_EVENT_NAME_PREFIX = 'bv';
+var ROOT_EVENT_NAME_SEPARATOR = '::';
+var EVENT_OPTIONS_PASSIVE = {
+  passive: true
+};
+var EVENT_OPTIONS_NO_CAPTURE = {
+  passive: true,
+  capture: false
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/constants/key-codes.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/constants/key-codes.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CODE_BACKSPACE": () => (/* binding */ CODE_BACKSPACE),
+/* harmony export */   "CODE_BREAK": () => (/* binding */ CODE_BREAK),
+/* harmony export */   "CODE_DELETE": () => (/* binding */ CODE_DELETE),
+/* harmony export */   "CODE_DOWN": () => (/* binding */ CODE_DOWN),
+/* harmony export */   "CODE_END": () => (/* binding */ CODE_END),
+/* harmony export */   "CODE_ENTER": () => (/* binding */ CODE_ENTER),
+/* harmony export */   "CODE_ESC": () => (/* binding */ CODE_ESC),
+/* harmony export */   "CODE_HOME": () => (/* binding */ CODE_HOME),
+/* harmony export */   "CODE_LEFT": () => (/* binding */ CODE_LEFT),
+/* harmony export */   "CODE_PAGEDOWN": () => (/* binding */ CODE_PAGEDOWN),
+/* harmony export */   "CODE_PAGEUP": () => (/* binding */ CODE_PAGEUP),
+/* harmony export */   "CODE_RIGHT": () => (/* binding */ CODE_RIGHT),
+/* harmony export */   "CODE_SPACE": () => (/* binding */ CODE_SPACE),
+/* harmony export */   "CODE_UP": () => (/* binding */ CODE_UP)
+/* harmony export */ });
+var CODE_BACKSPACE = 8;
+var CODE_BREAK = 19;
+var CODE_DELETE = 46;
+var CODE_DOWN = 40;
+var CODE_END = 35;
+var CODE_ENTER = 13;
+var CODE_ESC = 27;
+var CODE_HOME = 36;
+var CODE_LEFT = 37;
+var CODE_PAGEDOWN = 34;
+var CODE_PAGEUP = 33;
+var CODE_RIGHT = 39;
+var CODE_SPACE = 32;
+var CODE_UP = 38;
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/constants/props.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/constants/props.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PROP_TYPE_ANY": () => (/* binding */ PROP_TYPE_ANY),
+/* harmony export */   "PROP_TYPE_ARRAY": () => (/* binding */ PROP_TYPE_ARRAY),
+/* harmony export */   "PROP_TYPE_BOOLEAN": () => (/* binding */ PROP_TYPE_BOOLEAN),
+/* harmony export */   "PROP_TYPE_DATE": () => (/* binding */ PROP_TYPE_DATE),
+/* harmony export */   "PROP_TYPE_FUNCTION": () => (/* binding */ PROP_TYPE_FUNCTION),
+/* harmony export */   "PROP_TYPE_NUMBER": () => (/* binding */ PROP_TYPE_NUMBER),
+/* harmony export */   "PROP_TYPE_OBJECT": () => (/* binding */ PROP_TYPE_OBJECT),
+/* harmony export */   "PROP_TYPE_REG_EXP": () => (/* binding */ PROP_TYPE_REG_EXP),
+/* harmony export */   "PROP_TYPE_STRING": () => (/* binding */ PROP_TYPE_STRING),
+/* harmony export */   "PROP_TYPE_ARRAY_FUNCTION": () => (/* binding */ PROP_TYPE_ARRAY_FUNCTION),
+/* harmony export */   "PROP_TYPE_ARRAY_OBJECT": () => (/* binding */ PROP_TYPE_ARRAY_OBJECT),
+/* harmony export */   "PROP_TYPE_ARRAY_OBJECT_STRING": () => (/* binding */ PROP_TYPE_ARRAY_OBJECT_STRING),
+/* harmony export */   "PROP_TYPE_ARRAY_STRING": () => (/* binding */ PROP_TYPE_ARRAY_STRING),
+/* harmony export */   "PROP_TYPE_BOOLEAN_NUMBER": () => (/* binding */ PROP_TYPE_BOOLEAN_NUMBER),
+/* harmony export */   "PROP_TYPE_BOOLEAN_NUMBER_STRING": () => (/* binding */ PROP_TYPE_BOOLEAN_NUMBER_STRING),
+/* harmony export */   "PROP_TYPE_BOOLEAN_STRING": () => (/* binding */ PROP_TYPE_BOOLEAN_STRING),
+/* harmony export */   "PROP_TYPE_DATE_STRING": () => (/* binding */ PROP_TYPE_DATE_STRING),
+/* harmony export */   "PROP_TYPE_FUNCTION_STRING": () => (/* binding */ PROP_TYPE_FUNCTION_STRING),
+/* harmony export */   "PROP_TYPE_NUMBER_STRING": () => (/* binding */ PROP_TYPE_NUMBER_STRING),
+/* harmony export */   "PROP_TYPE_NUMBER_OBJECT_STRING": () => (/* binding */ PROP_TYPE_NUMBER_OBJECT_STRING),
+/* harmony export */   "PROP_TYPE_OBJECT_FUNCTION": () => (/* binding */ PROP_TYPE_OBJECT_FUNCTION),
+/* harmony export */   "PROP_TYPE_OBJECT_STRING": () => (/* binding */ PROP_TYPE_OBJECT_STRING)
+/* harmony export */ });
+// General types
+var PROP_TYPE_ANY = undefined;
+var PROP_TYPE_ARRAY = Array;
+var PROP_TYPE_BOOLEAN = Boolean;
+var PROP_TYPE_DATE = Date;
+var PROP_TYPE_FUNCTION = Function;
+var PROP_TYPE_NUMBER = Number;
+var PROP_TYPE_OBJECT = Object;
+var PROP_TYPE_REG_EXP = RegExp;
+var PROP_TYPE_STRING = String; // Multiple types
+
+var PROP_TYPE_ARRAY_FUNCTION = [PROP_TYPE_ARRAY, PROP_TYPE_FUNCTION];
+var PROP_TYPE_ARRAY_OBJECT = [PROP_TYPE_ARRAY, PROP_TYPE_OBJECT];
+var PROP_TYPE_ARRAY_OBJECT_STRING = [PROP_TYPE_ARRAY, PROP_TYPE_OBJECT, PROP_TYPE_STRING];
+var PROP_TYPE_ARRAY_STRING = [PROP_TYPE_ARRAY, PROP_TYPE_STRING];
+var PROP_TYPE_BOOLEAN_NUMBER = [PROP_TYPE_BOOLEAN, PROP_TYPE_NUMBER];
+var PROP_TYPE_BOOLEAN_NUMBER_STRING = [PROP_TYPE_BOOLEAN, PROP_TYPE_NUMBER, PROP_TYPE_STRING];
+var PROP_TYPE_BOOLEAN_STRING = [PROP_TYPE_BOOLEAN, PROP_TYPE_STRING];
+var PROP_TYPE_DATE_STRING = [PROP_TYPE_DATE, PROP_TYPE_STRING];
+var PROP_TYPE_FUNCTION_STRING = [PROP_TYPE_FUNCTION, PROP_TYPE_STRING];
+var PROP_TYPE_NUMBER_STRING = [PROP_TYPE_NUMBER, PROP_TYPE_STRING];
+var PROP_TYPE_NUMBER_OBJECT_STRING = [PROP_TYPE_NUMBER, PROP_TYPE_OBJECT, PROP_TYPE_STRING];
+var PROP_TYPE_OBJECT_FUNCTION = [PROP_TYPE_OBJECT, PROP_TYPE_FUNCTION];
+var PROP_TYPE_OBJECT_STRING = [PROP_TYPE_OBJECT, PROP_TYPE_STRING];
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/constants/regex.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/constants/regex.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RX_ARRAY_NOTATION": () => (/* binding */ RX_ARRAY_NOTATION),
+/* harmony export */   "RX_BV_PREFIX": () => (/* binding */ RX_BV_PREFIX),
+/* harmony export */   "RX_DIGITS": () => (/* binding */ RX_DIGITS),
+/* harmony export */   "RX_EXTENSION": () => (/* binding */ RX_EXTENSION),
+/* harmony export */   "RX_HASH": () => (/* binding */ RX_HASH),
+/* harmony export */   "RX_HASH_ID": () => (/* binding */ RX_HASH_ID),
+/* harmony export */   "RX_HTML_TAGS": () => (/* binding */ RX_HTML_TAGS),
+/* harmony export */   "RX_HYPHENATE": () => (/* binding */ RX_HYPHENATE),
+/* harmony export */   "RX_LOWER_UPPER": () => (/* binding */ RX_LOWER_UPPER),
+/* harmony export */   "RX_NUMBER": () => (/* binding */ RX_NUMBER),
+/* harmony export */   "RX_PLUS": () => (/* binding */ RX_PLUS),
+/* harmony export */   "RX_REGEXP_REPLACE": () => (/* binding */ RX_REGEXP_REPLACE),
+/* harmony export */   "RX_SPACES": () => (/* binding */ RX_SPACES),
+/* harmony export */   "RX_SPACE_SPLIT": () => (/* binding */ RX_SPACE_SPLIT),
+/* harmony export */   "RX_STAR": () => (/* binding */ RX_STAR),
+/* harmony export */   "RX_START_SPACE_WORD": () => (/* binding */ RX_START_SPACE_WORD),
+/* harmony export */   "RX_TRIM_LEFT": () => (/* binding */ RX_TRIM_LEFT),
+/* harmony export */   "RX_TRIM_RIGHT": () => (/* binding */ RX_TRIM_RIGHT),
+/* harmony export */   "RX_UNDERSCORE": () => (/* binding */ RX_UNDERSCORE),
+/* harmony export */   "RX_UN_KEBAB": () => (/* binding */ RX_UN_KEBAB),
+/* harmony export */   "RX_DATE": () => (/* binding */ RX_DATE),
+/* harmony export */   "RX_DATE_SPLIT": () => (/* binding */ RX_DATE_SPLIT),
+/* harmony export */   "RX_TIME": () => (/* binding */ RX_TIME),
+/* harmony export */   "RX_HREF": () => (/* binding */ RX_HREF),
+/* harmony export */   "RX_ENCODED_COMMA": () => (/* binding */ RX_ENCODED_COMMA),
+/* harmony export */   "RX_ENCODE_REVERSE": () => (/* binding */ RX_ENCODE_REVERSE),
+/* harmony export */   "RX_QUERY_START": () => (/* binding */ RX_QUERY_START),
+/* harmony export */   "RX_ASPECT": () => (/* binding */ RX_ASPECT),
+/* harmony export */   "RX_ASPECT_SEPARATOR": () => (/* binding */ RX_ASPECT_SEPARATOR),
+/* harmony export */   "RX_COL_CLASS": () => (/* binding */ RX_COL_CLASS),
+/* harmony export */   "RX_ICON_PREFIX": () => (/* binding */ RX_ICON_PREFIX),
+/* harmony export */   "RX_STRIP_LOCALE_MODS": () => (/* binding */ RX_STRIP_LOCALE_MODS)
+/* harmony export */ });
+// --- General ---
+var RX_ARRAY_NOTATION = /\[(\d+)]/g;
+var RX_BV_PREFIX = /^(BV?)/;
+var RX_DIGITS = /^\d+$/;
+var RX_EXTENSION = /^\..+/;
+var RX_HASH = /^#/;
+var RX_HASH_ID = /^#[A-Za-z]+[\w\-:.]*$/;
+var RX_HTML_TAGS = /(<([^>]+)>)/gi;
+var RX_HYPHENATE = /\B([A-Z])/g;
+var RX_LOWER_UPPER = /([a-z])([A-Z])/g;
+var RX_NUMBER = /^[0-9]*\.?[0-9]+$/;
+var RX_PLUS = /\+/g;
+var RX_REGEXP_REPLACE = /[-/\\^$*+?.()|[\]{}]/g;
+var RX_SPACES = /[\s\uFEFF\xA0]+/g;
+var RX_SPACE_SPLIT = /\s+/;
+var RX_STAR = /\/\*$/;
+var RX_START_SPACE_WORD = /(\s|^)(\w)/g;
+var RX_TRIM_LEFT = /^\s+/;
+var RX_TRIM_RIGHT = /\s+$/;
+var RX_UNDERSCORE = /_/g;
+var RX_UN_KEBAB = /-(\w)/g; // --- Date ---
+// Loose YYYY-MM-DD matching, ignores any appended time inforation
+// Matches '1999-12-20', '1999-1-1', '1999-01-20T22:51:49.118Z', '1999-01-02 13:00:00'
+
+var RX_DATE = /^\d+-\d\d?-\d\d?(?:\s|T|$)/; // Used to split off the date parts of the YYYY-MM-DD string
+
+var RX_DATE_SPLIT = /-|\s|T/; // Time string RegEx (optional seconds)
+
+var RX_TIME = /^([0-1]?[0-9]|2[0-3]):[0-5]?[0-9](:[0-5]?[0-9])?$/; // --- URL ---
+// HREFs must end with a hash followed by at least one non-hash character
+
+var RX_HREF = /^.*(#[^#]+)$/;
+var RX_ENCODED_COMMA = /%2C/g;
+var RX_ENCODE_REVERSE = /[!'()*]/g;
+var RX_QUERY_START = /^(\?|#|&)/; // --- Aspect ---
+
+var RX_ASPECT = /^\d+(\.\d*)?[/:]\d+(\.\d*)?$/;
+var RX_ASPECT_SEPARATOR = /[/:]/; // --- Grid ---
+
+var RX_COL_CLASS = /^col-/; // --- Icon ---
+
+var RX_ICON_PREFIX = /^BIcon/; // --- Locale ---
+
+var RX_STRIP_LOCALE_MODS = /-u-.+/;
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/constants/safe-types.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/constants/safe-types.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Element": () => (/* binding */ Element),
+/* harmony export */   "HTMLElement": () => (/* binding */ HTMLElement),
+/* harmony export */   "SVGElement": () => (/* binding */ SVGElement),
+/* harmony export */   "File": () => (/* binding */ File)
+/* harmony export */ });
+/* harmony import */ var _env__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./env */ "./node_modules/bootstrap-vue/esm/constants/env.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+/* istanbul ignore next */
+
+var Element = _env__WEBPACK_IMPORTED_MODULE_0__.HAS_WINDOW_SUPPORT ? _env__WEBPACK_IMPORTED_MODULE_0__.WINDOW.Element : /*#__PURE__*/function (_Object) {
+  _inherits(Element, _Object);
+
+  var _super = _createSuper(Element);
+
+  function Element() {
+    _classCallCheck(this, Element);
+
+    return _super.apply(this, arguments);
+  }
+
+  return Element;
+}( /*#__PURE__*/_wrapNativeSuper(Object));
+/* istanbul ignore next */
+
+var HTMLElement = _env__WEBPACK_IMPORTED_MODULE_0__.HAS_WINDOW_SUPPORT ? _env__WEBPACK_IMPORTED_MODULE_0__.WINDOW.HTMLElement : /*#__PURE__*/function (_Element) {
+  _inherits(HTMLElement, _Element);
+
+  var _super2 = _createSuper(HTMLElement);
+
+  function HTMLElement() {
+    _classCallCheck(this, HTMLElement);
+
+    return _super2.apply(this, arguments);
+  }
+
+  return HTMLElement;
+}(Element);
+/* istanbul ignore next */
+
+var SVGElement = _env__WEBPACK_IMPORTED_MODULE_0__.HAS_WINDOW_SUPPORT ? _env__WEBPACK_IMPORTED_MODULE_0__.WINDOW.SVGElement : /*#__PURE__*/function (_Element2) {
+  _inherits(SVGElement, _Element2);
+
+  var _super3 = _createSuper(SVGElement);
+
+  function SVGElement() {
+    _classCallCheck(this, SVGElement);
+
+    return _super3.apply(this, arguments);
+  }
+
+  return SVGElement;
+}(Element);
+/* istanbul ignore next */
+
+var File = _env__WEBPACK_IMPORTED_MODULE_0__.HAS_WINDOW_SUPPORT ? _env__WEBPACK_IMPORTED_MODULE_0__.WINDOW.File : /*#__PURE__*/function (_Object2) {
+  _inherits(File, _Object2);
+
+  var _super4 = _createSuper(File);
+
+  function File() {
+    _classCallCheck(this, File);
+
+    return _super4.apply(this, arguments);
+  }
+
+  return File;
+}( /*#__PURE__*/_wrapNativeSuper(Object));
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/constants/slots.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/constants/slots.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SLOT_NAME_ADD_BUTTON_TEXT": () => (/* binding */ SLOT_NAME_ADD_BUTTON_TEXT),
+/* harmony export */   "SLOT_NAME_APPEND": () => (/* binding */ SLOT_NAME_APPEND),
+/* harmony export */   "SLOT_NAME_ASIDE": () => (/* binding */ SLOT_NAME_ASIDE),
+/* harmony export */   "SLOT_NAME_BADGE": () => (/* binding */ SLOT_NAME_BADGE),
+/* harmony export */   "SLOT_NAME_BOTTOM_ROW": () => (/* binding */ SLOT_NAME_BOTTOM_ROW),
+/* harmony export */   "SLOT_NAME_BUTTON_CONTENT": () => (/* binding */ SLOT_NAME_BUTTON_CONTENT),
+/* harmony export */   "SLOT_NAME_CUSTOM_FOOT": () => (/* binding */ SLOT_NAME_CUSTOM_FOOT),
+/* harmony export */   "SLOT_NAME_DECREMENT": () => (/* binding */ SLOT_NAME_DECREMENT),
+/* harmony export */   "SLOT_NAME_DEFAULT": () => (/* binding */ SLOT_NAME_DEFAULT),
+/* harmony export */   "SLOT_NAME_DESCRIPTION": () => (/* binding */ SLOT_NAME_DESCRIPTION),
+/* harmony export */   "SLOT_NAME_DISMISS": () => (/* binding */ SLOT_NAME_DISMISS),
+/* harmony export */   "SLOT_NAME_DROP_PLACEHOLDER": () => (/* binding */ SLOT_NAME_DROP_PLACEHOLDER),
+/* harmony export */   "SLOT_NAME_ELLIPSIS_TEXT": () => (/* binding */ SLOT_NAME_ELLIPSIS_TEXT),
+/* harmony export */   "SLOT_NAME_EMPTY": () => (/* binding */ SLOT_NAME_EMPTY),
+/* harmony export */   "SLOT_NAME_EMPTYFILTERED": () => (/* binding */ SLOT_NAME_EMPTYFILTERED),
+/* harmony export */   "SLOT_NAME_FILE_NAME": () => (/* binding */ SLOT_NAME_FILE_NAME),
+/* harmony export */   "SLOT_NAME_FIRST": () => (/* binding */ SLOT_NAME_FIRST),
+/* harmony export */   "SLOT_NAME_FIRST_TEXT": () => (/* binding */ SLOT_NAME_FIRST_TEXT),
+/* harmony export */   "SLOT_NAME_FOOTER": () => (/* binding */ SLOT_NAME_FOOTER),
+/* harmony export */   "SLOT_NAME_HEADER": () => (/* binding */ SLOT_NAME_HEADER),
+/* harmony export */   "SLOT_NAME_HEADER_CLOSE": () => (/* binding */ SLOT_NAME_HEADER_CLOSE),
+/* harmony export */   "SLOT_NAME_ICON_CLEAR": () => (/* binding */ SLOT_NAME_ICON_CLEAR),
+/* harmony export */   "SLOT_NAME_ICON_EMPTY": () => (/* binding */ SLOT_NAME_ICON_EMPTY),
+/* harmony export */   "SLOT_NAME_ICON_FULL": () => (/* binding */ SLOT_NAME_ICON_FULL),
+/* harmony export */   "SLOT_NAME_ICON_HALF": () => (/* binding */ SLOT_NAME_ICON_HALF),
+/* harmony export */   "SLOT_NAME_IMG": () => (/* binding */ SLOT_NAME_IMG),
+/* harmony export */   "SLOT_NAME_INCREMENT": () => (/* binding */ SLOT_NAME_INCREMENT),
+/* harmony export */   "SLOT_NAME_INVALID_FEEDBACK": () => (/* binding */ SLOT_NAME_INVALID_FEEDBACK),
+/* harmony export */   "SLOT_NAME_LABEL": () => (/* binding */ SLOT_NAME_LABEL),
+/* harmony export */   "SLOT_NAME_LAST_TEXT": () => (/* binding */ SLOT_NAME_LAST_TEXT),
+/* harmony export */   "SLOT_NAME_LEAD": () => (/* binding */ SLOT_NAME_LEAD),
+/* harmony export */   "SLOT_NAME_LOADING": () => (/* binding */ SLOT_NAME_LOADING),
+/* harmony export */   "SLOT_NAME_MODAL_BACKDROP": () => (/* binding */ SLOT_NAME_MODAL_BACKDROP),
+/* harmony export */   "SLOT_NAME_MODAL_CANCEL": () => (/* binding */ SLOT_NAME_MODAL_CANCEL),
+/* harmony export */   "SLOT_NAME_MODAL_FOOTER": () => (/* binding */ SLOT_NAME_MODAL_FOOTER),
+/* harmony export */   "SLOT_NAME_MODAL_HEADER": () => (/* binding */ SLOT_NAME_MODAL_HEADER),
+/* harmony export */   "SLOT_NAME_MODAL_HEADER_CLOSE": () => (/* binding */ SLOT_NAME_MODAL_HEADER_CLOSE),
+/* harmony export */   "SLOT_NAME_MODAL_OK": () => (/* binding */ SLOT_NAME_MODAL_OK),
+/* harmony export */   "SLOT_NAME_MODAL_TITLE": () => (/* binding */ SLOT_NAME_MODAL_TITLE),
+/* harmony export */   "SLOT_NAME_NAV_NEXT_DECADE": () => (/* binding */ SLOT_NAME_NAV_NEXT_DECADE),
+/* harmony export */   "SLOT_NAME_NAV_NEXT_MONTH": () => (/* binding */ SLOT_NAME_NAV_NEXT_MONTH),
+/* harmony export */   "SLOT_NAME_NAV_NEXT_YEAR": () => (/* binding */ SLOT_NAME_NAV_NEXT_YEAR),
+/* harmony export */   "SLOT_NAME_NAV_PEV_DECADE": () => (/* binding */ SLOT_NAME_NAV_PEV_DECADE),
+/* harmony export */   "SLOT_NAME_NAV_PEV_MONTH": () => (/* binding */ SLOT_NAME_NAV_PEV_MONTH),
+/* harmony export */   "SLOT_NAME_NAV_PEV_YEAR": () => (/* binding */ SLOT_NAME_NAV_PEV_YEAR),
+/* harmony export */   "SLOT_NAME_NAV_THIS_MONTH": () => (/* binding */ SLOT_NAME_NAV_THIS_MONTH),
+/* harmony export */   "SLOT_NAME_NEXT_TEXT": () => (/* binding */ SLOT_NAME_NEXT_TEXT),
+/* harmony export */   "SLOT_NAME_OVERLAY": () => (/* binding */ SLOT_NAME_OVERLAY),
+/* harmony export */   "SLOT_NAME_PAGE": () => (/* binding */ SLOT_NAME_PAGE),
+/* harmony export */   "SLOT_NAME_PLACEHOLDER": () => (/* binding */ SLOT_NAME_PLACEHOLDER),
+/* harmony export */   "SLOT_NAME_PREPEND": () => (/* binding */ SLOT_NAME_PREPEND),
+/* harmony export */   "SLOT_NAME_PREV_TEXT": () => (/* binding */ SLOT_NAME_PREV_TEXT),
+/* harmony export */   "SLOT_NAME_ROW_DETAILS": () => (/* binding */ SLOT_NAME_ROW_DETAILS),
+/* harmony export */   "SLOT_NAME_TABLE_BUSY": () => (/* binding */ SLOT_NAME_TABLE_BUSY),
+/* harmony export */   "SLOT_NAME_TABLE_CAPTION": () => (/* binding */ SLOT_NAME_TABLE_CAPTION),
+/* harmony export */   "SLOT_NAME_TABLE_COLGROUP": () => (/* binding */ SLOT_NAME_TABLE_COLGROUP),
+/* harmony export */   "SLOT_NAME_TABS_END": () => (/* binding */ SLOT_NAME_TABS_END),
+/* harmony export */   "SLOT_NAME_TABS_START": () => (/* binding */ SLOT_NAME_TABS_START),
+/* harmony export */   "SLOT_NAME_TEXT": () => (/* binding */ SLOT_NAME_TEXT),
+/* harmony export */   "SLOT_NAME_THEAD_TOP": () => (/* binding */ SLOT_NAME_THEAD_TOP),
+/* harmony export */   "SLOT_NAME_TITLE": () => (/* binding */ SLOT_NAME_TITLE),
+/* harmony export */   "SLOT_NAME_TOAST_TITLE": () => (/* binding */ SLOT_NAME_TOAST_TITLE),
+/* harmony export */   "SLOT_NAME_TOP_ROW": () => (/* binding */ SLOT_NAME_TOP_ROW),
+/* harmony export */   "SLOT_NAME_VALID_FEEDBACK": () => (/* binding */ SLOT_NAME_VALID_FEEDBACK)
+/* harmony export */ });
+var SLOT_NAME_ADD_BUTTON_TEXT = 'add-button-text';
+var SLOT_NAME_APPEND = 'append';
+var SLOT_NAME_ASIDE = 'aside';
+var SLOT_NAME_BADGE = 'badge';
+var SLOT_NAME_BOTTOM_ROW = 'bottom-row';
+var SLOT_NAME_BUTTON_CONTENT = 'button-content';
+var SLOT_NAME_CUSTOM_FOOT = 'custom-foot';
+var SLOT_NAME_DECREMENT = 'decrement';
+var SLOT_NAME_DEFAULT = 'default';
+var SLOT_NAME_DESCRIPTION = 'description';
+var SLOT_NAME_DISMISS = 'dismiss';
+var SLOT_NAME_DROP_PLACEHOLDER = 'drop-placeholder';
+var SLOT_NAME_ELLIPSIS_TEXT = 'ellipsis-text';
+var SLOT_NAME_EMPTY = 'empty';
+var SLOT_NAME_EMPTYFILTERED = 'emptyfiltered';
+var SLOT_NAME_FILE_NAME = 'file-name';
+var SLOT_NAME_FIRST = 'first';
+var SLOT_NAME_FIRST_TEXT = 'first-text';
+var SLOT_NAME_FOOTER = 'footer';
+var SLOT_NAME_HEADER = 'header';
+var SLOT_NAME_HEADER_CLOSE = 'header-close';
+var SLOT_NAME_ICON_CLEAR = 'icon-clear';
+var SLOT_NAME_ICON_EMPTY = 'icon-empty';
+var SLOT_NAME_ICON_FULL = 'icon-full';
+var SLOT_NAME_ICON_HALF = 'icon-half';
+var SLOT_NAME_IMG = 'img';
+var SLOT_NAME_INCREMENT = 'increment';
+var SLOT_NAME_INVALID_FEEDBACK = 'invalid-feedback';
+var SLOT_NAME_LABEL = 'label';
+var SLOT_NAME_LAST_TEXT = 'last-text';
+var SLOT_NAME_LEAD = 'lead';
+var SLOT_NAME_LOADING = 'loading';
+var SLOT_NAME_MODAL_BACKDROP = 'modal-backdrop';
+var SLOT_NAME_MODAL_CANCEL = 'modal-cancel';
+var SLOT_NAME_MODAL_FOOTER = 'modal-footer';
+var SLOT_NAME_MODAL_HEADER = 'modal-header';
+var SLOT_NAME_MODAL_HEADER_CLOSE = 'modal-header-close';
+var SLOT_NAME_MODAL_OK = 'modal-ok';
+var SLOT_NAME_MODAL_TITLE = 'modal-title';
+var SLOT_NAME_NAV_NEXT_DECADE = 'nav-next-decade';
+var SLOT_NAME_NAV_NEXT_MONTH = 'nav-next-month';
+var SLOT_NAME_NAV_NEXT_YEAR = 'nav-next-year';
+var SLOT_NAME_NAV_PEV_DECADE = 'nav-prev-decade';
+var SLOT_NAME_NAV_PEV_MONTH = 'nav-prev-month';
+var SLOT_NAME_NAV_PEV_YEAR = 'nav-prev-year';
+var SLOT_NAME_NAV_THIS_MONTH = 'nav-this-month';
+var SLOT_NAME_NEXT_TEXT = 'next-text';
+var SLOT_NAME_OVERLAY = 'overlay';
+var SLOT_NAME_PAGE = 'page';
+var SLOT_NAME_PLACEHOLDER = 'placeholder';
+var SLOT_NAME_PREPEND = 'prepend';
+var SLOT_NAME_PREV_TEXT = 'prev-text';
+var SLOT_NAME_ROW_DETAILS = 'row-details';
+var SLOT_NAME_TABLE_BUSY = 'table-busy';
+var SLOT_NAME_TABLE_CAPTION = 'table-caption';
+var SLOT_NAME_TABLE_COLGROUP = 'table-colgroup';
+var SLOT_NAME_TABS_END = 'tabs-end';
+var SLOT_NAME_TABS_START = 'tabs-start';
+var SLOT_NAME_TEXT = 'text';
+var SLOT_NAME_THEAD_TOP = 'thead-top';
+var SLOT_NAME_TITLE = 'title';
+var SLOT_NAME_TOAST_TITLE = 'toast-title';
+var SLOT_NAME_TOP_ROW = 'top-row';
+var SLOT_NAME_VALID_FEEDBACK = 'valid-feedback';
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/mixins/attrs.js":
+/*!********************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/mixins/attrs.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "attrsMixin": () => (/* binding */ attrsMixin)
+/* harmony export */ });
+/* harmony import */ var _utils_cache__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/cache */ "./node_modules/bootstrap-vue/esm/utils/cache.js");
+
+var attrsMixin = (0,_utils_cache__WEBPACK_IMPORTED_MODULE_0__.makePropCacheMixin)('$attrs', 'bvAttrs');
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/mixins/id.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/mixins/id.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "props": () => (/* binding */ props),
+/* harmony export */   "idMixin": () => (/* binding */ idMixin)
+/* harmony export */ });
+/* harmony import */ var _vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var _vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../vue */ "./node_modules/bootstrap-vue/esm/vue.js");
+/* harmony import */ var _constants_props__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants/props */ "./node_modules/bootstrap-vue/esm/constants/props.js");
+/* harmony import */ var _utils_props__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/props */ "./node_modules/bootstrap-vue/esm/utils/props.js");
+// SSR safe client-side ID attribute generation
+// ID's can only be generated client-side, after mount
+// `this._uid` is not synched between server and client
+
+
+ // --- Props ---
+
+var props = {
+  id: (0,_utils_props__WEBPACK_IMPORTED_MODULE_0__.makeProp)(_constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_STRING)
+}; // --- Mixin ---
+// @vue/component
+
+var idMixin = _vue__WEBPACK_IMPORTED_MODULE_2__["default"].extend({
+  props: props,
+  data: function data() {
+    return {
+      localId_: null
+    };
+  },
+  computed: {
+    safeId: function safeId() {
+      // Computed property that returns a dynamic function for creating the ID
+      // Reacts to changes in both `.id` and `.localId_` and regenerates a new function
+      var id = this.id || this.localId_; // We return a function that accepts an optional suffix string
+      // So this computed prop looks and works like a method
+      // but benefits from Vue's computed prop caching
+
+      var fn = function fn(suffix) {
+        if (!id) {
+          return null;
+        }
+
+        suffix = String(suffix || '').replace(/\s+/g, '_');
+        return suffix ? id + '_' + suffix : id;
+      };
+
+      return fn;
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    // `mounted()` only occurs client-side
+    this.$nextTick(function () {
+      // Update DOM with auto-generated ID after mount
+      // to prevent SSR hydration errors
+      _this.localId_ = "__BVID__".concat(_this[_vue__WEBPACK_IMPORTED_MODULE_3__.COMPONENT_UID_KEY]);
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/mixins/listen-on-document.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/mixins/listen-on-document.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "listenOnDocumentMixin": () => (/* binding */ listenOnDocumentMixin)
+/* harmony export */ });
+/* harmony import */ var _vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var _constants_env__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants/env */ "./node_modules/bootstrap-vue/esm/constants/env.js");
+/* harmony import */ var _constants_events__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../constants/events */ "./node_modules/bootstrap-vue/esm/constants/events.js");
+/* harmony import */ var _utils_array__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
+/* harmony import */ var _utils_events__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/events */ "./node_modules/bootstrap-vue/esm/utils/events.js");
+/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
+
+
+
+
+
+
+ // --- Constants ---
+
+var PROP = '$_bv_documentHandlers_'; // --- Mixin ---
+// @vue/component
+
+var listenOnDocumentMixin = _vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  created: function created() {
+    var _this = this;
+
+    /* istanbul ignore next */
+    if (!_constants_env__WEBPACK_IMPORTED_MODULE_1__.IS_BROWSER) {
+      return;
+    } // Declare non-reactive property
+    // Object of arrays, keyed by event name,
+    // where value is an array of handlers
+    // Prop will be defined on client only
+
+
+    this[PROP] = {}; // Set up our beforeDestroy handler (client only)
+
+    this.$once(_constants_events__WEBPACK_IMPORTED_MODULE_2__.HOOK_EVENT_NAME_BEFORE_DESTROY, function () {
+      var items = _this[PROP] || {}; // Immediately delete this[PROP] to prevent the
+      // listenOn/Off methods from running (which may occur
+      // due to requestAnimationFrame/transition delays)
+
+      delete _this[PROP]; // Remove all registered event handlers
+
+      (0,_utils_object__WEBPACK_IMPORTED_MODULE_3__.keys)(items).forEach(function (eventName) {
+        var handlers = items[eventName] || [];
+        handlers.forEach(function (handler) {
+          return (0,_utils_events__WEBPACK_IMPORTED_MODULE_4__.eventOff)(document, eventName, handler, _constants_events__WEBPACK_IMPORTED_MODULE_2__.EVENT_OPTIONS_NO_CAPTURE);
+        });
+      });
+    });
+  },
+  methods: {
+    listenDocument: function listenDocument(on, eventName, handler) {
+      on ? this.listenOnDocument(eventName, handler) : this.listenOffDocument(eventName, handler);
+    },
+    listenOnDocument: function listenOnDocument(eventName, handler) {
+      if (this[PROP] && (0,_utils_inspect__WEBPACK_IMPORTED_MODULE_5__.isString)(eventName) && (0,_utils_inspect__WEBPACK_IMPORTED_MODULE_5__.isFunction)(handler)) {
+        this[PROP][eventName] = this[PROP][eventName] || [];
+
+        if (!(0,_utils_array__WEBPACK_IMPORTED_MODULE_6__.arrayIncludes)(this[PROP][eventName], handler)) {
+          this[PROP][eventName].push(handler);
+          (0,_utils_events__WEBPACK_IMPORTED_MODULE_4__.eventOn)(document, eventName, handler, _constants_events__WEBPACK_IMPORTED_MODULE_2__.EVENT_OPTIONS_NO_CAPTURE);
+        }
+      }
+    },
+    listenOffDocument: function listenOffDocument(eventName, handler) {
+      if (this[PROP] && (0,_utils_inspect__WEBPACK_IMPORTED_MODULE_5__.isString)(eventName) && (0,_utils_inspect__WEBPACK_IMPORTED_MODULE_5__.isFunction)(handler)) {
+        (0,_utils_events__WEBPACK_IMPORTED_MODULE_4__.eventOff)(document, eventName, handler, _constants_events__WEBPACK_IMPORTED_MODULE_2__.EVENT_OPTIONS_NO_CAPTURE);
+        this[PROP][eventName] = (this[PROP][eventName] || []).filter(function (h) {
+          return h !== handler;
+        });
+      }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/mixins/listen-on-root.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/mixins/listen-on-root.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "listenOnRootMixin": () => (/* binding */ listenOnRootMixin)
+/* harmony export */ });
+/* harmony import */ var _vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var _constants_events__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants/events */ "./node_modules/bootstrap-vue/esm/constants/events.js");
+
+ // @vue/component
+
+var listenOnRootMixin = _vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  methods: {
+    /**
+     * Safely register event listeners on the root Vue node
+     * While Vue automatically removes listeners for individual components,
+     * when a component registers a listener on root and is destroyed,
+     * this orphans a callback because the node is gone,
+     * but the root does not clear the callback
+     *
+     * When registering a `$root` listener, it also registers a listener on
+     * the component's `beforeDestroy()` hook to automatically remove the
+     * event listener from the `$root` instance
+     *
+     * @param {string} event
+     * @param {function} callback
+     */
+    listenOnRoot: function listenOnRoot(event, callback) {
+      var _this = this;
+
+      this.$root.$on(event, callback);
+      this.$on(_constants_events__WEBPACK_IMPORTED_MODULE_1__.HOOK_EVENT_NAME_BEFORE_DESTROY, function () {
+        _this.$root.$off(event, callback);
+      });
+    },
+
+    /**
+     * Safely register a `$once()` event listener on the root Vue node
+     * While Vue automatically removes listeners for individual components,
+     * when a component registers a listener on root and is destroyed,
+     * this orphans a callback because the node is gone,
+     * but the root does not clear the callback
+     *
+     * When registering a $root listener, it also registers a listener on
+     * the component's `beforeDestroy` hook to automatically remove the
+     * event listener from the $root instance.
+     *
+     * @param {string} event
+     * @param {function} callback
+     */
+    listenOnRootOnce: function listenOnRootOnce(event, callback) {
+      var _this2 = this;
+
+      this.$root.$once(event, callback);
+      this.$on(_constants_events__WEBPACK_IMPORTED_MODULE_1__.HOOK_EVENT_NAME_BEFORE_DESTROY, function () {
+        _this2.$root.$off(event, callback);
+      });
+    },
+
+    /**
+     * Convenience method for calling `vm.$emit()` on `vm.$root`
+     *
+     * @param {string} event
+     * @param {*} args
+     */
+    emitOnRoot: function emitOnRoot(event) {
+      var _this$$root;
+
+      for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        args[_key - 1] = arguments[_key];
+      }
+
+      (_this$$root = this.$root).$emit.apply(_this$$root, [event].concat(args));
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/mixins/listen-on-window.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/mixins/listen-on-window.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "listenOnWindowMixin": () => (/* binding */ listenOnWindowMixin)
+/* harmony export */ });
+/* harmony import */ var _vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var _constants_env__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants/env */ "./node_modules/bootstrap-vue/esm/constants/env.js");
+/* harmony import */ var _constants_events__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../constants/events */ "./node_modules/bootstrap-vue/esm/constants/events.js");
+/* harmony import */ var _utils_array__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
+/* harmony import */ var _utils_events__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/events */ "./node_modules/bootstrap-vue/esm/utils/events.js");
+/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
+
+
+
+
+
+
+ // --- Constants ---
+
+var PROP = '$_bv_windowHandlers_'; // --- Mixin ---
+// @vue/component
+
+var listenOnWindowMixin = _vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  beforeCreate: function beforeCreate() {
+    // Declare non-reactive property
+    // Object of arrays, keyed by event name,
+    // where value is an array of handlers
+    this[PROP] = {};
+  },
+  beforeDestroy: function beforeDestroy() {
+    if (_constants_env__WEBPACK_IMPORTED_MODULE_1__.IS_BROWSER) {
+      var items = this[PROP]; // Immediately delete this[PROP] to prevent the
+      // listenOn/Off methods from running (which may occur
+      // due to requestAnimationFrame delays)
+
+      delete this[PROP]; // Remove all registered event handlers
+
+      (0,_utils_object__WEBPACK_IMPORTED_MODULE_2__.keys)(items).forEach(function (eventName) {
+        var handlers = items[eventName] || [];
+        handlers.forEach(function (handler) {
+          return (0,_utils_events__WEBPACK_IMPORTED_MODULE_3__.eventOff)(window, eventName, handler, _constants_events__WEBPACK_IMPORTED_MODULE_4__.EVENT_OPTIONS_NO_CAPTURE);
+        });
+      });
+    }
+  },
+  methods: {
+    listenWindow: function listenWindow(on, eventName, handler) {
+      on ? this.listenOnWindow(eventName, handler) : this.listenOffWindow(eventName, handler);
+    },
+    listenOnWindow: function listenOnWindow(eventName, handler) {
+      if (_constants_env__WEBPACK_IMPORTED_MODULE_1__.IS_BROWSER && this[PROP] && (0,_utils_inspect__WEBPACK_IMPORTED_MODULE_5__.isString)(eventName) && (0,_utils_inspect__WEBPACK_IMPORTED_MODULE_5__.isFunction)(handler)) {
+        this[PROP][eventName] = this[PROP][eventName] || [];
+
+        if (!(0,_utils_array__WEBPACK_IMPORTED_MODULE_6__.arrayIncludes)(this[PROP][eventName], handler)) {
+          this[PROP][eventName].push(handler);
+          (0,_utils_events__WEBPACK_IMPORTED_MODULE_3__.eventOn)(window, eventName, handler, _constants_events__WEBPACK_IMPORTED_MODULE_4__.EVENT_OPTIONS_NO_CAPTURE);
+        }
+      }
+    },
+    listenOffWindow: function listenOffWindow(eventName, handler) {
+      if (_constants_env__WEBPACK_IMPORTED_MODULE_1__.IS_BROWSER && this[PROP] && (0,_utils_inspect__WEBPACK_IMPORTED_MODULE_5__.isString)(eventName) && (0,_utils_inspect__WEBPACK_IMPORTED_MODULE_5__.isFunction)(handler)) {
+        (0,_utils_events__WEBPACK_IMPORTED_MODULE_3__.eventOff)(window, eventName, handler, _constants_events__WEBPACK_IMPORTED_MODULE_4__.EVENT_OPTIONS_NO_CAPTURE);
+        this[PROP][eventName] = (this[PROP][eventName] || []).filter(function (h) {
+          return h !== handler;
+        });
+      }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/mixins/listeners.js":
+/*!************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/mixins/listeners.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "listenersMixin": () => (/* binding */ listenersMixin)
+/* harmony export */ });
+/* harmony import */ var _utils_cache__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/cache */ "./node_modules/bootstrap-vue/esm/utils/cache.js");
+
+var listenersMixin = (0,_utils_cache__WEBPACK_IMPORTED_MODULE_0__.makePropCacheMixin)('$listeners', 'bvListeners');
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "normalizeSlotMixin": () => (/* binding */ normalizeSlotMixin)
+/* harmony export */ });
+/* harmony import */ var _vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var _constants_slots__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants/slots */ "./node_modules/bootstrap-vue/esm/constants/slots.js");
+/* harmony import */ var _utils_normalize_slot__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/normalize-slot */ "./node_modules/bootstrap-vue/esm/utils/normalize-slot.js");
+/* harmony import */ var _utils_array__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
+
+
+
+ // @vue/component
+
+var normalizeSlotMixin = _vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  methods: {
+    // Returns `true` if the either a `$scopedSlot` or `$slot` exists with the specified name
+    // `name` can be a string name or an array of names
+    hasNormalizedSlot: function hasNormalizedSlot() {
+      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _constants_slots__WEBPACK_IMPORTED_MODULE_1__.SLOT_NAME_DEFAULT;
+      var scopedSlots = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.$scopedSlots;
+      var slots = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.$slots;
+      return (0,_utils_normalize_slot__WEBPACK_IMPORTED_MODULE_2__.hasNormalizedSlot)(name, scopedSlots, slots);
+    },
+    // Returns an array of rendered VNodes if slot found, otherwise `undefined`
+    // `name` can be a string name or an array of names
+    normalizeSlot: function normalizeSlot() {
+      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _constants_slots__WEBPACK_IMPORTED_MODULE_1__.SLOT_NAME_DEFAULT;
+      var scope = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var scopedSlots = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.$scopedSlots;
+      var slots = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : this.$slots;
+
+      var vNodes = (0,_utils_normalize_slot__WEBPACK_IMPORTED_MODULE_2__.normalizeSlot)(name, scope, scopedSlots, slots);
+
+      return vNodes ? (0,_utils_array__WEBPACK_IMPORTED_MODULE_3__.concat)(vNodes) : vNodes;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/mixins/scoped-style.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/mixins/scoped-style.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "scopedStyleMixin": () => (/* binding */ scopedStyleMixin)
+/* harmony export */ });
+/* harmony import */ var _vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var _utils_get_scope_id__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/get-scope-id */ "./node_modules/bootstrap-vue/esm/utils/get-scope-id.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+ // @vue/component
+
+var scopedStyleMixin = _vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  computed: {
+    scopedStyleAttrs: function scopedStyleAttrs() {
+      var scopeId = (0,_utils_get_scope_id__WEBPACK_IMPORTED_MODULE_1__.getScopeId)(this.$parent);
+      return scopeId ? _defineProperty({}, scopeId, '') : {};
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/array.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/array.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "from": () => (/* binding */ from),
+/* harmony export */   "arrayIncludes": () => (/* binding */ arrayIncludes),
+/* harmony export */   "concat": () => (/* binding */ concat),
+/* harmony export */   "createArray": () => (/* binding */ createArray),
+/* harmony export */   "flatten": () => (/* binding */ flatten),
+/* harmony export */   "flattenDeep": () => (/* binding */ flattenDeep)
+/* harmony export */ });
+/* harmony import */ var _inspect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+ // --- Static ---
+
+var from = function from() {
+  return Array.from.apply(Array, arguments);
+}; // --- Instance ---
+
+var arrayIncludes = function arrayIncludes(array, value) {
+  return array.indexOf(value) !== -1;
+};
+var concat = function concat() {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  return Array.prototype.concat.apply([], args);
+}; // --- Utilities ---
+
+var createArray = function createArray(length, fillFn) {
+  var mapFn = (0,_inspect__WEBPACK_IMPORTED_MODULE_0__.isFunction)(fillFn) ? fillFn : function () {
+    return fillFn;
+  };
+  return Array.apply(null, {
+    length: length
+  }).map(mapFn);
+};
+var flatten = function flatten(array) {
+  return array.reduce(function (result, item) {
+    return concat(result, item);
+  }, []);
+};
+var flattenDeep = function flattenDeep(array) {
+  return array.reduce(function (result, item) {
+    return concat(result, Array.isArray(item) ? flattenDeep(item) : item);
+  }, []);
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/bv-event.class.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/bv-event.class.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "BvEvent": () => (/* binding */ BvEvent)
+/* harmony export */ });
+/* harmony import */ var _object__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+var BvEvent = /*#__PURE__*/function () {
+  function BvEvent(type) {
+    var eventInit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    _classCallCheck(this, BvEvent);
+
+    // Start by emulating native Event constructor
+    if (!type) {
+      /* istanbul ignore next */
+      throw new TypeError("Failed to construct '".concat(this.constructor.name, "'. 1 argument required, ").concat(arguments.length, " given."));
+    } // Merge defaults first, the eventInit, and the type last
+    // so it can't be overwritten
+
+
+    (0,_object__WEBPACK_IMPORTED_MODULE_0__.assign)(this, BvEvent.Defaults, this.constructor.Defaults, eventInit, {
+      type: type
+    }); // Freeze some props as readonly, but leave them enumerable
+
+    (0,_object__WEBPACK_IMPORTED_MODULE_0__.defineProperties)(this, {
+      type: (0,_object__WEBPACK_IMPORTED_MODULE_0__.readonlyDescriptor)(),
+      cancelable: (0,_object__WEBPACK_IMPORTED_MODULE_0__.readonlyDescriptor)(),
+      nativeEvent: (0,_object__WEBPACK_IMPORTED_MODULE_0__.readonlyDescriptor)(),
+      target: (0,_object__WEBPACK_IMPORTED_MODULE_0__.readonlyDescriptor)(),
+      relatedTarget: (0,_object__WEBPACK_IMPORTED_MODULE_0__.readonlyDescriptor)(),
+      vueTarget: (0,_object__WEBPACK_IMPORTED_MODULE_0__.readonlyDescriptor)(),
+      componentId: (0,_object__WEBPACK_IMPORTED_MODULE_0__.readonlyDescriptor)()
+    }); // Create a private variable using closure scoping
+
+    var defaultPrevented = false; // Recreate preventDefault method. One way setter
+
+    this.preventDefault = function preventDefault() {
+      if (this.cancelable) {
+        defaultPrevented = true;
+      }
+    }; // Create `defaultPrevented` publicly accessible prop that
+    // can only be altered by the preventDefault method
+
+
+    (0,_object__WEBPACK_IMPORTED_MODULE_0__.defineProperty)(this, 'defaultPrevented', {
+      enumerable: true,
+      get: function get() {
+        return defaultPrevented;
+      }
+    });
+  }
+
+  _createClass(BvEvent, null, [{
+    key: "Defaults",
+    get: function get() {
+      return {
+        type: '',
+        cancelable: true,
+        nativeEvent: null,
+        target: null,
+        relatedTarget: null,
+        vueTarget: null,
+        componentId: null
+      };
+    }
+  }]);
+
+  return BvEvent;
+}();
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/cache.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/cache.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "makePropWatcher": () => (/* binding */ makePropWatcher),
+/* harmony export */   "makePropCacheMixin": () => (/* binding */ makePropCacheMixin)
+/* harmony export */ });
+/* harmony import */ var _vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var _clone_deep__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./clone-deep */ "./node_modules/bootstrap-vue/esm/utils/clone-deep.js");
+/* harmony import */ var _loose_equal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./loose-equal */ "./node_modules/bootstrap-vue/esm/utils/loose-equal.js");
+/* harmony import */ var _object__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+var isEmpty = function isEmpty(value) {
+  return !value || (0,_object__WEBPACK_IMPORTED_MODULE_0__.keys)(value).length === 0;
+};
+
+var makePropWatcher = function makePropWatcher(propName) {
+  return {
+    handler: function handler(newValue, oldValue) {
+      if ((0,_loose_equal__WEBPACK_IMPORTED_MODULE_1__.looseEqual)(newValue, oldValue)) {
+        return;
+      }
+
+      if (isEmpty(newValue) || isEmpty(oldValue)) {
+        this[propName] = (0,_clone_deep__WEBPACK_IMPORTED_MODULE_2__.cloneDeep)(newValue);
+        return;
+      }
+
+      for (var key in oldValue) {
+        if (!(0,_object__WEBPACK_IMPORTED_MODULE_0__.hasOwnProperty)(newValue, key)) {
+          this.$delete(this.$data[propName], key);
+        }
+      }
+
+      for (var _key in newValue) {
+        this.$set(this.$data[propName], _key, newValue[_key]);
+      }
+    }
+  };
+};
+var makePropCacheMixin = function makePropCacheMixin(propName, proxyPropName) {
+  return _vue__WEBPACK_IMPORTED_MODULE_3__["default"].extend({
+    data: function data() {
+      return _defineProperty({}, proxyPropName, (0,_clone_deep__WEBPACK_IMPORTED_MODULE_2__.cloneDeep)(this[propName]));
+    },
+    watch: _defineProperty({}, propName, makePropWatcher(proxyPropName))
+  });
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/clone-deep.js":
+/*!************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/clone-deep.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "cloneDeep": () => (/* binding */ cloneDeep)
+/* harmony export */ });
+/* harmony import */ var _inspect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _object__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+var cloneDeep = function cloneDeep(obj) {
+  var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : obj;
+
+  if ((0,_inspect__WEBPACK_IMPORTED_MODULE_0__.isArray)(obj)) {
+    return obj.reduce(function (result, val) {
+      return [].concat(_toConsumableArray(result), [cloneDeep(val, val)]);
+    }, []);
+  }
+
+  if ((0,_inspect__WEBPACK_IMPORTED_MODULE_0__.isPlainObject)(obj)) {
+    return (0,_object__WEBPACK_IMPORTED_MODULE_1__.keys)(obj).reduce(function (result, key) {
+      return _objectSpread(_objectSpread({}, result), {}, _defineProperty({}, key, cloneDeep(obj[key], obj[key])));
+    }, {});
+  }
+
+  return defaultValue;
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/config.js":
+/*!********************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/config.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getConfig": () => (/* binding */ getConfig),
+/* harmony export */   "getConfigValue": () => (/* binding */ getConfigValue),
+/* harmony export */   "getComponentConfig": () => (/* binding */ getComponentConfig),
+/* harmony export */   "getBreakpoints": () => (/* binding */ getBreakpoints),
+/* harmony export */   "getBreakpointsCached": () => (/* binding */ getBreakpointsCached),
+/* harmony export */   "getBreakpointsUp": () => (/* binding */ getBreakpointsUp),
+/* harmony export */   "getBreakpointsUpCached": () => (/* binding */ getBreakpointsUpCached),
+/* harmony export */   "getBreakpointsDown": () => (/* binding */ getBreakpointsDown),
+/* harmony export */   "getBreakpointsDownCached": () => (/* binding */ getBreakpointsDownCached)
+/* harmony export */ });
+/* harmony import */ var _vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var _constants_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants/config */ "./node_modules/bootstrap-vue/esm/constants/config.js");
+/* harmony import */ var _clone_deep__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./clone-deep */ "./node_modules/bootstrap-vue/esm/utils/clone-deep.js");
+/* harmony import */ var _memoize__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./memoize */ "./node_modules/bootstrap-vue/esm/utils/memoize.js");
+
+
+
+ // --- Constants ---
+
+var VueProto = _vue__WEBPACK_IMPORTED_MODULE_0__["default"].prototype; // --- Getter methods ---
+// All methods return a deep clone (immutable) copy of the config value,
+// to prevent mutation of the user config object
+// Get the current config
+
+var getConfig = function getConfig() {
+  var bvConfig = VueProto[_constants_config__WEBPACK_IMPORTED_MODULE_1__.PROP_NAME];
+  return bvConfig ? bvConfig.getConfig() : {};
+}; // Method to grab a config value based on a dotted/array notation key
+
+var getConfigValue = function getConfigValue(key) {
+  var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
+  var bvConfig = VueProto[_constants_config__WEBPACK_IMPORTED_MODULE_1__.PROP_NAME];
+  return bvConfig ? bvConfig.getConfigValue(key, defaultValue) : (0,_clone_deep__WEBPACK_IMPORTED_MODULE_2__.cloneDeep)(defaultValue);
+}; // Method to grab a config value for a particular component
+
+var getComponentConfig = function getComponentConfig(key) {
+  var propKey = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  var defaultValue = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : undefined;
+  // Return the particular config value for key if specified,
+  // otherwise we return the full config (or an empty object if not found)
+  return propKey ? getConfigValue("".concat(key, ".").concat(propKey), defaultValue) : getConfigValue(key, {});
+}; // Get all breakpoint names
+
+var getBreakpoints = function getBreakpoints() {
+  return getConfigValue('breakpoints', _constants_config__WEBPACK_IMPORTED_MODULE_1__.DEFAULT_BREAKPOINT);
+}; // Private method for caching breakpoint names
+
+var _getBreakpointsCached = (0,_memoize__WEBPACK_IMPORTED_MODULE_3__.memoize)(function () {
+  return getBreakpoints();
+}); // Get all breakpoint names (cached)
+
+
+var getBreakpointsCached = function getBreakpointsCached() {
+  return (0,_clone_deep__WEBPACK_IMPORTED_MODULE_2__.cloneDeep)(_getBreakpointsCached());
+}; // Get breakpoints with the smallest breakpoint set as ''
+// Useful for components that create breakpoint specific props
+
+var getBreakpointsUp = function getBreakpointsUp() {
+  var breakpoints = getBreakpoints();
+  breakpoints[0] = '';
+  return breakpoints;
+}; // Get breakpoints with the smallest breakpoint set as '' (cached)
+// Useful for components that create breakpoint specific props
+
+var getBreakpointsUpCached = (0,_memoize__WEBPACK_IMPORTED_MODULE_3__.memoize)(function () {
+  var breakpoints = getBreakpointsCached();
+  breakpoints[0] = '';
+  return breakpoints;
+}); // Get breakpoints with the largest breakpoint set as ''
+
+var getBreakpointsDown = function getBreakpointsDown() {
+  var breakpoints = getBreakpoints();
+  breakpoints[breakpoints.length - 1] = '';
+  return breakpoints;
+}; // Get breakpoints with the largest breakpoint set as '' (cached)
+// Useful for components that create breakpoint specific props
+
+/* istanbul ignore next: we don't use this method anywhere, yet */
+
+var getBreakpointsDownCached = function getBreakpointsDownCached() {
+  var breakpoints = getBreakpointsCached();
+  breakpoints[breakpoints.length - 1] = '';
+  return breakpoints;
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/dom.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/dom.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "matchesEl": () => (/* binding */ matchesEl),
+/* harmony export */   "closestEl": () => (/* binding */ closestEl),
+/* harmony export */   "requestAF": () => (/* binding */ requestAF),
+/* harmony export */   "MutationObs": () => (/* binding */ MutationObs),
+/* harmony export */   "removeNode": () => (/* binding */ removeNode),
+/* harmony export */   "isElement": () => (/* binding */ isElement),
+/* harmony export */   "getActiveElement": () => (/* binding */ getActiveElement),
+/* harmony export */   "isTag": () => (/* binding */ isTag),
+/* harmony export */   "isActiveElement": () => (/* binding */ isActiveElement),
+/* harmony export */   "isVisible": () => (/* binding */ isVisible),
+/* harmony export */   "isDisabled": () => (/* binding */ isDisabled),
+/* harmony export */   "reflow": () => (/* binding */ reflow),
+/* harmony export */   "selectAll": () => (/* binding */ selectAll),
+/* harmony export */   "select": () => (/* binding */ select),
+/* harmony export */   "matches": () => (/* binding */ matches),
+/* harmony export */   "closest": () => (/* binding */ closest),
+/* harmony export */   "contains": () => (/* binding */ contains),
+/* harmony export */   "getById": () => (/* binding */ getById),
+/* harmony export */   "addClass": () => (/* binding */ addClass),
+/* harmony export */   "removeClass": () => (/* binding */ removeClass),
+/* harmony export */   "hasClass": () => (/* binding */ hasClass),
+/* harmony export */   "setAttr": () => (/* binding */ setAttr),
+/* harmony export */   "removeAttr": () => (/* binding */ removeAttr),
+/* harmony export */   "getAttr": () => (/* binding */ getAttr),
+/* harmony export */   "hasAttr": () => (/* binding */ hasAttr),
+/* harmony export */   "setStyle": () => (/* binding */ setStyle),
+/* harmony export */   "removeStyle": () => (/* binding */ removeStyle),
+/* harmony export */   "getStyle": () => (/* binding */ getStyle),
+/* harmony export */   "getBCR": () => (/* binding */ getBCR),
+/* harmony export */   "getCS": () => (/* binding */ getCS),
+/* harmony export */   "getSel": () => (/* binding */ getSel),
+/* harmony export */   "offset": () => (/* binding */ offset),
+/* harmony export */   "position": () => (/* binding */ position),
+/* harmony export */   "getTabables": () => (/* binding */ getTabables),
+/* harmony export */   "attemptFocus": () => (/* binding */ attemptFocus),
+/* harmony export */   "attemptBlur": () => (/* binding */ attemptBlur)
+/* harmony export */ });
+/* harmony import */ var _constants_env__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../constants/env */ "./node_modules/bootstrap-vue/esm/constants/env.js");
+/* harmony import */ var _constants_safe_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/safe-types */ "./node_modules/bootstrap-vue/esm/constants/safe-types.js");
+/* harmony import */ var _array__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
+/* harmony import */ var _inspect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _number__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./number */ "./node_modules/bootstrap-vue/esm/utils/number.js");
+/* harmony import */ var _string__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./string */ "./node_modules/bootstrap-vue/esm/utils/string.js");
+
+
+
+
+
+ // --- Constants ---
+
+var ELEMENT_PROTO = _constants_safe_types__WEBPACK_IMPORTED_MODULE_0__.Element.prototype;
+var TABABLE_SELECTOR = ['button', '[href]:not(.disabled)', 'input', 'select', 'textarea', '[tabindex]', '[contenteditable]'].map(function (s) {
+  return "".concat(s, ":not(:disabled):not([disabled])");
+}).join(', '); // --- Normalization utils ---
+// See: https://developer.mozilla.org/en-US/docs/Web/API/Element/matches#Polyfill
+
+/* istanbul ignore next */
+
+var matchesEl = ELEMENT_PROTO.matches || ELEMENT_PROTO.msMatchesSelector || ELEMENT_PROTO.webkitMatchesSelector; // See: https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
+
+/* istanbul ignore next */
+
+var closestEl = ELEMENT_PROTO.closest || function (sel) {
+  var el = this;
+
+  do {
+    // Use our "patched" matches function
+    if (matches(el, sel)) {
+      return el;
+    }
+
+    el = el.parentElement || el.parentNode;
+  } while (!(0,_inspect__WEBPACK_IMPORTED_MODULE_1__.isNull)(el) && el.nodeType === Node.ELEMENT_NODE);
+
+  return null;
+}; // `requestAnimationFrame()` convenience method
+
+/* istanbul ignore next: JSDOM always returns the first option */
+
+var requestAF = _constants_env__WEBPACK_IMPORTED_MODULE_2__.WINDOW.requestAnimationFrame || _constants_env__WEBPACK_IMPORTED_MODULE_2__.WINDOW.webkitRequestAnimationFrame || _constants_env__WEBPACK_IMPORTED_MODULE_2__.WINDOW.mozRequestAnimationFrame || _constants_env__WEBPACK_IMPORTED_MODULE_2__.WINDOW.msRequestAnimationFrame || _constants_env__WEBPACK_IMPORTED_MODULE_2__.WINDOW.oRequestAnimationFrame || // Fallback, but not a true polyfill
+// Only needed for Opera Mini
+
+/* istanbul ignore next */
+function (cb) {
+  return setTimeout(cb, 16);
+};
+var MutationObs = _constants_env__WEBPACK_IMPORTED_MODULE_2__.WINDOW.MutationObserver || _constants_env__WEBPACK_IMPORTED_MODULE_2__.WINDOW.WebKitMutationObserver || _constants_env__WEBPACK_IMPORTED_MODULE_2__.WINDOW.MozMutationObserver || null; // --- Utils ---
+// Remove a node from DOM
+
+var removeNode = function removeNode(el) {
+  return el && el.parentNode && el.parentNode.removeChild(el);
+}; // Determine if an element is an HTML element
+
+var isElement = function isElement(el) {
+  return !!(el && el.nodeType === Node.ELEMENT_NODE);
+}; // Get the currently active HTML element
+
+var getActiveElement = function getActiveElement() {
+  var excludes = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var activeElement = _constants_env__WEBPACK_IMPORTED_MODULE_2__.DOCUMENT.activeElement;
+  return activeElement && !excludes.some(function (el) {
+    return el === activeElement;
+  }) ? activeElement : null;
+}; // Returns `true` if a tag's name equals `name`
+
+var isTag = function isTag(tag, name) {
+  return (0,_string__WEBPACK_IMPORTED_MODULE_3__.toString)(tag).toLowerCase() === (0,_string__WEBPACK_IMPORTED_MODULE_3__.toString)(name).toLowerCase();
+}; // Determine if an HTML element is the currently active element
+
+var isActiveElement = function isActiveElement(el) {
+  return isElement(el) && el === getActiveElement();
+}; // Determine if an HTML element is visible - Faster than CSS check
+
+var isVisible = function isVisible(el) {
+  if (!isElement(el) || !el.parentNode || !contains(_constants_env__WEBPACK_IMPORTED_MODULE_2__.DOCUMENT.body, el)) {
+    // Note this can fail for shadow dom elements since they
+    // are not a direct descendant of document.body
+    return false;
+  }
+
+  if (getStyle(el, 'display') === 'none') {
+    // We do this check to help with vue-test-utils when using v-show
+
+    /* istanbul ignore next */
+    return false;
+  } // All browsers support getBoundingClientRect(), except JSDOM as it returns all 0's for values :(
+  // So any tests that need isVisible will fail in JSDOM
+  // Except when we override the getBCR prototype in some tests
+
+
+  var bcr = getBCR(el);
+  return !!(bcr && bcr.height > 0 && bcr.width > 0);
+}; // Determine if an element is disabled
+
+var isDisabled = function isDisabled(el) {
+  return !isElement(el) || el.disabled || hasAttr(el, 'disabled') || hasClass(el, 'disabled');
+}; // Cause/wait-for an element to reflow its content (adjusting its height/width)
+
+var reflow = function reflow(el) {
+  // Requesting an elements offsetHight will trigger a reflow of the element content
+
+  /* istanbul ignore next: reflow doesn't happen in JSDOM */
+  return isElement(el) && el.offsetHeight;
+}; // Select all elements matching selector. Returns `[]` if none found
+
+var selectAll = function selectAll(selector, root) {
+  return (0,_array__WEBPACK_IMPORTED_MODULE_4__.from)((isElement(root) ? root : _constants_env__WEBPACK_IMPORTED_MODULE_2__.DOCUMENT).querySelectorAll(selector));
+}; // Select a single element, returns `null` if not found
+
+var select = function select(selector, root) {
+  return (isElement(root) ? root : _constants_env__WEBPACK_IMPORTED_MODULE_2__.DOCUMENT).querySelector(selector) || null;
+}; // Determine if an element matches a selector
+
+var matches = function matches(el, selector) {
+  return isElement(el) ? matchesEl.call(el, selector) : false;
+}; // Finds closest element matching selector. Returns `null` if not found
+
+var closest = function closest(selector, root) {
+  var includeRoot = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
+  if (!isElement(root)) {
+    return null;
+  }
+
+  var el = closestEl.call(root, selector); // Native closest behaviour when `includeRoot` is truthy,
+  // else emulate jQuery closest and return `null` if match is
+  // the passed in root element when `includeRoot` is falsey
+
+  return includeRoot ? el : el === root ? null : el;
+}; // Returns true if the parent element contains the child element
+
+var contains = function contains(parent, child) {
+  return parent && (0,_inspect__WEBPACK_IMPORTED_MODULE_1__.isFunction)(parent.contains) ? parent.contains(child) : false;
+}; // Get an element given an ID
+
+var getById = function getById(id) {
+  return _constants_env__WEBPACK_IMPORTED_MODULE_2__.DOCUMENT.getElementById(/^#/.test(id) ? id.slice(1) : id) || null;
+}; // Add a class to an element
+
+var addClass = function addClass(el, className) {
+  // We are checking for `el.classList` existence here since IE 11
+  // returns `undefined` for some elements (e.g. SVG elements)
+  // See https://github.com/bootstrap-vue/bootstrap-vue/issues/2713
+  if (className && isElement(el) && el.classList) {
+    el.classList.add(className);
+  }
+}; // Remove a class from an element
+
+var removeClass = function removeClass(el, className) {
+  // We are checking for `el.classList` existence here since IE 11
+  // returns `undefined` for some elements (e.g. SVG elements)
+  // See https://github.com/bootstrap-vue/bootstrap-vue/issues/2713
+  if (className && isElement(el) && el.classList) {
+    el.classList.remove(className);
+  }
+}; // Test if an element has a class
+
+var hasClass = function hasClass(el, className) {
+  // We are checking for `el.classList` existence here since IE 11
+  // returns `undefined` for some elements (e.g. SVG elements)
+  // See https://github.com/bootstrap-vue/bootstrap-vue/issues/2713
+  if (className && isElement(el) && el.classList) {
+    return el.classList.contains(className);
+  }
+
+  return false;
+}; // Set an attribute on an element
+
+var setAttr = function setAttr(el, attr, value) {
+  if (attr && isElement(el)) {
+    el.setAttribute(attr, value);
+  }
+}; // Remove an attribute from an element
+
+var removeAttr = function removeAttr(el, attr) {
+  if (attr && isElement(el)) {
+    el.removeAttribute(attr);
+  }
+}; // Get an attribute value from an element
+// Returns `null` if not found
+
+var getAttr = function getAttr(el, attr) {
+  return attr && isElement(el) ? el.getAttribute(attr) : null;
+}; // Determine if an attribute exists on an element
+// Returns `true` or `false`, or `null` if element not found
+
+var hasAttr = function hasAttr(el, attr) {
+  return attr && isElement(el) ? el.hasAttribute(attr) : null;
+}; // Set an style property on an element
+
+var setStyle = function setStyle(el, prop, value) {
+  if (prop && isElement(el)) {
+    el.style[prop] = value;
+  }
+}; // Remove an style property from an element
+
+var removeStyle = function removeStyle(el, prop) {
+  if (prop && isElement(el)) {
+    el.style[prop] = '';
+  }
+}; // Get an style property value from an element
+// Returns `null` if not found
+
+var getStyle = function getStyle(el, prop) {
+  return prop && isElement(el) ? el.style[prop] || null : null;
+}; // Return the Bounding Client Rect of an element
+// Returns `null` if not an element
+
+/* istanbul ignore next: getBoundingClientRect() doesn't work in JSDOM */
+
+var getBCR = function getBCR(el) {
+  return isElement(el) ? el.getBoundingClientRect() : null;
+}; // Get computed style object for an element
+
+/* istanbul ignore next: getComputedStyle() doesn't work in JSDOM */
+
+var getCS = function getCS(el) {
+  var getComputedStyle = _constants_env__WEBPACK_IMPORTED_MODULE_2__.WINDOW.getComputedStyle;
+  return getComputedStyle && isElement(el) ? getComputedStyle(el) : {};
+}; // Returns a `Selection` object representing the range of text selected
+// Returns `null` if no window support is given
+
+/* istanbul ignore next: getSelection() doesn't work in JSDOM */
+
+var getSel = function getSel() {
+  var getSelection = _constants_env__WEBPACK_IMPORTED_MODULE_2__.WINDOW.getSelection;
+  return getSelection ? _constants_env__WEBPACK_IMPORTED_MODULE_2__.WINDOW.getSelection() : null;
+}; // Return an element's offset with respect to document element
+// https://j11y.io/jquery/#v=git&fn=jQuery.fn.offset
+
+var offset = function offset(el)
+/* istanbul ignore next: getBoundingClientRect(), getClientRects() doesn't work in JSDOM */
+{
+  var _offset = {
+    top: 0,
+    left: 0
+  };
+
+  if (!isElement(el) || el.getClientRects().length === 0) {
+    return _offset;
+  }
+
+  var bcr = getBCR(el);
+
+  if (bcr) {
+    var win = el.ownerDocument.defaultView;
+    _offset.top = bcr.top + win.pageYOffset;
+    _offset.left = bcr.left + win.pageXOffset;
+  }
+
+  return _offset;
+}; // Return an element's offset with respect to to its offsetParent
+// https://j11y.io/jquery/#v=git&fn=jQuery.fn.position
+
+var position = function position(el)
+/* istanbul ignore next: getBoundingClientRect() doesn't work in JSDOM */
+{
+  var _offset = {
+    top: 0,
+    left: 0
+  };
+
+  if (!isElement(el)) {
+    return _offset;
+  }
+
+  var parentOffset = {
+    top: 0,
+    left: 0
+  };
+  var elStyles = getCS(el);
+
+  if (elStyles.position === 'fixed') {
+    _offset = getBCR(el) || _offset;
+  } else {
+    _offset = offset(el);
+    var doc = el.ownerDocument;
+    var offsetParent = el.offsetParent || doc.documentElement;
+
+    while (offsetParent && (offsetParent === doc.body || offsetParent === doc.documentElement) && getCS(offsetParent).position === 'static') {
+      offsetParent = offsetParent.parentNode;
+    }
+
+    if (offsetParent && offsetParent !== el && offsetParent.nodeType === Node.ELEMENT_NODE) {
+      parentOffset = offset(offsetParent);
+      var offsetParentStyles = getCS(offsetParent);
+      parentOffset.top += (0,_number__WEBPACK_IMPORTED_MODULE_5__.toFloat)(offsetParentStyles.borderTopWidth, 0);
+      parentOffset.left += (0,_number__WEBPACK_IMPORTED_MODULE_5__.toFloat)(offsetParentStyles.borderLeftWidth, 0);
+    }
+  }
+
+  return {
+    top: _offset.top - parentOffset.top - (0,_number__WEBPACK_IMPORTED_MODULE_5__.toFloat)(elStyles.marginTop, 0),
+    left: _offset.left - parentOffset.left - (0,_number__WEBPACK_IMPORTED_MODULE_5__.toFloat)(elStyles.marginLeft, 0)
+  };
+}; // Find all tabable elements in the given element
+// Assumes users have not used `tabindex` > `0` on elements
+
+var getTabables = function getTabables() {
+  var rootEl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document;
+  return selectAll(TABABLE_SELECTOR, rootEl).filter(isVisible).filter(function (el) {
+    return el.tabIndex > -1 && !el.disabled;
+  });
+}; // Attempt to focus an element, and return `true` if successful
+
+var attemptFocus = function attemptFocus(el) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  try {
+    el.focus(options);
+  } catch (_unused) {}
+
+  return isActiveElement(el);
+}; // Attempt to blur an element, and return `true` if successful
+
+var attemptBlur = function attemptBlur(el) {
+  try {
+    el.blur();
+  } catch (_unused2) {}
+
+  return !isActiveElement(el);
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/env.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/env.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getEnv": () => (/* binding */ getEnv),
+/* harmony export */   "getNoWarn": () => (/* binding */ getNoWarn)
+/* harmony export */ });
+/* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
+/**
+ * Utilities to get information about the current environment
+ */
+var getEnv = function getEnv(key) {
+  var fallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  var env = typeof process !== 'undefined' && process ? process.env || {} : {};
+
+  if (!key) {
+    /* istanbul ignore next */
+    return env;
+  }
+
+  return env[key] || fallback;
+};
+var getNoWarn = function getNoWarn() {
+  return getEnv('BOOTSTRAP_VUE_NO_WARN') || getEnv('NODE_ENV') === 'production';
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/events.js":
+/*!********************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/events.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "parseEventOptions": () => (/* binding */ parseEventOptions),
+/* harmony export */   "eventOn": () => (/* binding */ eventOn),
+/* harmony export */   "eventOff": () => (/* binding */ eventOff),
+/* harmony export */   "eventOnOff": () => (/* binding */ eventOnOff),
+/* harmony export */   "stopEvent": () => (/* binding */ stopEvent),
+/* harmony export */   "getRootEventName": () => (/* binding */ getRootEventName),
+/* harmony export */   "getRootActionEventName": () => (/* binding */ getRootActionEventName)
+/* harmony export */ });
+/* harmony import */ var _constants_env__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/env */ "./node_modules/bootstrap-vue/esm/constants/env.js");
+/* harmony import */ var _constants_events__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../constants/events */ "./node_modules/bootstrap-vue/esm/constants/events.js");
+/* harmony import */ var _constants_regex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../constants/regex */ "./node_modules/bootstrap-vue/esm/constants/regex.js");
+/* harmony import */ var _inspect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _string__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./string */ "./node_modules/bootstrap-vue/esm/utils/string.js");
+
+
+
+
+ // --- Utils ---
+// Normalize event options based on support of passive option
+// Exported only for testing purposes
+
+var parseEventOptions = function parseEventOptions(options) {
+  /* istanbul ignore else: can't test in JSDOM, as it supports passive */
+  if (_constants_env__WEBPACK_IMPORTED_MODULE_0__.HAS_PASSIVE_EVENT_SUPPORT) {
+    return (0,_inspect__WEBPACK_IMPORTED_MODULE_1__.isObject)(options) ? options : {
+      capture: !!options || false
+    };
+  } else {
+    // Need to translate to actual Boolean value
+    return !!((0,_inspect__WEBPACK_IMPORTED_MODULE_1__.isObject)(options) ? options.capture : options);
+  }
+}; // Attach an event listener to an element
+
+var eventOn = function eventOn(el, eventName, handler, options) {
+  if (el && el.addEventListener) {
+    el.addEventListener(eventName, handler, parseEventOptions(options));
+  }
+}; // Remove an event listener from an element
+
+var eventOff = function eventOff(el, eventName, handler, options) {
+  if (el && el.removeEventListener) {
+    el.removeEventListener(eventName, handler, parseEventOptions(options));
+  }
+}; // Utility method to add/remove a event listener based on first argument (boolean)
+// It passes all other arguments to the `eventOn()` or `eventOff` method
+
+var eventOnOff = function eventOnOff(on) {
+  var method = on ? eventOn : eventOff;
+
+  for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    args[_key - 1] = arguments[_key];
+  }
+
+  method.apply(void 0, args);
+}; // Utility method to prevent the default event handling and propagation
+
+var stopEvent = function stopEvent(event) {
+  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      _ref$preventDefault = _ref.preventDefault,
+      preventDefault = _ref$preventDefault === void 0 ? true : _ref$preventDefault,
+      _ref$propagation = _ref.propagation,
+      propagation = _ref$propagation === void 0 ? true : _ref$propagation,
+      _ref$immediatePropaga = _ref.immediatePropagation,
+      immediatePropagation = _ref$immediatePropaga === void 0 ? false : _ref$immediatePropaga;
+
+  if (preventDefault) {
+    event.preventDefault();
+  }
+
+  if (propagation) {
+    event.stopPropagation();
+  }
+
+  if (immediatePropagation) {
+    event.stopImmediatePropagation();
+  }
+}; // Helper method to convert a component/directive name to a base event name
+// `getBaseEventName('BNavigationItem')` => 'navigation-item'
+// `getBaseEventName('BVToggle')` => 'toggle'
+
+var getBaseEventName = function getBaseEventName(value) {
+  return (0,_string__WEBPACK_IMPORTED_MODULE_2__.kebabCase)(value.replace(_constants_regex__WEBPACK_IMPORTED_MODULE_3__.RX_BV_PREFIX, ''));
+}; // Get a root event name by component/directive and event name
+// `getBaseEventName('BModal', 'show')` => 'bv::modal::show'
+
+
+var getRootEventName = function getRootEventName(name, eventName) {
+  return [_constants_events__WEBPACK_IMPORTED_MODULE_4__.ROOT_EVENT_NAME_PREFIX, getBaseEventName(name), eventName].join(_constants_events__WEBPACK_IMPORTED_MODULE_4__.ROOT_EVENT_NAME_SEPARATOR);
+}; // Get a root action event name by component/directive and action name
+// `getRootActionEventName('BModal', 'show')` => 'bv::show::modal'
+
+var getRootActionEventName = function getRootActionEventName(name, actionName) {
+  return [_constants_events__WEBPACK_IMPORTED_MODULE_4__.ROOT_EVENT_NAME_PREFIX, actionName, getBaseEventName(name)].join(_constants_events__WEBPACK_IMPORTED_MODULE_4__.ROOT_EVENT_NAME_SEPARATOR);
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/get-scope-id.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/get-scope-id.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getScopeId": () => (/* binding */ getScopeId)
+/* harmony export */ });
+// This method returns a component's scoped style attribute name: `data-v-xxxxxxx`
+// The `_scopeId` options property is added by vue-loader when using scoped styles
+// and will be `undefined` if no scoped styles are in use
+var getScopeId = function getScopeId(vm) {
+  var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  return vm ? vm.$options._scopeId || defaultValue : defaultValue;
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/html.js":
+/*!******************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/html.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "stripTags": () => (/* binding */ stripTags),
+/* harmony export */   "htmlOrText": () => (/* binding */ htmlOrText)
+/* harmony export */ });
+/* harmony import */ var _constants_regex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/regex */ "./node_modules/bootstrap-vue/esm/constants/regex.js");
+ // Removes anything that looks like an HTML tag from the supplied string
+
+var stripTags = function stripTags() {
+  var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  return String(text).replace(_constants_regex__WEBPACK_IMPORTED_MODULE_0__.RX_HTML_TAGS, '');
+}; // Generate a `domProps` object for either `innerHTML`, `textContent` or an empty object
+
+var htmlOrText = function htmlOrText(innerHTML, textContent) {
+  return innerHTML ? {
+    innerHTML: innerHTML
+  } : textContent ? {
+    textContent: textContent
+  } : {};
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/identity.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/identity.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "identity": () => (/* binding */ identity)
+/* harmony export */ });
+var identity = function identity(x) {
+  return x;
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/inspect.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/inspect.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "toType": () => (/* binding */ toType),
+/* harmony export */   "toRawType": () => (/* binding */ toRawType),
+/* harmony export */   "toRawTypeLC": () => (/* binding */ toRawTypeLC),
+/* harmony export */   "isUndefined": () => (/* binding */ isUndefined),
+/* harmony export */   "isNull": () => (/* binding */ isNull),
+/* harmony export */   "isEmptyString": () => (/* binding */ isEmptyString),
+/* harmony export */   "isUndefinedOrNull": () => (/* binding */ isUndefinedOrNull),
+/* harmony export */   "isUndefinedOrNullOrEmpty": () => (/* binding */ isUndefinedOrNullOrEmpty),
+/* harmony export */   "isFunction": () => (/* binding */ isFunction),
+/* harmony export */   "isBoolean": () => (/* binding */ isBoolean),
+/* harmony export */   "isString": () => (/* binding */ isString),
+/* harmony export */   "isNumber": () => (/* binding */ isNumber),
+/* harmony export */   "isNumeric": () => (/* binding */ isNumeric),
+/* harmony export */   "isPrimitive": () => (/* binding */ isPrimitive),
+/* harmony export */   "isArray": () => (/* binding */ isArray),
+/* harmony export */   "isObject": () => (/* binding */ isObject),
+/* harmony export */   "isPlainObject": () => (/* binding */ isPlainObject),
+/* harmony export */   "isDate": () => (/* binding */ isDate),
+/* harmony export */   "isEvent": () => (/* binding */ isEvent),
+/* harmony export */   "isFile": () => (/* binding */ isFile),
+/* harmony export */   "isRegExp": () => (/* binding */ isRegExp),
+/* harmony export */   "isPromise": () => (/* binding */ isPromise)
+/* harmony export */ });
+/* harmony import */ var _constants_regex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/regex */ "./node_modules/bootstrap-vue/esm/constants/regex.js");
+/* harmony import */ var _constants_safe_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants/safe-types */ "./node_modules/bootstrap-vue/esm/constants/safe-types.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+ // --- Convenience inspection utilities ---
+
+var toType = function toType(value) {
+  return _typeof(value);
+};
+var toRawType = function toRawType(value) {
+  return Object.prototype.toString.call(value).slice(8, -1);
+};
+var toRawTypeLC = function toRawTypeLC(value) {
+  return toRawType(value).toLowerCase();
+};
+var isUndefined = function isUndefined(value) {
+  return value === undefined;
+};
+var isNull = function isNull(value) {
+  return value === null;
+};
+var isEmptyString = function isEmptyString(value) {
+  return value === '';
+};
+var isUndefinedOrNull = function isUndefinedOrNull(value) {
+  return isUndefined(value) || isNull(value);
+};
+var isUndefinedOrNullOrEmpty = function isUndefinedOrNullOrEmpty(value) {
+  return isUndefinedOrNull(value) || isEmptyString(value);
+};
+var isFunction = function isFunction(value) {
+  return toType(value) === 'function';
+};
+var isBoolean = function isBoolean(value) {
+  return toType(value) === 'boolean';
+};
+var isString = function isString(value) {
+  return toType(value) === 'string';
+};
+var isNumber = function isNumber(value) {
+  return toType(value) === 'number';
+};
+var isNumeric = function isNumeric(value) {
+  return _constants_regex__WEBPACK_IMPORTED_MODULE_0__.RX_NUMBER.test(String(value));
+};
+var isPrimitive = function isPrimitive(value) {
+  return isBoolean(value) || isString(value) || isNumber(value);
+};
+var isArray = function isArray(value) {
+  return Array.isArray(value);
+}; // Quick object check
+// This is primarily used to tell Objects from primitive values
+// when we know the value is a JSON-compliant type
+// Note object could be a complex type like array, Date, etc.
+
+var isObject = function isObject(obj) {
+  return obj !== null && _typeof(obj) === 'object';
+}; // Strict object type check
+// Only returns true for plain JavaScript objects
+
+var isPlainObject = function isPlainObject(obj) {
+  return Object.prototype.toString.call(obj) === '[object Object]';
+};
+var isDate = function isDate(value) {
+  return value instanceof Date;
+};
+var isEvent = function isEvent(value) {
+  return value instanceof Event;
+};
+var isFile = function isFile(value) {
+  return value instanceof _constants_safe_types__WEBPACK_IMPORTED_MODULE_1__.File;
+};
+var isRegExp = function isRegExp(value) {
+  return toRawType(value) === 'RegExp';
+};
+var isPromise = function isPromise(value) {
+  return !isUndefinedOrNull(value) && isFunction(value.then) && isFunction(value.catch);
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/loose-equal.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/loose-equal.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "looseEqual": () => (/* binding */ looseEqual)
+/* harmony export */ });
+/* harmony import */ var _object__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
+/* harmony import */ var _inspect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+
+ // Assumes both a and b are arrays!
+// Handles when arrays are "sparse" (array.every(...) doesn't handle sparse)
+
+var compareArrays = function compareArrays(a, b) {
+  if (a.length !== b.length) {
+    return false;
+  }
+
+  var equal = true;
+
+  for (var i = 0; equal && i < a.length; i++) {
+    equal = looseEqual(a[i], b[i]);
+  }
+
+  return equal;
+};
+/**
+ * Check if two values are loosely equal - that is,
+ * if they are plain objects, do they have the same shape?
+ * Returns boolean true or false
+ */
+
+
+var looseEqual = function looseEqual(a, b) {
+  if (a === b) {
+    return true;
+  }
+
+  var aValidType = (0,_inspect__WEBPACK_IMPORTED_MODULE_0__.isDate)(a);
+  var bValidType = (0,_inspect__WEBPACK_IMPORTED_MODULE_0__.isDate)(b);
+
+  if (aValidType || bValidType) {
+    return aValidType && bValidType ? a.getTime() === b.getTime() : false;
+  }
+
+  aValidType = (0,_inspect__WEBPACK_IMPORTED_MODULE_0__.isArray)(a);
+  bValidType = (0,_inspect__WEBPACK_IMPORTED_MODULE_0__.isArray)(b);
+
+  if (aValidType || bValidType) {
+    return aValidType && bValidType ? compareArrays(a, b) : false;
+  }
+
+  aValidType = (0,_inspect__WEBPACK_IMPORTED_MODULE_0__.isObject)(a);
+  bValidType = (0,_inspect__WEBPACK_IMPORTED_MODULE_0__.isObject)(b);
+
+  if (aValidType || bValidType) {
+    /* istanbul ignore if: this if will probably never be called */
+    if (!aValidType || !bValidType) {
+      return false;
+    }
+
+    var aKeysCount = (0,_object__WEBPACK_IMPORTED_MODULE_1__.keys)(a).length;
+    var bKeysCount = (0,_object__WEBPACK_IMPORTED_MODULE_1__.keys)(b).length;
+
+    if (aKeysCount !== bKeysCount) {
+      return false;
+    }
+
+    for (var key in a) {
+      var aHasKey = (0,_object__WEBPACK_IMPORTED_MODULE_1__.hasOwnProperty)(a, key);
+      var bHasKey = (0,_object__WEBPACK_IMPORTED_MODULE_1__.hasOwnProperty)(b, key);
+
+      if (aHasKey && !bHasKey || !aHasKey && bHasKey || !looseEqual(a[key], b[key])) {
+        return false;
+      }
+    }
+  }
+
+  return String(a) === String(b);
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/memoize.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/memoize.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "memoize": () => (/* binding */ memoize)
+/* harmony export */ });
+/* harmony import */ var _object__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
+
+var memoize = function memoize(fn) {
+  var cache = (0,_object__WEBPACK_IMPORTED_MODULE_0__.create)(null);
+  return function () {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    var argsKey = JSON.stringify(args);
+    return cache[argsKey] = cache[argsKey] || fn.apply(null, args);
+  };
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/model.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/model.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "makeModelMixin": () => (/* binding */ makeModelMixin)
+/* harmony export */ });
+/* harmony import */ var _vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var _constants_events__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants/events */ "./node_modules/bootstrap-vue/esm/constants/events.js");
+/* harmony import */ var _constants_props__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/props */ "./node_modules/bootstrap-vue/esm/constants/props.js");
+/* harmony import */ var _props__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./props */ "./node_modules/bootstrap-vue/esm/utils/props.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+var makeModelMixin = function makeModelMixin(prop) {
+  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      _ref$type = _ref.type,
+      type = _ref$type === void 0 ? _constants_props__WEBPACK_IMPORTED_MODULE_0__.PROP_TYPE_ANY : _ref$type,
+      _ref$defaultValue = _ref.defaultValue,
+      defaultValue = _ref$defaultValue === void 0 ? undefined : _ref$defaultValue,
+      _ref$validator = _ref.validator,
+      validator = _ref$validator === void 0 ? undefined : _ref$validator,
+      _ref$event = _ref.event,
+      event = _ref$event === void 0 ? _constants_events__WEBPACK_IMPORTED_MODULE_1__.EVENT_NAME_INPUT : _ref$event;
+
+  var props = _defineProperty({}, prop, (0,_props__WEBPACK_IMPORTED_MODULE_2__.makeProp)(type, defaultValue, validator)); // @vue/component
+
+
+  var mixin = _vue__WEBPACK_IMPORTED_MODULE_3__["default"].extend({
+    model: {
+      prop: prop,
+      event: event
+    },
+    props: props
+  });
+  return {
+    mixin: mixin,
+    props: props,
+    prop: prop,
+    event: event
+  };
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/normalize-slot.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/normalize-slot.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "hasNormalizedSlot": () => (/* binding */ hasNormalizedSlot),
+/* harmony export */   "normalizeSlot": () => (/* binding */ normalizeSlot)
+/* harmony export */ });
+/* harmony import */ var _array__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
+/* harmony import */ var _identity__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./identity */ "./node_modules/bootstrap-vue/esm/utils/identity.js");
+/* harmony import */ var _inspect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+
+
+ // Note for functional components:
+// In functional components, `slots` is a function so it must be called
+// first before passing to the below methods. `scopedSlots` is always an
+// object and may be undefined (for Vue < 2.6.x)
+
+/**
+ * Returns true if either scoped or unscoped named slot exists
+ *
+ * @param {String, Array} name or name[]
+ * @param {Object} scopedSlots
+ * @param {Object} slots
+ * @returns {Array|undefined} VNodes
+ */
+
+var hasNormalizedSlot = function hasNormalizedSlot(names) {
+  var $scopedSlots = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var $slots = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  // Ensure names is an array
+  names = (0,_array__WEBPACK_IMPORTED_MODULE_0__.concat)(names).filter(_identity__WEBPACK_IMPORTED_MODULE_1__.identity); // Returns true if the either a $scopedSlot or $slot exists with the specified name
+
+  return names.some(function (name) {
+    return $scopedSlots[name] || $slots[name];
+  });
+};
+/**
+ * Returns VNodes for named slot either scoped or unscoped
+ *
+ * @param {String, Array} name or name[]
+ * @param {String} scope
+ * @param {Object} scopedSlots
+ * @param {Object} slots
+ * @returns {Array|undefined} VNodes
+ */
+
+var normalizeSlot = function normalizeSlot(names) {
+  var scope = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var $scopedSlots = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  var $slots = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+  // Ensure names is an array
+  names = (0,_array__WEBPACK_IMPORTED_MODULE_0__.concat)(names).filter(_identity__WEBPACK_IMPORTED_MODULE_1__.identity);
+  var slot;
+
+  for (var i = 0; i < names.length && !slot; i++) {
+    var name = names[i];
+    slot = $scopedSlots[name] || $slots[name];
+  } // Note: in Vue 2.6.x, all named slots are also scoped slots
+
+
+  return (0,_inspect__WEBPACK_IMPORTED_MODULE_2__.isFunction)(slot) ? slot(scope) : slot;
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/number.js":
+/*!********************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/number.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "toInteger": () => (/* binding */ toInteger),
+/* harmony export */   "toFloat": () => (/* binding */ toFloat),
+/* harmony export */   "toFixed": () => (/* binding */ toFixed)
+/* harmony export */ });
+// Number utilities
+// Converts a value (string, number, etc.) to an integer number
+// Assumes radix base 10
+var toInteger = function toInteger(value) {
+  var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : NaN;
+  var integer = parseInt(value, 10);
+  return isNaN(integer) ? defaultValue : integer;
+}; // Converts a value (string, number, etc.) to a number
+
+var toFloat = function toFloat(value) {
+  var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : NaN;
+  var float = parseFloat(value);
+  return isNaN(float) ? defaultValue : float;
+}; // Converts a value (string, number, etc.) to a string
+// representation with `precision` digits after the decimal
+// Returns the string 'NaN' if the value cannot be converted
+
+var toFixed = function toFixed(val, precision) {
+  return toFloat(val).toFixed(toInteger(precision, 0));
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/object.js":
+/*!********************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/object.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "assign": () => (/* binding */ assign),
+/* harmony export */   "create": () => (/* binding */ create),
+/* harmony export */   "defineProperties": () => (/* binding */ defineProperties),
+/* harmony export */   "defineProperty": () => (/* binding */ defineProperty),
+/* harmony export */   "freeze": () => (/* binding */ freeze),
+/* harmony export */   "getOwnPropertyNames": () => (/* binding */ getOwnPropertyNames),
+/* harmony export */   "getOwnPropertyDescriptor": () => (/* binding */ getOwnPropertyDescriptor),
+/* harmony export */   "getOwnPropertySymbols": () => (/* binding */ getOwnPropertySymbols),
+/* harmony export */   "getPrototypeOf": () => (/* binding */ getPrototypeOf),
+/* harmony export */   "is": () => (/* binding */ is),
+/* harmony export */   "isFrozen": () => (/* binding */ isFrozen),
+/* harmony export */   "keys": () => (/* binding */ keys),
+/* harmony export */   "hasOwnProperty": () => (/* binding */ hasOwnProperty),
+/* harmony export */   "toString": () => (/* binding */ toString),
+/* harmony export */   "clone": () => (/* binding */ clone),
+/* harmony export */   "pick": () => (/* binding */ pick),
+/* harmony export */   "omit": () => (/* binding */ omit),
+/* harmony export */   "mergeDeep": () => (/* binding */ mergeDeep),
+/* harmony export */   "sortKeys": () => (/* binding */ sortKeys),
+/* harmony export */   "readonlyDescriptor": () => (/* binding */ readonlyDescriptor)
+/* harmony export */ });
+/* harmony import */ var _inspect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+ // --- Static ---
+
+var assign = function assign() {
+  return Object.assign.apply(Object, arguments);
+};
+var create = function create(proto, optionalProps) {
+  return Object.create(proto, optionalProps);
+};
+var defineProperties = function defineProperties(obj, props) {
+  return Object.defineProperties(obj, props);
+};
+var defineProperty = function defineProperty(obj, prop, descriptor) {
+  return Object.defineProperty(obj, prop, descriptor);
+};
+var freeze = function freeze(obj) {
+  return Object.freeze(obj);
+};
+var getOwnPropertyNames = function getOwnPropertyNames(obj) {
+  return Object.getOwnPropertyNames(obj);
+};
+var getOwnPropertyDescriptor = function getOwnPropertyDescriptor(obj, prop) {
+  return Object.getOwnPropertyDescriptor(obj, prop);
+};
+var getOwnPropertySymbols = function getOwnPropertySymbols(obj) {
+  return Object.getOwnPropertySymbols(obj);
+};
+var getPrototypeOf = function getPrototypeOf(obj) {
+  return Object.getPrototypeOf(obj);
+};
+var is = function is(value1, value2) {
+  return Object.is(value1, value2);
+};
+var isFrozen = function isFrozen(obj) {
+  return Object.isFrozen(obj);
+};
+var keys = function keys(obj) {
+  return Object.keys(obj);
+}; // --- "Instance" ---
+
+var hasOwnProperty = function hasOwnProperty(obj, prop) {
+  return Object.prototype.hasOwnProperty.call(obj, prop);
+};
+var toString = function toString(obj) {
+  return Object.prototype.toString.call(obj);
+}; // --- Utilities ---
+// Shallow copy an object
+
+var clone = function clone(obj) {
+  return _objectSpread({}, obj);
+}; // Return a shallow copy of object with the specified properties only
+// See: https://gist.github.com/bisubus/2da8af7e801ffd813fab7ac221aa7afc
+
+var pick = function pick(obj, props) {
+  return keys(obj).filter(function (key) {
+    return props.indexOf(key) !== -1;
+  }).reduce(function (result, key) {
+    return _objectSpread(_objectSpread({}, result), {}, _defineProperty({}, key, obj[key]));
+  }, {});
+}; // Return a shallow copy of object with the specified properties omitted
+// See: https://gist.github.com/bisubus/2da8af7e801ffd813fab7ac221aa7afc
+
+var omit = function omit(obj, props) {
+  return keys(obj).filter(function (key) {
+    return props.indexOf(key) === -1;
+  }).reduce(function (result, key) {
+    return _objectSpread(_objectSpread({}, result), {}, _defineProperty({}, key, obj[key]));
+  }, {});
+}; // Merges two object deeply together
+// See: https://gist.github.com/Salakar/1d7137de9cb8b704e48a
+
+var mergeDeep = function mergeDeep(target, source) {
+  if ((0,_inspect__WEBPACK_IMPORTED_MODULE_0__.isObject)(target) && (0,_inspect__WEBPACK_IMPORTED_MODULE_0__.isObject)(source)) {
+    keys(source).forEach(function (key) {
+      if ((0,_inspect__WEBPACK_IMPORTED_MODULE_0__.isObject)(source[key])) {
+        if (!target[key] || !(0,_inspect__WEBPACK_IMPORTED_MODULE_0__.isObject)(target[key])) {
+          target[key] = source[key];
+        }
+
+        mergeDeep(target[key], source[key]);
+      } else {
+        assign(target, _defineProperty({}, key, source[key]));
+      }
+    });
+  }
+
+  return target;
+}; // Returns a shallow copy of the object with keys in sorted order
+
+var sortKeys = function sortKeys(obj) {
+  return keys(obj).sort().reduce(function (result, key) {
+    return _objectSpread(_objectSpread({}, result), {}, _defineProperty({}, key, obj[key]));
+  }, {});
+}; // Convenience method to create a read-only descriptor
+
+var readonlyDescriptor = function readonlyDescriptor() {
+  return {
+    enumerable: true,
+    configurable: false,
+    writable: false
+  };
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/observe-dom.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/observe-dom.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "observeDom": () => (/* binding */ observeDom)
+/* harmony export */ });
+/* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
+/* harmony import */ var _warn__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./warn */ "./node_modules/bootstrap-vue/esm/utils/warn.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+/**
+ * Observe a DOM element changes, falls back to eventListener mode
+ * @param {Element} el The DOM element to observe
+ * @param {Function} callback callback to be called on change
+ * @param {object} [options={childList: true, subtree: true}] observe options
+ * @see https://stackoverflow.com/questions/3219758
+ */
+
+var observeDom = function observeDom(el, callback, options)
+/* istanbul ignore next: difficult to test in JSDOM */
+{
+  // Handle cases where we might be passed a Vue instance
+  el = el ? el.$el || el : null; // Early exit when we have no element
+
+  /* istanbul ignore next: difficult to test in JSDOM */
+
+  if (!(0,_dom__WEBPACK_IMPORTED_MODULE_0__.isElement)(el)) {
+    return null;
+  } // Exit and throw a warning when `MutationObserver` isn't available
+
+
+  if ((0,_warn__WEBPACK_IMPORTED_MODULE_1__.warnNoMutationObserverSupport)('observeDom')) {
+    return null;
+  } // Define a new observer
+
+
+  var obs = new _dom__WEBPACK_IMPORTED_MODULE_0__.MutationObs(function (mutations) {
+    var changed = false; // A mutation can contain several change records, so we loop
+    // through them to see what has changed
+    // We break out of the loop early if any "significant" change
+    // has been detected
+
+    for (var i = 0; i < mutations.length && !changed; i++) {
+      // The mutation record
+      var mutation = mutations[i]; // Mutation type
+
+      var type = mutation.type; // DOM node (could be any DOM node type - HTMLElement, Text, comment, etc.)
+
+      var target = mutation.target; // Detect whether a change happened based on type and target
+
+      if (type === 'characterData' && target.nodeType === Node.TEXT_NODE) {
+        // We ignore nodes that are not TEXT (i.e. comments, etc.)
+        // as they don't change layout
+        changed = true;
+      } else if (type === 'attributes') {
+        changed = true;
+      } else if (type === 'childList' && (mutation.addedNodes.length > 0 || mutation.removedNodes.length > 0)) {
+        // This includes HTMLElement and text nodes being
+        // added/removed/re-arranged
+        changed = true;
+      }
+    } // We only call the callback if a change that could affect
+    // layout/size truly happened
+
+
+    if (changed) {
+      callback();
+    }
+  }); // Have the observer observe foo for changes in children, etc
+
+  obs.observe(el, _objectSpread({
+    childList: true,
+    subtree: true
+  }, options)); // We return a reference to the observer so that `obs.disconnect()`
+  // can be called if necessary
+  // To reduce overhead when the root element is hidden
+
+  return obs;
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/props.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/props.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "prefixPropName": () => (/* binding */ prefixPropName),
+/* harmony export */   "unprefixPropName": () => (/* binding */ unprefixPropName),
+/* harmony export */   "suffixPropName": () => (/* binding */ suffixPropName),
+/* harmony export */   "makeProp": () => (/* binding */ makeProp),
+/* harmony export */   "copyProps": () => (/* binding */ copyProps),
+/* harmony export */   "pluckProps": () => (/* binding */ pluckProps),
+/* harmony export */   "makePropConfigurable": () => (/* binding */ makePropConfigurable),
+/* harmony export */   "makePropsConfigurable": () => (/* binding */ makePropsConfigurable),
+/* harmony export */   "hasPropFunction": () => (/* binding */ hasPropFunction)
+/* harmony export */ });
+/* harmony import */ var _constants_props__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants/props */ "./node_modules/bootstrap-vue/esm/constants/props.js");
+/* harmony import */ var _clone_deep__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./clone-deep */ "./node_modules/bootstrap-vue/esm/utils/clone-deep.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./config */ "./node_modules/bootstrap-vue/esm/utils/config.js");
+/* harmony import */ var _identity__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./identity */ "./node_modules/bootstrap-vue/esm/utils/identity.js");
+/* harmony import */ var _inspect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _object__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
+/* harmony import */ var _string__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./string */ "./node_modules/bootstrap-vue/esm/utils/string.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+ // Prefix a property
+
+var prefixPropName = function prefixPropName(prefix, value) {
+  return prefix + (0,_string__WEBPACK_IMPORTED_MODULE_0__.upperFirst)(value);
+}; // Remove a prefix from a property
+
+var unprefixPropName = function unprefixPropName(prefix, value) {
+  return (0,_string__WEBPACK_IMPORTED_MODULE_0__.lowerFirst)(value.replace(prefix, ''));
+}; // Suffix can be a falsey value so nothing is appended to string
+// (helps when looping over props & some shouldn't change)
+// Use data last parameters to allow for currying
+
+var suffixPropName = function suffixPropName(suffix, value) {
+  return value + (suffix ? (0,_string__WEBPACK_IMPORTED_MODULE_0__.upperFirst)(suffix) : '');
+}; // Generates a prop object
+
+var makeProp = function makeProp() {
+  var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _constants_props__WEBPACK_IMPORTED_MODULE_1__.PROP_TYPE_ANY;
+  var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
+  var requiredOrValidator = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : undefined;
+  var validator = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : undefined;
+  var required = requiredOrValidator === true;
+  validator = required ? validator : requiredOrValidator;
+  return _objectSpread(_objectSpread(_objectSpread({}, type ? {
+    type: type
+  } : {}), required ? {
+    required: required
+  } : (0,_inspect__WEBPACK_IMPORTED_MODULE_2__.isUndefined)(value) ? {} : {
+    default: (0,_inspect__WEBPACK_IMPORTED_MODULE_2__.isObject)(value) ? function () {
+      return value;
+    } : value
+  }), (0,_inspect__WEBPACK_IMPORTED_MODULE_2__.isUndefined)(validator) ? {} : {
+    validator: validator
+  });
+}; // Copies props from one array/object to a new array/object
+// Prop values are also cloned as new references to prevent possible
+// mutation of original prop object values
+// Optionally accepts a function to transform the prop name
+
+var copyProps = function copyProps(props) {
+  var transformFn = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _identity__WEBPACK_IMPORTED_MODULE_3__.identity;
+
+  if ((0,_inspect__WEBPACK_IMPORTED_MODULE_2__.isArray)(props)) {
+    return props.map(transformFn);
+  }
+
+  var copied = {};
+
+  for (var prop in props) {
+    /* istanbul ignore else */
+    if ((0,_object__WEBPACK_IMPORTED_MODULE_4__.hasOwnProperty)(props, prop)) {
+      // If the prop value is an object, do a shallow clone
+      // to prevent potential mutations to the original object
+      copied[transformFn(prop)] = (0,_inspect__WEBPACK_IMPORTED_MODULE_2__.isObject)(props[prop]) ? (0,_object__WEBPACK_IMPORTED_MODULE_4__.clone)(props[prop]) : props[prop];
+    }
+  }
+
+  return copied;
+}; // Given an array of properties or an object of property keys,
+// plucks all the values off the target object, returning a new object
+// that has props that reference the original prop values
+
+var pluckProps = function pluckProps(keysToPluck, objToPluck) {
+  var transformFn = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _identity__WEBPACK_IMPORTED_MODULE_3__.identity;
+  return ((0,_inspect__WEBPACK_IMPORTED_MODULE_2__.isArray)(keysToPluck) ? keysToPluck.slice() : (0,_object__WEBPACK_IMPORTED_MODULE_4__.keys)(keysToPluck)).reduce(function (memo, prop) {
+    memo[transformFn(prop)] = objToPluck[prop];
+    return memo;
+  }, {});
+}; // Make a prop object configurable by global configuration
+// Replaces the current `default` key of each prop with a `getComponentConfig()`
+// call that falls back to the current default value of the prop
+
+var makePropConfigurable = function makePropConfigurable(prop, key, componentKey) {
+  return _objectSpread(_objectSpread({}, (0,_clone_deep__WEBPACK_IMPORTED_MODULE_5__.cloneDeep)(prop)), {}, {
+    default: function bvConfigurablePropDefault() {
+      var value = (0,_config__WEBPACK_IMPORTED_MODULE_6__.getComponentConfig)(componentKey, key, prop.default);
+      return (0,_inspect__WEBPACK_IMPORTED_MODULE_2__.isFunction)(value) ? value() : value;
+    }
+  });
+}; // Make a props object configurable by global configuration
+// Replaces the current `default` key of each prop with a `getComponentConfig()`
+// call that falls back to the current default value of the prop
+
+var makePropsConfigurable = function makePropsConfigurable(props, componentKey) {
+  return (0,_object__WEBPACK_IMPORTED_MODULE_4__.keys)(props).reduce(function (result, key) {
+    return _objectSpread(_objectSpread({}, result), {}, _defineProperty({}, key, makePropConfigurable(props[key], key, componentKey)));
+  }, {});
+}; // Get function name we use in `makePropConfigurable()`
+// for the prop default value override to compare
+// against in `hasPropFunction()`
+
+var configurablePropDefaultFnName = makePropConfigurable({}, '', '').default.name; // Detect wether the given value is currently a function
+// and isn't the props default function
+
+var hasPropFunction = function hasPropFunction(fn) {
+  return (0,_inspect__WEBPACK_IMPORTED_MODULE_2__.isFunction)(fn) && fn.name !== configurablePropDefaultFnName;
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/router.js":
+/*!********************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/router.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "stringifyQueryObj": () => (/* binding */ stringifyQueryObj),
+/* harmony export */   "parseQuery": () => (/* binding */ parseQuery),
+/* harmony export */   "isLink": () => (/* binding */ isLink),
+/* harmony export */   "isRouterLink": () => (/* binding */ isRouterLink),
+/* harmony export */   "computeTag": () => (/* binding */ computeTag),
+/* harmony export */   "computeRel": () => (/* binding */ computeRel),
+/* harmony export */   "computeHref": () => (/* binding */ computeHref)
+/* harmony export */ });
+/* harmony import */ var _constants_regex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants/regex */ "./node_modules/bootstrap-vue/esm/constants/regex.js");
+/* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
+/* harmony import */ var _inspect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _object__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
+/* harmony import */ var _string__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./string */ "./node_modules/bootstrap-vue/esm/utils/string.js");
+
+
+
+
+
+var ANCHOR_TAG = 'a'; // Method to replace reserved chars
+
+var encodeReserveReplacer = function encodeReserveReplacer(c) {
+  return '%' + c.charCodeAt(0).toString(16);
+}; // Fixed encodeURIComponent which is more conformant to RFC3986:
+// - escapes [!'()*]
+// - preserve commas
+
+
+var encode = function encode(str) {
+  return encodeURIComponent((0,_string__WEBPACK_IMPORTED_MODULE_0__.toString)(str)).replace(_constants_regex__WEBPACK_IMPORTED_MODULE_1__.RX_ENCODE_REVERSE, encodeReserveReplacer).replace(_constants_regex__WEBPACK_IMPORTED_MODULE_1__.RX_ENCODED_COMMA, ',');
+};
+
+var decode = decodeURIComponent; // Stringifies an object of query parameters
+// See: https://github.com/vuejs/vue-router/blob/dev/src/util/query.js
+
+var stringifyQueryObj = function stringifyQueryObj(obj) {
+  if (!(0,_inspect__WEBPACK_IMPORTED_MODULE_2__.isPlainObject)(obj)) {
+    return '';
+  }
+
+  var query = (0,_object__WEBPACK_IMPORTED_MODULE_3__.keys)(obj).map(function (key) {
+    var value = obj[key];
+
+    if ((0,_inspect__WEBPACK_IMPORTED_MODULE_2__.isUndefined)(value)) {
+      return '';
+    } else if ((0,_inspect__WEBPACK_IMPORTED_MODULE_2__.isNull)(value)) {
+      return encode(key);
+    } else if ((0,_inspect__WEBPACK_IMPORTED_MODULE_2__.isArray)(value)) {
+      return value.reduce(function (results, value2) {
+        if ((0,_inspect__WEBPACK_IMPORTED_MODULE_2__.isNull)(value2)) {
+          results.push(encode(key));
+        } else if (!(0,_inspect__WEBPACK_IMPORTED_MODULE_2__.isUndefined)(value2)) {
+          // Faster than string interpolation
+          results.push(encode(key) + '=' + encode(value2));
+        }
+
+        return results;
+      }, []).join('&');
+    } // Faster than string interpolation
+
+
+    return encode(key) + '=' + encode(value);
+  })
+  /* must check for length, as we only want to filter empty strings, not things that look falsey! */
+  .filter(function (x) {
+    return x.length > 0;
+  }).join('&');
+  return query ? "?".concat(query) : '';
+};
+var parseQuery = function parseQuery(query) {
+  var parsed = {};
+  query = (0,_string__WEBPACK_IMPORTED_MODULE_0__.toString)(query).trim().replace(_constants_regex__WEBPACK_IMPORTED_MODULE_1__.RX_QUERY_START, '');
+
+  if (!query) {
+    return parsed;
+  }
+
+  query.split('&').forEach(function (param) {
+    var parts = param.replace(_constants_regex__WEBPACK_IMPORTED_MODULE_1__.RX_PLUS, ' ').split('=');
+    var key = decode(parts.shift());
+    var value = parts.length > 0 ? decode(parts.join('=')) : null;
+
+    if ((0,_inspect__WEBPACK_IMPORTED_MODULE_2__.isUndefined)(parsed[key])) {
+      parsed[key] = value;
+    } else if ((0,_inspect__WEBPACK_IMPORTED_MODULE_2__.isArray)(parsed[key])) {
+      parsed[key].push(value);
+    } else {
+      parsed[key] = [parsed[key], value];
+    }
+  });
+  return parsed;
+};
+var isLink = function isLink(props) {
+  return !!(props.href || props.to);
+};
+var isRouterLink = function isRouterLink(tag) {
+  return !!(tag && !(0,_dom__WEBPACK_IMPORTED_MODULE_4__.isTag)(tag, 'a'));
+};
+var computeTag = function computeTag(_ref, thisOrParent) {
+  var to = _ref.to,
+      disabled = _ref.disabled,
+      routerComponentName = _ref.routerComponentName;
+  var hasRouter = !!thisOrParent.$router;
+
+  if (!hasRouter || hasRouter && (disabled || !to)) {
+    return ANCHOR_TAG;
+  } // TODO:
+  //   Check registered components for existence of user supplied router link component name
+  //   We would need to check PascalCase, kebab-case, and camelCase versions of name:
+  //   const name = routerComponentName
+  //   const names = [name, PascalCase(name), KebabCase(name), CamelCase(name)]
+  //   exists = names.some(name => !!thisOrParent.$options.components[name])
+  //   And may want to cache the result for performance or we just let the render fail
+  //   if the component is not registered
+
+
+  return routerComponentName || (thisOrParent.$nuxt ? 'nuxt-link' : 'router-link');
+};
+var computeRel = function computeRel() {
+  var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      target = _ref2.target,
+      rel = _ref2.rel;
+
+  return target === '_blank' && (0,_inspect__WEBPACK_IMPORTED_MODULE_2__.isNull)(rel) ? 'noopener' : rel || null;
+};
+var computeHref = function computeHref() {
+  var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      href = _ref3.href,
+      to = _ref3.to;
+
+  var tag = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ANCHOR_TAG;
+  var fallback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '#';
+  var toFallback = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '/';
+
+  // Return `href` when explicitly provided
+  if (href) {
+    return href;
+  } // We've checked for `$router` in `computeTag()`, so `isRouterLink()` indicates a live router
+  // When deferring to Vue Router's `<router-link>`, don't use the `href` attribute at all
+  // We return `null`, and then remove `href` from the attributes passed to `<router-link>`
+
+
+  if (isRouterLink(tag)) {
+    return null;
+  } // Fallback to `to` prop (if `to` is a string)
+
+
+  if ((0,_inspect__WEBPACK_IMPORTED_MODULE_2__.isString)(to)) {
+    return to || toFallback;
+  } // Fallback to `to.path' + `to.query` + `to.hash` prop (if `to` is an object)
+
+
+  if ((0,_inspect__WEBPACK_IMPORTED_MODULE_2__.isPlainObject)(to) && (to.path || to.query || to.hash)) {
+    var path = (0,_string__WEBPACK_IMPORTED_MODULE_0__.toString)(to.path);
+    var query = stringifyQueryObj(to.query);
+    var hash = (0,_string__WEBPACK_IMPORTED_MODULE_0__.toString)(to.hash);
+    hash = !hash || hash.charAt(0) === '#' ? hash : "#".concat(hash);
+    return "".concat(path).concat(query).concat(hash) || toFallback;
+  } // If nothing is provided return the fallback
+
+
+  return fallback;
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/string.js":
+/*!********************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/string.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "kebabCase": () => (/* binding */ kebabCase),
+/* harmony export */   "pascalCase": () => (/* binding */ pascalCase),
+/* harmony export */   "startCase": () => (/* binding */ startCase),
+/* harmony export */   "lowerFirst": () => (/* binding */ lowerFirst),
+/* harmony export */   "upperFirst": () => (/* binding */ upperFirst),
+/* harmony export */   "escapeRegExp": () => (/* binding */ escapeRegExp),
+/* harmony export */   "toString": () => (/* binding */ toString),
+/* harmony export */   "trimLeft": () => (/* binding */ trimLeft),
+/* harmony export */   "trimRight": () => (/* binding */ trimRight),
+/* harmony export */   "trim": () => (/* binding */ trim),
+/* harmony export */   "lowerCase": () => (/* binding */ lowerCase),
+/* harmony export */   "upperCase": () => (/* binding */ upperCase)
+/* harmony export */ });
+/* harmony import */ var _constants_regex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/regex */ "./node_modules/bootstrap-vue/esm/constants/regex.js");
+/* harmony import */ var _inspect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+// String utilities
+
+ // --- Utilities ---
+// Converts PascalCase or camelCase to kebab-case
+
+var kebabCase = function kebabCase(str) {
+  return str.replace(_constants_regex__WEBPACK_IMPORTED_MODULE_0__.RX_HYPHENATE, '-$1').toLowerCase();
+}; // Converts a kebab-case or camelCase string to PascalCase
+
+var pascalCase = function pascalCase(str) {
+  str = kebabCase(str).replace(_constants_regex__WEBPACK_IMPORTED_MODULE_0__.RX_UN_KEBAB, function (_, c) {
+    return c ? c.toUpperCase() : '';
+  });
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}; // Converts a string, including strings in camelCase or snake_case, into Start Case
+// It keeps original single quote and hyphen in the word
+// https://github.com/UrbanCompass/to-start-case
+
+var startCase = function startCase(str) {
+  return str.replace(_constants_regex__WEBPACK_IMPORTED_MODULE_0__.RX_UNDERSCORE, ' ').replace(_constants_regex__WEBPACK_IMPORTED_MODULE_0__.RX_LOWER_UPPER, function (str, $1, $2) {
+    return $1 + ' ' + $2;
+  }).replace(_constants_regex__WEBPACK_IMPORTED_MODULE_0__.RX_START_SPACE_WORD, function (str, $1, $2) {
+    return $1 + $2.toUpperCase();
+  });
+}; // Lowercases the first letter of a string and returns a new string
+
+var lowerFirst = function lowerFirst(str) {
+  str = (0,_inspect__WEBPACK_IMPORTED_MODULE_1__.isString)(str) ? str.trim() : String(str);
+  return str.charAt(0).toLowerCase() + str.slice(1);
+}; // Uppercases the first letter of a string and returns a new string
+
+var upperFirst = function upperFirst(str) {
+  str = (0,_inspect__WEBPACK_IMPORTED_MODULE_1__.isString)(str) ? str.trim() : String(str);
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}; // Escape characters to be used in building a regular expression
+
+var escapeRegExp = function escapeRegExp(str) {
+  return str.replace(_constants_regex__WEBPACK_IMPORTED_MODULE_0__.RX_REGEXP_REPLACE, '\\$&');
+}; // Convert a value to a string that can be rendered
+// `undefined`/`null` will be converted to `''`
+// Plain objects and arrays will be JSON stringified
+
+var toString = function toString(val) {
+  var spaces = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
+  return (0,_inspect__WEBPACK_IMPORTED_MODULE_1__.isUndefinedOrNull)(val) ? '' : (0,_inspect__WEBPACK_IMPORTED_MODULE_1__.isArray)(val) || (0,_inspect__WEBPACK_IMPORTED_MODULE_1__.isPlainObject)(val) && val.toString === Object.prototype.toString ? JSON.stringify(val, null, spaces) : String(val);
+}; // Remove leading white space from a string
+
+var trimLeft = function trimLeft(str) {
+  return toString(str).replace(_constants_regex__WEBPACK_IMPORTED_MODULE_0__.RX_TRIM_LEFT, '');
+}; // Remove Trailing white space from a string
+
+var trimRight = function trimRight(str) {
+  return toString(str).replace(_constants_regex__WEBPACK_IMPORTED_MODULE_0__.RX_TRIM_RIGHT, '');
+}; // Remove leading and trailing white space from a string
+
+var trim = function trim(str) {
+  return toString(str).trim();
+}; // Lower case a string
+
+var lowerCase = function lowerCase(str) {
+  return toString(str).toLowerCase();
+}; // Upper case a string
+
+var upperCase = function upperCase(str) {
+  return toString(str).toUpperCase();
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/warn.js":
+/*!******************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/warn.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "warn": () => (/* binding */ warn),
+/* harmony export */   "warnNotClient": () => (/* binding */ warnNotClient),
+/* harmony export */   "warnNoPromiseSupport": () => (/* binding */ warnNoPromiseSupport),
+/* harmony export */   "warnNoMutationObserverSupport": () => (/* binding */ warnNoMutationObserverSupport)
+/* harmony export */ });
+/* harmony import */ var _constants_env__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants/env */ "./node_modules/bootstrap-vue/esm/constants/env.js");
+/* harmony import */ var _env__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./env */ "./node_modules/bootstrap-vue/esm/utils/env.js");
+
+
+/**
+ * Log a warning message to the console with BootstrapVue formatting
+ * @param {string} message
+ */
+
+var warn = function warn(message)
+/* istanbul ignore next */
+{
+  var source = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+  if (!(0,_env__WEBPACK_IMPORTED_MODULE_0__.getNoWarn)()) {
+    console.warn("[BootstrapVue warn]: ".concat(source ? "".concat(source, " - ") : '').concat(message));
+  }
+};
+/**
+ * Warn when no Promise support is given
+ * @param {string} source
+ * @returns {boolean} warned
+ */
+
+var warnNotClient = function warnNotClient(source) {
+  /* istanbul ignore else */
+  if (_constants_env__WEBPACK_IMPORTED_MODULE_1__.IS_BROWSER) {
+    return false;
+  } else {
+    warn("".concat(source, ": Can not be called during SSR."));
+    return true;
+  }
+};
+/**
+ * Warn when no Promise support is given
+ * @param {string} source
+ * @returns {boolean} warned
+ */
+
+var warnNoPromiseSupport = function warnNoPromiseSupport(source) {
+  /* istanbul ignore else */
+  if (_constants_env__WEBPACK_IMPORTED_MODULE_1__.HAS_PROMISE_SUPPORT) {
+    return false;
+  } else {
+    warn("".concat(source, ": Requires Promise support."));
+    return true;
+  }
+};
+/**
+ * Warn when no MutationObserver support is given
+ * @param {string} source
+ * @returns {boolean} warned
+ */
+
+var warnNoMutationObserverSupport = function warnNoMutationObserverSupport(source) {
+  /* istanbul ignore else */
+  if (_constants_env__WEBPACK_IMPORTED_MODULE_1__.HAS_MUTATION_OBSERVER_SUPPORT) {
+    return false;
+  } else {
+    warn("".concat(source, ": Requires MutationObserver support."));
+    return true;
+  }
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/vue.js":
+/*!***********************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/vue.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "COMPONENT_UID_KEY": () => (/* binding */ COMPONENT_UID_KEY),
+/* harmony export */   "Vue": () => (/* reexport safe */ vue__WEBPACK_IMPORTED_MODULE_1__["default"]),
+/* harmony export */   "mergeData": () => (/* reexport safe */ vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_0__.mergeData)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-functional-data-merge */ "./node_modules/vue-functional-data-merge/dist/lib.esm.js");
+
+ // --- Constants ---
+
+var COMPONENT_UID_KEY = '_uid';
+
 
 /***/ }),
 
@@ -10730,7 +16479,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".Dx1YFDKRPJpRQ3lOsXff6w\\=\\= {\n  max-width: 1200px;\n  margin: auto;\n  text-align: center;\n  background-image:url('/images/background.jpg');\n  background-size: cover;\n  height: 1500px;\n}\n\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".Dx1YFDKRPJpRQ3lOsXff6w\\=\\= {\n  max-width: 1200px;\n  margin: auto;\n  text-align: center;\n  background-image:url('/images/background.jpg');\n  background-size: cover;\n  height: 1500px;\n}\r\n\r\n\r\n\r\n", ""]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"container": "Dx1YFDKRPJpRQ3lOsXff6w=="
@@ -10799,7 +16548,7 @@ var ___CSS_LOADER_URL_REPLACEMENT_2___ = _css_loader_dist_runtime_getUrl_js__WEB
 var ___CSS_LOADER_URL_REPLACEMENT_3___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_images_sort_asc_disabled_png__WEBPACK_IMPORTED_MODULE_5__["default"]);
 var ___CSS_LOADER_URL_REPLACEMENT_4___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_images_sort_desc_disabled_png__WEBPACK_IMPORTED_MODULE_6__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "td.dt-control{\n  background:url(\"https://www.datatables.net/examples/resources/details_open.png\") no-repeat center center;\n  cursor:pointer\n}\n\ntr.dt-hasChild td.dt-control{\n  background:url(\"https://www.datatables.net/examples/resources/details_close.png\") no-repeat center center\n}\n\ntable.dataTable th.dt-left,table.dataTable td.dt-left{\n  text-align:left\n}\n\ntable.dataTable th.dt-center,table.dataTable td.dt-center,table.dataTable td.dataTables_empty{\n  text-align:center\n}\n\ntable.dataTable th.dt-right,table.dataTable td.dt-right{\n  text-align:right\n}\n\ntable.dataTable th.dt-justify,table.dataTable td.dt-justify{\n  text-align:justify\n}\n\ntable.dataTable th.dt-nowrap,table.dataTable td.dt-nowrap{\n  white-space:nowrap\n}\n\ntable.dataTable thead th.dt-head-left,table.dataTable thead td.dt-head-left,table.dataTable tfoot th.dt-head-left,table.dataTable tfoot td.dt-head-left{\n  text-align:left\n}\n\ntable.dataTable thead th.dt-head-center,table.dataTable thead td.dt-head-center,table.dataTable tfoot th.dt-head-center,table.dataTable tfoot td.dt-head-center{\n  text-align:center\n}\n\ntable.dataTable thead th.dt-head-right,table.dataTable thead td.dt-head-right,table.dataTable tfoot th.dt-head-right,table.dataTable tfoot td.dt-head-right{\n  text-align:right\n}\n\ntable.dataTable thead th.dt-head-justify,table.dataTable thead td.dt-head-justify,table.dataTable tfoot th.dt-head-justify,table.dataTable tfoot td.dt-head-justify{\n  text-align:justify\n}\n\ntable.dataTable thead th.dt-head-nowrap,table.dataTable thead td.dt-head-nowrap,table.dataTable tfoot th.dt-head-nowrap,table.dataTable tfoot td.dt-head-nowrap{\n  white-space:nowrap\n}\n\ntable.dataTable tbody th.dt-body-left,table.dataTable tbody td.dt-body-left{\n  text-align:left\n}\n\ntable.dataTable tbody th.dt-body-center,table.dataTable tbody td.dt-body-center{\n  text-align:center\n}\n\ntable.dataTable tbody th.dt-body-right,table.dataTable tbody td.dt-body-right{\n  text-align:right\n}\n\ntable.dataTable tbody th.dt-body-justify,table.dataTable tbody td.dt-body-justify{\n  text-align:justify\n}\n\ntable.dataTable tbody th.dt-body-nowrap,table.dataTable tbody td.dt-body-nowrap{\n  white-space:nowrap\n}\n\ntable.dataTable{\n  width:100%;\n  margin:0 auto;\n  clear:both;\n  border-collapse:separate;\n  border-spacing:0\n}\n\ntable.dataTable thead th,table.dataTable tfoot th{\n  font-weight:bold\n}\n\ntable.dataTable thead th,table.dataTable thead td{\n  padding:10px 18px;\n  border-bottom:1px solid #111\n}\n\ntable.dataTable thead th:active,table.dataTable thead td:active{\n  outline:none\n}\n\ntable.dataTable tfoot th,table.dataTable tfoot td{\n  padding:10px 18px 6px 18px;\n  border-top:1px solid #111\n}\n\ntable.dataTable thead .sorting,table.dataTable thead .sorting_asc,table.dataTable thead .sorting_desc,table.dataTable thead .sorting_asc_disabled,table.dataTable thead .sorting_desc_disabled{\n  cursor:pointer;*cursor:hand;\n  background-repeat:no-repeat;\n  background-position:center right\n}\n\ntable.dataTable thead .sorting{\n  background-image:url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ")\n}\n\ntable.dataTable thead .sorting_asc{\n  background-image:url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ") !important\n}\n\ntable.dataTable thead .sorting_desc{\n  background-image:url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ") !important\n}\n\ntable.dataTable thead .sorting_asc_disabled{\n  background-image:url(" + ___CSS_LOADER_URL_REPLACEMENT_3___ + ")\n}\n\ntable.dataTable thead .sorting_desc_disabled{\n  background-image:url(" + ___CSS_LOADER_URL_REPLACEMENT_4___ + ")\n}\n\ntable.dataTable tbody tr{\n  background-color:#fff\n}\n\ntable.dataTable tbody tr.selected{\n  background-color:#b0bed9\n}\n\ntable.dataTable tbody th,table.dataTable tbody td{\n  padding:8px 10px\n}\n\ntable.dataTable.row-border tbody th,table.dataTable.row-border tbody td,table.dataTable.display tbody th,table.dataTable.display tbody td{\n  border-top:1px solid #ddd\n}\n\ntable.dataTable.row-border tbody tr:first-child th,table.dataTable.row-border tbody tr:first-child td,table.dataTable.display tbody tr:first-child th,table.dataTable.display tbody tr:first-child td{\n  border-top:none\n}\n\ntable.dataTable.cell-border tbody th,table.dataTable.cell-border tbody td{\n  border-top:1px solid #ddd;\n  border-right:1px solid #ddd\n}\n\ntable.dataTable.cell-border tbody tr th:first-child,table.dataTable.cell-border tbody tr td:first-child{\n  border-left:1px solid #ddd\n}\n\ntable.dataTable.cell-border tbody tr:first-child th,table.dataTable.cell-border tbody tr:first-child td{\n  border-top:none\n}\n\ntable.dataTable.stripe tbody tr.odd,table.dataTable.display tbody tr.odd{\n  background-color:#f9f9f9\n}\n\ntable.dataTable.stripe tbody tr.odd.selected,table.dataTable.display tbody tr.odd.selected{\n  background-color:#acbad4\n}\n\ntable.dataTable.hover tbody tr:hover,table.dataTable.display tbody tr:hover{\n  background-color:#f6f6f6\n}\n\ntable.dataTable.hover tbody tr:hover.selected,table.dataTable.display tbody tr:hover.selected{\n  background-color:#aab7d1\n}\n\ntable.dataTable.order-column tbody tr>.sorting_1,table.dataTable.order-column tbody tr>.sorting_2,table.dataTable.order-column tbody tr>.sorting_3,table.dataTable.display tbody tr>.sorting_1,table.dataTable.display tbody tr>.sorting_2,table.dataTable.display tbody tr>.sorting_3{\n  background-color:#fafafa\n}\n\ntable.dataTable.order-column tbody tr.selected>.sorting_1,table.dataTable.order-column tbody tr.selected>.sorting_2,table.dataTable.order-column tbody tr.selected>.sorting_3,table.dataTable.display tbody tr.selected>.sorting_1,table.dataTable.display tbody tr.selected>.sorting_2,table.dataTable.display tbody tr.selected>.sorting_3{\n  background-color:#acbad5\n}\n\ntable.dataTable.display tbody tr.odd>.sorting_1,table.dataTable.order-column.stripe tbody tr.odd>.sorting_1{\n  background-color:#f1f1f1\n}\n\ntable.dataTable.display tbody tr.odd>.sorting_2,table.dataTable.order-column.stripe tbody tr.odd>.sorting_2{\n  background-color:#f3f3f3\n}\n\ntable.dataTable.display tbody tr.odd>.sorting_3,table.dataTable.order-column.stripe tbody tr.odd>.sorting_3{\n  background-color:whitesmoke\n}\n\ntable.dataTable.display tbody tr.odd.selected>.sorting_1,table.dataTable.order-column.stripe tbody tr.odd.selected>.sorting_1{\n  background-color:#a6b4cd\n}\n\ntable.dataTable.display tbody tr.odd.selected>.sorting_2,table.dataTable.order-column.stripe tbody tr.odd.selected>.sorting_2{\n  background-color:#a8b5cf\n}\n\ntable.dataTable.display tbody tr.odd.selected>.sorting_3,table.dataTable.order-column.stripe tbody tr.odd.selected>.sorting_3{\n  background-color:#a9b7d1\n}\n\ntable.dataTable.display tbody tr.even>.sorting_1,table.dataTable.order-column.stripe tbody tr.even>.sorting_1{\n  background-color:#fafafa\n}\n\ntable.dataTable.display tbody tr.even>.sorting_2,table.dataTable.order-column.stripe tbody tr.even>.sorting_2{\n  background-color:#fcfcfc\n}\n\ntable.dataTable.display tbody tr.even>.sorting_3,table.dataTable.order-column.stripe tbody tr.even>.sorting_3{\n  background-color:#fefefe\n}\n\ntable.dataTable.display tbody tr.even.selected>.sorting_1,table.dataTable.order-column.stripe tbody tr.even.selected>.sorting_1{\n  background-color:#acbad5\n}\n\ntable.dataTable.display tbody tr.even.selected>.sorting_2,table.dataTable.order-column.stripe tbody tr.even.selected>.sorting_2{\n  background-color:#aebcd6\n}\n\ntable.dataTable.display tbody tr.even.selected>.sorting_3,table.dataTable.order-column.stripe tbody tr.even.selected>.sorting_3{\n  background-color:#afbdd8\n}\n\ntable.dataTable.display tbody tr:hover>.sorting_1,table.dataTable.order-column.hover tbody tr:hover>.sorting_1{\n  background-color:#eaeaea\n}\n\ntable.dataTable.display tbody tr:hover>.sorting_2,table.dataTable.order-column.hover tbody tr:hover>.sorting_2{\n  background-color:#ececec\n}\n\ntable.dataTable.display tbody tr:hover>.sorting_3,table.dataTable.order-column.hover tbody tr:hover>.sorting_3{\n  background-color:#efefef\n}\n\ntable.dataTable.display tbody tr:hover.selected>.sorting_1,table.dataTable.order-column.hover tbody tr:hover.selected>.sorting_1{\n  background-color:#a2aec7\n}\n\ntable.dataTable.display tbody tr:hover.selected>.sorting_2,table.dataTable.order-column.hover tbody tr:hover.selected>.sorting_2{\n  background-color:#a3b0c9\n}\n\ntable.dataTable.display tbody tr:hover.selected>.sorting_3,table.dataTable.order-column.hover tbody tr:hover.selected>.sorting_3{\n  background-color:#a5b2cb\n}\n\ntable.dataTable.no-footer{\n  border-bottom:1px solid #111\n}\n\ntable.dataTable.nowrap th,table.dataTable.nowrap td{\n  white-space:nowrap\n}\n\ntable.dataTable.compact thead th,table.dataTable.compact thead td{\n  padding:4px 17px\n}\n\ntable.dataTable.compact tfoot th,table.dataTable.compact tfoot td{\n  padding:4px\n}\n\ntable.dataTable.compact tbody th,table.dataTable.compact tbody td{\n  padding:4px\n}\n\ntable.dataTable th,table.dataTable td{\n  box-sizing:content-box\n}\n\n.dataTables_wrapper{\n  position:relative;\n  clear:both\n}\n\n.dataTables_wrapper .dataTables_length{\n  float:left\n}\n\n.dataTables_wrapper .dataTables_length select{\n  border:1px solid #aaa;\n  border-radius:3px;\n  padding:5px;\n  background-color:transparent;\n  padding:4px\n}\n\n.dataTables_wrapper .dataTables_filter{\n  float:right;\n  text-align:right\n}\n\n.dataTables_wrapper .dataTables_filter input{\n  border:1px solid #aaa;\n  border-radius:3px;\n  padding:5px;\n  background-color:transparent;\n  margin-left:3px\n}\n\n.dataTables_wrapper .dataTables_info{\n  clear:both;\n  float:left;\n  padding-top:.755em\n}\n\n.dataTables_wrapper .dataTables_paginate{\n  float:right;\n  text-align:right;\n  padding-top:.25em\n}\n\n.dataTables_wrapper .dataTables_paginate .paginate_button{\n  box-sizing:border-box;\n  display:inline-block;\n  min-width:1.5em;\n  padding:.5em 1em;\n  margin-left:2px;\n  text-align:center;\n  text-decoration:none !important;\n  cursor:pointer;*cursor:hand;\n  color:#333 !important;\n  border:1px solid transparent;\n  border-radius:2px\n}\n\n.dataTables_wrapper .dataTables_paginate .paginate_button.current,.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{\n  color:#333 !important;\n  border:1px solid #979797;\n  background-color:white;\n  background:linear-gradient(to bottom, white 0%, #dcdcdc 100%)\n}\n\n.dataTables_wrapper .dataTables_paginate .paginate_button.disabled,.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active{\n  cursor:default;\n  color:#666 !important;\n  border:1px solid transparent;\n  background:transparent;\n  box-shadow:none\n}\n\n.dataTables_wrapper .dataTables_paginate .paginate_button:hover{\n  color:white !important;\n  border:1px solid #111;\n  background-color:#585858;\n  background:linear-gradient(to bottom, #585858 0%, #111 100%)\n}\n\n.dataTables_wrapper .dataTables_paginate .paginate_button:active{\n  outline:none;\n  background-color:#2b2b2b;\n  background:linear-gradient(to bottom, #2b2b2b 0%, #0c0c0c 100%);\n  box-shadow:inset 0 0 3px #111\n}\n\n.dataTables_wrapper .dataTables_paginate .ellipsis{\n  padding:0 1em\n}\n\n.dataTables_wrapper .dataTables_processing{\n  position:absolute;\n  top:50%;\n  left:50%;\n  width:100%;\n  height:40px;\n  margin-left:-50%;\n  margin-top:-25px;\n  padding-top:20px;\n  text-align:center;\n  font-size:1.2em;\n  background-color:white;\n  background:linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%)\n}\n\n.dataTables_wrapper .dataTables_length,.dataTables_wrapper .dataTables_filter,.dataTables_wrapper .dataTables_info,.dataTables_wrapper .dataTables_processing,.dataTables_wrapper .dataTables_paginate{\n  color:#333\n}\n\n.dataTables_wrapper .dataTables_scroll{\n  clear:both\n}\n\n.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody{*margin-top:-1px;\n  -webkit-overflow-scrolling:touch\n}\n\n.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>thead>tr>th,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>thead>tr>td,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>th,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>td{\n  vertical-align:middle\n}\n\n.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>thead>tr>th>div.dataTables_sizing,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>thead>tr>td>div.dataTables_sizing,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>th>div.dataTables_sizing,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>td>div.dataTables_sizing{\n  height:0;\n  overflow:hidden;\n  margin:0 !important;\n  padding:0 !important\n}\n\n.dataTables_wrapper.no-footer .dataTables_scrollBody{\n  border-bottom:1px solid #111\n}\n\n.dataTables_wrapper.no-footer div.dataTables_scrollHead table.dataTable,.dataTables_wrapper.no-footer div.dataTables_scrollBody>table{\n  border-bottom:none\n}\n\n.dataTables_wrapper:after{\n  visibility:hidden;\n  display:block;\n  content:\"\";\n  clear:both;\n  height:0\n}\n\n@media screen and (max-width: 767px){\n  .dataTables_wrapper .dataTables_info,.dataTables_wrapper .dataTables_paginate{\n    float:none;\n    text-align:center\n  }\n\n  .dataTables_wrapper .dataTables_paginate{\n    margin-top:.5em\n  }\n}\n\n@media screen and (max-width: 640px){\n  .dataTables_wrapper .dataTables_length,.dataTables_wrapper .dataTables_filter{\n    float:none;\n    text-align:center\n  }\n\n  .dataTables_wrapper .dataTables_filter{\n    margin-top:.5em\n  }\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "table.dataTable th.dt-left,table.dataTable td.dt-left{\n  text-align:left\n}\n\ntable.dataTable th.dt-center,table.dataTable td.dt-center,table.dataTable td.dataTables_empty{\n  text-align:center\n}\n\ntable.dataTable th.dt-right,table.dataTable td.dt-right{\n  text-align:right\n}\n\ntable.dataTable th.dt-justify,table.dataTable td.dt-justify{\n  text-align:justify\n}\n\ntable.dataTable th.dt-nowrap,table.dataTable td.dt-nowrap{\n  white-space:nowrap\n}\n\ntable.dataTable thead th.dt-head-left,table.dataTable thead td.dt-head-left,table.dataTable tfoot th.dt-head-left,table.dataTable tfoot td.dt-head-left{\n  text-align:left\n}\n\ntable.dataTable thead th.dt-head-center,table.dataTable thead td.dt-head-center,table.dataTable tfoot th.dt-head-center,table.dataTable tfoot td.dt-head-center{\n  text-align:center\n}\n\ntable.dataTable thead th.dt-head-right,table.dataTable thead td.dt-head-right,table.dataTable tfoot th.dt-head-right,table.dataTable tfoot td.dt-head-right{\n  text-align:right\n}\n\ntable.dataTable thead th.dt-head-justify,table.dataTable thead td.dt-head-justify,table.dataTable tfoot th.dt-head-justify,table.dataTable tfoot td.dt-head-justify{\n  text-align:justify\n}\n\ntable.dataTable thead th.dt-head-nowrap,table.dataTable thead td.dt-head-nowrap,table.dataTable tfoot th.dt-head-nowrap,table.dataTable tfoot td.dt-head-nowrap{\n  white-space:nowrap\n}\n\ntable.dataTable tbody th.dt-body-left,table.dataTable tbody td.dt-body-left{\n  text-align:left\n}\n\ntable.dataTable tbody th.dt-body-center,table.dataTable tbody td.dt-body-center{\n  text-align:center\n}\n\ntable.dataTable tbody th.dt-body-right,table.dataTable tbody td.dt-body-right{\n  text-align:right\n}\n\ntable.dataTable tbody th.dt-body-justify,table.dataTable tbody td.dt-body-justify{\n  text-align:justify\n}\n\ntable.dataTable tbody th.dt-body-nowrap,table.dataTable tbody td.dt-body-nowrap{\n  white-space:nowrap\n}\n\ntable.dataTable td.dt-control{\n  text-align:center;\n  cursor:pointer\n}\n\ntable.dataTable td.dt-control:before{\n  height:1em;\n  width:1em;\n  margin-top:-9px;\n  display:inline-block;\n  color:white;\n  border:.15em solid white;\n  border-radius:1em;\n  box-shadow:0 0 .2em #444;\n  box-sizing:content-box;\n  text-align:center;\n  text-indent:0 !important;\n  font-family:\"Courier New\",Courier,monospace;\n  line-height:1em;\n  content:\"+\";\n  background-color:#31b131\n}\n\ntable.dataTable tr.dt-hasChild td.dt-control:before{\n  content:\"-\";\n  background-color:#d33333\n}\n\ntable.dataTable{\n  width:100%;\n  margin:0 auto;\n  clear:both;\n  border-collapse:separate;\n  border-spacing:0\n}\n\ntable.dataTable thead th,table.dataTable tfoot th{\n  font-weight:bold\n}\n\ntable.dataTable thead th,table.dataTable thead td{\n  padding:10px 18px;\n  border-bottom:1px solid #111\n}\n\ntable.dataTable thead th:active,table.dataTable thead td:active{\n  outline:none\n}\n\ntable.dataTable tfoot th,table.dataTable tfoot td{\n  padding:10px 18px 6px 18px;\n  border-top:1px solid #111\n}\n\ntable.dataTable thead .sorting,table.dataTable thead .sorting_asc,table.dataTable thead .sorting_desc,table.dataTable thead .sorting_asc_disabled,table.dataTable thead .sorting_desc_disabled{\n  cursor:pointer;*cursor:hand;\n  background-repeat:no-repeat;\n  background-position:center right\n}\n\ntable.dataTable thead .sorting{\n  background-image:url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ")\n}\n\ntable.dataTable thead .sorting_asc{\n  background-image:url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ") !important\n}\n\ntable.dataTable thead .sorting_desc{\n  background-image:url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ") !important\n}\n\ntable.dataTable thead .sorting_asc_disabled{\n  background-image:url(" + ___CSS_LOADER_URL_REPLACEMENT_3___ + ")\n}\n\ntable.dataTable thead .sorting_desc_disabled{\n  background-image:url(" + ___CSS_LOADER_URL_REPLACEMENT_4___ + ")\n}\n\ntable.dataTable tbody tr{\n  background-color:#fff\n}\n\ntable.dataTable tbody tr.selected{\n  background-color:#b0bed9\n}\n\ntable.dataTable tbody th,table.dataTable tbody td{\n  padding:8px 10px\n}\n\ntable.dataTable.row-border tbody th,table.dataTable.row-border tbody td,table.dataTable.display tbody th,table.dataTable.display tbody td{\n  border-top:1px solid #ddd\n}\n\ntable.dataTable.row-border tbody tr:first-child th,table.dataTable.row-border tbody tr:first-child td,table.dataTable.display tbody tr:first-child th,table.dataTable.display tbody tr:first-child td{\n  border-top:none\n}\n\ntable.dataTable.cell-border tbody th,table.dataTable.cell-border tbody td{\n  border-top:1px solid #ddd;\n  border-right:1px solid #ddd\n}\n\ntable.dataTable.cell-border tbody tr th:first-child,table.dataTable.cell-border tbody tr td:first-child{\n  border-left:1px solid #ddd\n}\n\ntable.dataTable.cell-border tbody tr:first-child th,table.dataTable.cell-border tbody tr:first-child td{\n  border-top:none\n}\n\ntable.dataTable.stripe tbody tr.odd,table.dataTable.display tbody tr.odd{\n  background-color:#f9f9f9\n}\n\ntable.dataTable.stripe tbody tr.odd.selected,table.dataTable.display tbody tr.odd.selected{\n  background-color:#acbad4\n}\n\ntable.dataTable.hover tbody tr:hover,table.dataTable.display tbody tr:hover{\n  background-color:#f6f6f6\n}\n\ntable.dataTable.hover tbody tr:hover.selected,table.dataTable.display tbody tr:hover.selected{\n  background-color:#aab7d1\n}\n\ntable.dataTable.order-column tbody tr>.sorting_1,table.dataTable.order-column tbody tr>.sorting_2,table.dataTable.order-column tbody tr>.sorting_3,table.dataTable.display tbody tr>.sorting_1,table.dataTable.display tbody tr>.sorting_2,table.dataTable.display tbody tr>.sorting_3{\n  background-color:#fafafa\n}\n\ntable.dataTable.order-column tbody tr.selected>.sorting_1,table.dataTable.order-column tbody tr.selected>.sorting_2,table.dataTable.order-column tbody tr.selected>.sorting_3,table.dataTable.display tbody tr.selected>.sorting_1,table.dataTable.display tbody tr.selected>.sorting_2,table.dataTable.display tbody tr.selected>.sorting_3{\n  background-color:#acbad5\n}\n\ntable.dataTable.display tbody tr.odd>.sorting_1,table.dataTable.order-column.stripe tbody tr.odd>.sorting_1{\n  background-color:#f1f1f1\n}\n\ntable.dataTable.display tbody tr.odd>.sorting_2,table.dataTable.order-column.stripe tbody tr.odd>.sorting_2{\n  background-color:#f3f3f3\n}\n\ntable.dataTable.display tbody tr.odd>.sorting_3,table.dataTable.order-column.stripe tbody tr.odd>.sorting_3{\n  background-color:whitesmoke\n}\n\ntable.dataTable.display tbody tr.odd.selected>.sorting_1,table.dataTable.order-column.stripe tbody tr.odd.selected>.sorting_1{\n  background-color:#a6b4cd\n}\n\ntable.dataTable.display tbody tr.odd.selected>.sorting_2,table.dataTable.order-column.stripe tbody tr.odd.selected>.sorting_2{\n  background-color:#a8b5cf\n}\n\ntable.dataTable.display tbody tr.odd.selected>.sorting_3,table.dataTable.order-column.stripe tbody tr.odd.selected>.sorting_3{\n  background-color:#a9b7d1\n}\n\ntable.dataTable.display tbody tr.even>.sorting_1,table.dataTable.order-column.stripe tbody tr.even>.sorting_1{\n  background-color:#fafafa\n}\n\ntable.dataTable.display tbody tr.even>.sorting_2,table.dataTable.order-column.stripe tbody tr.even>.sorting_2{\n  background-color:#fcfcfc\n}\n\ntable.dataTable.display tbody tr.even>.sorting_3,table.dataTable.order-column.stripe tbody tr.even>.sorting_3{\n  background-color:#fefefe\n}\n\ntable.dataTable.display tbody tr.even.selected>.sorting_1,table.dataTable.order-column.stripe tbody tr.even.selected>.sorting_1{\n  background-color:#acbad5\n}\n\ntable.dataTable.display tbody tr.even.selected>.sorting_2,table.dataTable.order-column.stripe tbody tr.even.selected>.sorting_2{\n  background-color:#aebcd6\n}\n\ntable.dataTable.display tbody tr.even.selected>.sorting_3,table.dataTable.order-column.stripe tbody tr.even.selected>.sorting_3{\n  background-color:#afbdd8\n}\n\ntable.dataTable.display tbody tr:hover>.sorting_1,table.dataTable.order-column.hover tbody tr:hover>.sorting_1{\n  background-color:#eaeaea\n}\n\ntable.dataTable.display tbody tr:hover>.sorting_2,table.dataTable.order-column.hover tbody tr:hover>.sorting_2{\n  background-color:#ececec\n}\n\ntable.dataTable.display tbody tr:hover>.sorting_3,table.dataTable.order-column.hover tbody tr:hover>.sorting_3{\n  background-color:#efefef\n}\n\ntable.dataTable.display tbody tr:hover.selected>.sorting_1,table.dataTable.order-column.hover tbody tr:hover.selected>.sorting_1{\n  background-color:#a2aec7\n}\n\ntable.dataTable.display tbody tr:hover.selected>.sorting_2,table.dataTable.order-column.hover tbody tr:hover.selected>.sorting_2{\n  background-color:#a3b0c9\n}\n\ntable.dataTable.display tbody tr:hover.selected>.sorting_3,table.dataTable.order-column.hover tbody tr:hover.selected>.sorting_3{\n  background-color:#a5b2cb\n}\n\ntable.dataTable.no-footer{\n  border-bottom:1px solid #111\n}\n\ntable.dataTable.nowrap th,table.dataTable.nowrap td{\n  white-space:nowrap\n}\n\ntable.dataTable.compact thead th,table.dataTable.compact thead td{\n  padding:4px 17px\n}\n\ntable.dataTable.compact tfoot th,table.dataTable.compact tfoot td{\n  padding:4px\n}\n\ntable.dataTable.compact tbody th,table.dataTable.compact tbody td{\n  padding:4px\n}\n\ntable.dataTable th,table.dataTable td{\n  box-sizing:content-box\n}\n\n.dataTables_wrapper{\n  position:relative;\n  clear:both\n}\n\n.dataTables_wrapper .dataTables_length{\n  float:left\n}\n\n.dataTables_wrapper .dataTables_length select{\n  border:1px solid #aaa;\n  border-radius:3px;\n  padding:5px;\n  background-color:transparent;\n  padding:4px\n}\n\n.dataTables_wrapper .dataTables_filter{\n  float:right;\n  text-align:right\n}\n\n.dataTables_wrapper .dataTables_filter input{\n  border:1px solid #aaa;\n  border-radius:3px;\n  padding:5px;\n  background-color:transparent;\n  margin-left:3px\n}\n\n.dataTables_wrapper .dataTables_info{\n  clear:both;\n  float:left;\n  padding-top:.755em\n}\n\n.dataTables_wrapper .dataTables_paginate{\n  float:right;\n  text-align:right;\n  padding-top:.25em\n}\n\n.dataTables_wrapper .dataTables_paginate .paginate_button{\n  box-sizing:border-box;\n  display:inline-block;\n  min-width:1.5em;\n  padding:.5em 1em;\n  margin-left:2px;\n  text-align:center;\n  text-decoration:none !important;\n  cursor:pointer;*cursor:hand;\n  color:#333 !important;\n  border:1px solid transparent;\n  border-radius:2px\n}\n\n.dataTables_wrapper .dataTables_paginate .paginate_button.current,.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{\n  color:#333 !important;\n  border:1px solid #979797;\n  background-color:white;\n  background:linear-gradient(to bottom, white 0%, #dcdcdc 100%)\n}\n\n.dataTables_wrapper .dataTables_paginate .paginate_button.disabled,.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active{\n  cursor:default;\n  color:#666 !important;\n  border:1px solid transparent;\n  background:transparent;\n  box-shadow:none\n}\n\n.dataTables_wrapper .dataTables_paginate .paginate_button:hover{\n  color:white !important;\n  border:1px solid #111;\n  background-color:#585858;\n  background:linear-gradient(to bottom, #585858 0%, #111 100%)\n}\n\n.dataTables_wrapper .dataTables_paginate .paginate_button:active{\n  outline:none;\n  background-color:#2b2b2b;\n  background:linear-gradient(to bottom, #2b2b2b 0%, #0c0c0c 100%);\n  box-shadow:inset 0 0 3px #111\n}\n\n.dataTables_wrapper .dataTables_paginate .ellipsis{\n  padding:0 1em\n}\n\n.dataTables_wrapper .dataTables_processing{\n  position:absolute;\n  top:50%;\n  left:50%;\n  width:100%;\n  height:40px;\n  margin-left:-50%;\n  margin-top:-25px;\n  padding-top:20px;\n  text-align:center;\n  font-size:1.2em;\n  background-color:white;\n  background:linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%)\n}\n\n.dataTables_wrapper .dataTables_length,.dataTables_wrapper .dataTables_filter,.dataTables_wrapper .dataTables_info,.dataTables_wrapper .dataTables_processing,.dataTables_wrapper .dataTables_paginate{\n  color:#333\n}\n\n.dataTables_wrapper .dataTables_scroll{\n  clear:both\n}\n\n.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody{*margin-top:-1px;\n  -webkit-overflow-scrolling:touch\n}\n\n.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>thead>tr>th,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>thead>tr>td,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>th,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>td{\n  vertical-align:middle\n}\n\n.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>thead>tr>th>div.dataTables_sizing,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>thead>tr>td>div.dataTables_sizing,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>th>div.dataTables_sizing,.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>td>div.dataTables_sizing{\n  height:0;\n  overflow:hidden;\n  margin:0 !important;\n  padding:0 !important\n}\n\n.dataTables_wrapper.no-footer .dataTables_scrollBody{\n  border-bottom:1px solid #111\n}\n\n.dataTables_wrapper.no-footer div.dataTables_scrollHead table.dataTable,.dataTables_wrapper.no-footer div.dataTables_scrollBody>table{\n  border-bottom:none\n}\n\n.dataTables_wrapper:after{\n  visibility:hidden;\n  display:block;\n  content:\"\";\n  clear:both;\n  height:0\n}\n\n@media screen and (max-width: 767px){\n  .dataTables_wrapper .dataTables_info,.dataTables_wrapper .dataTables_paginate{\n    float:none;\n    text-align:center\n  }\n\n  .dataTables_wrapper .dataTables_paginate{\n    margin-top:.5em\n  }\n}\n\n@media screen and (max-width: 640px){\n  .dataTables_wrapper .dataTables_length,.dataTables_wrapper .dataTables_filter{\n    float:none;\n    text-align:center\n  }\n\n  .dataTables_wrapper .dataTables_filter{\n    margin-top:.5em\n  }\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10960,14 +16709,14 @@ return $.fn.dataTable;
   \*************************************************************/
 /***/ ((module, exports, __webpack_require__) => {
 
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1.11.3
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1.11.5
  * ©2008-2021 SpryMedia Ltd - datatables.net/license
  */
 
 /**
  * @summary     DataTables
  * @description Paginate, search and order HTML tables
- * @version     1.11.3
+ * @version     1.11.5
  * @file        jquery.dataTables.js
  * @author      SpryMedia Ltd
  * @contact     www.datatables.net
@@ -11001,38 +16750,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 (function( $, window, document, undefined ) {
 	"use strict";
 
-	/**
-	 * DataTables is a plug-in for the jQuery Javascript library. It is a highly
-	 * flexible tool, based upon the foundations of progressive enhancement,
-	 * which will add advanced interaction controls to any HTML table. For a
-	 * full list of features please refer to
-	 * [DataTables.net](href="http://datatables.net).
-	 *
-	 * Note that the `DataTable` object is not a global variable but is aliased
-	 * to `jQuery.fn.DataTable` and `jQuery.fn.dataTable` through which it may
-	 * be  accessed.
-	 *
-	 *  @class
-	 *  @param {object} [init={}] Configuration object for DataTables. Options
-	 *    are defined by {@link DataTable.defaults}
-	 *  @requires jQuery 1.7+
-	 *
-	 *  @example
-	 *    // Basic initialisation
-	 *    $(document).ready( function {
-	 *      $('#example').dataTable();
-	 *    } );
-	 *
-	 *  @example
-	 *    // Initialisation with configuration options - in this case, disable
-	 *    // pagination and sorting.
-	 *    $(document).ready( function {
-	 *      $('#example').dataTable( {
-	 *        "paginate": false,
-	 *        "sort": false
-	 *      } );
-	 *    } );
-	 */
+	
 	var DataTable = function ( selector, options )
 	{
 		// When creating with `new`, create a new DataTable, returning the API instance
@@ -11043,7 +16761,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 			// Argument switching
 			options = selector;
 		}
-
+	
 		/**
 		 * Perform a jQuery selector action on the table's TR elements (from the tbody) and
 		 * return the resulting jQuery object.
@@ -11799,24 +17517,24 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 		 */
 		this.fnVersionCheck = _ext.fnVersionCheck;
 		
-
+	
 		var _that = this;
 		var emptyInit = options === undefined;
 		var len = this.length;
-
+	
 		if ( emptyInit ) {
 			options = {};
 		}
-
+	
 		this.oApi = this.internal = _ext.internal;
-
+	
 		// Extend with old style plug-in API methods
 		for ( var fn in DataTable.ext.internal ) {
 			if ( fn ) {
 				this[fn] = _fnExternApiFunc(fn);
 			}
 		}
-
+	
 		this.each(function() {
 			// For each initialisation we want to give it a clean initialisation
 			// object that can be bashed around
@@ -11824,7 +17542,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 			var oInit = len > 1 ? // optimisation for single table case
 				_fnExtend( o, options, true ) :
 				options;
-
+	
 			/*global oInit,_that,emptyInit*/
 			var i=0, iLen, j, jLen, k, kLen;
 			var sId = this.getAttribute( 'id' );
@@ -12267,7 +17985,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 		_that = null;
 		return this;
 	};
-
+	
 	
 	/*
 	 * It is useful to have variables which are scoped locally so only the
@@ -14392,6 +20110,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	 */
 	function _fnDraw( oSettings, ajaxComplete )
 	{
+		// Allow for state saving and a custom start position
+		_fnStart( oSettings );
+	
 		/* Provide a pre-callback function which can be used to cancel the draw is false is returned */
 		var aPreDraw = _fnCallbackFire( oSettings, 'aoPreDrawCallback', 'preDraw', [oSettings] );
 		if ( $.inArray( false, aPreDraw ) !== -1 )
@@ -14400,33 +20121,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 			return;
 		}
 	
-		var i, iLen, n;
 		var anRows = [];
 		var iRowCount = 0;
 		var asStripeClasses = oSettings.asStripeClasses;
 		var iStripes = asStripeClasses.length;
-		var iOpenRows = oSettings.aoOpenRows.length;
 		var oLang = oSettings.oLanguage;
-		var iInitDisplayStart = oSettings.iInitDisplayStart;
 		var bServerSide = _fnDataSource( oSettings ) == 'ssp';
 		var aiDisplay = oSettings.aiDisplay;
-	
-		oSettings.bDrawing = true;
-	
-		/* Check and see if we have an initial draw position from state saving */
-		if ( iInitDisplayStart !== undefined && iInitDisplayStart !== -1 )
-		{
-			oSettings._iDisplayStart = bServerSide ?
-				iInitDisplayStart :
-				iInitDisplayStart >= oSettings.fnRecordsDisplay() ?
-					0 :
-					iInitDisplayStart;
-	
-			oSettings.iInitDisplayStart = -1;
-		}
-	
 		var iDisplayStart = oSettings._iDisplayStart;
 		var iDisplayEnd = oSettings.fnDisplayEnd();
+	
+		oSettings.bDrawing = true;
 	
 		/* Server-side processing draw intercept */
 		if ( oSettings.bDeferLoading )
@@ -14830,6 +20535,28 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	}
 	
 	/**
+	 * Set the start position for draw
+	 *  @param {object} oSettings dataTables settings object
+	 */
+	function _fnStart( oSettings )
+	{
+		var bServerSide = _fnDataSource( oSettings ) == 'ssp';
+		var iInitDisplayStart = oSettings.iInitDisplayStart;
+	
+		// Check and see if we have an initial draw position from state saving
+		if ( iInitDisplayStart !== undefined && iInitDisplayStart !== -1 )
+		{
+			oSettings._iDisplayStart = bServerSide ?
+				iInitDisplayStart :
+				iInitDisplayStart >= oSettings.fnRecordsDisplay() ?
+					0 :
+					iInitDisplayStart;
+	
+			oSettings.iInitDisplayStart = -1;
+		}
+	}
+	
+	/**
 	 * Create an Ajax call based on the table's settings, taking into account that
 	 * parameters can have multiple forms, and backwards compatibility.
 	 *
@@ -14872,8 +20599,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 		var ajax = oSettings.ajax;
 		var instance = oSettings.oInstance;
 		var callback = function ( json ) {
-			var status = oSettings.jqXhr
-				? oSettings.jqXhr.status
+			var status = oSettings.jqXHR
+				? oSettings.jqXHR.status
 				: null;
 	
 			if ( json === null || (typeof status === 'number' && status == 204 ) ) {
@@ -16370,7 +22097,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 			nToSize.style.width = headerWidths[i];
 		}, headerTrgEls );
 	
-		$(headerSrcEls).height(0);
+		$(headerSrcEls).css('height', 0);
 	
 		/* Same again with the footer if we have one */
 		if ( footer )
@@ -16417,7 +22144,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	
 		// Sanity check that the table is of a sensible width. If not then we are going to get
 		// misalignment - try to prevent this by not allowing the table to shrink below its min width
-		if ( table.outerWidth() < sanityWidth )
+		if ( Math.round(table.outerWidth()) < Math.round(sanityWidth) )
 		{
 			// The min width depends upon if we have a vertical scrollbar visible or not */
 			correction = ((divBodyEl.scrollHeight > divBodyEl.offsetHeight ||
@@ -17426,9 +23153,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 		// Restore key features - todo - for 1.11 this needs to be done by
 		// subscribed events
 		if ( s.start !== undefined ) {
-			settings._iDisplayStart    = s.start;
 			if(api === null) {
+				settings._iDisplayStart    = s.start;
 				settings.iInitDisplayStart = s.start;
+			}
+			else {
+				_fnPageChange(settings, s.start/s.length);
+	
 			}
 		}
 		if ( s.length !== undefined ) {
@@ -17774,7 +23505,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 		return 'dom';
 	}
 	
-
+	
 	
 	
 	/**
@@ -19261,22 +24992,35 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	
 	$(document).on('plugin-init.dt', function (e, context) {
 		var api = new _Api( context );
-		api.on( 'stateSaveParams', function ( e, settings, data ) {
-			var indexes = api.rows().iterator( 'row', function ( settings, idx ) {
-				return settings.aoData[idx]._detailsShow ? idx : undefined;
-			});
 	
-			data.childRows = api.rows( indexes ).ids( true ).toArray();
+		api.on( 'stateSaveParams', function ( e, settings, d ) {
+			// This could be more compact with the API, but it is a lot faster as a simple
+			// internal loop
+			var idFn = settings.rowIdFn;
+			var data = settings.aoData;
+			var ids = [];
+	
+			for (var i=0 ; i<data.length ; i++) {
+				if (data[i]._detailsShow) {
+					ids.push( '#' + idFn(data[i]._aData) );
+				}
+			}
+	
+			d.childRows = ids;
 		})
 	
 		var loaded = api.state.loaded();
 	
 		if ( loaded && loaded.childRows ) {
-			api.rows( loaded.childRows ).every( function () {
-				_fnCallbackFire( context, null, 'requestChild', [ this ] )
-			})
+			api
+				.rows( $.map(loaded.childRows, function (id){
+					return id.replace(/:/g, '\\:')
+				}) )
+				.every( function () {
+					_fnCallbackFire( context, null, 'requestChild', [ this ] )
+				});
 		}
-	})
+	});
 	
 	var __details_add = function ( ctx, row, data, klass )
 	{
@@ -19323,6 +25067,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	};
 	
 	
+	// Make state saving of child row details async to allow them to be batch processed
+	var __details_state = DataTable.util.throttle(
+		function (ctx) {
+			_fnSaveState( ctx[0] )
+		},
+		500
+	);
+	
+	
 	var __details_remove = function ( api, idx )
 	{
 		var ctx = api.context;
@@ -19336,7 +25089,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 				row._detailsShow = undefined;
 				row._details = undefined;
 				$( row.nTr ).removeClass( 'dt-hasChild' );
-				_fnSaveState( ctx[0] );
+				__details_state( ctx );
 			}
 		}
 	};
@@ -19363,7 +25116,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 				_fnCallbackFire( ctx[0], null, 'childRow', [ show, api.row( api[0] ) ] )
 	
 				__details_events( ctx[0] );
-				_fnSaveState( ctx[0] );
+				__details_state( ctx );
 			}
 		}
 	};
@@ -20565,7 +26318,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 		}
 	
 		return resolved.replace( '%d', plural ); // nb: plural might be undefined,
-	} );
+	} );	
 	/**
 	 * Version string for plug-ins to check compatibility. Allowed format is
 	 * `a.b.c-d` where: a:int, b:int, c:int, d:string(dev|beta|alpha). `d` is used
@@ -20574,8 +26327,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	 *  @type string
 	 *  @default Version number
 	 */
-	DataTable.version = "1.11.3";
-
+	DataTable.version = "1.11.5";
+	
 	/**
 	 * Private data store, containing all of the settings objects that are
 	 * created for the tables on a given page.
@@ -20589,7 +26342,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	 *  @private
 	 */
 	DataTable.settings = [];
-
+	
 	/**
 	 * Object models container, for the various models that DataTables has
 	 * available to it. These models define the objects that are used to hold
@@ -20645,5632 +26398,5632 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 		"return": false
 	};
 	
-	
-	
-	
-	/**
-	 * Template object for the way in which DataTables holds information about
-	 * each individual row. This is the object format used for the settings
-	 * aoData array.
-	 *  @namespace
-	 */
-	DataTable.models.oRow = {
+		
+		
+		
 		/**
-		 * TR element for the row
-		 *  @type node
-		 *  @default null
+		 * Template object for the way in which DataTables holds information about
+		 * each individual row. This is the object format used for the settings
+		 * aoData array.
+		 *  @namespace
 		 */
-		"nTr": null,
-	
+		DataTable.models.oRow = {
+			/**
+			 * TR element for the row
+			 *  @type node
+			 *  @default null
+			 */
+			"nTr": null,
+		
+			/**
+			 * Array of TD elements for each row. This is null until the row has been
+			 * created.
+			 *  @type array nodes
+			 *  @default []
+			 */
+			"anCells": null,
+		
+			/**
+			 * Data object from the original data source for the row. This is either
+			 * an array if using the traditional form of DataTables, or an object if
+			 * using mData options. The exact type will depend on the passed in
+			 * data from the data source, or will be an array if using DOM a data
+			 * source.
+			 *  @type array|object
+			 *  @default []
+			 */
+			"_aData": [],
+		
+			/**
+			 * Sorting data cache - this array is ostensibly the same length as the
+			 * number of columns (although each index is generated only as it is
+			 * needed), and holds the data that is used for sorting each column in the
+			 * row. We do this cache generation at the start of the sort in order that
+			 * the formatting of the sort data need be done only once for each cell
+			 * per sort. This array should not be read from or written to by anything
+			 * other than the master sorting methods.
+			 *  @type array
+			 *  @default null
+			 *  @private
+			 */
+			"_aSortData": null,
+		
+			/**
+			 * Per cell filtering data cache. As per the sort data cache, used to
+			 * increase the performance of the filtering in DataTables
+			 *  @type array
+			 *  @default null
+			 *  @private
+			 */
+			"_aFilterData": null,
+		
+			/**
+			 * Filtering data cache. This is the same as the cell filtering cache, but
+			 * in this case a string rather than an array. This is easily computed with
+			 * a join on `_aFilterData`, but is provided as a cache so the join isn't
+			 * needed on every search (memory traded for performance)
+			 *  @type array
+			 *  @default null
+			 *  @private
+			 */
+			"_sFilterRow": null,
+		
+			/**
+			 * Cache of the class name that DataTables has applied to the row, so we
+			 * can quickly look at this variable rather than needing to do a DOM check
+			 * on className for the nTr property.
+			 *  @type string
+			 *  @default <i>Empty string</i>
+			 *  @private
+			 */
+			"_sRowStripe": "",
+		
+			/**
+			 * Denote if the original data source was from the DOM, or the data source
+			 * object. This is used for invalidating data, so DataTables can
+			 * automatically read data from the original source, unless uninstructed
+			 * otherwise.
+			 *  @type string
+			 *  @default null
+			 *  @private
+			 */
+			"src": null,
+		
+			/**
+			 * Index in the aoData array. This saves an indexOf lookup when we have the
+			 * object, but want to know the index
+			 *  @type integer
+			 *  @default -1
+			 *  @private
+			 */
+			"idx": -1
+		};
+		
+		
 		/**
-		 * Array of TD elements for each row. This is null until the row has been
-		 * created.
-		 *  @type array nodes
-		 *  @default []
-		 */
-		"anCells": null,
-	
-		/**
-		 * Data object from the original data source for the row. This is either
-		 * an array if using the traditional form of DataTables, or an object if
-		 * using mData options. The exact type will depend on the passed in
-		 * data from the data source, or will be an array if using DOM a data
-		 * source.
-		 *  @type array|object
-		 *  @default []
-		 */
-		"_aData": [],
-	
-		/**
-		 * Sorting data cache - this array is ostensibly the same length as the
-		 * number of columns (although each index is generated only as it is
-		 * needed), and holds the data that is used for sorting each column in the
-		 * row. We do this cache generation at the start of the sort in order that
-		 * the formatting of the sort data need be done only once for each cell
-		 * per sort. This array should not be read from or written to by anything
-		 * other than the master sorting methods.
-		 *  @type array
-		 *  @default null
-		 *  @private
-		 */
-		"_aSortData": null,
-	
-		/**
-		 * Per cell filtering data cache. As per the sort data cache, used to
-		 * increase the performance of the filtering in DataTables
-		 *  @type array
-		 *  @default null
-		 *  @private
-		 */
-		"_aFilterData": null,
-	
-		/**
-		 * Filtering data cache. This is the same as the cell filtering cache, but
-		 * in this case a string rather than an array. This is easily computed with
-		 * a join on `_aFilterData`, but is provided as a cache so the join isn't
-		 * needed on every search (memory traded for performance)
-		 *  @type array
-		 *  @default null
-		 *  @private
-		 */
-		"_sFilterRow": null,
-	
-		/**
-		 * Cache of the class name that DataTables has applied to the row, so we
-		 * can quickly look at this variable rather than needing to do a DOM check
-		 * on className for the nTr property.
-		 *  @type string
-		 *  @default <i>Empty string</i>
-		 *  @private
-		 */
-		"_sRowStripe": "",
-	
-		/**
-		 * Denote if the original data source was from the DOM, or the data source
-		 * object. This is used for invalidating data, so DataTables can
-		 * automatically read data from the original source, unless uninstructed
-		 * otherwise.
-		 *  @type string
-		 *  @default null
-		 *  @private
-		 */
-		"src": null,
-	
-		/**
-		 * Index in the aoData array. This saves an indexOf lookup when we have the
-		 * object, but want to know the index
-		 *  @type integer
-		 *  @default -1
-		 *  @private
-		 */
-		"idx": -1
-	};
-	
-	
-	/**
-	 * Template object for the column information object in DataTables. This object
-	 * is held in the settings aoColumns array and contains all the information that
-	 * DataTables needs about each individual column.
-	 *
-	 * Note that this object is related to {@link DataTable.defaults.column}
-	 * but this one is the internal data store for DataTables's cache of columns.
-	 * It should NOT be manipulated outside of DataTables. Any configuration should
-	 * be done through the initialisation options.
-	 *  @namespace
-	 */
-	DataTable.models.oColumn = {
-		/**
-		 * Column index. This could be worked out on-the-fly with $.inArray, but it
-		 * is faster to just hold it as a variable
-		 *  @type integer
-		 *  @default null
-		 */
-		"idx": null,
-	
-		/**
-		 * A list of the columns that sorting should occur on when this column
-		 * is sorted. That this property is an array allows multi-column sorting
-		 * to be defined for a column (for example first name / last name columns
-		 * would benefit from this). The values are integers pointing to the
-		 * columns to be sorted on (typically it will be a single integer pointing
-		 * at itself, but that doesn't need to be the case).
-		 *  @type array
-		 */
-		"aDataSort": null,
-	
-		/**
-		 * Define the sorting directions that are applied to the column, in sequence
-		 * as the column is repeatedly sorted upon - i.e. the first value is used
-		 * as the sorting direction when the column if first sorted (clicked on).
-		 * Sort it again (click again) and it will move on to the next index.
-		 * Repeat until loop.
-		 *  @type array
-		 */
-		"asSorting": null,
-	
-		/**
-		 * Flag to indicate if the column is searchable, and thus should be included
-		 * in the filtering or not.
-		 *  @type boolean
-		 */
-		"bSearchable": null,
-	
-		/**
-		 * Flag to indicate if the column is sortable or not.
-		 *  @type boolean
-		 */
-		"bSortable": null,
-	
-		/**
-		 * Flag to indicate if the column is currently visible in the table or not
-		 *  @type boolean
-		 */
-		"bVisible": null,
-	
-		/**
-		 * Store for manual type assignment using the `column.type` option. This
-		 * is held in store so we can manipulate the column's `sType` property.
-		 *  @type string
-		 *  @default null
-		 *  @private
-		 */
-		"_sManualType": null,
-	
-		/**
-		 * Flag to indicate if HTML5 data attributes should be used as the data
-		 * source for filtering or sorting. True is either are.
-		 *  @type boolean
-		 *  @default false
-		 *  @private
-		 */
-		"_bAttrSrc": false,
-	
-		/**
-		 * Developer definable function that is called whenever a cell is created (Ajax source,
-		 * etc) or processed for input (DOM source). This can be used as a compliment to mRender
-		 * allowing you to modify the DOM element (add background colour for example) when the
-		 * element is available.
-		 *  @type function
-		 *  @param {element} nTd The TD node that has been created
-		 *  @param {*} sData The Data for the cell
-		 *  @param {array|object} oData The data for the whole row
-		 *  @param {int} iRow The row index for the aoData data store
-		 *  @default null
-		 */
-		"fnCreatedCell": null,
-	
-		/**
-		 * Function to get data from a cell in a column. You should <b>never</b>
-		 * access data directly through _aData internally in DataTables - always use
-		 * the method attached to this property. It allows mData to function as
-		 * required. This function is automatically assigned by the column
-		 * initialisation method
-		 *  @type function
-		 *  @param {array|object} oData The data array/object for the array
-		 *    (i.e. aoData[]._aData)
-		 *  @param {string} sSpecific The specific data type you want to get -
-		 *    'display', 'type' 'filter' 'sort'
-		 *  @returns {*} The data for the cell from the given row's data
-		 *  @default null
-		 */
-		"fnGetData": null,
-	
-		/**
-		 * Function to set data for a cell in the column. You should <b>never</b>
-		 * set the data directly to _aData internally in DataTables - always use
-		 * this method. It allows mData to function as required. This function
-		 * is automatically assigned by the column initialisation method
-		 *  @type function
-		 *  @param {array|object} oData The data array/object for the array
-		 *    (i.e. aoData[]._aData)
-		 *  @param {*} sValue Value to set
-		 *  @default null
-		 */
-		"fnSetData": null,
-	
-		/**
-		 * Property to read the value for the cells in the column from the data
-		 * source array / object. If null, then the default content is used, if a
-		 * function is given then the return from the function is used.
-		 *  @type function|int|string|null
-		 *  @default null
-		 */
-		"mData": null,
-	
-		/**
-		 * Partner property to mData which is used (only when defined) to get
-		 * the data - i.e. it is basically the same as mData, but without the
-		 * 'set' option, and also the data fed to it is the result from mData.
-		 * This is the rendering method to match the data method of mData.
-		 *  @type function|int|string|null
-		 *  @default null
-		 */
-		"mRender": null,
-	
-		/**
-		 * Unique header TH/TD element for this column - this is what the sorting
-		 * listener is attached to (if sorting is enabled.)
-		 *  @type node
-		 *  @default null
-		 */
-		"nTh": null,
-	
-		/**
-		 * Unique footer TH/TD element for this column (if there is one). Not used
-		 * in DataTables as such, but can be used for plug-ins to reference the
-		 * footer for each column.
-		 *  @type node
-		 *  @default null
-		 */
-		"nTf": null,
-	
-		/**
-		 * The class to apply to all TD elements in the table's TBODY for the column
-		 *  @type string
-		 *  @default null
-		 */
-		"sClass": null,
-	
-		/**
-		 * When DataTables calculates the column widths to assign to each column,
-		 * it finds the longest string in each column and then constructs a
-		 * temporary table and reads the widths from that. The problem with this
-		 * is that "mmm" is much wider then "iiii", but the latter is a longer
-		 * string - thus the calculation can go wrong (doing it properly and putting
-		 * it into an DOM object and measuring that is horribly(!) slow). Thus as
-		 * a "work around" we provide this option. It will append its value to the
-		 * text that is found to be the longest string for the column - i.e. padding.
-		 *  @type string
-		 */
-		"sContentPadding": null,
-	
-		/**
-		 * Allows a default value to be given for a column's data, and will be used
-		 * whenever a null data source is encountered (this can be because mData
-		 * is set to null, or because the data source itself is null).
-		 *  @type string
-		 *  @default null
-		 */
-		"sDefaultContent": null,
-	
-		/**
-		 * Name for the column, allowing reference to the column by name as well as
-		 * by index (needs a lookup to work by name).
-		 *  @type string
-		 */
-		"sName": null,
-	
-		/**
-		 * Custom sorting data type - defines which of the available plug-ins in
-		 * afnSortData the custom sorting will use - if any is defined.
-		 *  @type string
-		 *  @default std
-		 */
-		"sSortDataType": 'std',
-	
-		/**
-		 * Class to be applied to the header element when sorting on this column
-		 *  @type string
-		 *  @default null
-		 */
-		"sSortingClass": null,
-	
-		/**
-		 * Class to be applied to the header element when sorting on this column -
-		 * when jQuery UI theming is used.
-		 *  @type string
-		 *  @default null
-		 */
-		"sSortingClassJUI": null,
-	
-		/**
-		 * Title of the column - what is seen in the TH element (nTh).
-		 *  @type string
-		 */
-		"sTitle": null,
-	
-		/**
-		 * Column sorting and filtering type
-		 *  @type string
-		 *  @default null
-		 */
-		"sType": null,
-	
-		/**
-		 * Width of the column
-		 *  @type string
-		 *  @default null
-		 */
-		"sWidth": null,
-	
-		/**
-		 * Width of the column when it was first "encountered"
-		 *  @type string
-		 *  @default null
-		 */
-		"sWidthOrig": null
-	};
-	
-	
-	/*
-	 * Developer note: The properties of the object below are given in Hungarian
-	 * notation, that was used as the interface for DataTables prior to v1.10, however
-	 * from v1.10 onwards the primary interface is camel case. In order to avoid
-	 * breaking backwards compatibility utterly with this change, the Hungarian
-	 * version is still, internally the primary interface, but is is not documented
-	 * - hence the @name tags in each doc comment. This allows a Javascript function
-	 * to create a map from Hungarian notation to camel case (going the other direction
-	 * would require each property to be listed, which would add around 3K to the size
-	 * of DataTables, while this method is about a 0.5K hit).
-	 *
-	 * Ultimately this does pave the way for Hungarian notation to be dropped
-	 * completely, but that is a massive amount of work and will break current
-	 * installs (therefore is on-hold until v2).
-	 */
-	
-	/**
-	 * Initialisation options that can be given to DataTables at initialisation
-	 * time.
-	 *  @namespace
-	 */
-	DataTable.defaults = {
-		/**
-		 * An array of data to use for the table, passed in at initialisation which
-		 * will be used in preference to any data which is already in the DOM. This is
-		 * particularly useful for constructing tables purely in Javascript, for
-		 * example with a custom Ajax call.
-		 *  @type array
-		 *  @default null
+		 * Template object for the column information object in DataTables. This object
+		 * is held in the settings aoColumns array and contains all the information that
+		 * DataTables needs about each individual column.
 		 *
-		 *  @dtopt Option
-		 *  @name DataTable.defaults.data
-		 *
-		 *  @example
-		 *    // Using a 2D array data source
-		 *    $(document).ready( function () {
-		 *      $('#example').dataTable( {
-		 *        "data": [
-		 *          ['Trident', 'Internet Explorer 4.0', 'Win 95+', 4, 'X'],
-		 *          ['Trident', 'Internet Explorer 5.0', 'Win 95+', 5, 'C'],
-		 *        ],
-		 *        "columns": [
-		 *          { "title": "Engine" },
-		 *          { "title": "Browser" },
-		 *          { "title": "Platform" },
-		 *          { "title": "Version" },
-		 *          { "title": "Grade" }
-		 *        ]
-		 *      } );
-		 *    } );
-		 *
-		 *  @example
-		 *    // Using an array of objects as a data source (`data`)
-		 *    $(document).ready( function () {
-		 *      $('#example').dataTable( {
-		 *        "data": [
-		 *          {
-		 *            "engine":   "Trident",
-		 *            "browser":  "Internet Explorer 4.0",
-		 *            "platform": "Win 95+",
-		 *            "version":  4,
-		 *            "grade":    "X"
-		 *          },
-		 *          {
-		 *            "engine":   "Trident",
-		 *            "browser":  "Internet Explorer 5.0",
-		 *            "platform": "Win 95+",
-		 *            "version":  5,
-		 *            "grade":    "C"
-		 *          }
-		 *        ],
-		 *        "columns": [
-		 *          { "title": "Engine",   "data": "engine" },
-		 *          { "title": "Browser",  "data": "browser" },
-		 *          { "title": "Platform", "data": "platform" },
-		 *          { "title": "Version",  "data": "version" },
-		 *          { "title": "Grade",    "data": "grade" }
-		 *        ]
-		 *      } );
-		 *    } );
+		 * Note that this object is related to {@link DataTable.defaults.column}
+		 * but this one is the internal data store for DataTables's cache of columns.
+		 * It should NOT be manipulated outside of DataTables. Any configuration should
+		 * be done through the initialisation options.
+		 *  @namespace
 		 */
-		"aaData": null,
-	
-	
-		/**
-		 * If ordering is enabled, then DataTables will perform a first pass sort on
-		 * initialisation. You can define which column(s) the sort is performed
-		 * upon, and the sorting direction, with this variable. The `sorting` array
-		 * should contain an array for each column to be sorted initially containing
-		 * the column's index and a direction string ('asc' or 'desc').
-		 *  @type array
-		 *  @default [[0,'asc']]
+		DataTable.models.oColumn = {
+			/**
+			 * Column index. This could be worked out on-the-fly with $.inArray, but it
+			 * is faster to just hold it as a variable
+			 *  @type integer
+			 *  @default null
+			 */
+			"idx": null,
+		
+			/**
+			 * A list of the columns that sorting should occur on when this column
+			 * is sorted. That this property is an array allows multi-column sorting
+			 * to be defined for a column (for example first name / last name columns
+			 * would benefit from this). The values are integers pointing to the
+			 * columns to be sorted on (typically it will be a single integer pointing
+			 * at itself, but that doesn't need to be the case).
+			 *  @type array
+			 */
+			"aDataSort": null,
+		
+			/**
+			 * Define the sorting directions that are applied to the column, in sequence
+			 * as the column is repeatedly sorted upon - i.e. the first value is used
+			 * as the sorting direction when the column if first sorted (clicked on).
+			 * Sort it again (click again) and it will move on to the next index.
+			 * Repeat until loop.
+			 *  @type array
+			 */
+			"asSorting": null,
+		
+			/**
+			 * Flag to indicate if the column is searchable, and thus should be included
+			 * in the filtering or not.
+			 *  @type boolean
+			 */
+			"bSearchable": null,
+		
+			/**
+			 * Flag to indicate if the column is sortable or not.
+			 *  @type boolean
+			 */
+			"bSortable": null,
+		
+			/**
+			 * Flag to indicate if the column is currently visible in the table or not
+			 *  @type boolean
+			 */
+			"bVisible": null,
+		
+			/**
+			 * Store for manual type assignment using the `column.type` option. This
+			 * is held in store so we can manipulate the column's `sType` property.
+			 *  @type string
+			 *  @default null
+			 *  @private
+			 */
+			"_sManualType": null,
+		
+			/**
+			 * Flag to indicate if HTML5 data attributes should be used as the data
+			 * source for filtering or sorting. True is either are.
+			 *  @type boolean
+			 *  @default false
+			 *  @private
+			 */
+			"_bAttrSrc": false,
+		
+			/**
+			 * Developer definable function that is called whenever a cell is created (Ajax source,
+			 * etc) or processed for input (DOM source). This can be used as a compliment to mRender
+			 * allowing you to modify the DOM element (add background colour for example) when the
+			 * element is available.
+			 *  @type function
+			 *  @param {element} nTd The TD node that has been created
+			 *  @param {*} sData The Data for the cell
+			 *  @param {array|object} oData The data for the whole row
+			 *  @param {int} iRow The row index for the aoData data store
+			 *  @default null
+			 */
+			"fnCreatedCell": null,
+		
+			/**
+			 * Function to get data from a cell in a column. You should <b>never</b>
+			 * access data directly through _aData internally in DataTables - always use
+			 * the method attached to this property. It allows mData to function as
+			 * required. This function is automatically assigned by the column
+			 * initialisation method
+			 *  @type function
+			 *  @param {array|object} oData The data array/object for the array
+			 *    (i.e. aoData[]._aData)
+			 *  @param {string} sSpecific The specific data type you want to get -
+			 *    'display', 'type' 'filter' 'sort'
+			 *  @returns {*} The data for the cell from the given row's data
+			 *  @default null
+			 */
+			"fnGetData": null,
+		
+			/**
+			 * Function to set data for a cell in the column. You should <b>never</b>
+			 * set the data directly to _aData internally in DataTables - always use
+			 * this method. It allows mData to function as required. This function
+			 * is automatically assigned by the column initialisation method
+			 *  @type function
+			 *  @param {array|object} oData The data array/object for the array
+			 *    (i.e. aoData[]._aData)
+			 *  @param {*} sValue Value to set
+			 *  @default null
+			 */
+			"fnSetData": null,
+		
+			/**
+			 * Property to read the value for the cells in the column from the data
+			 * source array / object. If null, then the default content is used, if a
+			 * function is given then the return from the function is used.
+			 *  @type function|int|string|null
+			 *  @default null
+			 */
+			"mData": null,
+		
+			/**
+			 * Partner property to mData which is used (only when defined) to get
+			 * the data - i.e. it is basically the same as mData, but without the
+			 * 'set' option, and also the data fed to it is the result from mData.
+			 * This is the rendering method to match the data method of mData.
+			 *  @type function|int|string|null
+			 *  @default null
+			 */
+			"mRender": null,
+		
+			/**
+			 * Unique header TH/TD element for this column - this is what the sorting
+			 * listener is attached to (if sorting is enabled.)
+			 *  @type node
+			 *  @default null
+			 */
+			"nTh": null,
+		
+			/**
+			 * Unique footer TH/TD element for this column (if there is one). Not used
+			 * in DataTables as such, but can be used for plug-ins to reference the
+			 * footer for each column.
+			 *  @type node
+			 *  @default null
+			 */
+			"nTf": null,
+		
+			/**
+			 * The class to apply to all TD elements in the table's TBODY for the column
+			 *  @type string
+			 *  @default null
+			 */
+			"sClass": null,
+		
+			/**
+			 * When DataTables calculates the column widths to assign to each column,
+			 * it finds the longest string in each column and then constructs a
+			 * temporary table and reads the widths from that. The problem with this
+			 * is that "mmm" is much wider then "iiii", but the latter is a longer
+			 * string - thus the calculation can go wrong (doing it properly and putting
+			 * it into an DOM object and measuring that is horribly(!) slow). Thus as
+			 * a "work around" we provide this option. It will append its value to the
+			 * text that is found to be the longest string for the column - i.e. padding.
+			 *  @type string
+			 */
+			"sContentPadding": null,
+		
+			/**
+			 * Allows a default value to be given for a column's data, and will be used
+			 * whenever a null data source is encountered (this can be because mData
+			 * is set to null, or because the data source itself is null).
+			 *  @type string
+			 *  @default null
+			 */
+			"sDefaultContent": null,
+		
+			/**
+			 * Name for the column, allowing reference to the column by name as well as
+			 * by index (needs a lookup to work by name).
+			 *  @type string
+			 */
+			"sName": null,
+		
+			/**
+			 * Custom sorting data type - defines which of the available plug-ins in
+			 * afnSortData the custom sorting will use - if any is defined.
+			 *  @type string
+			 *  @default std
+			 */
+			"sSortDataType": 'std',
+		
+			/**
+			 * Class to be applied to the header element when sorting on this column
+			 *  @type string
+			 *  @default null
+			 */
+			"sSortingClass": null,
+		
+			/**
+			 * Class to be applied to the header element when sorting on this column -
+			 * when jQuery UI theming is used.
+			 *  @type string
+			 *  @default null
+			 */
+			"sSortingClassJUI": null,
+		
+			/**
+			 * Title of the column - what is seen in the TH element (nTh).
+			 *  @type string
+			 */
+			"sTitle": null,
+		
+			/**
+			 * Column sorting and filtering type
+			 *  @type string
+			 *  @default null
+			 */
+			"sType": null,
+		
+			/**
+			 * Width of the column
+			 *  @type string
+			 *  @default null
+			 */
+			"sWidth": null,
+		
+			/**
+			 * Width of the column when it was first "encountered"
+			 *  @type string
+			 *  @default null
+			 */
+			"sWidthOrig": null
+		};
+		
+		
+		/*
+		 * Developer note: The properties of the object below are given in Hungarian
+		 * notation, that was used as the interface for DataTables prior to v1.10, however
+		 * from v1.10 onwards the primary interface is camel case. In order to avoid
+		 * breaking backwards compatibility utterly with this change, the Hungarian
+		 * version is still, internally the primary interface, but is is not documented
+		 * - hence the @name tags in each doc comment. This allows a Javascript function
+		 * to create a map from Hungarian notation to camel case (going the other direction
+		 * would require each property to be listed, which would add around 3K to the size
+		 * of DataTables, while this method is about a 0.5K hit).
 		 *
-		 *  @dtopt Option
-		 *  @name DataTable.defaults.order
-		 *
-		 *  @example
-		 *    // Sort by 3rd column first, and then 4th column
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "order": [[2,'asc'], [3,'desc']]
-		 *      } );
-		 *    } );
-		 *
-		 *    // No initial sorting
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "order": []
-		 *      } );
-		 *    } );
+		 * Ultimately this does pave the way for Hungarian notation to be dropped
+		 * completely, but that is a massive amount of work and will break current
+		 * installs (therefore is on-hold until v2).
 		 */
-		"aaSorting": [[0,'asc']],
-	
-	
+		
 		/**
-		 * This parameter is basically identical to the `sorting` parameter, but
-		 * cannot be overridden by user interaction with the table. What this means
-		 * is that you could have a column (visible or hidden) which the sorting
-		 * will always be forced on first - any sorting after that (from the user)
-		 * will then be performed as required. This can be useful for grouping rows
-		 * together.
-		 *  @type array
-		 *  @default null
-		 *
-		 *  @dtopt Option
-		 *  @name DataTable.defaults.orderFixed
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "orderFixed": [[0,'asc']]
-		 *      } );
-		 *    } )
-		 */
-		"aaSortingFixed": [],
-	
-	
-		/**
-		 * DataTables can be instructed to load data to display in the table from a
-		 * Ajax source. This option defines how that Ajax call is made and where to.
-		 *
-		 * The `ajax` property has three different modes of operation, depending on
-		 * how it is defined. These are:
-		 *
-		 * * `string` - Set the URL from where the data should be loaded from.
-		 * * `object` - Define properties for `jQuery.ajax`.
-		 * * `function` - Custom data get function
-		 *
-		 * `string`
-		 * --------
-		 *
-		 * As a string, the `ajax` property simply defines the URL from which
-		 * DataTables will load data.
-		 *
-		 * `object`
-		 * --------
-		 *
-		 * As an object, the parameters in the object are passed to
-		 * [jQuery.ajax](http://api.jquery.com/jQuery.ajax/) allowing fine control
-		 * of the Ajax request. DataTables has a number of default parameters which
-		 * you can override using this option. Please refer to the jQuery
-		 * documentation for a full description of the options available, although
-		 * the following parameters provide additional options in DataTables or
-		 * require special consideration:
-		 *
-		 * * `data` - As with jQuery, `data` can be provided as an object, but it
-		 *   can also be used as a function to manipulate the data DataTables sends
-		 *   to the server. The function takes a single parameter, an object of
-		 *   parameters with the values that DataTables has readied for sending. An
-		 *   object may be returned which will be merged into the DataTables
-		 *   defaults, or you can add the items to the object that was passed in and
-		 *   not return anything from the function. This supersedes `fnServerParams`
-		 *   from DataTables 1.9-.
-		 *
-		 * * `dataSrc` - By default DataTables will look for the property `data` (or
-		 *   `aaData` for compatibility with DataTables 1.9-) when obtaining data
-		 *   from an Ajax source or for server-side processing - this parameter
-		 *   allows that property to be changed. You can use Javascript dotted
-		 *   object notation to get a data source for multiple levels of nesting, or
-		 *   it my be used as a function. As a function it takes a single parameter,
-		 *   the JSON returned from the server, which can be manipulated as
-		 *   required, with the returned value being that used by DataTables as the
-		 *   data source for the table. This supersedes `sAjaxDataProp` from
-		 *   DataTables 1.9-.
-		 *
-		 * * `success` - Should not be overridden it is used internally in
-		 *   DataTables. To manipulate / transform the data returned by the server
-		 *   use `ajax.dataSrc`, or use `ajax` as a function (see below).
-		 *
-		 * `function`
-		 * ----------
-		 *
-		 * As a function, making the Ajax call is left up to yourself allowing
-		 * complete control of the Ajax request. Indeed, if desired, a method other
-		 * than Ajax could be used to obtain the required data, such as Web storage
-		 * or an AIR database.
-		 *
-		 * The function is given four parameters and no return is required. The
-		 * parameters are:
-		 *
-		 * 1. _object_ - Data to send to the server
-		 * 2. _function_ - Callback function that must be executed when the required
-		 *    data has been obtained. That data should be passed into the callback
-		 *    as the only parameter
-		 * 3. _object_ - DataTables settings object for the table
-		 *
-		 * Note that this supersedes `fnServerData` from DataTables 1.9-.
-		 *
-		 *  @type string|object|function
-		 *  @default null
-		 *
-		 *  @dtopt Option
-		 *  @name DataTable.defaults.ajax
-		 *  @since 1.10.0
-		 *
-		 * @example
-		 *   // Get JSON data from a file via Ajax.
-		 *   // Note DataTables expects data in the form `{ data: [ ...data... ] }` by default).
-		 *   $('#example').dataTable( {
-		 *     "ajax": "data.json"
-		 *   } );
-		 *
-		 * @example
-		 *   // Get JSON data from a file via Ajax, using `dataSrc` to change
-		 *   // `data` to `tableData` (i.e. `{ tableData: [ ...data... ] }`)
-		 *   $('#example').dataTable( {
-		 *     "ajax": {
-		 *       "url": "data.json",
-		 *       "dataSrc": "tableData"
-		 *     }
-		 *   } );
-		 *
-		 * @example
-		 *   // Get JSON data from a file via Ajax, using `dataSrc` to read data
-		 *   // from a plain array rather than an array in an object
-		 *   $('#example').dataTable( {
-		 *     "ajax": {
-		 *       "url": "data.json",
-		 *       "dataSrc": ""
-		 *     }
-		 *   } );
-		 *
-		 * @example
-		 *   // Manipulate the data returned from the server - add a link to data
-		 *   // (note this can, should, be done using `render` for the column - this
-		 *   // is just a simple example of how the data can be manipulated).
-		 *   $('#example').dataTable( {
-		 *     "ajax": {
-		 *       "url": "data.json",
-		 *       "dataSrc": function ( json ) {
-		 *         for ( var i=0, ien=json.length ; i<ien ; i++ ) {
-		 *           json[i][0] = '<a href="/message/'+json[i][0]+'>View message</a>';
-		 *         }
-		 *         return json;
-		 *       }
-		 *     }
-		 *   } );
-		 *
-		 * @example
-		 *   // Add data to the request
-		 *   $('#example').dataTable( {
-		 *     "ajax": {
-		 *       "url": "data.json",
-		 *       "data": function ( d ) {
-		 *         return {
-		 *           "extra_search": $('#extra').val()
-		 *         };
-		 *       }
-		 *     }
-		 *   } );
-		 *
-		 * @example
-		 *   // Send request as POST
-		 *   $('#example').dataTable( {
-		 *     "ajax": {
-		 *       "url": "data.json",
-		 *       "type": "POST"
-		 *     }
-		 *   } );
-		 *
-		 * @example
-		 *   // Get the data from localStorage (could interface with a form for
-		 *   // adding, editing and removing rows).
-		 *   $('#example').dataTable( {
-		 *     "ajax": function (data, callback, settings) {
-		 *       callback(
-		 *         JSON.parse( localStorage.getItem('dataTablesData') )
-		 *       );
-		 *     }
-		 *   } );
-		 */
-		"ajax": null,
-	
-	
-		/**
-		 * This parameter allows you to readily specify the entries in the length drop
-		 * down menu that DataTables shows when pagination is enabled. It can be
-		 * either a 1D array of options which will be used for both the displayed
-		 * option and the value, or a 2D array which will use the array in the first
-		 * position as the value, and the array in the second position as the
-		 * displayed options (useful for language strings such as 'All').
-		 *
-		 * Note that the `pageLength` property will be automatically set to the
-		 * first value given in this array, unless `pageLength` is also provided.
-		 *  @type array
-		 *  @default [ 10, 25, 50, 100 ]
-		 *
-		 *  @dtopt Option
-		 *  @name DataTable.defaults.lengthMenu
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
-		 *      } );
-		 *    } );
-		 */
-		"aLengthMenu": [ 10, 25, 50, 100 ],
-	
-	
-		/**
-		 * The `columns` option in the initialisation parameter allows you to define
-		 * details about the way individual columns behave. For a full list of
-		 * column options that can be set, please see
-		 * {@link DataTable.defaults.column}. Note that if you use `columns` to
-		 * define your columns, you must have an entry in the array for every single
-		 * column that you have in your table (these can be null if you don't which
-		 * to specify any options).
-		 *  @member
-		 *
-		 *  @name DataTable.defaults.column
-		 */
-		"aoColumns": null,
-	
-		/**
-		 * Very similar to `columns`, `columnDefs` allows you to target a specific
-		 * column, multiple columns, or all columns, using the `targets` property of
-		 * each object in the array. This allows great flexibility when creating
-		 * tables, as the `columnDefs` arrays can be of any length, targeting the
-		 * columns you specifically want. `columnDefs` may use any of the column
-		 * options available: {@link DataTable.defaults.column}, but it _must_
-		 * have `targets` defined in each object in the array. Values in the `targets`
-		 * array may be:
-		 *   <ul>
-		 *     <li>a string - class name will be matched on the TH for the column</li>
-		 *     <li>0 or a positive integer - column index counting from the left</li>
-		 *     <li>a negative integer - column index counting from the right</li>
-		 *     <li>the string "_all" - all columns (i.e. assign a default)</li>
-		 *   </ul>
-		 *  @member
-		 *
-		 *  @name DataTable.defaults.columnDefs
-		 */
-		"aoColumnDefs": null,
-	
-	
-		/**
-		 * Basically the same as `search`, this parameter defines the individual column
-		 * filtering state at initialisation time. The array must be of the same size
-		 * as the number of columns, and each element be an object with the parameters
-		 * `search` and `escapeRegex` (the latter is optional). 'null' is also
-		 * accepted and the default will be used.
-		 *  @type array
-		 *  @default []
-		 *
-		 *  @dtopt Option
-		 *  @name DataTable.defaults.searchCols
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "searchCols": [
-		 *          null,
-		 *          { "search": "My filter" },
-		 *          null,
-		 *          { "search": "^[0-9]", "escapeRegex": false }
-		 *        ]
-		 *      } );
-		 *    } )
-		 */
-		"aoSearchCols": [],
-	
-	
-		/**
-		 * An array of CSS classes that should be applied to displayed rows. This
-		 * array may be of any length, and DataTables will apply each class
-		 * sequentially, looping when required.
-		 *  @type array
-		 *  @default null <i>Will take the values determined by the `oClasses.stripe*`
-		 *    options</i>
-		 *
-		 *  @dtopt Option
-		 *  @name DataTable.defaults.stripeClasses
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "stripeClasses": [ 'strip1', 'strip2', 'strip3' ]
-		 *      } );
-		 *    } )
-		 */
-		"asStripeClasses": null,
-	
-	
-		/**
-		 * Enable or disable automatic column width calculation. This can be disabled
-		 * as an optimisation (it takes some time to calculate the widths) if the
-		 * tables widths are passed in using `columns`.
-		 *  @type boolean
-		 *  @default true
-		 *
-		 *  @dtopt Features
-		 *  @name DataTable.defaults.autoWidth
-		 *
-		 *  @example
-		 *    $(document).ready( function () {
-		 *      $('#example').dataTable( {
-		 *        "autoWidth": false
-		 *      } );
-		 *    } );
-		 */
-		"bAutoWidth": true,
-	
-	
-		/**
-		 * Deferred rendering can provide DataTables with a huge speed boost when you
-		 * are using an Ajax or JS data source for the table. This option, when set to
-		 * true, will cause DataTables to defer the creation of the table elements for
-		 * each row until they are needed for a draw - saving a significant amount of
+		 * Initialisation options that can be given to DataTables at initialisation
 		 * time.
-		 *  @type boolean
-		 *  @default false
-		 *
-		 *  @dtopt Features
-		 *  @name DataTable.defaults.deferRender
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "ajax": "sources/arrays.txt",
-		 *        "deferRender": true
-		 *      } );
-		 *    } );
-		 */
-		"bDeferRender": false,
-	
-	
-		/**
-		 * Replace a DataTable which matches the given selector and replace it with
-		 * one which has the properties of the new initialisation object passed. If no
-		 * table matches the selector, then the new DataTable will be constructed as
-		 * per normal.
-		 *  @type boolean
-		 *  @default false
-		 *
-		 *  @dtopt Options
-		 *  @name DataTable.defaults.destroy
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "srollY": "200px",
-		 *        "paginate": false
-		 *      } );
-		 *
-		 *      // Some time later....
-		 *      $('#example').dataTable( {
-		 *        "filter": false,
-		 *        "destroy": true
-		 *      } );
-		 *    } );
-		 */
-		"bDestroy": false,
-	
-	
-		/**
-		 * Enable or disable filtering of data. Filtering in DataTables is "smart" in
-		 * that it allows the end user to input multiple words (space separated) and
-		 * will match a row containing those words, even if not in the order that was
-		 * specified (this allow matching across multiple columns). Note that if you
-		 * wish to use filtering in DataTables this must remain 'true' - to remove the
-		 * default filtering input box and retain filtering abilities, please use
-		 * {@link DataTable.defaults.dom}.
-		 *  @type boolean
-		 *  @default true
-		 *
-		 *  @dtopt Features
-		 *  @name DataTable.defaults.searching
-		 *
-		 *  @example
-		 *    $(document).ready( function () {
-		 *      $('#example').dataTable( {
-		 *        "searching": false
-		 *      } );
-		 *    } );
-		 */
-		"bFilter": true,
-	
-	
-		/**
-		 * Enable or disable the table information display. This shows information
-		 * about the data that is currently visible on the page, including information
-		 * about filtered data if that action is being performed.
-		 *  @type boolean
-		 *  @default true
-		 *
-		 *  @dtopt Features
-		 *  @name DataTable.defaults.info
-		 *
-		 *  @example
-		 *    $(document).ready( function () {
-		 *      $('#example').dataTable( {
-		 *        "info": false
-		 *      } );
-		 *    } );
-		 */
-		"bInfo": true,
-	
-	
-		/**
-		 * Allows the end user to select the size of a formatted page from a select
-		 * menu (sizes are 10, 25, 50 and 100). Requires pagination (`paginate`).
-		 *  @type boolean
-		 *  @default true
-		 *
-		 *  @dtopt Features
-		 *  @name DataTable.defaults.lengthChange
-		 *
-		 *  @example
-		 *    $(document).ready( function () {
-		 *      $('#example').dataTable( {
-		 *        "lengthChange": false
-		 *      } );
-		 *    } );
-		 */
-		"bLengthChange": true,
-	
-	
-		/**
-		 * Enable or disable pagination.
-		 *  @type boolean
-		 *  @default true
-		 *
-		 *  @dtopt Features
-		 *  @name DataTable.defaults.paging
-		 *
-		 *  @example
-		 *    $(document).ready( function () {
-		 *      $('#example').dataTable( {
-		 *        "paging": false
-		 *      } );
-		 *    } );
-		 */
-		"bPaginate": true,
-	
-	
-		/**
-		 * Enable or disable the display of a 'processing' indicator when the table is
-		 * being processed (e.g. a sort). This is particularly useful for tables with
-		 * large amounts of data where it can take a noticeable amount of time to sort
-		 * the entries.
-		 *  @type boolean
-		 *  @default false
-		 *
-		 *  @dtopt Features
-		 *  @name DataTable.defaults.processing
-		 *
-		 *  @example
-		 *    $(document).ready( function () {
-		 *      $('#example').dataTable( {
-		 *        "processing": true
-		 *      } );
-		 *    } );
-		 */
-		"bProcessing": false,
-	
-	
-		/**
-		 * Retrieve the DataTables object for the given selector. Note that if the
-		 * table has already been initialised, this parameter will cause DataTables
-		 * to simply return the object that has already been set up - it will not take
-		 * account of any changes you might have made to the initialisation object
-		 * passed to DataTables (setting this parameter to true is an acknowledgement
-		 * that you understand this). `destroy` can be used to reinitialise a table if
-		 * you need.
-		 *  @type boolean
-		 *  @default false
-		 *
-		 *  @dtopt Options
-		 *  @name DataTable.defaults.retrieve
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      initTable();
-		 *      tableActions();
-		 *    } );
-		 *
-		 *    function initTable ()
-		 *    {
-		 *      return $('#example').dataTable( {
-		 *        "scrollY": "200px",
-		 *        "paginate": false,
-		 *        "retrieve": true
-		 *      } );
-		 *    }
-		 *
-		 *    function tableActions ()
-		 *    {
-		 *      var table = initTable();
-		 *      // perform API operations with oTable
-		 *    }
-		 */
-		"bRetrieve": false,
-	
-	
-		/**
-		 * When vertical (y) scrolling is enabled, DataTables will force the height of
-		 * the table's viewport to the given height at all times (useful for layout).
-		 * However, this can look odd when filtering data down to a small data set,
-		 * and the footer is left "floating" further down. This parameter (when
-		 * enabled) will cause DataTables to collapse the table's viewport down when
-		 * the result set will fit within the given Y height.
-		 *  @type boolean
-		 *  @default false
-		 *
-		 *  @dtopt Options
-		 *  @name DataTable.defaults.scrollCollapse
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "scrollY": "200",
-		 *        "scrollCollapse": true
-		 *      } );
-		 *    } );
-		 */
-		"bScrollCollapse": false,
-	
-	
-		/**
-		 * Configure DataTables to use server-side processing. Note that the
-		 * `ajax` parameter must also be given in order to give DataTables a
-		 * source to obtain the required data for each draw.
-		 *  @type boolean
-		 *  @default false
-		 *
-		 *  @dtopt Features
-		 *  @dtopt Server-side
-		 *  @name DataTable.defaults.serverSide
-		 *
-		 *  @example
-		 *    $(document).ready( function () {
-		 *      $('#example').dataTable( {
-		 *        "serverSide": true,
-		 *        "ajax": "xhr.php"
-		 *      } );
-		 *    } );
-		 */
-		"bServerSide": false,
-	
-	
-		/**
-		 * Enable or disable sorting of columns. Sorting of individual columns can be
-		 * disabled by the `sortable` option for each column.
-		 *  @type boolean
-		 *  @default true
-		 *
-		 *  @dtopt Features
-		 *  @name DataTable.defaults.ordering
-		 *
-		 *  @example
-		 *    $(document).ready( function () {
-		 *      $('#example').dataTable( {
-		 *        "ordering": false
-		 *      } );
-		 *    } );
-		 */
-		"bSort": true,
-	
-	
-		/**
-		 * Enable or display DataTables' ability to sort multiple columns at the
-		 * same time (activated by shift-click by the user).
-		 *  @type boolean
-		 *  @default true
-		 *
-		 *  @dtopt Options
-		 *  @name DataTable.defaults.orderMulti
-		 *
-		 *  @example
-		 *    // Disable multiple column sorting ability
-		 *    $(document).ready( function () {
-		 *      $('#example').dataTable( {
-		 *        "orderMulti": false
-		 *      } );
-		 *    } );
-		 */
-		"bSortMulti": true,
-	
-	
-		/**
-		 * Allows control over whether DataTables should use the top (true) unique
-		 * cell that is found for a single column, or the bottom (false - default).
-		 * This is useful when using complex headers.
-		 *  @type boolean
-		 *  @default false
-		 *
-		 *  @dtopt Options
-		 *  @name DataTable.defaults.orderCellsTop
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "orderCellsTop": true
-		 *      } );
-		 *    } );
-		 */
-		"bSortCellsTop": false,
-	
-	
-		/**
-		 * Enable or disable the addition of the classes `sorting\_1`, `sorting\_2` and
-		 * `sorting\_3` to the columns which are currently being sorted on. This is
-		 * presented as a feature switch as it can increase processing time (while
-		 * classes are removed and added) so for large data sets you might want to
-		 * turn this off.
-		 *  @type boolean
-		 *  @default true
-		 *
-		 *  @dtopt Features
-		 *  @name DataTable.defaults.orderClasses
-		 *
-		 *  @example
-		 *    $(document).ready( function () {
-		 *      $('#example').dataTable( {
-		 *        "orderClasses": false
-		 *      } );
-		 *    } );
-		 */
-		"bSortClasses": true,
-	
-	
-		/**
-		 * Enable or disable state saving. When enabled HTML5 `localStorage` will be
-		 * used to save table display information such as pagination information,
-		 * display length, filtering and sorting. As such when the end user reloads
-		 * the page the display display will match what thy had previously set up.
-		 *
-		 * Due to the use of `localStorage` the default state saving is not supported
-		 * in IE6 or 7. If state saving is required in those browsers, use
-		 * `stateSaveCallback` to provide a storage solution such as cookies.
-		 *  @type boolean
-		 *  @default false
-		 *
-		 *  @dtopt Features
-		 *  @name DataTable.defaults.stateSave
-		 *
-		 *  @example
-		 *    $(document).ready( function () {
-		 *      $('#example').dataTable( {
-		 *        "stateSave": true
-		 *      } );
-		 *    } );
-		 */
-		"bStateSave": false,
-	
-	
-		/**
-		 * This function is called when a TR element is created (and all TD child
-		 * elements have been inserted), or registered if using a DOM source, allowing
-		 * manipulation of the TR element (adding classes etc).
-		 *  @type function
-		 *  @param {node} row "TR" element for the current row
-		 *  @param {array} data Raw data array for this row
-		 *  @param {int} dataIndex The index of this row in the internal aoData array
-		 *
-		 *  @dtopt Callbacks
-		 *  @name DataTable.defaults.createdRow
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "createdRow": function( row, data, dataIndex ) {
-		 *          // Bold the grade for all 'A' grade browsers
-		 *          if ( data[4] == "A" )
-		 *          {
-		 *            $('td:eq(4)', row).html( '<b>A</b>' );
-		 *          }
-		 *        }
-		 *      } );
-		 *    } );
-		 */
-		"fnCreatedRow": null,
-	
-	
-		/**
-		 * This function is called on every 'draw' event, and allows you to
-		 * dynamically modify any aspect you want about the created DOM.
-		 *  @type function
-		 *  @param {object} settings DataTables settings object
-		 *
-		 *  @dtopt Callbacks
-		 *  @name DataTable.defaults.drawCallback
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "drawCallback": function( settings ) {
-		 *          alert( 'DataTables has redrawn the table' );
-		 *        }
-		 *      } );
-		 *    } );
-		 */
-		"fnDrawCallback": null,
-	
-	
-		/**
-		 * Identical to fnHeaderCallback() but for the table footer this function
-		 * allows you to modify the table footer on every 'draw' event.
-		 *  @type function
-		 *  @param {node} foot "TR" element for the footer
-		 *  @param {array} data Full table data (as derived from the original HTML)
-		 *  @param {int} start Index for the current display starting point in the
-		 *    display array
-		 *  @param {int} end Index for the current display ending point in the
-		 *    display array
-		 *  @param {array int} display Index array to translate the visual position
-		 *    to the full data array
-		 *
-		 *  @dtopt Callbacks
-		 *  @name DataTable.defaults.footerCallback
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "footerCallback": function( tfoot, data, start, end, display ) {
-		 *          tfoot.getElementsByTagName('th')[0].innerHTML = "Starting index is "+start;
-		 *        }
-		 *      } );
-		 *    } )
-		 */
-		"fnFooterCallback": null,
-	
-	
-		/**
-		 * When rendering large numbers in the information element for the table
-		 * (i.e. "Showing 1 to 10 of 57 entries") DataTables will render large numbers
-		 * to have a comma separator for the 'thousands' units (e.g. 1 million is
-		 * rendered as "1,000,000") to help readability for the end user. This
-		 * function will override the default method DataTables uses.
-		 *  @type function
-		 *  @member
-		 *  @param {int} toFormat number to be formatted
-		 *  @returns {string} formatted string for DataTables to show the number
-		 *
-		 *  @dtopt Callbacks
-		 *  @name DataTable.defaults.formatNumber
-		 *
-		 *  @example
-		 *    // Format a number using a single quote for the separator (note that
-		 *    // this can also be done with the language.thousands option)
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "formatNumber": function ( toFormat ) {
-		 *          return toFormat.toString().replace(
-		 *            /\B(?=(\d{3})+(?!\d))/g, "'"
-		 *          );
-		 *        };
-		 *      } );
-		 *    } );
-		 */
-		"fnFormatNumber": function ( toFormat ) {
-			return toFormat.toString().replace(
-				/\B(?=(\d{3})+(?!\d))/g,
-				this.oLanguage.sThousands
-			);
-		},
-	
-	
-		/**
-		 * This function is called on every 'draw' event, and allows you to
-		 * dynamically modify the header row. This can be used to calculate and
-		 * display useful information about the table.
-		 *  @type function
-		 *  @param {node} head "TR" element for the header
-		 *  @param {array} data Full table data (as derived from the original HTML)
-		 *  @param {int} start Index for the current display starting point in the
-		 *    display array
-		 *  @param {int} end Index for the current display ending point in the
-		 *    display array
-		 *  @param {array int} display Index array to translate the visual position
-		 *    to the full data array
-		 *
-		 *  @dtopt Callbacks
-		 *  @name DataTable.defaults.headerCallback
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "fheaderCallback": function( head, data, start, end, display ) {
-		 *          head.getElementsByTagName('th')[0].innerHTML = "Displaying "+(end-start)+" records";
-		 *        }
-		 *      } );
-		 *    } )
-		 */
-		"fnHeaderCallback": null,
-	
-	
-		/**
-		 * The information element can be used to convey information about the current
-		 * state of the table. Although the internationalisation options presented by
-		 * DataTables are quite capable of dealing with most customisations, there may
-		 * be times where you wish to customise the string further. This callback
-		 * allows you to do exactly that.
-		 *  @type function
-		 *  @param {object} oSettings DataTables settings object
-		 *  @param {int} start Starting position in data for the draw
-		 *  @param {int} end End position in data for the draw
-		 *  @param {int} max Total number of rows in the table (regardless of
-		 *    filtering)
-		 *  @param {int} total Total number of rows in the data set, after filtering
-		 *  @param {string} pre The string that DataTables has formatted using it's
-		 *    own rules
-		 *  @returns {string} The string to be displayed in the information element.
-		 *
-		 *  @dtopt Callbacks
-		 *  @name DataTable.defaults.infoCallback
-		 *
-		 *  @example
-		 *    $('#example').dataTable( {
-		 *      "infoCallback": function( settings, start, end, max, total, pre ) {
-		 *        return start +" to "+ end;
-		 *      }
-		 *    } );
-		 */
-		"fnInfoCallback": null,
-	
-	
-		/**
-		 * Called when the table has been initialised. Normally DataTables will
-		 * initialise sequentially and there will be no need for this function,
-		 * however, this does not hold true when using external language information
-		 * since that is obtained using an async XHR call.
-		 *  @type function
-		 *  @param {object} settings DataTables settings object
-		 *  @param {object} json The JSON object request from the server - only
-		 *    present if client-side Ajax sourced data is used
-		 *
-		 *  @dtopt Callbacks
-		 *  @name DataTable.defaults.initComplete
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "initComplete": function(settings, json) {
-		 *          alert( 'DataTables has finished its initialisation.' );
-		 *        }
-		 *      } );
-		 *    } )
-		 */
-		"fnInitComplete": null,
-	
-	
-		/**
-		 * Called at the very start of each table draw and can be used to cancel the
-		 * draw by returning false, any other return (including undefined) results in
-		 * the full draw occurring).
-		 *  @type function
-		 *  @param {object} settings DataTables settings object
-		 *  @returns {boolean} False will cancel the draw, anything else (including no
-		 *    return) will allow it to complete.
-		 *
-		 *  @dtopt Callbacks
-		 *  @name DataTable.defaults.preDrawCallback
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "preDrawCallback": function( settings ) {
-		 *          if ( $('#test').val() == 1 ) {
-		 *            return false;
-		 *          }
-		 *        }
-		 *      } );
-		 *    } );
-		 */
-		"fnPreDrawCallback": null,
-	
-	
-		/**
-		 * This function allows you to 'post process' each row after it have been
-		 * generated for each table draw, but before it is rendered on screen. This
-		 * function might be used for setting the row class name etc.
-		 *  @type function
-		 *  @param {node} row "TR" element for the current row
-		 *  @param {array} data Raw data array for this row
-		 *  @param {int} displayIndex The display index for the current table draw
-		 *  @param {int} displayIndexFull The index of the data in the full list of
-		 *    rows (after filtering)
-		 *
-		 *  @dtopt Callbacks
-		 *  @name DataTable.defaults.rowCallback
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "rowCallback": function( row, data, displayIndex, displayIndexFull ) {
-		 *          // Bold the grade for all 'A' grade browsers
-		 *          if ( data[4] == "A" ) {
-		 *            $('td:eq(4)', row).html( '<b>A</b>' );
-		 *          }
-		 *        }
-		 *      } );
-		 *    } );
-		 */
-		"fnRowCallback": null,
-	
-	
-		/**
-		 * __Deprecated__ The functionality provided by this parameter has now been
-		 * superseded by that provided through `ajax`, which should be used instead.
-		 *
-		 * This parameter allows you to override the default function which obtains
-		 * the data from the server so something more suitable for your application.
-		 * For example you could use POST data, or pull information from a Gears or
-		 * AIR database.
-		 *  @type function
-		 *  @member
-		 *  @param {string} source HTTP source to obtain the data from (`ajax`)
-		 *  @param {array} data A key/value pair object containing the data to send
-		 *    to the server
-		 *  @param {function} callback to be called on completion of the data get
-		 *    process that will draw the data on the page.
-		 *  @param {object} settings DataTables settings object
-		 *
-		 *  @dtopt Callbacks
-		 *  @dtopt Server-side
-		 *  @name DataTable.defaults.serverData
-		 *
-		 *  @deprecated 1.10. Please use `ajax` for this functionality now.
-		 */
-		"fnServerData": null,
-	
-	
-		/**
-		 * __Deprecated__ The functionality provided by this parameter has now been
-		 * superseded by that provided through `ajax`, which should be used instead.
-		 *
-		 *  It is often useful to send extra data to the server when making an Ajax
-		 * request - for example custom filtering information, and this callback
-		 * function makes it trivial to send extra information to the server. The
-		 * passed in parameter is the data set that has been constructed by
-		 * DataTables, and you can add to this or modify it as you require.
-		 *  @type function
-		 *  @param {array} data Data array (array of objects which are name/value
-		 *    pairs) that has been constructed by DataTables and will be sent to the
-		 *    server. In the case of Ajax sourced data with server-side processing
-		 *    this will be an empty array, for server-side processing there will be a
-		 *    significant number of parameters!
-		 *  @returns {undefined} Ensure that you modify the data array passed in,
-		 *    as this is passed by reference.
-		 *
-		 *  @dtopt Callbacks
-		 *  @dtopt Server-side
-		 *  @name DataTable.defaults.serverParams
-		 *
-		 *  @deprecated 1.10. Please use `ajax` for this functionality now.
-		 */
-		"fnServerParams": null,
-	
-	
-		/**
-		 * Load the table state. With this function you can define from where, and how, the
-		 * state of a table is loaded. By default DataTables will load from `localStorage`
-		 * but you might wish to use a server-side database or cookies.
-		 *  @type function
-		 *  @member
-		 *  @param {object} settings DataTables settings object
-		 *  @param {object} callback Callback that can be executed when done. It
-		 *    should be passed the loaded state object.
-		 *  @return {object} The DataTables state object to be loaded
-		 *
-		 *  @dtopt Callbacks
-		 *  @name DataTable.defaults.stateLoadCallback
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "stateSave": true,
-		 *        "stateLoadCallback": function (settings, callback) {
-		 *          $.ajax( {
-		 *            "url": "/state_load",
-		 *            "dataType": "json",
-		 *            "success": function (json) {
-		 *              callback( json );
-		 *            }
-		 *          } );
-		 *        }
-		 *      } );
-		 *    } );
-		 */
-		"fnStateLoadCallback": function ( settings ) {
-			try {
-				return JSON.parse(
-					(settings.iStateDuration === -1 ? sessionStorage : localStorage).getItem(
-						'DataTables_'+settings.sInstance+'_'+location.pathname
-					)
-				);
-			} catch (e) {
-				return {};
-			}
-		},
-	
-	
-		/**
-		 * Callback which allows modification of the saved state prior to loading that state.
-		 * This callback is called when the table is loading state from the stored data, but
-		 * prior to the settings object being modified by the saved state. Note that for
-		 * plug-in authors, you should use the `stateLoadParams` event to load parameters for
-		 * a plug-in.
-		 *  @type function
-		 *  @param {object} settings DataTables settings object
-		 *  @param {object} data The state object that is to be loaded
-		 *
-		 *  @dtopt Callbacks
-		 *  @name DataTable.defaults.stateLoadParams
-		 *
-		 *  @example
-		 *    // Remove a saved filter, so filtering is never loaded
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "stateSave": true,
-		 *        "stateLoadParams": function (settings, data) {
-		 *          data.oSearch.sSearch = "";
-		 *        }
-		 *      } );
-		 *    } );
-		 *
-		 *  @example
-		 *    // Disallow state loading by returning false
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "stateSave": true,
-		 *        "stateLoadParams": function (settings, data) {
-		 *          return false;
-		 *        }
-		 *      } );
-		 *    } );
-		 */
-		"fnStateLoadParams": null,
-	
-	
-		/**
-		 * Callback that is called when the state has been loaded from the state saving method
-		 * and the DataTables settings object has been modified as a result of the loaded state.
-		 *  @type function
-		 *  @param {object} settings DataTables settings object
-		 *  @param {object} data The state object that was loaded
-		 *
-		 *  @dtopt Callbacks
-		 *  @name DataTable.defaults.stateLoaded
-		 *
-		 *  @example
-		 *    // Show an alert with the filtering value that was saved
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "stateSave": true,
-		 *        "stateLoaded": function (settings, data) {
-		 *          alert( 'Saved filter was: '+data.oSearch.sSearch );
-		 *        }
-		 *      } );
-		 *    } );
-		 */
-		"fnStateLoaded": null,
-	
-	
-		/**
-		 * Save the table state. This function allows you to define where and how the state
-		 * information for the table is stored By default DataTables will use `localStorage`
-		 * but you might wish to use a server-side database or cookies.
-		 *  @type function
-		 *  @member
-		 *  @param {object} settings DataTables settings object
-		 *  @param {object} data The state object to be saved
-		 *
-		 *  @dtopt Callbacks
-		 *  @name DataTable.defaults.stateSaveCallback
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "stateSave": true,
-		 *        "stateSaveCallback": function (settings, data) {
-		 *          // Send an Ajax request to the server with the state object
-		 *          $.ajax( {
-		 *            "url": "/state_save",
-		 *            "data": data,
-		 *            "dataType": "json",
-		 *            "method": "POST"
-		 *            "success": function () {}
-		 *          } );
-		 *        }
-		 *      } );
-		 *    } );
-		 */
-		"fnStateSaveCallback": function ( settings, data ) {
-			try {
-				(settings.iStateDuration === -1 ? sessionStorage : localStorage).setItem(
-					'DataTables_'+settings.sInstance+'_'+location.pathname,
-					JSON.stringify( data )
-				);
-			} catch (e) {}
-		},
-	
-	
-		/**
-		 * Callback which allows modification of the state to be saved. Called when the table
-		 * has changed state a new state save is required. This method allows modification of
-		 * the state saving object prior to actually doing the save, including addition or
-		 * other state properties or modification. Note that for plug-in authors, you should
-		 * use the `stateSaveParams` event to save parameters for a plug-in.
-		 *  @type function
-		 *  @param {object} settings DataTables settings object
-		 *  @param {object} data The state object to be saved
-		 *
-		 *  @dtopt Callbacks
-		 *  @name DataTable.defaults.stateSaveParams
-		 *
-		 *  @example
-		 *    // Remove a saved filter, so filtering is never saved
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "stateSave": true,
-		 *        "stateSaveParams": function (settings, data) {
-		 *          data.oSearch.sSearch = "";
-		 *        }
-		 *      } );
-		 *    } );
-		 */
-		"fnStateSaveParams": null,
-	
-	
-		/**
-		 * Duration for which the saved state information is considered valid. After this period
-		 * has elapsed the state will be returned to the default.
-		 * Value is given in seconds.
-		 *  @type int
-		 *  @default 7200 <i>(2 hours)</i>
-		 *
-		 *  @dtopt Options
-		 *  @name DataTable.defaults.stateDuration
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "stateDuration": 60*60*24; // 1 day
-		 *      } );
-		 *    } )
-		 */
-		"iStateDuration": 7200,
-	
-	
-		/**
-		 * When enabled DataTables will not make a request to the server for the first
-		 * page draw - rather it will use the data already on the page (no sorting etc
-		 * will be applied to it), thus saving on an XHR at load time. `deferLoading`
-		 * is used to indicate that deferred loading is required, but it is also used
-		 * to tell DataTables how many records there are in the full table (allowing
-		 * the information element and pagination to be displayed correctly). In the case
-		 * where a filtering is applied to the table on initial load, this can be
-		 * indicated by giving the parameter as an array, where the first element is
-		 * the number of records available after filtering and the second element is the
-		 * number of records without filtering (allowing the table information element
-		 * to be shown correctly).
-		 *  @type int | array
-		 *  @default null
-		 *
-		 *  @dtopt Options
-		 *  @name DataTable.defaults.deferLoading
-		 *
-		 *  @example
-		 *    // 57 records available in the table, no filtering applied
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "serverSide": true,
-		 *        "ajax": "scripts/server_processing.php",
-		 *        "deferLoading": 57
-		 *      } );
-		 *    } );
-		 *
-		 *  @example
-		 *    // 57 records after filtering, 100 without filtering (an initial filter applied)
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "serverSide": true,
-		 *        "ajax": "scripts/server_processing.php",
-		 *        "deferLoading": [ 57, 100 ],
-		 *        "search": {
-		 *          "search": "my_filter"
-		 *        }
-		 *      } );
-		 *    } );
-		 */
-		"iDeferLoading": null,
-	
-	
-		/**
-		 * Number of rows to display on a single page when using pagination. If
-		 * feature enabled (`lengthChange`) then the end user will be able to override
-		 * this to a custom setting using a pop-up menu.
-		 *  @type int
-		 *  @default 10
-		 *
-		 *  @dtopt Options
-		 *  @name DataTable.defaults.pageLength
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "pageLength": 50
-		 *      } );
-		 *    } )
-		 */
-		"iDisplayLength": 10,
-	
-	
-		/**
-		 * Define the starting point for data display when using DataTables with
-		 * pagination. Note that this parameter is the number of records, rather than
-		 * the page number, so if you have 10 records per page and want to start on
-		 * the third page, it should be "20".
-		 *  @type int
-		 *  @default 0
-		 *
-		 *  @dtopt Options
-		 *  @name DataTable.defaults.displayStart
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "displayStart": 20
-		 *      } );
-		 *    } )
-		 */
-		"iDisplayStart": 0,
-	
-	
-		/**
-		 * By default DataTables allows keyboard navigation of the table (sorting, paging,
-		 * and filtering) by adding a `tabindex` attribute to the required elements. This
-		 * allows you to tab through the controls and press the enter key to activate them.
-		 * The tabindex is default 0, meaning that the tab follows the flow of the document.
-		 * You can overrule this using this parameter if you wish. Use a value of -1 to
-		 * disable built-in keyboard navigation.
-		 *  @type int
-		 *  @default 0
-		 *
-		 *  @dtopt Options
-		 *  @name DataTable.defaults.tabIndex
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "tabIndex": 1
-		 *      } );
-		 *    } );
-		 */
-		"iTabIndex": 0,
-	
-	
-		/**
-		 * Classes that DataTables assigns to the various components and features
-		 * that it adds to the HTML table. This allows classes to be configured
-		 * during initialisation in addition to through the static
-		 * {@link DataTable.ext.oStdClasses} object).
 		 *  @namespace
-		 *  @name DataTable.defaults.classes
 		 */
-		"oClasses": {},
-	
-	
+		DataTable.defaults = {
+			/**
+			 * An array of data to use for the table, passed in at initialisation which
+			 * will be used in preference to any data which is already in the DOM. This is
+			 * particularly useful for constructing tables purely in Javascript, for
+			 * example with a custom Ajax call.
+			 *  @type array
+			 *  @default null
+			 *
+			 *  @dtopt Option
+			 *  @name DataTable.defaults.data
+			 *
+			 *  @example
+			 *    // Using a 2D array data source
+			 *    $(document).ready( function () {
+			 *      $('#example').dataTable( {
+			 *        "data": [
+			 *          ['Trident', 'Internet Explorer 4.0', 'Win 95+', 4, 'X'],
+			 *          ['Trident', 'Internet Explorer 5.0', 'Win 95+', 5, 'C'],
+			 *        ],
+			 *        "columns": [
+			 *          { "title": "Engine" },
+			 *          { "title": "Browser" },
+			 *          { "title": "Platform" },
+			 *          { "title": "Version" },
+			 *          { "title": "Grade" }
+			 *        ]
+			 *      } );
+			 *    } );
+			 *
+			 *  @example
+			 *    // Using an array of objects as a data source (`data`)
+			 *    $(document).ready( function () {
+			 *      $('#example').dataTable( {
+			 *        "data": [
+			 *          {
+			 *            "engine":   "Trident",
+			 *            "browser":  "Internet Explorer 4.0",
+			 *            "platform": "Win 95+",
+			 *            "version":  4,
+			 *            "grade":    "X"
+			 *          },
+			 *          {
+			 *            "engine":   "Trident",
+			 *            "browser":  "Internet Explorer 5.0",
+			 *            "platform": "Win 95+",
+			 *            "version":  5,
+			 *            "grade":    "C"
+			 *          }
+			 *        ],
+			 *        "columns": [
+			 *          { "title": "Engine",   "data": "engine" },
+			 *          { "title": "Browser",  "data": "browser" },
+			 *          { "title": "Platform", "data": "platform" },
+			 *          { "title": "Version",  "data": "version" },
+			 *          { "title": "Grade",    "data": "grade" }
+			 *        ]
+			 *      } );
+			 *    } );
+			 */
+			"aaData": null,
+		
+		
+			/**
+			 * If ordering is enabled, then DataTables will perform a first pass sort on
+			 * initialisation. You can define which column(s) the sort is performed
+			 * upon, and the sorting direction, with this variable. The `sorting` array
+			 * should contain an array for each column to be sorted initially containing
+			 * the column's index and a direction string ('asc' or 'desc').
+			 *  @type array
+			 *  @default [[0,'asc']]
+			 *
+			 *  @dtopt Option
+			 *  @name DataTable.defaults.order
+			 *
+			 *  @example
+			 *    // Sort by 3rd column first, and then 4th column
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "order": [[2,'asc'], [3,'desc']]
+			 *      } );
+			 *    } );
+			 *
+			 *    // No initial sorting
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "order": []
+			 *      } );
+			 *    } );
+			 */
+			"aaSorting": [[0,'asc']],
+		
+		
+			/**
+			 * This parameter is basically identical to the `sorting` parameter, but
+			 * cannot be overridden by user interaction with the table. What this means
+			 * is that you could have a column (visible or hidden) which the sorting
+			 * will always be forced on first - any sorting after that (from the user)
+			 * will then be performed as required. This can be useful for grouping rows
+			 * together.
+			 *  @type array
+			 *  @default null
+			 *
+			 *  @dtopt Option
+			 *  @name DataTable.defaults.orderFixed
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "orderFixed": [[0,'asc']]
+			 *      } );
+			 *    } )
+			 */
+			"aaSortingFixed": [],
+		
+		
+			/**
+			 * DataTables can be instructed to load data to display in the table from a
+			 * Ajax source. This option defines how that Ajax call is made and where to.
+			 *
+			 * The `ajax` property has three different modes of operation, depending on
+			 * how it is defined. These are:
+			 *
+			 * * `string` - Set the URL from where the data should be loaded from.
+			 * * `object` - Define properties for `jQuery.ajax`.
+			 * * `function` - Custom data get function
+			 *
+			 * `string`
+			 * --------
+			 *
+			 * As a string, the `ajax` property simply defines the URL from which
+			 * DataTables will load data.
+			 *
+			 * `object`
+			 * --------
+			 *
+			 * As an object, the parameters in the object are passed to
+			 * [jQuery.ajax](http://api.jquery.com/jQuery.ajax/) allowing fine control
+			 * of the Ajax request. DataTables has a number of default parameters which
+			 * you can override using this option. Please refer to the jQuery
+			 * documentation for a full description of the options available, although
+			 * the following parameters provide additional options in DataTables or
+			 * require special consideration:
+			 *
+			 * * `data` - As with jQuery, `data` can be provided as an object, but it
+			 *   can also be used as a function to manipulate the data DataTables sends
+			 *   to the server. The function takes a single parameter, an object of
+			 *   parameters with the values that DataTables has readied for sending. An
+			 *   object may be returned which will be merged into the DataTables
+			 *   defaults, or you can add the items to the object that was passed in and
+			 *   not return anything from the function. This supersedes `fnServerParams`
+			 *   from DataTables 1.9-.
+			 *
+			 * * `dataSrc` - By default DataTables will look for the property `data` (or
+			 *   `aaData` for compatibility with DataTables 1.9-) when obtaining data
+			 *   from an Ajax source or for server-side processing - this parameter
+			 *   allows that property to be changed. You can use Javascript dotted
+			 *   object notation to get a data source for multiple levels of nesting, or
+			 *   it my be used as a function. As a function it takes a single parameter,
+			 *   the JSON returned from the server, which can be manipulated as
+			 *   required, with the returned value being that used by DataTables as the
+			 *   data source for the table. This supersedes `sAjaxDataProp` from
+			 *   DataTables 1.9-.
+			 *
+			 * * `success` - Should not be overridden it is used internally in
+			 *   DataTables. To manipulate / transform the data returned by the server
+			 *   use `ajax.dataSrc`, or use `ajax` as a function (see below).
+			 *
+			 * `function`
+			 * ----------
+			 *
+			 * As a function, making the Ajax call is left up to yourself allowing
+			 * complete control of the Ajax request. Indeed, if desired, a method other
+			 * than Ajax could be used to obtain the required data, such as Web storage
+			 * or an AIR database.
+			 *
+			 * The function is given four parameters and no return is required. The
+			 * parameters are:
+			 *
+			 * 1. _object_ - Data to send to the server
+			 * 2. _function_ - Callback function that must be executed when the required
+			 *    data has been obtained. That data should be passed into the callback
+			 *    as the only parameter
+			 * 3. _object_ - DataTables settings object for the table
+			 *
+			 * Note that this supersedes `fnServerData` from DataTables 1.9-.
+			 *
+			 *  @type string|object|function
+			 *  @default null
+			 *
+			 *  @dtopt Option
+			 *  @name DataTable.defaults.ajax
+			 *  @since 1.10.0
+			 *
+			 * @example
+			 *   // Get JSON data from a file via Ajax.
+			 *   // Note DataTables expects data in the form `{ data: [ ...data... ] }` by default).
+			 *   $('#example').dataTable( {
+			 *     "ajax": "data.json"
+			 *   } );
+			 *
+			 * @example
+			 *   // Get JSON data from a file via Ajax, using `dataSrc` to change
+			 *   // `data` to `tableData` (i.e. `{ tableData: [ ...data... ] }`)
+			 *   $('#example').dataTable( {
+			 *     "ajax": {
+			 *       "url": "data.json",
+			 *       "dataSrc": "tableData"
+			 *     }
+			 *   } );
+			 *
+			 * @example
+			 *   // Get JSON data from a file via Ajax, using `dataSrc` to read data
+			 *   // from a plain array rather than an array in an object
+			 *   $('#example').dataTable( {
+			 *     "ajax": {
+			 *       "url": "data.json",
+			 *       "dataSrc": ""
+			 *     }
+			 *   } );
+			 *
+			 * @example
+			 *   // Manipulate the data returned from the server - add a link to data
+			 *   // (note this can, should, be done using `render` for the column - this
+			 *   // is just a simple example of how the data can be manipulated).
+			 *   $('#example').dataTable( {
+			 *     "ajax": {
+			 *       "url": "data.json",
+			 *       "dataSrc": function ( json ) {
+			 *         for ( var i=0, ien=json.length ; i<ien ; i++ ) {
+			 *           json[i][0] = '<a href="/message/'+json[i][0]+'>View message</a>';
+			 *         }
+			 *         return json;
+			 *       }
+			 *     }
+			 *   } );
+			 *
+			 * @example
+			 *   // Add data to the request
+			 *   $('#example').dataTable( {
+			 *     "ajax": {
+			 *       "url": "data.json",
+			 *       "data": function ( d ) {
+			 *         return {
+			 *           "extra_search": $('#extra').val()
+			 *         };
+			 *       }
+			 *     }
+			 *   } );
+			 *
+			 * @example
+			 *   // Send request as POST
+			 *   $('#example').dataTable( {
+			 *     "ajax": {
+			 *       "url": "data.json",
+			 *       "type": "POST"
+			 *     }
+			 *   } );
+			 *
+			 * @example
+			 *   // Get the data from localStorage (could interface with a form for
+			 *   // adding, editing and removing rows).
+			 *   $('#example').dataTable( {
+			 *     "ajax": function (data, callback, settings) {
+			 *       callback(
+			 *         JSON.parse( localStorage.getItem('dataTablesData') )
+			 *       );
+			 *     }
+			 *   } );
+			 */
+			"ajax": null,
+		
+		
+			/**
+			 * This parameter allows you to readily specify the entries in the length drop
+			 * down menu that DataTables shows when pagination is enabled. It can be
+			 * either a 1D array of options which will be used for both the displayed
+			 * option and the value, or a 2D array which will use the array in the first
+			 * position as the value, and the array in the second position as the
+			 * displayed options (useful for language strings such as 'All').
+			 *
+			 * Note that the `pageLength` property will be automatically set to the
+			 * first value given in this array, unless `pageLength` is also provided.
+			 *  @type array
+			 *  @default [ 10, 25, 50, 100 ]
+			 *
+			 *  @dtopt Option
+			 *  @name DataTable.defaults.lengthMenu
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+			 *      } );
+			 *    } );
+			 */
+			"aLengthMenu": [ 10, 25, 50, 100 ],
+		
+		
+			/**
+			 * The `columns` option in the initialisation parameter allows you to define
+			 * details about the way individual columns behave. For a full list of
+			 * column options that can be set, please see
+			 * {@link DataTable.defaults.column}. Note that if you use `columns` to
+			 * define your columns, you must have an entry in the array for every single
+			 * column that you have in your table (these can be null if you don't which
+			 * to specify any options).
+			 *  @member
+			 *
+			 *  @name DataTable.defaults.column
+			 */
+			"aoColumns": null,
+		
+			/**
+			 * Very similar to `columns`, `columnDefs` allows you to target a specific
+			 * column, multiple columns, or all columns, using the `targets` property of
+			 * each object in the array. This allows great flexibility when creating
+			 * tables, as the `columnDefs` arrays can be of any length, targeting the
+			 * columns you specifically want. `columnDefs` may use any of the column
+			 * options available: {@link DataTable.defaults.column}, but it _must_
+			 * have `targets` defined in each object in the array. Values in the `targets`
+			 * array may be:
+			 *   <ul>
+			 *     <li>a string - class name will be matched on the TH for the column</li>
+			 *     <li>0 or a positive integer - column index counting from the left</li>
+			 *     <li>a negative integer - column index counting from the right</li>
+			 *     <li>the string "_all" - all columns (i.e. assign a default)</li>
+			 *   </ul>
+			 *  @member
+			 *
+			 *  @name DataTable.defaults.columnDefs
+			 */
+			"aoColumnDefs": null,
+		
+		
+			/**
+			 * Basically the same as `search`, this parameter defines the individual column
+			 * filtering state at initialisation time. The array must be of the same size
+			 * as the number of columns, and each element be an object with the parameters
+			 * `search` and `escapeRegex` (the latter is optional). 'null' is also
+			 * accepted and the default will be used.
+			 *  @type array
+			 *  @default []
+			 *
+			 *  @dtopt Option
+			 *  @name DataTable.defaults.searchCols
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "searchCols": [
+			 *          null,
+			 *          { "search": "My filter" },
+			 *          null,
+			 *          { "search": "^[0-9]", "escapeRegex": false }
+			 *        ]
+			 *      } );
+			 *    } )
+			 */
+			"aoSearchCols": [],
+		
+		
+			/**
+			 * An array of CSS classes that should be applied to displayed rows. This
+			 * array may be of any length, and DataTables will apply each class
+			 * sequentially, looping when required.
+			 *  @type array
+			 *  @default null <i>Will take the values determined by the `oClasses.stripe*`
+			 *    options</i>
+			 *
+			 *  @dtopt Option
+			 *  @name DataTable.defaults.stripeClasses
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "stripeClasses": [ 'strip1', 'strip2', 'strip3' ]
+			 *      } );
+			 *    } )
+			 */
+			"asStripeClasses": null,
+		
+		
+			/**
+			 * Enable or disable automatic column width calculation. This can be disabled
+			 * as an optimisation (it takes some time to calculate the widths) if the
+			 * tables widths are passed in using `columns`.
+			 *  @type boolean
+			 *  @default true
+			 *
+			 *  @dtopt Features
+			 *  @name DataTable.defaults.autoWidth
+			 *
+			 *  @example
+			 *    $(document).ready( function () {
+			 *      $('#example').dataTable( {
+			 *        "autoWidth": false
+			 *      } );
+			 *    } );
+			 */
+			"bAutoWidth": true,
+		
+		
+			/**
+			 * Deferred rendering can provide DataTables with a huge speed boost when you
+			 * are using an Ajax or JS data source for the table. This option, when set to
+			 * true, will cause DataTables to defer the creation of the table elements for
+			 * each row until they are needed for a draw - saving a significant amount of
+			 * time.
+			 *  @type boolean
+			 *  @default false
+			 *
+			 *  @dtopt Features
+			 *  @name DataTable.defaults.deferRender
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "ajax": "sources/arrays.txt",
+			 *        "deferRender": true
+			 *      } );
+			 *    } );
+			 */
+			"bDeferRender": false,
+		
+		
+			/**
+			 * Replace a DataTable which matches the given selector and replace it with
+			 * one which has the properties of the new initialisation object passed. If no
+			 * table matches the selector, then the new DataTable will be constructed as
+			 * per normal.
+			 *  @type boolean
+			 *  @default false
+			 *
+			 *  @dtopt Options
+			 *  @name DataTable.defaults.destroy
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "srollY": "200px",
+			 *        "paginate": false
+			 *      } );
+			 *
+			 *      // Some time later....
+			 *      $('#example').dataTable( {
+			 *        "filter": false,
+			 *        "destroy": true
+			 *      } );
+			 *    } );
+			 */
+			"bDestroy": false,
+		
+		
+			/**
+			 * Enable or disable filtering of data. Filtering in DataTables is "smart" in
+			 * that it allows the end user to input multiple words (space separated) and
+			 * will match a row containing those words, even if not in the order that was
+			 * specified (this allow matching across multiple columns). Note that if you
+			 * wish to use filtering in DataTables this must remain 'true' - to remove the
+			 * default filtering input box and retain filtering abilities, please use
+			 * {@link DataTable.defaults.dom}.
+			 *  @type boolean
+			 *  @default true
+			 *
+			 *  @dtopt Features
+			 *  @name DataTable.defaults.searching
+			 *
+			 *  @example
+			 *    $(document).ready( function () {
+			 *      $('#example').dataTable( {
+			 *        "searching": false
+			 *      } );
+			 *    } );
+			 */
+			"bFilter": true,
+		
+		
+			/**
+			 * Enable or disable the table information display. This shows information
+			 * about the data that is currently visible on the page, including information
+			 * about filtered data if that action is being performed.
+			 *  @type boolean
+			 *  @default true
+			 *
+			 *  @dtopt Features
+			 *  @name DataTable.defaults.info
+			 *
+			 *  @example
+			 *    $(document).ready( function () {
+			 *      $('#example').dataTable( {
+			 *        "info": false
+			 *      } );
+			 *    } );
+			 */
+			"bInfo": true,
+		
+		
+			/**
+			 * Allows the end user to select the size of a formatted page from a select
+			 * menu (sizes are 10, 25, 50 and 100). Requires pagination (`paginate`).
+			 *  @type boolean
+			 *  @default true
+			 *
+			 *  @dtopt Features
+			 *  @name DataTable.defaults.lengthChange
+			 *
+			 *  @example
+			 *    $(document).ready( function () {
+			 *      $('#example').dataTable( {
+			 *        "lengthChange": false
+			 *      } );
+			 *    } );
+			 */
+			"bLengthChange": true,
+		
+		
+			/**
+			 * Enable or disable pagination.
+			 *  @type boolean
+			 *  @default true
+			 *
+			 *  @dtopt Features
+			 *  @name DataTable.defaults.paging
+			 *
+			 *  @example
+			 *    $(document).ready( function () {
+			 *      $('#example').dataTable( {
+			 *        "paging": false
+			 *      } );
+			 *    } );
+			 */
+			"bPaginate": true,
+		
+		
+			/**
+			 * Enable or disable the display of a 'processing' indicator when the table is
+			 * being processed (e.g. a sort). This is particularly useful for tables with
+			 * large amounts of data where it can take a noticeable amount of time to sort
+			 * the entries.
+			 *  @type boolean
+			 *  @default false
+			 *
+			 *  @dtopt Features
+			 *  @name DataTable.defaults.processing
+			 *
+			 *  @example
+			 *    $(document).ready( function () {
+			 *      $('#example').dataTable( {
+			 *        "processing": true
+			 *      } );
+			 *    } );
+			 */
+			"bProcessing": false,
+		
+		
+			/**
+			 * Retrieve the DataTables object for the given selector. Note that if the
+			 * table has already been initialised, this parameter will cause DataTables
+			 * to simply return the object that has already been set up - it will not take
+			 * account of any changes you might have made to the initialisation object
+			 * passed to DataTables (setting this parameter to true is an acknowledgement
+			 * that you understand this). `destroy` can be used to reinitialise a table if
+			 * you need.
+			 *  @type boolean
+			 *  @default false
+			 *
+			 *  @dtopt Options
+			 *  @name DataTable.defaults.retrieve
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      initTable();
+			 *      tableActions();
+			 *    } );
+			 *
+			 *    function initTable ()
+			 *    {
+			 *      return $('#example').dataTable( {
+			 *        "scrollY": "200px",
+			 *        "paginate": false,
+			 *        "retrieve": true
+			 *      } );
+			 *    }
+			 *
+			 *    function tableActions ()
+			 *    {
+			 *      var table = initTable();
+			 *      // perform API operations with oTable
+			 *    }
+			 */
+			"bRetrieve": false,
+		
+		
+			/**
+			 * When vertical (y) scrolling is enabled, DataTables will force the height of
+			 * the table's viewport to the given height at all times (useful for layout).
+			 * However, this can look odd when filtering data down to a small data set,
+			 * and the footer is left "floating" further down. This parameter (when
+			 * enabled) will cause DataTables to collapse the table's viewport down when
+			 * the result set will fit within the given Y height.
+			 *  @type boolean
+			 *  @default false
+			 *
+			 *  @dtopt Options
+			 *  @name DataTable.defaults.scrollCollapse
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "scrollY": "200",
+			 *        "scrollCollapse": true
+			 *      } );
+			 *    } );
+			 */
+			"bScrollCollapse": false,
+		
+		
+			/**
+			 * Configure DataTables to use server-side processing. Note that the
+			 * `ajax` parameter must also be given in order to give DataTables a
+			 * source to obtain the required data for each draw.
+			 *  @type boolean
+			 *  @default false
+			 *
+			 *  @dtopt Features
+			 *  @dtopt Server-side
+			 *  @name DataTable.defaults.serverSide
+			 *
+			 *  @example
+			 *    $(document).ready( function () {
+			 *      $('#example').dataTable( {
+			 *        "serverSide": true,
+			 *        "ajax": "xhr.php"
+			 *      } );
+			 *    } );
+			 */
+			"bServerSide": false,
+		
+		
+			/**
+			 * Enable or disable sorting of columns. Sorting of individual columns can be
+			 * disabled by the `sortable` option for each column.
+			 *  @type boolean
+			 *  @default true
+			 *
+			 *  @dtopt Features
+			 *  @name DataTable.defaults.ordering
+			 *
+			 *  @example
+			 *    $(document).ready( function () {
+			 *      $('#example').dataTable( {
+			 *        "ordering": false
+			 *      } );
+			 *    } );
+			 */
+			"bSort": true,
+		
+		
+			/**
+			 * Enable or display DataTables' ability to sort multiple columns at the
+			 * same time (activated by shift-click by the user).
+			 *  @type boolean
+			 *  @default true
+			 *
+			 *  @dtopt Options
+			 *  @name DataTable.defaults.orderMulti
+			 *
+			 *  @example
+			 *    // Disable multiple column sorting ability
+			 *    $(document).ready( function () {
+			 *      $('#example').dataTable( {
+			 *        "orderMulti": false
+			 *      } );
+			 *    } );
+			 */
+			"bSortMulti": true,
+		
+		
+			/**
+			 * Allows control over whether DataTables should use the top (true) unique
+			 * cell that is found for a single column, or the bottom (false - default).
+			 * This is useful when using complex headers.
+			 *  @type boolean
+			 *  @default false
+			 *
+			 *  @dtopt Options
+			 *  @name DataTable.defaults.orderCellsTop
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "orderCellsTop": true
+			 *      } );
+			 *    } );
+			 */
+			"bSortCellsTop": false,
+		
+		
+			/**
+			 * Enable or disable the addition of the classes `sorting\_1`, `sorting\_2` and
+			 * `sorting\_3` to the columns which are currently being sorted on. This is
+			 * presented as a feature switch as it can increase processing time (while
+			 * classes are removed and added) so for large data sets you might want to
+			 * turn this off.
+			 *  @type boolean
+			 *  @default true
+			 *
+			 *  @dtopt Features
+			 *  @name DataTable.defaults.orderClasses
+			 *
+			 *  @example
+			 *    $(document).ready( function () {
+			 *      $('#example').dataTable( {
+			 *        "orderClasses": false
+			 *      } );
+			 *    } );
+			 */
+			"bSortClasses": true,
+		
+		
+			/**
+			 * Enable or disable state saving. When enabled HTML5 `localStorage` will be
+			 * used to save table display information such as pagination information,
+			 * display length, filtering and sorting. As such when the end user reloads
+			 * the page the display display will match what thy had previously set up.
+			 *
+			 * Due to the use of `localStorage` the default state saving is not supported
+			 * in IE6 or 7. If state saving is required in those browsers, use
+			 * `stateSaveCallback` to provide a storage solution such as cookies.
+			 *  @type boolean
+			 *  @default false
+			 *
+			 *  @dtopt Features
+			 *  @name DataTable.defaults.stateSave
+			 *
+			 *  @example
+			 *    $(document).ready( function () {
+			 *      $('#example').dataTable( {
+			 *        "stateSave": true
+			 *      } );
+			 *    } );
+			 */
+			"bStateSave": false,
+		
+		
+			/**
+			 * This function is called when a TR element is created (and all TD child
+			 * elements have been inserted), or registered if using a DOM source, allowing
+			 * manipulation of the TR element (adding classes etc).
+			 *  @type function
+			 *  @param {node} row "TR" element for the current row
+			 *  @param {array} data Raw data array for this row
+			 *  @param {int} dataIndex The index of this row in the internal aoData array
+			 *
+			 *  @dtopt Callbacks
+			 *  @name DataTable.defaults.createdRow
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "createdRow": function( row, data, dataIndex ) {
+			 *          // Bold the grade for all 'A' grade browsers
+			 *          if ( data[4] == "A" )
+			 *          {
+			 *            $('td:eq(4)', row).html( '<b>A</b>' );
+			 *          }
+			 *        }
+			 *      } );
+			 *    } );
+			 */
+			"fnCreatedRow": null,
+		
+		
+			/**
+			 * This function is called on every 'draw' event, and allows you to
+			 * dynamically modify any aspect you want about the created DOM.
+			 *  @type function
+			 *  @param {object} settings DataTables settings object
+			 *
+			 *  @dtopt Callbacks
+			 *  @name DataTable.defaults.drawCallback
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "drawCallback": function( settings ) {
+			 *          alert( 'DataTables has redrawn the table' );
+			 *        }
+			 *      } );
+			 *    } );
+			 */
+			"fnDrawCallback": null,
+		
+		
+			/**
+			 * Identical to fnHeaderCallback() but for the table footer this function
+			 * allows you to modify the table footer on every 'draw' event.
+			 *  @type function
+			 *  @param {node} foot "TR" element for the footer
+			 *  @param {array} data Full table data (as derived from the original HTML)
+			 *  @param {int} start Index for the current display starting point in the
+			 *    display array
+			 *  @param {int} end Index for the current display ending point in the
+			 *    display array
+			 *  @param {array int} display Index array to translate the visual position
+			 *    to the full data array
+			 *
+			 *  @dtopt Callbacks
+			 *  @name DataTable.defaults.footerCallback
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "footerCallback": function( tfoot, data, start, end, display ) {
+			 *          tfoot.getElementsByTagName('th')[0].innerHTML = "Starting index is "+start;
+			 *        }
+			 *      } );
+			 *    } )
+			 */
+			"fnFooterCallback": null,
+		
+		
+			/**
+			 * When rendering large numbers in the information element for the table
+			 * (i.e. "Showing 1 to 10 of 57 entries") DataTables will render large numbers
+			 * to have a comma separator for the 'thousands' units (e.g. 1 million is
+			 * rendered as "1,000,000") to help readability for the end user. This
+			 * function will override the default method DataTables uses.
+			 *  @type function
+			 *  @member
+			 *  @param {int} toFormat number to be formatted
+			 *  @returns {string} formatted string for DataTables to show the number
+			 *
+			 *  @dtopt Callbacks
+			 *  @name DataTable.defaults.formatNumber
+			 *
+			 *  @example
+			 *    // Format a number using a single quote for the separator (note that
+			 *    // this can also be done with the language.thousands option)
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "formatNumber": function ( toFormat ) {
+			 *          return toFormat.toString().replace(
+			 *            /\B(?=(\d{3})+(?!\d))/g, "'"
+			 *          );
+			 *        };
+			 *      } );
+			 *    } );
+			 */
+			"fnFormatNumber": function ( toFormat ) {
+				return toFormat.toString().replace(
+					/\B(?=(\d{3})+(?!\d))/g,
+					this.oLanguage.sThousands
+				);
+			},
+		
+		
+			/**
+			 * This function is called on every 'draw' event, and allows you to
+			 * dynamically modify the header row. This can be used to calculate and
+			 * display useful information about the table.
+			 *  @type function
+			 *  @param {node} head "TR" element for the header
+			 *  @param {array} data Full table data (as derived from the original HTML)
+			 *  @param {int} start Index for the current display starting point in the
+			 *    display array
+			 *  @param {int} end Index for the current display ending point in the
+			 *    display array
+			 *  @param {array int} display Index array to translate the visual position
+			 *    to the full data array
+			 *
+			 *  @dtopt Callbacks
+			 *  @name DataTable.defaults.headerCallback
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "fheaderCallback": function( head, data, start, end, display ) {
+			 *          head.getElementsByTagName('th')[0].innerHTML = "Displaying "+(end-start)+" records";
+			 *        }
+			 *      } );
+			 *    } )
+			 */
+			"fnHeaderCallback": null,
+		
+		
+			/**
+			 * The information element can be used to convey information about the current
+			 * state of the table. Although the internationalisation options presented by
+			 * DataTables are quite capable of dealing with most customisations, there may
+			 * be times where you wish to customise the string further. This callback
+			 * allows you to do exactly that.
+			 *  @type function
+			 *  @param {object} oSettings DataTables settings object
+			 *  @param {int} start Starting position in data for the draw
+			 *  @param {int} end End position in data for the draw
+			 *  @param {int} max Total number of rows in the table (regardless of
+			 *    filtering)
+			 *  @param {int} total Total number of rows in the data set, after filtering
+			 *  @param {string} pre The string that DataTables has formatted using it's
+			 *    own rules
+			 *  @returns {string} The string to be displayed in the information element.
+			 *
+			 *  @dtopt Callbacks
+			 *  @name DataTable.defaults.infoCallback
+			 *
+			 *  @example
+			 *    $('#example').dataTable( {
+			 *      "infoCallback": function( settings, start, end, max, total, pre ) {
+			 *        return start +" to "+ end;
+			 *      }
+			 *    } );
+			 */
+			"fnInfoCallback": null,
+		
+		
+			/**
+			 * Called when the table has been initialised. Normally DataTables will
+			 * initialise sequentially and there will be no need for this function,
+			 * however, this does not hold true when using external language information
+			 * since that is obtained using an async XHR call.
+			 *  @type function
+			 *  @param {object} settings DataTables settings object
+			 *  @param {object} json The JSON object request from the server - only
+			 *    present if client-side Ajax sourced data is used
+			 *
+			 *  @dtopt Callbacks
+			 *  @name DataTable.defaults.initComplete
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "initComplete": function(settings, json) {
+			 *          alert( 'DataTables has finished its initialisation.' );
+			 *        }
+			 *      } );
+			 *    } )
+			 */
+			"fnInitComplete": null,
+		
+		
+			/**
+			 * Called at the very start of each table draw and can be used to cancel the
+			 * draw by returning false, any other return (including undefined) results in
+			 * the full draw occurring).
+			 *  @type function
+			 *  @param {object} settings DataTables settings object
+			 *  @returns {boolean} False will cancel the draw, anything else (including no
+			 *    return) will allow it to complete.
+			 *
+			 *  @dtopt Callbacks
+			 *  @name DataTable.defaults.preDrawCallback
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "preDrawCallback": function( settings ) {
+			 *          if ( $('#test').val() == 1 ) {
+			 *            return false;
+			 *          }
+			 *        }
+			 *      } );
+			 *    } );
+			 */
+			"fnPreDrawCallback": null,
+		
+		
+			/**
+			 * This function allows you to 'post process' each row after it have been
+			 * generated for each table draw, but before it is rendered on screen. This
+			 * function might be used for setting the row class name etc.
+			 *  @type function
+			 *  @param {node} row "TR" element for the current row
+			 *  @param {array} data Raw data array for this row
+			 *  @param {int} displayIndex The display index for the current table draw
+			 *  @param {int} displayIndexFull The index of the data in the full list of
+			 *    rows (after filtering)
+			 *
+			 *  @dtopt Callbacks
+			 *  @name DataTable.defaults.rowCallback
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "rowCallback": function( row, data, displayIndex, displayIndexFull ) {
+			 *          // Bold the grade for all 'A' grade browsers
+			 *          if ( data[4] == "A" ) {
+			 *            $('td:eq(4)', row).html( '<b>A</b>' );
+			 *          }
+			 *        }
+			 *      } );
+			 *    } );
+			 */
+			"fnRowCallback": null,
+		
+		
+			/**
+			 * __Deprecated__ The functionality provided by this parameter has now been
+			 * superseded by that provided through `ajax`, which should be used instead.
+			 *
+			 * This parameter allows you to override the default function which obtains
+			 * the data from the server so something more suitable for your application.
+			 * For example you could use POST data, or pull information from a Gears or
+			 * AIR database.
+			 *  @type function
+			 *  @member
+			 *  @param {string} source HTTP source to obtain the data from (`ajax`)
+			 *  @param {array} data A key/value pair object containing the data to send
+			 *    to the server
+			 *  @param {function} callback to be called on completion of the data get
+			 *    process that will draw the data on the page.
+			 *  @param {object} settings DataTables settings object
+			 *
+			 *  @dtopt Callbacks
+			 *  @dtopt Server-side
+			 *  @name DataTable.defaults.serverData
+			 *
+			 *  @deprecated 1.10. Please use `ajax` for this functionality now.
+			 */
+			"fnServerData": null,
+		
+		
+			/**
+			 * __Deprecated__ The functionality provided by this parameter has now been
+			 * superseded by that provided through `ajax`, which should be used instead.
+			 *
+			 *  It is often useful to send extra data to the server when making an Ajax
+			 * request - for example custom filtering information, and this callback
+			 * function makes it trivial to send extra information to the server. The
+			 * passed in parameter is the data set that has been constructed by
+			 * DataTables, and you can add to this or modify it as you require.
+			 *  @type function
+			 *  @param {array} data Data array (array of objects which are name/value
+			 *    pairs) that has been constructed by DataTables and will be sent to the
+			 *    server. In the case of Ajax sourced data with server-side processing
+			 *    this will be an empty array, for server-side processing there will be a
+			 *    significant number of parameters!
+			 *  @returns {undefined} Ensure that you modify the data array passed in,
+			 *    as this is passed by reference.
+			 *
+			 *  @dtopt Callbacks
+			 *  @dtopt Server-side
+			 *  @name DataTable.defaults.serverParams
+			 *
+			 *  @deprecated 1.10. Please use `ajax` for this functionality now.
+			 */
+			"fnServerParams": null,
+		
+		
+			/**
+			 * Load the table state. With this function you can define from where, and how, the
+			 * state of a table is loaded. By default DataTables will load from `localStorage`
+			 * but you might wish to use a server-side database or cookies.
+			 *  @type function
+			 *  @member
+			 *  @param {object} settings DataTables settings object
+			 *  @param {object} callback Callback that can be executed when done. It
+			 *    should be passed the loaded state object.
+			 *  @return {object} The DataTables state object to be loaded
+			 *
+			 *  @dtopt Callbacks
+			 *  @name DataTable.defaults.stateLoadCallback
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "stateSave": true,
+			 *        "stateLoadCallback": function (settings, callback) {
+			 *          $.ajax( {
+			 *            "url": "/state_load",
+			 *            "dataType": "json",
+			 *            "success": function (json) {
+			 *              callback( json );
+			 *            }
+			 *          } );
+			 *        }
+			 *      } );
+			 *    } );
+			 */
+			"fnStateLoadCallback": function ( settings ) {
+				try {
+					return JSON.parse(
+						(settings.iStateDuration === -1 ? sessionStorage : localStorage).getItem(
+							'DataTables_'+settings.sInstance+'_'+location.pathname
+						)
+					);
+				} catch (e) {
+					return {};
+				}
+			},
+		
+		
+			/**
+			 * Callback which allows modification of the saved state prior to loading that state.
+			 * This callback is called when the table is loading state from the stored data, but
+			 * prior to the settings object being modified by the saved state. Note that for
+			 * plug-in authors, you should use the `stateLoadParams` event to load parameters for
+			 * a plug-in.
+			 *  @type function
+			 *  @param {object} settings DataTables settings object
+			 *  @param {object} data The state object that is to be loaded
+			 *
+			 *  @dtopt Callbacks
+			 *  @name DataTable.defaults.stateLoadParams
+			 *
+			 *  @example
+			 *    // Remove a saved filter, so filtering is never loaded
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "stateSave": true,
+			 *        "stateLoadParams": function (settings, data) {
+			 *          data.oSearch.sSearch = "";
+			 *        }
+			 *      } );
+			 *    } );
+			 *
+			 *  @example
+			 *    // Disallow state loading by returning false
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "stateSave": true,
+			 *        "stateLoadParams": function (settings, data) {
+			 *          return false;
+			 *        }
+			 *      } );
+			 *    } );
+			 */
+			"fnStateLoadParams": null,
+		
+		
+			/**
+			 * Callback that is called when the state has been loaded from the state saving method
+			 * and the DataTables settings object has been modified as a result of the loaded state.
+			 *  @type function
+			 *  @param {object} settings DataTables settings object
+			 *  @param {object} data The state object that was loaded
+			 *
+			 *  @dtopt Callbacks
+			 *  @name DataTable.defaults.stateLoaded
+			 *
+			 *  @example
+			 *    // Show an alert with the filtering value that was saved
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "stateSave": true,
+			 *        "stateLoaded": function (settings, data) {
+			 *          alert( 'Saved filter was: '+data.oSearch.sSearch );
+			 *        }
+			 *      } );
+			 *    } );
+			 */
+			"fnStateLoaded": null,
+		
+		
+			/**
+			 * Save the table state. This function allows you to define where and how the state
+			 * information for the table is stored By default DataTables will use `localStorage`
+			 * but you might wish to use a server-side database or cookies.
+			 *  @type function
+			 *  @member
+			 *  @param {object} settings DataTables settings object
+			 *  @param {object} data The state object to be saved
+			 *
+			 *  @dtopt Callbacks
+			 *  @name DataTable.defaults.stateSaveCallback
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "stateSave": true,
+			 *        "stateSaveCallback": function (settings, data) {
+			 *          // Send an Ajax request to the server with the state object
+			 *          $.ajax( {
+			 *            "url": "/state_save",
+			 *            "data": data,
+			 *            "dataType": "json",
+			 *            "method": "POST"
+			 *            "success": function () {}
+			 *          } );
+			 *        }
+			 *      } );
+			 *    } );
+			 */
+			"fnStateSaveCallback": function ( settings, data ) {
+				try {
+					(settings.iStateDuration === -1 ? sessionStorage : localStorage).setItem(
+						'DataTables_'+settings.sInstance+'_'+location.pathname,
+						JSON.stringify( data )
+					);
+				} catch (e) {}
+			},
+		
+		
+			/**
+			 * Callback which allows modification of the state to be saved. Called when the table
+			 * has changed state a new state save is required. This method allows modification of
+			 * the state saving object prior to actually doing the save, including addition or
+			 * other state properties or modification. Note that for plug-in authors, you should
+			 * use the `stateSaveParams` event to save parameters for a plug-in.
+			 *  @type function
+			 *  @param {object} settings DataTables settings object
+			 *  @param {object} data The state object to be saved
+			 *
+			 *  @dtopt Callbacks
+			 *  @name DataTable.defaults.stateSaveParams
+			 *
+			 *  @example
+			 *    // Remove a saved filter, so filtering is never saved
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "stateSave": true,
+			 *        "stateSaveParams": function (settings, data) {
+			 *          data.oSearch.sSearch = "";
+			 *        }
+			 *      } );
+			 *    } );
+			 */
+			"fnStateSaveParams": null,
+		
+		
+			/**
+			 * Duration for which the saved state information is considered valid. After this period
+			 * has elapsed the state will be returned to the default.
+			 * Value is given in seconds.
+			 *  @type int
+			 *  @default 7200 <i>(2 hours)</i>
+			 *
+			 *  @dtopt Options
+			 *  @name DataTable.defaults.stateDuration
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "stateDuration": 60*60*24; // 1 day
+			 *      } );
+			 *    } )
+			 */
+			"iStateDuration": 7200,
+		
+		
+			/**
+			 * When enabled DataTables will not make a request to the server for the first
+			 * page draw - rather it will use the data already on the page (no sorting etc
+			 * will be applied to it), thus saving on an XHR at load time. `deferLoading`
+			 * is used to indicate that deferred loading is required, but it is also used
+			 * to tell DataTables how many records there are in the full table (allowing
+			 * the information element and pagination to be displayed correctly). In the case
+			 * where a filtering is applied to the table on initial load, this can be
+			 * indicated by giving the parameter as an array, where the first element is
+			 * the number of records available after filtering and the second element is the
+			 * number of records without filtering (allowing the table information element
+			 * to be shown correctly).
+			 *  @type int | array
+			 *  @default null
+			 *
+			 *  @dtopt Options
+			 *  @name DataTable.defaults.deferLoading
+			 *
+			 *  @example
+			 *    // 57 records available in the table, no filtering applied
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "serverSide": true,
+			 *        "ajax": "scripts/server_processing.php",
+			 *        "deferLoading": 57
+			 *      } );
+			 *    } );
+			 *
+			 *  @example
+			 *    // 57 records after filtering, 100 without filtering (an initial filter applied)
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "serverSide": true,
+			 *        "ajax": "scripts/server_processing.php",
+			 *        "deferLoading": [ 57, 100 ],
+			 *        "search": {
+			 *          "search": "my_filter"
+			 *        }
+			 *      } );
+			 *    } );
+			 */
+			"iDeferLoading": null,
+		
+		
+			/**
+			 * Number of rows to display on a single page when using pagination. If
+			 * feature enabled (`lengthChange`) then the end user will be able to override
+			 * this to a custom setting using a pop-up menu.
+			 *  @type int
+			 *  @default 10
+			 *
+			 *  @dtopt Options
+			 *  @name DataTable.defaults.pageLength
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "pageLength": 50
+			 *      } );
+			 *    } )
+			 */
+			"iDisplayLength": 10,
+		
+		
+			/**
+			 * Define the starting point for data display when using DataTables with
+			 * pagination. Note that this parameter is the number of records, rather than
+			 * the page number, so if you have 10 records per page and want to start on
+			 * the third page, it should be "20".
+			 *  @type int
+			 *  @default 0
+			 *
+			 *  @dtopt Options
+			 *  @name DataTable.defaults.displayStart
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "displayStart": 20
+			 *      } );
+			 *    } )
+			 */
+			"iDisplayStart": 0,
+		
+		
+			/**
+			 * By default DataTables allows keyboard navigation of the table (sorting, paging,
+			 * and filtering) by adding a `tabindex` attribute to the required elements. This
+			 * allows you to tab through the controls and press the enter key to activate them.
+			 * The tabindex is default 0, meaning that the tab follows the flow of the document.
+			 * You can overrule this using this parameter if you wish. Use a value of -1 to
+			 * disable built-in keyboard navigation.
+			 *  @type int
+			 *  @default 0
+			 *
+			 *  @dtopt Options
+			 *  @name DataTable.defaults.tabIndex
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "tabIndex": 1
+			 *      } );
+			 *    } );
+			 */
+			"iTabIndex": 0,
+		
+		
+			/**
+			 * Classes that DataTables assigns to the various components and features
+			 * that it adds to the HTML table. This allows classes to be configured
+			 * during initialisation in addition to through the static
+			 * {@link DataTable.ext.oStdClasses} object).
+			 *  @namespace
+			 *  @name DataTable.defaults.classes
+			 */
+			"oClasses": {},
+		
+		
+			/**
+			 * All strings that DataTables uses in the user interface that it creates
+			 * are defined in this object, allowing you to modified them individually or
+			 * completely replace them all as required.
+			 *  @namespace
+			 *  @name DataTable.defaults.language
+			 */
+			"oLanguage": {
+				/**
+				 * Strings that are used for WAI-ARIA labels and controls only (these are not
+				 * actually visible on the page, but will be read by screenreaders, and thus
+				 * must be internationalised as well).
+				 *  @namespace
+				 *  @name DataTable.defaults.language.aria
+				 */
+				"oAria": {
+					/**
+					 * ARIA label that is added to the table headers when the column may be
+					 * sorted ascending by activing the column (click or return when focused).
+					 * Note that the column header is prefixed to this string.
+					 *  @type string
+					 *  @default : activate to sort column ascending
+					 *
+					 *  @dtopt Language
+					 *  @name DataTable.defaults.language.aria.sortAscending
+					 *
+					 *  @example
+					 *    $(document).ready( function() {
+					 *      $('#example').dataTable( {
+					 *        "language": {
+					 *          "aria": {
+					 *            "sortAscending": " - click/return to sort ascending"
+					 *          }
+					 *        }
+					 *      } );
+					 *    } );
+					 */
+					"sSortAscending": ": activate to sort column ascending",
+		
+					/**
+					 * ARIA label that is added to the table headers when the column may be
+					 * sorted descending by activing the column (click or return when focused).
+					 * Note that the column header is prefixed to this string.
+					 *  @type string
+					 *  @default : activate to sort column ascending
+					 *
+					 *  @dtopt Language
+					 *  @name DataTable.defaults.language.aria.sortDescending
+					 *
+					 *  @example
+					 *    $(document).ready( function() {
+					 *      $('#example').dataTable( {
+					 *        "language": {
+					 *          "aria": {
+					 *            "sortDescending": " - click/return to sort descending"
+					 *          }
+					 *        }
+					 *      } );
+					 *    } );
+					 */
+					"sSortDescending": ": activate to sort column descending"
+				},
+		
+				/**
+				 * Pagination string used by DataTables for the built-in pagination
+				 * control types.
+				 *  @namespace
+				 *  @name DataTable.defaults.language.paginate
+				 */
+				"oPaginate": {
+					/**
+					 * Text to use when using the 'full_numbers' type of pagination for the
+					 * button to take the user to the first page.
+					 *  @type string
+					 *  @default First
+					 *
+					 *  @dtopt Language
+					 *  @name DataTable.defaults.language.paginate.first
+					 *
+					 *  @example
+					 *    $(document).ready( function() {
+					 *      $('#example').dataTable( {
+					 *        "language": {
+					 *          "paginate": {
+					 *            "first": "First page"
+					 *          }
+					 *        }
+					 *      } );
+					 *    } );
+					 */
+					"sFirst": "First",
+		
+		
+					/**
+					 * Text to use when using the 'full_numbers' type of pagination for the
+					 * button to take the user to the last page.
+					 *  @type string
+					 *  @default Last
+					 *
+					 *  @dtopt Language
+					 *  @name DataTable.defaults.language.paginate.last
+					 *
+					 *  @example
+					 *    $(document).ready( function() {
+					 *      $('#example').dataTable( {
+					 *        "language": {
+					 *          "paginate": {
+					 *            "last": "Last page"
+					 *          }
+					 *        }
+					 *      } );
+					 *    } );
+					 */
+					"sLast": "Last",
+		
+		
+					/**
+					 * Text to use for the 'next' pagination button (to take the user to the
+					 * next page).
+					 *  @type string
+					 *  @default Next
+					 *
+					 *  @dtopt Language
+					 *  @name DataTable.defaults.language.paginate.next
+					 *
+					 *  @example
+					 *    $(document).ready( function() {
+					 *      $('#example').dataTable( {
+					 *        "language": {
+					 *          "paginate": {
+					 *            "next": "Next page"
+					 *          }
+					 *        }
+					 *      } );
+					 *    } );
+					 */
+					"sNext": "Next",
+		
+		
+					/**
+					 * Text to use for the 'previous' pagination button (to take the user to
+					 * the previous page).
+					 *  @type string
+					 *  @default Previous
+					 *
+					 *  @dtopt Language
+					 *  @name DataTable.defaults.language.paginate.previous
+					 *
+					 *  @example
+					 *    $(document).ready( function() {
+					 *      $('#example').dataTable( {
+					 *        "language": {
+					 *          "paginate": {
+					 *            "previous": "Previous page"
+					 *          }
+					 *        }
+					 *      } );
+					 *    } );
+					 */
+					"sPrevious": "Previous"
+				},
+		
+				/**
+				 * This string is shown in preference to `zeroRecords` when the table is
+				 * empty of data (regardless of filtering). Note that this is an optional
+				 * parameter - if it is not given, the value of `zeroRecords` will be used
+				 * instead (either the default or given value).
+				 *  @type string
+				 *  @default No data available in table
+				 *
+				 *  @dtopt Language
+				 *  @name DataTable.defaults.language.emptyTable
+				 *
+				 *  @example
+				 *    $(document).ready( function() {
+				 *      $('#example').dataTable( {
+				 *        "language": {
+				 *          "emptyTable": "No data available in table"
+				 *        }
+				 *      } );
+				 *    } );
+				 */
+				"sEmptyTable": "No data available in table",
+		
+		
+				/**
+				 * This string gives information to the end user about the information
+				 * that is current on display on the page. The following tokens can be
+				 * used in the string and will be dynamically replaced as the table
+				 * display updates. This tokens can be placed anywhere in the string, or
+				 * removed as needed by the language requires:
+				 *
+				 * * `\_START\_` - Display index of the first record on the current page
+				 * * `\_END\_` - Display index of the last record on the current page
+				 * * `\_TOTAL\_` - Number of records in the table after filtering
+				 * * `\_MAX\_` - Number of records in the table without filtering
+				 * * `\_PAGE\_` - Current page number
+				 * * `\_PAGES\_` - Total number of pages of data in the table
+				 *
+				 *  @type string
+				 *  @default Showing _START_ to _END_ of _TOTAL_ entries
+				 *
+				 *  @dtopt Language
+				 *  @name DataTable.defaults.language.info
+				 *
+				 *  @example
+				 *    $(document).ready( function() {
+				 *      $('#example').dataTable( {
+				 *        "language": {
+				 *          "info": "Showing page _PAGE_ of _PAGES_"
+				 *        }
+				 *      } );
+				 *    } );
+				 */
+				"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+		
+		
+				/**
+				 * Display information string for when the table is empty. Typically the
+				 * format of this string should match `info`.
+				 *  @type string
+				 *  @default Showing 0 to 0 of 0 entries
+				 *
+				 *  @dtopt Language
+				 *  @name DataTable.defaults.language.infoEmpty
+				 *
+				 *  @example
+				 *    $(document).ready( function() {
+				 *      $('#example').dataTable( {
+				 *        "language": {
+				 *          "infoEmpty": "No entries to show"
+				 *        }
+				 *      } );
+				 *    } );
+				 */
+				"sInfoEmpty": "Showing 0 to 0 of 0 entries",
+		
+		
+				/**
+				 * When a user filters the information in a table, this string is appended
+				 * to the information (`info`) to give an idea of how strong the filtering
+				 * is. The variable _MAX_ is dynamically updated.
+				 *  @type string
+				 *  @default (filtered from _MAX_ total entries)
+				 *
+				 *  @dtopt Language
+				 *  @name DataTable.defaults.language.infoFiltered
+				 *
+				 *  @example
+				 *    $(document).ready( function() {
+				 *      $('#example').dataTable( {
+				 *        "language": {
+				 *          "infoFiltered": " - filtering from _MAX_ records"
+				 *        }
+				 *      } );
+				 *    } );
+				 */
+				"sInfoFiltered": "(filtered from _MAX_ total entries)",
+		
+		
+				/**
+				 * If can be useful to append extra information to the info string at times,
+				 * and this variable does exactly that. This information will be appended to
+				 * the `info` (`infoEmpty` and `infoFiltered` in whatever combination they are
+				 * being used) at all times.
+				 *  @type string
+				 *  @default <i>Empty string</i>
+				 *
+				 *  @dtopt Language
+				 *  @name DataTable.defaults.language.infoPostFix
+				 *
+				 *  @example
+				 *    $(document).ready( function() {
+				 *      $('#example').dataTable( {
+				 *        "language": {
+				 *          "infoPostFix": "All records shown are derived from real information."
+				 *        }
+				 *      } );
+				 *    } );
+				 */
+				"sInfoPostFix": "",
+		
+		
+				/**
+				 * This decimal place operator is a little different from the other
+				 * language options since DataTables doesn't output floating point
+				 * numbers, so it won't ever use this for display of a number. Rather,
+				 * what this parameter does is modify the sort methods of the table so
+				 * that numbers which are in a format which has a character other than
+				 * a period (`.`) as a decimal place will be sorted numerically.
+				 *
+				 * Note that numbers with different decimal places cannot be shown in
+				 * the same table and still be sortable, the table must be consistent.
+				 * However, multiple different tables on the page can use different
+				 * decimal place characters.
+				 *  @type string
+				 *  @default 
+				 *
+				 *  @dtopt Language
+				 *  @name DataTable.defaults.language.decimal
+				 *
+				 *  @example
+				 *    $(document).ready( function() {
+				 *      $('#example').dataTable( {
+				 *        "language": {
+				 *          "decimal": ","
+				 *          "thousands": "."
+				 *        }
+				 *      } );
+				 *    } );
+				 */
+				"sDecimal": "",
+		
+		
+				/**
+				 * DataTables has a build in number formatter (`formatNumber`) which is
+				 * used to format large numbers that are used in the table information.
+				 * By default a comma is used, but this can be trivially changed to any
+				 * character you wish with this parameter.
+				 *  @type string
+				 *  @default ,
+				 *
+				 *  @dtopt Language
+				 *  @name DataTable.defaults.language.thousands
+				 *
+				 *  @example
+				 *    $(document).ready( function() {
+				 *      $('#example').dataTable( {
+				 *        "language": {
+				 *          "thousands": "'"
+				 *        }
+				 *      } );
+				 *    } );
+				 */
+				"sThousands": ",",
+		
+		
+				/**
+				 * Detail the action that will be taken when the drop down menu for the
+				 * pagination length option is changed. The '_MENU_' variable is replaced
+				 * with a default select list of 10, 25, 50 and 100, and can be replaced
+				 * with a custom select box if required.
+				 *  @type string
+				 *  @default Show _MENU_ entries
+				 *
+				 *  @dtopt Language
+				 *  @name DataTable.defaults.language.lengthMenu
+				 *
+				 *  @example
+				 *    // Language change only
+				 *    $(document).ready( function() {
+				 *      $('#example').dataTable( {
+				 *        "language": {
+				 *          "lengthMenu": "Display _MENU_ records"
+				 *        }
+				 *      } );
+				 *    } );
+				 *
+				 *  @example
+				 *    // Language and options change
+				 *    $(document).ready( function() {
+				 *      $('#example').dataTable( {
+				 *        "language": {
+				 *          "lengthMenu": 'Display <select>'+
+				 *            '<option value="10">10</option>'+
+				 *            '<option value="20">20</option>'+
+				 *            '<option value="30">30</option>'+
+				 *            '<option value="40">40</option>'+
+				 *            '<option value="50">50</option>'+
+				 *            '<option value="-1">All</option>'+
+				 *            '</select> records'
+				 *        }
+				 *      } );
+				 *    } );
+				 */
+				"sLengthMenu": "Show _MENU_ entries",
+		
+		
+				/**
+				 * When using Ajax sourced data and during the first draw when DataTables is
+				 * gathering the data, this message is shown in an empty row in the table to
+				 * indicate to the end user the the data is being loaded. Note that this
+				 * parameter is not used when loading data by server-side processing, just
+				 * Ajax sourced data with client-side processing.
+				 *  @type string
+				 *  @default Loading...
+				 *
+				 *  @dtopt Language
+				 *  @name DataTable.defaults.language.loadingRecords
+				 *
+				 *  @example
+				 *    $(document).ready( function() {
+				 *      $('#example').dataTable( {
+				 *        "language": {
+				 *          "loadingRecords": "Please wait - loading..."
+				 *        }
+				 *      } );
+				 *    } );
+				 */
+				"sLoadingRecords": "Loading...",
+		
+		
+				/**
+				 * Text which is displayed when the table is processing a user action
+				 * (usually a sort command or similar).
+				 *  @type string
+				 *  @default Processing...
+				 *
+				 *  @dtopt Language
+				 *  @name DataTable.defaults.language.processing
+				 *
+				 *  @example
+				 *    $(document).ready( function() {
+				 *      $('#example').dataTable( {
+				 *        "language": {
+				 *          "processing": "DataTables is currently busy"
+				 *        }
+				 *      } );
+				 *    } );
+				 */
+				"sProcessing": "Processing...",
+		
+		
+				/**
+				 * Details the actions that will be taken when the user types into the
+				 * filtering input text box. The variable "_INPUT_", if used in the string,
+				 * is replaced with the HTML text box for the filtering input allowing
+				 * control over where it appears in the string. If "_INPUT_" is not given
+				 * then the input box is appended to the string automatically.
+				 *  @type string
+				 *  @default Search:
+				 *
+				 *  @dtopt Language
+				 *  @name DataTable.defaults.language.search
+				 *
+				 *  @example
+				 *    // Input text box will be appended at the end automatically
+				 *    $(document).ready( function() {
+				 *      $('#example').dataTable( {
+				 *        "language": {
+				 *          "search": "Filter records:"
+				 *        }
+				 *      } );
+				 *    } );
+				 *
+				 *  @example
+				 *    // Specify where the filter should appear
+				 *    $(document).ready( function() {
+				 *      $('#example').dataTable( {
+				 *        "language": {
+				 *          "search": "Apply filter _INPUT_ to table"
+				 *        }
+				 *      } );
+				 *    } );
+				 */
+				"sSearch": "Search:",
+		
+		
+				/**
+				 * Assign a `placeholder` attribute to the search `input` element
+				 *  @type string
+				 *  @default 
+				 *
+				 *  @dtopt Language
+				 *  @name DataTable.defaults.language.searchPlaceholder
+				 */
+				"sSearchPlaceholder": "",
+		
+		
+				/**
+				 * All of the language information can be stored in a file on the
+				 * server-side, which DataTables will look up if this parameter is passed.
+				 * It must store the URL of the language file, which is in a JSON format,
+				 * and the object has the same properties as the oLanguage object in the
+				 * initialiser object (i.e. the above parameters). Please refer to one of
+				 * the example language files to see how this works in action.
+				 *  @type string
+				 *  @default <i>Empty string - i.e. disabled</i>
+				 *
+				 *  @dtopt Language
+				 *  @name DataTable.defaults.language.url
+				 *
+				 *  @example
+				 *    $(document).ready( function() {
+				 *      $('#example').dataTable( {
+				 *        "language": {
+				 *          "url": "http://www.sprymedia.co.uk/dataTables/lang.txt"
+				 *        }
+				 *      } );
+				 *    } );
+				 */
+				"sUrl": "",
+		
+		
+				/**
+				 * Text shown inside the table records when the is no information to be
+				 * displayed after filtering. `emptyTable` is shown when there is simply no
+				 * information in the table at all (regardless of filtering).
+				 *  @type string
+				 *  @default No matching records found
+				 *
+				 *  @dtopt Language
+				 *  @name DataTable.defaults.language.zeroRecords
+				 *
+				 *  @example
+				 *    $(document).ready( function() {
+				 *      $('#example').dataTable( {
+				 *        "language": {
+				 *          "zeroRecords": "No records to display"
+				 *        }
+				 *      } );
+				 *    } );
+				 */
+				"sZeroRecords": "No matching records found"
+			},
+		
+		
+			/**
+			 * This parameter allows you to have define the global filtering state at
+			 * initialisation time. As an object the `search` parameter must be
+			 * defined, but all other parameters are optional. When `regex` is true,
+			 * the search string will be treated as a regular expression, when false
+			 * (default) it will be treated as a straight string. When `smart`
+			 * DataTables will use it's smart filtering methods (to word match at
+			 * any point in the data), when false this will not be done.
+			 *  @namespace
+			 *  @extends DataTable.models.oSearch
+			 *
+			 *  @dtopt Options
+			 *  @name DataTable.defaults.search
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "search": {"search": "Initial search"}
+			 *      } );
+			 *    } )
+			 */
+			"oSearch": $.extend( {}, DataTable.models.oSearch ),
+		
+		
+			/**
+			 * __Deprecated__ The functionality provided by this parameter has now been
+			 * superseded by that provided through `ajax`, which should be used instead.
+			 *
+			 * By default DataTables will look for the property `data` (or `aaData` for
+			 * compatibility with DataTables 1.9-) when obtaining data from an Ajax
+			 * source or for server-side processing - this parameter allows that
+			 * property to be changed. You can use Javascript dotted object notation to
+			 * get a data source for multiple levels of nesting.
+			 *  @type string
+			 *  @default data
+			 *
+			 *  @dtopt Options
+			 *  @dtopt Server-side
+			 *  @name DataTable.defaults.ajaxDataProp
+			 *
+			 *  @deprecated 1.10. Please use `ajax` for this functionality now.
+			 */
+			"sAjaxDataProp": "data",
+		
+		
+			/**
+			 * __Deprecated__ The functionality provided by this parameter has now been
+			 * superseded by that provided through `ajax`, which should be used instead.
+			 *
+			 * You can instruct DataTables to load data from an external
+			 * source using this parameter (use aData if you want to pass data in you
+			 * already have). Simply provide a url a JSON object can be obtained from.
+			 *  @type string
+			 *  @default null
+			 *
+			 *  @dtopt Options
+			 *  @dtopt Server-side
+			 *  @name DataTable.defaults.ajaxSource
+			 *
+			 *  @deprecated 1.10. Please use `ajax` for this functionality now.
+			 */
+			"sAjaxSource": null,
+		
+		
+			/**
+			 * This initialisation variable allows you to specify exactly where in the
+			 * DOM you want DataTables to inject the various controls it adds to the page
+			 * (for example you might want the pagination controls at the top of the
+			 * table). DIV elements (with or without a custom class) can also be added to
+			 * aid styling. The follow syntax is used:
+			 *   <ul>
+			 *     <li>The following options are allowed:
+			 *       <ul>
+			 *         <li>'l' - Length changing</li>
+			 *         <li>'f' - Filtering input</li>
+			 *         <li>'t' - The table!</li>
+			 *         <li>'i' - Information</li>
+			 *         <li>'p' - Pagination</li>
+			 *         <li>'r' - pRocessing</li>
+			 *       </ul>
+			 *     </li>
+			 *     <li>The following constants are allowed:
+			 *       <ul>
+			 *         <li>'H' - jQueryUI theme "header" classes ('fg-toolbar ui-widget-header ui-corner-tl ui-corner-tr ui-helper-clearfix')</li>
+			 *         <li>'F' - jQueryUI theme "footer" classes ('fg-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix')</li>
+			 *       </ul>
+			 *     </li>
+			 *     <li>The following syntax is expected:
+			 *       <ul>
+			 *         <li>'&lt;' and '&gt;' - div elements</li>
+			 *         <li>'&lt;"class" and '&gt;' - div with a class</li>
+			 *         <li>'&lt;"#id" and '&gt;' - div with an ID</li>
+			 *       </ul>
+			 *     </li>
+			 *     <li>Examples:
+			 *       <ul>
+			 *         <li>'&lt;"wrapper"flipt&gt;'</li>
+			 *         <li>'&lt;lf&lt;t&gt;ip&gt;'</li>
+			 *       </ul>
+			 *     </li>
+			 *   </ul>
+			 *  @type string
+			 *  @default lfrtip <i>(when `jQueryUI` is false)</i> <b>or</b>
+			 *    <"H"lfr>t<"F"ip> <i>(when `jQueryUI` is true)</i>
+			 *
+			 *  @dtopt Options
+			 *  @name DataTable.defaults.dom
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "dom": '&lt;"top"i&gt;rt&lt;"bottom"flp&gt;&lt;"clear"&gt;'
+			 *      } );
+			 *    } );
+			 */
+			"sDom": "lfrtip",
+		
+		
+			/**
+			 * Search delay option. This will throttle full table searches that use the
+			 * DataTables provided search input element (it does not effect calls to
+			 * `dt-api search()`, providing a delay before the search is made.
+			 *  @type integer
+			 *  @default 0
+			 *
+			 *  @dtopt Options
+			 *  @name DataTable.defaults.searchDelay
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "searchDelay": 200
+			 *      } );
+			 *    } )
+			 */
+			"searchDelay": null,
+		
+		
+			/**
+			 * DataTables features six different built-in options for the buttons to
+			 * display for pagination control:
+			 *
+			 * * `numbers` - Page number buttons only
+			 * * `simple` - 'Previous' and 'Next' buttons only
+			 * * 'simple_numbers` - 'Previous' and 'Next' buttons, plus page numbers
+			 * * `full` - 'First', 'Previous', 'Next' and 'Last' buttons
+			 * * `full_numbers` - 'First', 'Previous', 'Next' and 'Last' buttons, plus page numbers
+			 * * `first_last_numbers` - 'First' and 'Last' buttons, plus page numbers
+			 *  
+			 * Further methods can be added using {@link DataTable.ext.oPagination}.
+			 *  @type string
+			 *  @default simple_numbers
+			 *
+			 *  @dtopt Options
+			 *  @name DataTable.defaults.pagingType
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "pagingType": "full_numbers"
+			 *      } );
+			 *    } )
+			 */
+			"sPaginationType": "simple_numbers",
+		
+		
+			/**
+			 * Enable horizontal scrolling. When a table is too wide to fit into a
+			 * certain layout, or you have a large number of columns in the table, you
+			 * can enable x-scrolling to show the table in a viewport, which can be
+			 * scrolled. This property can be `true` which will allow the table to
+			 * scroll horizontally when needed, or any CSS unit, or a number (in which
+			 * case it will be treated as a pixel measurement). Setting as simply `true`
+			 * is recommended.
+			 *  @type boolean|string
+			 *  @default <i>blank string - i.e. disabled</i>
+			 *
+			 *  @dtopt Features
+			 *  @name DataTable.defaults.scrollX
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "scrollX": true,
+			 *        "scrollCollapse": true
+			 *      } );
+			 *    } );
+			 */
+			"sScrollX": "",
+		
+		
+			/**
+			 * This property can be used to force a DataTable to use more width than it
+			 * might otherwise do when x-scrolling is enabled. For example if you have a
+			 * table which requires to be well spaced, this parameter is useful for
+			 * "over-sizing" the table, and thus forcing scrolling. This property can by
+			 * any CSS unit, or a number (in which case it will be treated as a pixel
+			 * measurement).
+			 *  @type string
+			 *  @default <i>blank string - i.e. disabled</i>
+			 *
+			 *  @dtopt Options
+			 *  @name DataTable.defaults.scrollXInner
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "scrollX": "100%",
+			 *        "scrollXInner": "110%"
+			 *      } );
+			 *    } );
+			 */
+			"sScrollXInner": "",
+		
+		
+			/**
+			 * Enable vertical scrolling. Vertical scrolling will constrain the DataTable
+			 * to the given height, and enable scrolling for any data which overflows the
+			 * current viewport. This can be used as an alternative to paging to display
+			 * a lot of data in a small area (although paging and scrolling can both be
+			 * enabled at the same time). This property can be any CSS unit, or a number
+			 * (in which case it will be treated as a pixel measurement).
+			 *  @type string
+			 *  @default <i>blank string - i.e. disabled</i>
+			 *
+			 *  @dtopt Features
+			 *  @name DataTable.defaults.scrollY
+			 *
+			 *  @example
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "scrollY": "200px",
+			 *        "paginate": false
+			 *      } );
+			 *    } );
+			 */
+			"sScrollY": "",
+		
+		
+			/**
+			 * __Deprecated__ The functionality provided by this parameter has now been
+			 * superseded by that provided through `ajax`, which should be used instead.
+			 *
+			 * Set the HTTP method that is used to make the Ajax call for server-side
+			 * processing or Ajax sourced data.
+			 *  @type string
+			 *  @default GET
+			 *
+			 *  @dtopt Options
+			 *  @dtopt Server-side
+			 *  @name DataTable.defaults.serverMethod
+			 *
+			 *  @deprecated 1.10. Please use `ajax` for this functionality now.
+			 */
+			"sServerMethod": "GET",
+		
+		
+			/**
+			 * DataTables makes use of renderers when displaying HTML elements for
+			 * a table. These renderers can be added or modified by plug-ins to
+			 * generate suitable mark-up for a site. For example the Bootstrap
+			 * integration plug-in for DataTables uses a paging button renderer to
+			 * display pagination buttons in the mark-up required by Bootstrap.
+			 *
+			 * For further information about the renderers available see
+			 * DataTable.ext.renderer
+			 *  @type string|object
+			 *  @default null
+			 *
+			 *  @name DataTable.defaults.renderer
+			 *
+			 */
+			"renderer": null,
+		
+		
+			/**
+			 * Set the data property name that DataTables should use to get a row's id
+			 * to set as the `id` property in the node.
+			 *  @type string
+			 *  @default DT_RowId
+			 *
+			 *  @name DataTable.defaults.rowId
+			 */
+			"rowId": "DT_RowId"
+		};
+		
+		_fnHungarianMap( DataTable.defaults );
+		
+		
+		
+		/*
+		 * Developer note - See note in model.defaults.js about the use of Hungarian
+		 * notation and camel case.
+		 */
+		
 		/**
-		 * All strings that DataTables uses in the user interface that it creates
-		 * are defined in this object, allowing you to modified them individually or
-		 * completely replace them all as required.
+		 * Column options that can be given to DataTables at initialisation time.
 		 *  @namespace
-		 *  @name DataTable.defaults.language
 		 */
-		"oLanguage": {
+		DataTable.defaults.column = {
 			/**
-			 * Strings that are used for WAI-ARIA labels and controls only (these are not
-			 * actually visible on the page, but will be read by screenreaders, and thus
-			 * must be internationalised as well).
-			 *  @namespace
-			 *  @name DataTable.defaults.language.aria
-			 */
-			"oAria": {
-				/**
-				 * ARIA label that is added to the table headers when the column may be
-				 * sorted ascending by activing the column (click or return when focused).
-				 * Note that the column header is prefixed to this string.
-				 *  @type string
-				 *  @default : activate to sort column ascending
-				 *
-				 *  @dtopt Language
-				 *  @name DataTable.defaults.language.aria.sortAscending
-				 *
-				 *  @example
-				 *    $(document).ready( function() {
-				 *      $('#example').dataTable( {
-				 *        "language": {
-				 *          "aria": {
-				 *            "sortAscending": " - click/return to sort ascending"
-				 *          }
-				 *        }
-				 *      } );
-				 *    } );
-				 */
-				"sSortAscending": ": activate to sort column ascending",
-	
-				/**
-				 * ARIA label that is added to the table headers when the column may be
-				 * sorted descending by activing the column (click or return when focused).
-				 * Note that the column header is prefixed to this string.
-				 *  @type string
-				 *  @default : activate to sort column ascending
-				 *
-				 *  @dtopt Language
-				 *  @name DataTable.defaults.language.aria.sortDescending
-				 *
-				 *  @example
-				 *    $(document).ready( function() {
-				 *      $('#example').dataTable( {
-				 *        "language": {
-				 *          "aria": {
-				 *            "sortDescending": " - click/return to sort descending"
-				 *          }
-				 *        }
-				 *      } );
-				 *    } );
-				 */
-				"sSortDescending": ": activate to sort column descending"
-			},
-	
-			/**
-			 * Pagination string used by DataTables for the built-in pagination
-			 * control types.
-			 *  @namespace
-			 *  @name DataTable.defaults.language.paginate
-			 */
-			"oPaginate": {
-				/**
-				 * Text to use when using the 'full_numbers' type of pagination for the
-				 * button to take the user to the first page.
-				 *  @type string
-				 *  @default First
-				 *
-				 *  @dtopt Language
-				 *  @name DataTable.defaults.language.paginate.first
-				 *
-				 *  @example
-				 *    $(document).ready( function() {
-				 *      $('#example').dataTable( {
-				 *        "language": {
-				 *          "paginate": {
-				 *            "first": "First page"
-				 *          }
-				 *        }
-				 *      } );
-				 *    } );
-				 */
-				"sFirst": "First",
-	
-	
-				/**
-				 * Text to use when using the 'full_numbers' type of pagination for the
-				 * button to take the user to the last page.
-				 *  @type string
-				 *  @default Last
-				 *
-				 *  @dtopt Language
-				 *  @name DataTable.defaults.language.paginate.last
-				 *
-				 *  @example
-				 *    $(document).ready( function() {
-				 *      $('#example').dataTable( {
-				 *        "language": {
-				 *          "paginate": {
-				 *            "last": "Last page"
-				 *          }
-				 *        }
-				 *      } );
-				 *    } );
-				 */
-				"sLast": "Last",
-	
-	
-				/**
-				 * Text to use for the 'next' pagination button (to take the user to the
-				 * next page).
-				 *  @type string
-				 *  @default Next
-				 *
-				 *  @dtopt Language
-				 *  @name DataTable.defaults.language.paginate.next
-				 *
-				 *  @example
-				 *    $(document).ready( function() {
-				 *      $('#example').dataTable( {
-				 *        "language": {
-				 *          "paginate": {
-				 *            "next": "Next page"
-				 *          }
-				 *        }
-				 *      } );
-				 *    } );
-				 */
-				"sNext": "Next",
-	
-	
-				/**
-				 * Text to use for the 'previous' pagination button (to take the user to
-				 * the previous page).
-				 *  @type string
-				 *  @default Previous
-				 *
-				 *  @dtopt Language
-				 *  @name DataTable.defaults.language.paginate.previous
-				 *
-				 *  @example
-				 *    $(document).ready( function() {
-				 *      $('#example').dataTable( {
-				 *        "language": {
-				 *          "paginate": {
-				 *            "previous": "Previous page"
-				 *          }
-				 *        }
-				 *      } );
-				 *    } );
-				 */
-				"sPrevious": "Previous"
-			},
-	
-			/**
-			 * This string is shown in preference to `zeroRecords` when the table is
-			 * empty of data (regardless of filtering). Note that this is an optional
-			 * parameter - if it is not given, the value of `zeroRecords` will be used
-			 * instead (either the default or given value).
-			 *  @type string
-			 *  @default No data available in table
+			 * Define which column(s) an order will occur on for this column. This
+			 * allows a column's ordering to take multiple columns into account when
+			 * doing a sort or use the data from a different column. For example first
+			 * name / last name columns make sense to do a multi-column sort over the
+			 * two columns.
+			 *  @type array|int
+			 *  @default null <i>Takes the value of the column index automatically</i>
 			 *
-			 *  @dtopt Language
-			 *  @name DataTable.defaults.language.emptyTable
+			 *  @name DataTable.defaults.column.orderData
+			 *  @dtopt Columns
+			 *
+			 *  @example
+			 *    // Using `columnDefs`
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "columnDefs": [
+			 *          { "orderData": [ 0, 1 ], "targets": [ 0 ] },
+			 *          { "orderData": [ 1, 0 ], "targets": [ 1 ] },
+			 *          { "orderData": 2, "targets": [ 2 ] }
+			 *        ]
+			 *      } );
+			 *    } );
+			 *
+			 *  @example
+			 *    // Using `columns`
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "columns": [
+			 *          { "orderData": [ 0, 1 ] },
+			 *          { "orderData": [ 1, 0 ] },
+			 *          { "orderData": 2 },
+			 *          null,
+			 *          null
+			 *        ]
+			 *      } );
+			 *    } );
+			 */
+			"aDataSort": null,
+			"iDataSort": -1,
+		
+		
+			/**
+			 * You can control the default ordering direction, and even alter the
+			 * behaviour of the sort handler (i.e. only allow ascending ordering etc)
+			 * using this parameter.
+			 *  @type array
+			 *  @default [ 'asc', 'desc' ]
+			 *
+			 *  @name DataTable.defaults.column.orderSequence
+			 *  @dtopt Columns
+			 *
+			 *  @example
+			 *    // Using `columnDefs`
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "columnDefs": [
+			 *          { "orderSequence": [ "asc" ], "targets": [ 1 ] },
+			 *          { "orderSequence": [ "desc", "asc", "asc" ], "targets": [ 2 ] },
+			 *          { "orderSequence": [ "desc" ], "targets": [ 3 ] }
+			 *        ]
+			 *      } );
+			 *    } );
+			 *
+			 *  @example
+			 *    // Using `columns`
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "columns": [
+			 *          null,
+			 *          { "orderSequence": [ "asc" ] },
+			 *          { "orderSequence": [ "desc", "asc", "asc" ] },
+			 *          { "orderSequence": [ "desc" ] },
+			 *          null
+			 *        ]
+			 *      } );
+			 *    } );
+			 */
+			"asSorting": [ 'asc', 'desc' ],
+		
+		
+			/**
+			 * Enable or disable filtering on the data in this column.
+			 *  @type boolean
+			 *  @default true
+			 *
+			 *  @name DataTable.defaults.column.searchable
+			 *  @dtopt Columns
+			 *
+			 *  @example
+			 *    // Using `columnDefs`
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "columnDefs": [
+			 *          { "searchable": false, "targets": [ 0 ] }
+			 *        ] } );
+			 *    } );
+			 *
+			 *  @example
+			 *    // Using `columns`
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "columns": [
+			 *          { "searchable": false },
+			 *          null,
+			 *          null,
+			 *          null,
+			 *          null
+			 *        ] } );
+			 *    } );
+			 */
+			"bSearchable": true,
+		
+		
+			/**
+			 * Enable or disable ordering on this column.
+			 *  @type boolean
+			 *  @default true
+			 *
+			 *  @name DataTable.defaults.column.orderable
+			 *  @dtopt Columns
+			 *
+			 *  @example
+			 *    // Using `columnDefs`
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "columnDefs": [
+			 *          { "orderable": false, "targets": [ 0 ] }
+			 *        ] } );
+			 *    } );
+			 *
+			 *  @example
+			 *    // Using `columns`
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "columns": [
+			 *          { "orderable": false },
+			 *          null,
+			 *          null,
+			 *          null,
+			 *          null
+			 *        ] } );
+			 *    } );
+			 */
+			"bSortable": true,
+		
+		
+			/**
+			 * Enable or disable the display of this column.
+			 *  @type boolean
+			 *  @default true
+			 *
+			 *  @name DataTable.defaults.column.visible
+			 *  @dtopt Columns
+			 *
+			 *  @example
+			 *    // Using `columnDefs`
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "columnDefs": [
+			 *          { "visible": false, "targets": [ 0 ] }
+			 *        ] } );
+			 *    } );
+			 *
+			 *  @example
+			 *    // Using `columns`
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "columns": [
+			 *          { "visible": false },
+			 *          null,
+			 *          null,
+			 *          null,
+			 *          null
+			 *        ] } );
+			 *    } );
+			 */
+			"bVisible": true,
+		
+		
+			/**
+			 * Developer definable function that is called whenever a cell is created (Ajax source,
+			 * etc) or processed for input (DOM source). This can be used as a compliment to mRender
+			 * allowing you to modify the DOM element (add background colour for example) when the
+			 * element is available.
+			 *  @type function
+			 *  @param {element} td The TD node that has been created
+			 *  @param {*} cellData The Data for the cell
+			 *  @param {array|object} rowData The data for the whole row
+			 *  @param {int} row The row index for the aoData data store
+			 *  @param {int} col The column index for aoColumns
+			 *
+			 *  @name DataTable.defaults.column.createdCell
+			 *  @dtopt Columns
 			 *
 			 *  @example
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
-			 *        "language": {
-			 *          "emptyTable": "No data available in table"
-			 *        }
-			 *      } );
+			 *        "columnDefs": [ {
+			 *          "targets": [3],
+			 *          "createdCell": function (td, cellData, rowData, row, col) {
+			 *            if ( cellData == "1.7" ) {
+			 *              $(td).css('color', 'blue')
+			 *            }
+			 *          }
+			 *        } ]
+			 *      });
 			 *    } );
 			 */
-			"sEmptyTable": "No data available in table",
-	
-	
+			"fnCreatedCell": null,
+		
+		
 			/**
-			 * This string gives information to the end user about the information
-			 * that is current on display on the page. The following tokens can be
-			 * used in the string and will be dynamically replaced as the table
-			 * display updates. This tokens can be placed anywhere in the string, or
-			 * removed as needed by the language requires:
+			 * This parameter has been replaced by `data` in DataTables to ensure naming
+			 * consistency. `dataProp` can still be used, as there is backwards
+			 * compatibility in DataTables for this option, but it is strongly
+			 * recommended that you use `data` in preference to `dataProp`.
+			 *  @name DataTable.defaults.column.dataProp
+			 */
+		
+		
+			/**
+			 * This property can be used to read data from any data source property,
+			 * including deeply nested objects / properties. `data` can be given in a
+			 * number of different ways which effect its behaviour:
 			 *
-			 * * `\_START\_` - Display index of the first record on the current page
-			 * * `\_END\_` - Display index of the last record on the current page
-			 * * `\_TOTAL\_` - Number of records in the table after filtering
-			 * * `\_MAX\_` - Number of records in the table without filtering
-			 * * `\_PAGE\_` - Current page number
-			 * * `\_PAGES\_` - Total number of pages of data in the table
+			 * * `integer` - treated as an array index for the data source. This is the
+			 *   default that DataTables uses (incrementally increased for each column).
+			 * * `string` - read an object property from the data source. There are
+			 *   three 'special' options that can be used in the string to alter how
+			 *   DataTables reads the data from the source object:
+			 *    * `.` - Dotted Javascript notation. Just as you use a `.` in
+			 *      Javascript to read from nested objects, so to can the options
+			 *      specified in `data`. For example: `browser.version` or
+			 *      `browser.name`. If your object parameter name contains a period, use
+			 *      `\\` to escape it - i.e. `first\\.name`.
+			 *    * `[]` - Array notation. DataTables can automatically combine data
+			 *      from and array source, joining the data with the characters provided
+			 *      between the two brackets. For example: `name[, ]` would provide a
+			 *      comma-space separated list from the source array. If no characters
+			 *      are provided between the brackets, the original array source is
+			 *      returned.
+			 *    * `()` - Function notation. Adding `()` to the end of a parameter will
+			 *      execute a function of the name given. For example: `browser()` for a
+			 *      simple function on the data source, `browser.version()` for a
+			 *      function in a nested property or even `browser().version` to get an
+			 *      object property if the function called returns an object. Note that
+			 *      function notation is recommended for use in `render` rather than
+			 *      `data` as it is much simpler to use as a renderer.
+			 * * `null` - use the original data source for the row rather than plucking
+			 *   data directly from it. This action has effects on two other
+			 *   initialisation options:
+			 *    * `defaultContent` - When null is given as the `data` option and
+			 *      `defaultContent` is specified for the column, the value defined by
+			 *      `defaultContent` will be used for the cell.
+			 *    * `render` - When null is used for the `data` option and the `render`
+			 *      option is specified for the column, the whole data source for the
+			 *      row is used for the renderer.
+			 * * `function` - the function given will be executed whenever DataTables
+			 *   needs to set or get the data for a cell in the column. The function
+			 *   takes three parameters:
+			 *    * Parameters:
+			 *      * `{array|object}` The data source for the row
+			 *      * `{string}` The type call data requested - this will be 'set' when
+			 *        setting data or 'filter', 'display', 'type', 'sort' or undefined
+			 *        when gathering data. Note that when `undefined` is given for the
+			 *        type DataTables expects to get the raw data for the object back<
+			 *      * `{*}` Data to set when the second parameter is 'set'.
+			 *    * Return:
+			 *      * The return value from the function is not required when 'set' is
+			 *        the type of call, but otherwise the return is what will be used
+			 *        for the data requested.
 			 *
-			 *  @type string
-			 *  @default Showing _START_ to _END_ of _TOTAL_ entries
+			 * Note that `data` is a getter and setter option. If you just require
+			 * formatting of data for output, you will likely want to use `render` which
+			 * is simply a getter and thus simpler to use.
 			 *
-			 *  @dtopt Language
-			 *  @name DataTable.defaults.language.info
+			 * Note that prior to DataTables 1.9.2 `data` was called `mDataProp`. The
+			 * name change reflects the flexibility of this property and is consistent
+			 * with the naming of mRender. If 'mDataProp' is given, then it will still
+			 * be used by DataTables, as it automatically maps the old name to the new
+			 * if required.
+			 *
+			 *  @type string|int|function|null
+			 *  @default null <i>Use automatically calculated column index</i>
+			 *
+			 *  @name DataTable.defaults.column.data
+			 *  @dtopt Columns
 			 *
 			 *  @example
+			 *    // Read table data from objects
+			 *    // JSON structure for each row:
+			 *    //   {
+			 *    //      "engine": {value},
+			 *    //      "browser": {value},
+			 *    //      "platform": {value},
+			 *    //      "version": {value},
+			 *    //      "grade": {value}
+			 *    //   }
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
-			 *        "language": {
-			 *          "info": "Showing page _PAGE_ of _PAGES_"
-			 *        }
+			 *        "ajaxSource": "sources/objects.txt",
+			 *        "columns": [
+			 *          { "data": "engine" },
+			 *          { "data": "browser" },
+			 *          { "data": "platform" },
+			 *          { "data": "version" },
+			 *          { "data": "grade" }
+			 *        ]
 			 *      } );
 			 *    } );
-			 */
-			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
-	
-	
-			/**
-			 * Display information string for when the table is empty. Typically the
-			 * format of this string should match `info`.
-			 *  @type string
-			 *  @default Showing 0 to 0 of 0 entries
-			 *
-			 *  @dtopt Language
-			 *  @name DataTable.defaults.language.infoEmpty
 			 *
 			 *  @example
+			 *    // Read information from deeply nested objects
+			 *    // JSON structure for each row:
+			 *    //   {
+			 *    //      "engine": {value},
+			 *    //      "browser": {value},
+			 *    //      "platform": {
+			 *    //         "inner": {value}
+			 *    //      },
+			 *    //      "details": [
+			 *    //         {value}, {value}
+			 *    //      ]
+			 *    //   }
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
-			 *        "language": {
-			 *          "infoEmpty": "No entries to show"
-			 *        }
+			 *        "ajaxSource": "sources/deep.txt",
+			 *        "columns": [
+			 *          { "data": "engine" },
+			 *          { "data": "browser" },
+			 *          { "data": "platform.inner" },
+			 *          { "data": "details.0" },
+			 *          { "data": "details.1" }
+			 *        ]
 			 *      } );
 			 *    } );
-			 */
-			"sInfoEmpty": "Showing 0 to 0 of 0 entries",
-	
-	
-			/**
-			 * When a user filters the information in a table, this string is appended
-			 * to the information (`info`) to give an idea of how strong the filtering
-			 * is. The variable _MAX_ is dynamically updated.
-			 *  @type string
-			 *  @default (filtered from _MAX_ total entries)
-			 *
-			 *  @dtopt Language
-			 *  @name DataTable.defaults.language.infoFiltered
 			 *
 			 *  @example
+			 *    // Using `data` as a function to provide different information for
+			 *    // sorting, filtering and display. In this case, currency (price)
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
-			 *        "language": {
-			 *          "infoFiltered": " - filtering from _MAX_ records"
-			 *        }
+			 *        "columnDefs": [ {
+			 *          "targets": [ 0 ],
+			 *          "data": function ( source, type, val ) {
+			 *            if (type === 'set') {
+			 *              source.price = val;
+			 *              // Store the computed display and filter values for efficiency
+			 *              source.price_display = val=="" ? "" : "$"+numberFormat(val);
+			 *              source.price_filter  = val=="" ? "" : "$"+numberFormat(val)+" "+val;
+			 *              return;
+			 *            }
+			 *            else if (type === 'display') {
+			 *              return source.price_display;
+			 *            }
+			 *            else if (type === 'filter') {
+			 *              return source.price_filter;
+			 *            }
+			 *            // 'sort', 'type' and undefined all just use the integer
+			 *            return source.price;
+			 *          }
+			 *        } ]
+			 *      } );
+			 *    } );
+			 *
+			 *  @example
+			 *    // Using default content
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "columnDefs": [ {
+			 *          "targets": [ 0 ],
+			 *          "data": null,
+			 *          "defaultContent": "Click to edit"
+			 *        } ]
+			 *      } );
+			 *    } );
+			 *
+			 *  @example
+			 *    // Using array notation - outputting a list from an array
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "columnDefs": [ {
+			 *          "targets": [ 0 ],
+			 *          "data": "name[, ]"
+			 *        } ]
+			 *      } );
+			 *    } );
+			 *
+			 */
+			"mData": null,
+		
+		
+			/**
+			 * This property is the rendering partner to `data` and it is suggested that
+			 * when you want to manipulate data for display (including filtering,
+			 * sorting etc) without altering the underlying data for the table, use this
+			 * property. `render` can be considered to be the the read only companion to
+			 * `data` which is read / write (then as such more complex). Like `data`
+			 * this option can be given in a number of different ways to effect its
+			 * behaviour:
+			 *
+			 * * `integer` - treated as an array index for the data source. This is the
+			 *   default that DataTables uses (incrementally increased for each column).
+			 * * `string` - read an object property from the data source. There are
+			 *   three 'special' options that can be used in the string to alter how
+			 *   DataTables reads the data from the source object:
+			 *    * `.` - Dotted Javascript notation. Just as you use a `.` in
+			 *      Javascript to read from nested objects, so to can the options
+			 *      specified in `data`. For example: `browser.version` or
+			 *      `browser.name`. If your object parameter name contains a period, use
+			 *      `\\` to escape it - i.e. `first\\.name`.
+			 *    * `[]` - Array notation. DataTables can automatically combine data
+			 *      from and array source, joining the data with the characters provided
+			 *      between the two brackets. For example: `name[, ]` would provide a
+			 *      comma-space separated list from the source array. If no characters
+			 *      are provided between the brackets, the original array source is
+			 *      returned.
+			 *    * `()` - Function notation. Adding `()` to the end of a parameter will
+			 *      execute a function of the name given. For example: `browser()` for a
+			 *      simple function on the data source, `browser.version()` for a
+			 *      function in a nested property or even `browser().version` to get an
+			 *      object property if the function called returns an object.
+			 * * `object` - use different data for the different data types requested by
+			 *   DataTables ('filter', 'display', 'type' or 'sort'). The property names
+			 *   of the object is the data type the property refers to and the value can
+			 *   defined using an integer, string or function using the same rules as
+			 *   `render` normally does. Note that an `_` option _must_ be specified.
+			 *   This is the default value to use if you haven't specified a value for
+			 *   the data type requested by DataTables.
+			 * * `function` - the function given will be executed whenever DataTables
+			 *   needs to set or get the data for a cell in the column. The function
+			 *   takes three parameters:
+			 *    * Parameters:
+			 *      * {array|object} The data source for the row (based on `data`)
+			 *      * {string} The type call data requested - this will be 'filter',
+			 *        'display', 'type' or 'sort'.
+			 *      * {array|object} The full data source for the row (not based on
+			 *        `data`)
+			 *    * Return:
+			 *      * The return value from the function is what will be used for the
+			 *        data requested.
+			 *
+			 *  @type string|int|function|object|null
+			 *  @default null Use the data source value.
+			 *
+			 *  @name DataTable.defaults.column.render
+			 *  @dtopt Columns
+			 *
+			 *  @example
+			 *    // Create a comma separated list from an array of objects
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "ajaxSource": "sources/deep.txt",
+			 *        "columns": [
+			 *          { "data": "engine" },
+			 *          { "data": "browser" },
+			 *          {
+			 *            "data": "platform",
+			 *            "render": "[, ].name"
+			 *          }
+			 *        ]
+			 *      } );
+			 *    } );
+			 *
+			 *  @example
+			 *    // Execute a function to obtain data
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "columnDefs": [ {
+			 *          "targets": [ 0 ],
+			 *          "data": null, // Use the full data source object for the renderer's source
+			 *          "render": "browserName()"
+			 *        } ]
+			 *      } );
+			 *    } );
+			 *
+			 *  @example
+			 *    // As an object, extracting different data for the different types
+			 *    // This would be used with a data source such as:
+			 *    //   { "phone": 5552368, "phone_filter": "5552368 555-2368", "phone_display": "555-2368" }
+			 *    // Here the `phone` integer is used for sorting and type detection, while `phone_filter`
+			 *    // (which has both forms) is used for filtering for if a user inputs either format, while
+			 *    // the formatted phone number is the one that is shown in the table.
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "columnDefs": [ {
+			 *          "targets": [ 0 ],
+			 *          "data": null, // Use the full data source object for the renderer's source
+			 *          "render": {
+			 *            "_": "phone",
+			 *            "filter": "phone_filter",
+			 *            "display": "phone_display"
+			 *          }
+			 *        } ]
+			 *      } );
+			 *    } );
+			 *
+			 *  @example
+			 *    // Use as a function to create a link from the data source
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "columnDefs": [ {
+			 *          "targets": [ 0 ],
+			 *          "data": "download_link",
+			 *          "render": function ( data, type, full ) {
+			 *            return '<a href="'+data+'">Download</a>';
+			 *          }
+			 *        } ]
 			 *      } );
 			 *    } );
 			 */
-			"sInfoFiltered": "(filtered from _MAX_ total entries)",
-	
-	
+			"mRender": null,
+		
+		
 			/**
-			 * If can be useful to append extra information to the info string at times,
-			 * and this variable does exactly that. This information will be appended to
-			 * the `info` (`infoEmpty` and `infoFiltered` in whatever combination they are
-			 * being used) at all times.
+			 * Change the cell type created for the column - either TD cells or TH cells. This
+			 * can be useful as TH cells have semantic meaning in the table body, allowing them
+			 * to act as a header for a row (you may wish to add scope='row' to the TH elements).
+			 *  @type string
+			 *  @default td
+			 *
+			 *  @name DataTable.defaults.column.cellType
+			 *  @dtopt Columns
+			 *
+			 *  @example
+			 *    // Make the first column use TH cells
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "columnDefs": [ {
+			 *          "targets": [ 0 ],
+			 *          "cellType": "th"
+			 *        } ]
+			 *      } );
+			 *    } );
+			 */
+			"sCellType": "td",
+		
+		
+			/**
+			 * Class to give to each cell in this column.
 			 *  @type string
 			 *  @default <i>Empty string</i>
 			 *
-			 *  @dtopt Language
-			 *  @name DataTable.defaults.language.infoPostFix
+			 *  @name DataTable.defaults.column.class
+			 *  @dtopt Columns
 			 *
 			 *  @example
+			 *    // Using `columnDefs`
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
-			 *        "language": {
-			 *          "infoPostFix": "All records shown are derived from real information."
-			 *        }
+			 *        "columnDefs": [
+			 *          { "class": "my_class", "targets": [ 0 ] }
+			 *        ]
+			 *      } );
+			 *    } );
+			 *
+			 *  @example
+			 *    // Using `columns`
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "columns": [
+			 *          { "class": "my_class" },
+			 *          null,
+			 *          null,
+			 *          null,
+			 *          null
+			 *        ]
 			 *      } );
 			 *    } );
 			 */
-			"sInfoPostFix": "",
-	
-	
+			"sClass": "",
+		
 			/**
-			 * This decimal place operator is a little different from the other
-			 * language options since DataTables doesn't output floating point
-			 * numbers, so it won't ever use this for display of a number. Rather,
-			 * what this parameter does is modify the sort methods of the table so
-			 * that numbers which are in a format which has a character other than
-			 * a period (`.`) as a decimal place will be sorted numerically.
-			 *
-			 * Note that numbers with different decimal places cannot be shown in
-			 * the same table and still be sortable, the table must be consistent.
-			 * However, multiple different tables on the page can use different
-			 * decimal place characters.
+			 * When DataTables calculates the column widths to assign to each column,
+			 * it finds the longest string in each column and then constructs a
+			 * temporary table and reads the widths from that. The problem with this
+			 * is that "mmm" is much wider then "iiii", but the latter is a longer
+			 * string - thus the calculation can go wrong (doing it properly and putting
+			 * it into an DOM object and measuring that is horribly(!) slow). Thus as
+			 * a "work around" we provide this option. It will append its value to the
+			 * text that is found to be the longest string for the column - i.e. padding.
+			 * Generally you shouldn't need this!
 			 *  @type string
-			 *  @default 
+			 *  @default <i>Empty string<i>
 			 *
-			 *  @dtopt Language
-			 *  @name DataTable.defaults.language.decimal
+			 *  @name DataTable.defaults.column.contentPadding
+			 *  @dtopt Columns
 			 *
 			 *  @example
+			 *    // Using `columns`
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
-			 *        "language": {
-			 *          "decimal": ","
-			 *          "thousands": "."
-			 *        }
+			 *        "columns": [
+			 *          null,
+			 *          null,
+			 *          null,
+			 *          {
+			 *            "contentPadding": "mmm"
+			 *          }
+			 *        ]
 			 *      } );
 			 *    } );
 			 */
-			"sDecimal": "",
-	
-	
+			"sContentPadding": "",
+		
+		
 			/**
-			 * DataTables has a build in number formatter (`formatNumber`) which is
-			 * used to format large numbers that are used in the table information.
-			 * By default a comma is used, but this can be trivially changed to any
-			 * character you wish with this parameter.
+			 * Allows a default value to be given for a column's data, and will be used
+			 * whenever a null data source is encountered (this can be because `data`
+			 * is set to null, or because the data source itself is null).
 			 *  @type string
-			 *  @default ,
+			 *  @default null
 			 *
-			 *  @dtopt Language
-			 *  @name DataTable.defaults.language.thousands
+			 *  @name DataTable.defaults.column.defaultContent
+			 *  @dtopt Columns
 			 *
 			 *  @example
+			 *    // Using `columnDefs`
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
-			 *        "language": {
-			 *          "thousands": "'"
-			 *        }
+			 *        "columnDefs": [
+			 *          {
+			 *            "data": null,
+			 *            "defaultContent": "Edit",
+			 *            "targets": [ -1 ]
+			 *          }
+			 *        ]
+			 *      } );
+			 *    } );
+			 *
+			 *  @example
+			 *    // Using `columns`
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "columns": [
+			 *          null,
+			 *          null,
+			 *          null,
+			 *          {
+			 *            "data": null,
+			 *            "defaultContent": "Edit"
+			 *          }
+			 *        ]
 			 *      } );
 			 *    } );
 			 */
-			"sThousands": ",",
-	
-	
+			"sDefaultContent": null,
+		
+		
 			/**
-			 * Detail the action that will be taken when the drop down menu for the
-			 * pagination length option is changed. The '_MENU_' variable is replaced
-			 * with a default select list of 10, 25, 50 and 100, and can be replaced
-			 * with a custom select box if required.
+			 * This parameter is only used in DataTables' server-side processing. It can
+			 * be exceptionally useful to know what columns are being displayed on the
+			 * client side, and to map these to database fields. When defined, the names
+			 * also allow DataTables to reorder information from the server if it comes
+			 * back in an unexpected order (i.e. if you switch your columns around on the
+			 * client-side, your server-side code does not also need updating).
 			 *  @type string
-			 *  @default Show _MENU_ entries
+			 *  @default <i>Empty string</i>
 			 *
-			 *  @dtopt Language
-			 *  @name DataTable.defaults.language.lengthMenu
+			 *  @name DataTable.defaults.column.name
+			 *  @dtopt Columns
 			 *
 			 *  @example
-			 *    // Language change only
+			 *    // Using `columnDefs`
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
-			 *        "language": {
-			 *          "lengthMenu": "Display _MENU_ records"
-			 *        }
+			 *        "columnDefs": [
+			 *          { "name": "engine", "targets": [ 0 ] },
+			 *          { "name": "browser", "targets": [ 1 ] },
+			 *          { "name": "platform", "targets": [ 2 ] },
+			 *          { "name": "version", "targets": [ 3 ] },
+			 *          { "name": "grade", "targets": [ 4 ] }
+			 *        ]
 			 *      } );
 			 *    } );
 			 *
 			 *  @example
-			 *    // Language and options change
+			 *    // Using `columns`
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
-			 *        "language": {
-			 *          "lengthMenu": 'Display <select>'+
-			 *            '<option value="10">10</option>'+
-			 *            '<option value="20">20</option>'+
-			 *            '<option value="30">30</option>'+
-			 *            '<option value="40">40</option>'+
-			 *            '<option value="50">50</option>'+
-			 *            '<option value="-1">All</option>'+
-			 *            '</select> records'
-			 *        }
+			 *        "columns": [
+			 *          { "name": "engine" },
+			 *          { "name": "browser" },
+			 *          { "name": "platform" },
+			 *          { "name": "version" },
+			 *          { "name": "grade" }
+			 *        ]
 			 *      } );
 			 *    } );
 			 */
-			"sLengthMenu": "Show _MENU_ entries",
-	
-	
+			"sName": "",
+		
+		
 			/**
-			 * When using Ajax sourced data and during the first draw when DataTables is
-			 * gathering the data, this message is shown in an empty row in the table to
-			 * indicate to the end user the the data is being loaded. Note that this
-			 * parameter is not used when loading data by server-side processing, just
-			 * Ajax sourced data with client-side processing.
+			 * Defines a data source type for the ordering which can be used to read
+			 * real-time information from the table (updating the internally cached
+			 * version) prior to ordering. This allows ordering to occur on user
+			 * editable elements such as form inputs.
 			 *  @type string
-			 *  @default Loading...
+			 *  @default std
 			 *
-			 *  @dtopt Language
-			 *  @name DataTable.defaults.language.loadingRecords
+			 *  @name DataTable.defaults.column.orderDataType
+			 *  @dtopt Columns
 			 *
 			 *  @example
+			 *    // Using `columnDefs`
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
-			 *        "language": {
-			 *          "loadingRecords": "Please wait - loading..."
-			 *        }
+			 *        "columnDefs": [
+			 *          { "orderDataType": "dom-text", "targets": [ 2, 3 ] },
+			 *          { "type": "numeric", "targets": [ 3 ] },
+			 *          { "orderDataType": "dom-select", "targets": [ 4 ] },
+			 *          { "orderDataType": "dom-checkbox", "targets": [ 5 ] }
+			 *        ]
+			 *      } );
+			 *    } );
+			 *
+			 *  @example
+			 *    // Using `columns`
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "columns": [
+			 *          null,
+			 *          null,
+			 *          { "orderDataType": "dom-text" },
+			 *          { "orderDataType": "dom-text", "type": "numeric" },
+			 *          { "orderDataType": "dom-select" },
+			 *          { "orderDataType": "dom-checkbox" }
+			 *        ]
 			 *      } );
 			 *    } );
 			 */
-			"sLoadingRecords": "Loading...",
-	
-	
+			"sSortDataType": "std",
+		
+		
 			/**
-			 * Text which is displayed when the table is processing a user action
-			 * (usually a sort command or similar).
+			 * The title of this column.
 			 *  @type string
-			 *  @default Processing...
+			 *  @default null <i>Derived from the 'TH' value for this column in the
+			 *    original HTML table.</i>
 			 *
-			 *  @dtopt Language
-			 *  @name DataTable.defaults.language.processing
+			 *  @name DataTable.defaults.column.title
+			 *  @dtopt Columns
 			 *
 			 *  @example
+			 *    // Using `columnDefs`
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
-			 *        "language": {
-			 *          "processing": "DataTables is currently busy"
-			 *        }
+			 *        "columnDefs": [
+			 *          { "title": "My column title", "targets": [ 0 ] }
+			 *        ]
+			 *      } );
+			 *    } );
+			 *
+			 *  @example
+			 *    // Using `columns`
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "columns": [
+			 *          { "title": "My column title" },
+			 *          null,
+			 *          null,
+			 *          null,
+			 *          null
+			 *        ]
 			 *      } );
 			 *    } );
 			 */
-			"sProcessing": "Processing...",
-	
-	
+			"sTitle": null,
+		
+		
 			/**
-			 * Details the actions that will be taken when the user types into the
-			 * filtering input text box. The variable "_INPUT_", if used in the string,
-			 * is replaced with the HTML text box for the filtering input allowing
-			 * control over where it appears in the string. If "_INPUT_" is not given
-			 * then the input box is appended to the string automatically.
+			 * The type allows you to specify how the data for this column will be
+			 * ordered. Four types (string, numeric, date and html (which will strip
+			 * HTML tags before ordering)) are currently available. Note that only date
+			 * formats understood by Javascript's Date() object will be accepted as type
+			 * date. For example: "Mar 26, 2008 5:03 PM". May take the values: 'string',
+			 * 'numeric', 'date' or 'html' (by default). Further types can be adding
+			 * through plug-ins.
 			 *  @type string
-			 *  @default Search:
+			 *  @default null <i>Auto-detected from raw data</i>
 			 *
-			 *  @dtopt Language
-			 *  @name DataTable.defaults.language.search
+			 *  @name DataTable.defaults.column.type
+			 *  @dtopt Columns
 			 *
 			 *  @example
-			 *    // Input text box will be appended at the end automatically
+			 *    // Using `columnDefs`
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
-			 *        "language": {
-			 *          "search": "Filter records:"
-			 *        }
+			 *        "columnDefs": [
+			 *          { "type": "html", "targets": [ 0 ] }
+			 *        ]
 			 *      } );
 			 *    } );
 			 *
 			 *  @example
-			 *    // Specify where the filter should appear
+			 *    // Using `columns`
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
-			 *        "language": {
-			 *          "search": "Apply filter _INPUT_ to table"
-			 *        }
+			 *        "columns": [
+			 *          { "type": "html" },
+			 *          null,
+			 *          null,
+			 *          null,
+			 *          null
+			 *        ]
 			 *      } );
 			 *    } );
 			 */
-			"sSearch": "Search:",
-	
-	
+			"sType": null,
+		
+		
 			/**
-			 * Assign a `placeholder` attribute to the search `input` element
+			 * Defining the width of the column, this parameter may take any CSS value
+			 * (3em, 20px etc). DataTables applies 'smart' widths to columns which have not
+			 * been given a specific width through this interface ensuring that the table
+			 * remains readable.
 			 *  @type string
-			 *  @default 
+			 *  @default null <i>Automatic</i>
 			 *
-			 *  @dtopt Language
-			 *  @name DataTable.defaults.language.searchPlaceholder
-			 */
-			"sSearchPlaceholder": "",
-	
-	
-			/**
-			 * All of the language information can be stored in a file on the
-			 * server-side, which DataTables will look up if this parameter is passed.
-			 * It must store the URL of the language file, which is in a JSON format,
-			 * and the object has the same properties as the oLanguage object in the
-			 * initialiser object (i.e. the above parameters). Please refer to one of
-			 * the example language files to see how this works in action.
-			 *  @type string
-			 *  @default <i>Empty string - i.e. disabled</i>
-			 *
-			 *  @dtopt Language
-			 *  @name DataTable.defaults.language.url
+			 *  @name DataTable.defaults.column.width
+			 *  @dtopt Columns
 			 *
 			 *  @example
+			 *    // Using `columnDefs`
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
-			 *        "language": {
-			 *          "url": "http://www.sprymedia.co.uk/dataTables/lang.txt"
-			 *        }
+			 *        "columnDefs": [
+			 *          { "width": "20%", "targets": [ 0 ] }
+			 *        ]
+			 *      } );
+			 *    } );
+			 *
+			 *  @example
+			 *    // Using `columns`
+			 *    $(document).ready( function() {
+			 *      $('#example').dataTable( {
+			 *        "columns": [
+			 *          { "width": "20%" },
+			 *          null,
+			 *          null,
+			 *          null,
+			 *          null
+			 *        ]
 			 *      } );
 			 *    } );
 			 */
-			"sUrl": "",
-	
-	
-			/**
-			 * Text shown inside the table records when the is no information to be
-			 * displayed after filtering. `emptyTable` is shown when there is simply no
-			 * information in the table at all (regardless of filtering).
-			 *  @type string
-			 *  @default No matching records found
-			 *
-			 *  @dtopt Language
-			 *  @name DataTable.defaults.language.zeroRecords
-			 *
-			 *  @example
-			 *    $(document).ready( function() {
-			 *      $('#example').dataTable( {
-			 *        "language": {
-			 *          "zeroRecords": "No records to display"
-			 *        }
-			 *      } );
-			 *    } );
-			 */
-			"sZeroRecords": "No matching records found"
-		},
-	
-	
+			"sWidth": null
+		};
+		
+		_fnHungarianMap( DataTable.defaults.column );
+		
+		
+		
 		/**
-		 * This parameter allows you to have define the global filtering state at
-		 * initialisation time. As an object the `search` parameter must be
-		 * defined, but all other parameters are optional. When `regex` is true,
-		 * the search string will be treated as a regular expression, when false
-		 * (default) it will be treated as a straight string. When `smart`
-		 * DataTables will use it's smart filtering methods (to word match at
-		 * any point in the data), when false this will not be done.
+		 * DataTables settings object - this holds all the information needed for a
+		 * given table, including configuration, data and current application of the
+		 * table options. DataTables does not have a single instance for each DataTable
+		 * with the settings attached to that instance, but rather instances of the
+		 * DataTable "class" are created on-the-fly as needed (typically by a
+		 * $().dataTable() call) and the settings object is then applied to that
+		 * instance.
+		 *
+		 * Note that this object is related to {@link DataTable.defaults} but this
+		 * one is the internal data store for DataTables's cache of columns. It should
+		 * NOT be manipulated outside of DataTables. Any configuration should be done
+		 * through the initialisation options.
 		 *  @namespace
-		 *  @extends DataTable.models.oSearch
-		 *
-		 *  @dtopt Options
-		 *  @name DataTable.defaults.search
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "search": {"search": "Initial search"}
-		 *      } );
-		 *    } )
+		 *  @todo Really should attach the settings object to individual instances so we
+		 *    don't need to create new instances on each $().dataTable() call (if the
+		 *    table already exists). It would also save passing oSettings around and
+		 *    into every single function. However, this is a very significant
+		 *    architecture change for DataTables and will almost certainly break
+		 *    backwards compatibility with older installations. This is something that
+		 *    will be done in 2.0.
 		 */
-		"oSearch": $.extend( {}, DataTable.models.oSearch ),
-	
-	
-		/**
-		 * __Deprecated__ The functionality provided by this parameter has now been
-		 * superseded by that provided through `ajax`, which should be used instead.
-		 *
-		 * By default DataTables will look for the property `data` (or `aaData` for
-		 * compatibility with DataTables 1.9-) when obtaining data from an Ajax
-		 * source or for server-side processing - this parameter allows that
-		 * property to be changed. You can use Javascript dotted object notation to
-		 * get a data source for multiple levels of nesting.
-		 *  @type string
-		 *  @default data
-		 *
-		 *  @dtopt Options
-		 *  @dtopt Server-side
-		 *  @name DataTable.defaults.ajaxDataProp
-		 *
-		 *  @deprecated 1.10. Please use `ajax` for this functionality now.
-		 */
-		"sAjaxDataProp": "data",
-	
-	
-		/**
-		 * __Deprecated__ The functionality provided by this parameter has now been
-		 * superseded by that provided through `ajax`, which should be used instead.
-		 *
-		 * You can instruct DataTables to load data from an external
-		 * source using this parameter (use aData if you want to pass data in you
-		 * already have). Simply provide a url a JSON object can be obtained from.
-		 *  @type string
-		 *  @default null
-		 *
-		 *  @dtopt Options
-		 *  @dtopt Server-side
-		 *  @name DataTable.defaults.ajaxSource
-		 *
-		 *  @deprecated 1.10. Please use `ajax` for this functionality now.
-		 */
-		"sAjaxSource": null,
-	
-	
-		/**
-		 * This initialisation variable allows you to specify exactly where in the
-		 * DOM you want DataTables to inject the various controls it adds to the page
-		 * (for example you might want the pagination controls at the top of the
-		 * table). DIV elements (with or without a custom class) can also be added to
-		 * aid styling. The follow syntax is used:
-		 *   <ul>
-		 *     <li>The following options are allowed:
-		 *       <ul>
-		 *         <li>'l' - Length changing</li>
-		 *         <li>'f' - Filtering input</li>
-		 *         <li>'t' - The table!</li>
-		 *         <li>'i' - Information</li>
-		 *         <li>'p' - Pagination</li>
-		 *         <li>'r' - pRocessing</li>
-		 *       </ul>
-		 *     </li>
-		 *     <li>The following constants are allowed:
-		 *       <ul>
-		 *         <li>'H' - jQueryUI theme "header" classes ('fg-toolbar ui-widget-header ui-corner-tl ui-corner-tr ui-helper-clearfix')</li>
-		 *         <li>'F' - jQueryUI theme "footer" classes ('fg-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix')</li>
-		 *       </ul>
-		 *     </li>
-		 *     <li>The following syntax is expected:
-		 *       <ul>
-		 *         <li>'&lt;' and '&gt;' - div elements</li>
-		 *         <li>'&lt;"class" and '&gt;' - div with a class</li>
-		 *         <li>'&lt;"#id" and '&gt;' - div with an ID</li>
-		 *       </ul>
-		 *     </li>
-		 *     <li>Examples:
-		 *       <ul>
-		 *         <li>'&lt;"wrapper"flipt&gt;'</li>
-		 *         <li>'&lt;lf&lt;t&gt;ip&gt;'</li>
-		 *       </ul>
-		 *     </li>
-		 *   </ul>
-		 *  @type string
-		 *  @default lfrtip <i>(when `jQueryUI` is false)</i> <b>or</b>
-		 *    <"H"lfr>t<"F"ip> <i>(when `jQueryUI` is true)</i>
-		 *
-		 *  @dtopt Options
-		 *  @name DataTable.defaults.dom
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "dom": '&lt;"top"i&gt;rt&lt;"bottom"flp&gt;&lt;"clear"&gt;'
-		 *      } );
-		 *    } );
-		 */
-		"sDom": "lfrtip",
-	
-	
-		/**
-		 * Search delay option. This will throttle full table searches that use the
-		 * DataTables provided search input element (it does not effect calls to
-		 * `dt-api search()`, providing a delay before the search is made.
-		 *  @type integer
-		 *  @default 0
-		 *
-		 *  @dtopt Options
-		 *  @name DataTable.defaults.searchDelay
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "searchDelay": 200
-		 *      } );
-		 *    } )
-		 */
-		"searchDelay": null,
-	
-	
-		/**
-		 * DataTables features six different built-in options for the buttons to
-		 * display for pagination control:
-		 *
-		 * * `numbers` - Page number buttons only
-		 * * `simple` - 'Previous' and 'Next' buttons only
-		 * * 'simple_numbers` - 'Previous' and 'Next' buttons, plus page numbers
-		 * * `full` - 'First', 'Previous', 'Next' and 'Last' buttons
-		 * * `full_numbers` - 'First', 'Previous', 'Next' and 'Last' buttons, plus page numbers
-		 * * `first_last_numbers` - 'First' and 'Last' buttons, plus page numbers
-		 *  
-		 * Further methods can be added using {@link DataTable.ext.oPagination}.
-		 *  @type string
-		 *  @default simple_numbers
-		 *
-		 *  @dtopt Options
-		 *  @name DataTable.defaults.pagingType
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "pagingType": "full_numbers"
-		 *      } );
-		 *    } )
-		 */
-		"sPaginationType": "simple_numbers",
-	
-	
-		/**
-		 * Enable horizontal scrolling. When a table is too wide to fit into a
-		 * certain layout, or you have a large number of columns in the table, you
-		 * can enable x-scrolling to show the table in a viewport, which can be
-		 * scrolled. This property can be `true` which will allow the table to
-		 * scroll horizontally when needed, or any CSS unit, or a number (in which
-		 * case it will be treated as a pixel measurement). Setting as simply `true`
-		 * is recommended.
-		 *  @type boolean|string
-		 *  @default <i>blank string - i.e. disabled</i>
-		 *
-		 *  @dtopt Features
-		 *  @name DataTable.defaults.scrollX
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "scrollX": true,
-		 *        "scrollCollapse": true
-		 *      } );
-		 *    } );
-		 */
-		"sScrollX": "",
-	
-	
-		/**
-		 * This property can be used to force a DataTable to use more width than it
-		 * might otherwise do when x-scrolling is enabled. For example if you have a
-		 * table which requires to be well spaced, this parameter is useful for
-		 * "over-sizing" the table, and thus forcing scrolling. This property can by
-		 * any CSS unit, or a number (in which case it will be treated as a pixel
-		 * measurement).
-		 *  @type string
-		 *  @default <i>blank string - i.e. disabled</i>
-		 *
-		 *  @dtopt Options
-		 *  @name DataTable.defaults.scrollXInner
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "scrollX": "100%",
-		 *        "scrollXInner": "110%"
-		 *      } );
-		 *    } );
-		 */
-		"sScrollXInner": "",
-	
-	
-		/**
-		 * Enable vertical scrolling. Vertical scrolling will constrain the DataTable
-		 * to the given height, and enable scrolling for any data which overflows the
-		 * current viewport. This can be used as an alternative to paging to display
-		 * a lot of data in a small area (although paging and scrolling can both be
-		 * enabled at the same time). This property can be any CSS unit, or a number
-		 * (in which case it will be treated as a pixel measurement).
-		 *  @type string
-		 *  @default <i>blank string - i.e. disabled</i>
-		 *
-		 *  @dtopt Features
-		 *  @name DataTable.defaults.scrollY
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "scrollY": "200px",
-		 *        "paginate": false
-		 *      } );
-		 *    } );
-		 */
-		"sScrollY": "",
-	
-	
-		/**
-		 * __Deprecated__ The functionality provided by this parameter has now been
-		 * superseded by that provided through `ajax`, which should be used instead.
-		 *
-		 * Set the HTTP method that is used to make the Ajax call for server-side
-		 * processing or Ajax sourced data.
-		 *  @type string
-		 *  @default GET
-		 *
-		 *  @dtopt Options
-		 *  @dtopt Server-side
-		 *  @name DataTable.defaults.serverMethod
-		 *
-		 *  @deprecated 1.10. Please use `ajax` for this functionality now.
-		 */
-		"sServerMethod": "GET",
-	
-	
-		/**
-		 * DataTables makes use of renderers when displaying HTML elements for
-		 * a table. These renderers can be added or modified by plug-ins to
-		 * generate suitable mark-up for a site. For example the Bootstrap
-		 * integration plug-in for DataTables uses a paging button renderer to
-		 * display pagination buttons in the mark-up required by Bootstrap.
-		 *
-		 * For further information about the renderers available see
-		 * DataTable.ext.renderer
-		 *  @type string|object
-		 *  @default null
-		 *
-		 *  @name DataTable.defaults.renderer
-		 *
-		 */
-		"renderer": null,
-	
-	
-		/**
-		 * Set the data property name that DataTables should use to get a row's id
-		 * to set as the `id` property in the node.
-		 *  @type string
-		 *  @default DT_RowId
-		 *
-		 *  @name DataTable.defaults.rowId
-		 */
-		"rowId": "DT_RowId"
-	};
-	
-	_fnHungarianMap( DataTable.defaults );
-	
-	
-	
-	/*
-	 * Developer note - See note in model.defaults.js about the use of Hungarian
-	 * notation and camel case.
-	 */
-	
-	/**
-	 * Column options that can be given to DataTables at initialisation time.
-	 *  @namespace
-	 */
-	DataTable.defaults.column = {
-		/**
-		 * Define which column(s) an order will occur on for this column. This
-		 * allows a column's ordering to take multiple columns into account when
-		 * doing a sort or use the data from a different column. For example first
-		 * name / last name columns make sense to do a multi-column sort over the
-		 * two columns.
-		 *  @type array|int
-		 *  @default null <i>Takes the value of the column index automatically</i>
-		 *
-		 *  @name DataTable.defaults.column.orderData
-		 *  @dtopt Columns
-		 *
-		 *  @example
-		 *    // Using `columnDefs`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columnDefs": [
-		 *          { "orderData": [ 0, 1 ], "targets": [ 0 ] },
-		 *          { "orderData": [ 1, 0 ], "targets": [ 1 ] },
-		 *          { "orderData": 2, "targets": [ 2 ] }
-		 *        ]
-		 *      } );
-		 *    } );
-		 *
-		 *  @example
-		 *    // Using `columns`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columns": [
-		 *          { "orderData": [ 0, 1 ] },
-		 *          { "orderData": [ 1, 0 ] },
-		 *          { "orderData": 2 },
-		 *          null,
-		 *          null
-		 *        ]
-		 *      } );
-		 *    } );
-		 */
-		"aDataSort": null,
-		"iDataSort": -1,
-	
-	
-		/**
-		 * You can control the default ordering direction, and even alter the
-		 * behaviour of the sort handler (i.e. only allow ascending ordering etc)
-		 * using this parameter.
-		 *  @type array
-		 *  @default [ 'asc', 'desc' ]
-		 *
-		 *  @name DataTable.defaults.column.orderSequence
-		 *  @dtopt Columns
-		 *
-		 *  @example
-		 *    // Using `columnDefs`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columnDefs": [
-		 *          { "orderSequence": [ "asc" ], "targets": [ 1 ] },
-		 *          { "orderSequence": [ "desc", "asc", "asc" ], "targets": [ 2 ] },
-		 *          { "orderSequence": [ "desc" ], "targets": [ 3 ] }
-		 *        ]
-		 *      } );
-		 *    } );
-		 *
-		 *  @example
-		 *    // Using `columns`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columns": [
-		 *          null,
-		 *          { "orderSequence": [ "asc" ] },
-		 *          { "orderSequence": [ "desc", "asc", "asc" ] },
-		 *          { "orderSequence": [ "desc" ] },
-		 *          null
-		 *        ]
-		 *      } );
-		 *    } );
-		 */
-		"asSorting": [ 'asc', 'desc' ],
-	
-	
-		/**
-		 * Enable or disable filtering on the data in this column.
-		 *  @type boolean
-		 *  @default true
-		 *
-		 *  @name DataTable.defaults.column.searchable
-		 *  @dtopt Columns
-		 *
-		 *  @example
-		 *    // Using `columnDefs`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columnDefs": [
-		 *          { "searchable": false, "targets": [ 0 ] }
-		 *        ] } );
-		 *    } );
-		 *
-		 *  @example
-		 *    // Using `columns`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columns": [
-		 *          { "searchable": false },
-		 *          null,
-		 *          null,
-		 *          null,
-		 *          null
-		 *        ] } );
-		 *    } );
-		 */
-		"bSearchable": true,
-	
-	
-		/**
-		 * Enable or disable ordering on this column.
-		 *  @type boolean
-		 *  @default true
-		 *
-		 *  @name DataTable.defaults.column.orderable
-		 *  @dtopt Columns
-		 *
-		 *  @example
-		 *    // Using `columnDefs`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columnDefs": [
-		 *          { "orderable": false, "targets": [ 0 ] }
-		 *        ] } );
-		 *    } );
-		 *
-		 *  @example
-		 *    // Using `columns`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columns": [
-		 *          { "orderable": false },
-		 *          null,
-		 *          null,
-		 *          null,
-		 *          null
-		 *        ] } );
-		 *    } );
-		 */
-		"bSortable": true,
-	
-	
-		/**
-		 * Enable or disable the display of this column.
-		 *  @type boolean
-		 *  @default true
-		 *
-		 *  @name DataTable.defaults.column.visible
-		 *  @dtopt Columns
-		 *
-		 *  @example
-		 *    // Using `columnDefs`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columnDefs": [
-		 *          { "visible": false, "targets": [ 0 ] }
-		 *        ] } );
-		 *    } );
-		 *
-		 *  @example
-		 *    // Using `columns`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columns": [
-		 *          { "visible": false },
-		 *          null,
-		 *          null,
-		 *          null,
-		 *          null
-		 *        ] } );
-		 *    } );
-		 */
-		"bVisible": true,
-	
-	
-		/**
-		 * Developer definable function that is called whenever a cell is created (Ajax source,
-		 * etc) or processed for input (DOM source). This can be used as a compliment to mRender
-		 * allowing you to modify the DOM element (add background colour for example) when the
-		 * element is available.
-		 *  @type function
-		 *  @param {element} td The TD node that has been created
-		 *  @param {*} cellData The Data for the cell
-		 *  @param {array|object} rowData The data for the whole row
-		 *  @param {int} row The row index for the aoData data store
-		 *  @param {int} col The column index for aoColumns
-		 *
-		 *  @name DataTable.defaults.column.createdCell
-		 *  @dtopt Columns
-		 *
-		 *  @example
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columnDefs": [ {
-		 *          "targets": [3],
-		 *          "createdCell": function (td, cellData, rowData, row, col) {
-		 *            if ( cellData == "1.7" ) {
-		 *              $(td).css('color', 'blue')
-		 *            }
-		 *          }
-		 *        } ]
-		 *      });
-		 *    } );
-		 */
-		"fnCreatedCell": null,
-	
-	
-		/**
-		 * This parameter has been replaced by `data` in DataTables to ensure naming
-		 * consistency. `dataProp` can still be used, as there is backwards
-		 * compatibility in DataTables for this option, but it is strongly
-		 * recommended that you use `data` in preference to `dataProp`.
-		 *  @name DataTable.defaults.column.dataProp
-		 */
-	
-	
-		/**
-		 * This property can be used to read data from any data source property,
-		 * including deeply nested objects / properties. `data` can be given in a
-		 * number of different ways which effect its behaviour:
-		 *
-		 * * `integer` - treated as an array index for the data source. This is the
-		 *   default that DataTables uses (incrementally increased for each column).
-		 * * `string` - read an object property from the data source. There are
-		 *   three 'special' options that can be used in the string to alter how
-		 *   DataTables reads the data from the source object:
-		 *    * `.` - Dotted Javascript notation. Just as you use a `.` in
-		 *      Javascript to read from nested objects, so to can the options
-		 *      specified in `data`. For example: `browser.version` or
-		 *      `browser.name`. If your object parameter name contains a period, use
-		 *      `\\` to escape it - i.e. `first\\.name`.
-		 *    * `[]` - Array notation. DataTables can automatically combine data
-		 *      from and array source, joining the data with the characters provided
-		 *      between the two brackets. For example: `name[, ]` would provide a
-		 *      comma-space separated list from the source array. If no characters
-		 *      are provided between the brackets, the original array source is
-		 *      returned.
-		 *    * `()` - Function notation. Adding `()` to the end of a parameter will
-		 *      execute a function of the name given. For example: `browser()` for a
-		 *      simple function on the data source, `browser.version()` for a
-		 *      function in a nested property or even `browser().version` to get an
-		 *      object property if the function called returns an object. Note that
-		 *      function notation is recommended for use in `render` rather than
-		 *      `data` as it is much simpler to use as a renderer.
-		 * * `null` - use the original data source for the row rather than plucking
-		 *   data directly from it. This action has effects on two other
-		 *   initialisation options:
-		 *    * `defaultContent` - When null is given as the `data` option and
-		 *      `defaultContent` is specified for the column, the value defined by
-		 *      `defaultContent` will be used for the cell.
-		 *    * `render` - When null is used for the `data` option and the `render`
-		 *      option is specified for the column, the whole data source for the
-		 *      row is used for the renderer.
-		 * * `function` - the function given will be executed whenever DataTables
-		 *   needs to set or get the data for a cell in the column. The function
-		 *   takes three parameters:
-		 *    * Parameters:
-		 *      * `{array|object}` The data source for the row
-		 *      * `{string}` The type call data requested - this will be 'set' when
-		 *        setting data or 'filter', 'display', 'type', 'sort' or undefined
-		 *        when gathering data. Note that when `undefined` is given for the
-		 *        type DataTables expects to get the raw data for the object back<
-		 *      * `{*}` Data to set when the second parameter is 'set'.
-		 *    * Return:
-		 *      * The return value from the function is not required when 'set' is
-		 *        the type of call, but otherwise the return is what will be used
-		 *        for the data requested.
-		 *
-		 * Note that `data` is a getter and setter option. If you just require
-		 * formatting of data for output, you will likely want to use `render` which
-		 * is simply a getter and thus simpler to use.
-		 *
-		 * Note that prior to DataTables 1.9.2 `data` was called `mDataProp`. The
-		 * name change reflects the flexibility of this property and is consistent
-		 * with the naming of mRender. If 'mDataProp' is given, then it will still
-		 * be used by DataTables, as it automatically maps the old name to the new
-		 * if required.
-		 *
-		 *  @type string|int|function|null
-		 *  @default null <i>Use automatically calculated column index</i>
-		 *
-		 *  @name DataTable.defaults.column.data
-		 *  @dtopt Columns
-		 *
-		 *  @example
-		 *    // Read table data from objects
-		 *    // JSON structure for each row:
-		 *    //   {
-		 *    //      "engine": {value},
-		 *    //      "browser": {value},
-		 *    //      "platform": {value},
-		 *    //      "version": {value},
-		 *    //      "grade": {value}
-		 *    //   }
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "ajaxSource": "sources/objects.txt",
-		 *        "columns": [
-		 *          { "data": "engine" },
-		 *          { "data": "browser" },
-		 *          { "data": "platform" },
-		 *          { "data": "version" },
-		 *          { "data": "grade" }
-		 *        ]
-		 *      } );
-		 *    } );
-		 *
-		 *  @example
-		 *    // Read information from deeply nested objects
-		 *    // JSON structure for each row:
-		 *    //   {
-		 *    //      "engine": {value},
-		 *    //      "browser": {value},
-		 *    //      "platform": {
-		 *    //         "inner": {value}
-		 *    //      },
-		 *    //      "details": [
-		 *    //         {value}, {value}
-		 *    //      ]
-		 *    //   }
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "ajaxSource": "sources/deep.txt",
-		 *        "columns": [
-		 *          { "data": "engine" },
-		 *          { "data": "browser" },
-		 *          { "data": "platform.inner" },
-		 *          { "data": "details.0" },
-		 *          { "data": "details.1" }
-		 *        ]
-		 *      } );
-		 *    } );
-		 *
-		 *  @example
-		 *    // Using `data` as a function to provide different information for
-		 *    // sorting, filtering and display. In this case, currency (price)
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columnDefs": [ {
-		 *          "targets": [ 0 ],
-		 *          "data": function ( source, type, val ) {
-		 *            if (type === 'set') {
-		 *              source.price = val;
-		 *              // Store the computed display and filter values for efficiency
-		 *              source.price_display = val=="" ? "" : "$"+numberFormat(val);
-		 *              source.price_filter  = val=="" ? "" : "$"+numberFormat(val)+" "+val;
-		 *              return;
-		 *            }
-		 *            else if (type === 'display') {
-		 *              return source.price_display;
-		 *            }
-		 *            else if (type === 'filter') {
-		 *              return source.price_filter;
-		 *            }
-		 *            // 'sort', 'type' and undefined all just use the integer
-		 *            return source.price;
-		 *          }
-		 *        } ]
-		 *      } );
-		 *    } );
-		 *
-		 *  @example
-		 *    // Using default content
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columnDefs": [ {
-		 *          "targets": [ 0 ],
-		 *          "data": null,
-		 *          "defaultContent": "Click to edit"
-		 *        } ]
-		 *      } );
-		 *    } );
-		 *
-		 *  @example
-		 *    // Using array notation - outputting a list from an array
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columnDefs": [ {
-		 *          "targets": [ 0 ],
-		 *          "data": "name[, ]"
-		 *        } ]
-		 *      } );
-		 *    } );
-		 *
-		 */
-		"mData": null,
-	
-	
-		/**
-		 * This property is the rendering partner to `data` and it is suggested that
-		 * when you want to manipulate data for display (including filtering,
-		 * sorting etc) without altering the underlying data for the table, use this
-		 * property. `render` can be considered to be the the read only companion to
-		 * `data` which is read / write (then as such more complex). Like `data`
-		 * this option can be given in a number of different ways to effect its
-		 * behaviour:
-		 *
-		 * * `integer` - treated as an array index for the data source. This is the
-		 *   default that DataTables uses (incrementally increased for each column).
-		 * * `string` - read an object property from the data source. There are
-		 *   three 'special' options that can be used in the string to alter how
-		 *   DataTables reads the data from the source object:
-		 *    * `.` - Dotted Javascript notation. Just as you use a `.` in
-		 *      Javascript to read from nested objects, so to can the options
-		 *      specified in `data`. For example: `browser.version` or
-		 *      `browser.name`. If your object parameter name contains a period, use
-		 *      `\\` to escape it - i.e. `first\\.name`.
-		 *    * `[]` - Array notation. DataTables can automatically combine data
-		 *      from and array source, joining the data with the characters provided
-		 *      between the two brackets. For example: `name[, ]` would provide a
-		 *      comma-space separated list from the source array. If no characters
-		 *      are provided between the brackets, the original array source is
-		 *      returned.
-		 *    * `()` - Function notation. Adding `()` to the end of a parameter will
-		 *      execute a function of the name given. For example: `browser()` for a
-		 *      simple function on the data source, `browser.version()` for a
-		 *      function in a nested property or even `browser().version` to get an
-		 *      object property if the function called returns an object.
-		 * * `object` - use different data for the different data types requested by
-		 *   DataTables ('filter', 'display', 'type' or 'sort'). The property names
-		 *   of the object is the data type the property refers to and the value can
-		 *   defined using an integer, string or function using the same rules as
-		 *   `render` normally does. Note that an `_` option _must_ be specified.
-		 *   This is the default value to use if you haven't specified a value for
-		 *   the data type requested by DataTables.
-		 * * `function` - the function given will be executed whenever DataTables
-		 *   needs to set or get the data for a cell in the column. The function
-		 *   takes three parameters:
-		 *    * Parameters:
-		 *      * {array|object} The data source for the row (based on `data`)
-		 *      * {string} The type call data requested - this will be 'filter',
-		 *        'display', 'type' or 'sort'.
-		 *      * {array|object} The full data source for the row (not based on
-		 *        `data`)
-		 *    * Return:
-		 *      * The return value from the function is what will be used for the
-		 *        data requested.
-		 *
-		 *  @type string|int|function|object|null
-		 *  @default null Use the data source value.
-		 *
-		 *  @name DataTable.defaults.column.render
-		 *  @dtopt Columns
-		 *
-		 *  @example
-		 *    // Create a comma separated list from an array of objects
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "ajaxSource": "sources/deep.txt",
-		 *        "columns": [
-		 *          { "data": "engine" },
-		 *          { "data": "browser" },
-		 *          {
-		 *            "data": "platform",
-		 *            "render": "[, ].name"
-		 *          }
-		 *        ]
-		 *      } );
-		 *    } );
-		 *
-		 *  @example
-		 *    // Execute a function to obtain data
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columnDefs": [ {
-		 *          "targets": [ 0 ],
-		 *          "data": null, // Use the full data source object for the renderer's source
-		 *          "render": "browserName()"
-		 *        } ]
-		 *      } );
-		 *    } );
-		 *
-		 *  @example
-		 *    // As an object, extracting different data for the different types
-		 *    // This would be used with a data source such as:
-		 *    //   { "phone": 5552368, "phone_filter": "5552368 555-2368", "phone_display": "555-2368" }
-		 *    // Here the `phone` integer is used for sorting and type detection, while `phone_filter`
-		 *    // (which has both forms) is used for filtering for if a user inputs either format, while
-		 *    // the formatted phone number is the one that is shown in the table.
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columnDefs": [ {
-		 *          "targets": [ 0 ],
-		 *          "data": null, // Use the full data source object for the renderer's source
-		 *          "render": {
-		 *            "_": "phone",
-		 *            "filter": "phone_filter",
-		 *            "display": "phone_display"
-		 *          }
-		 *        } ]
-		 *      } );
-		 *    } );
-		 *
-		 *  @example
-		 *    // Use as a function to create a link from the data source
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columnDefs": [ {
-		 *          "targets": [ 0 ],
-		 *          "data": "download_link",
-		 *          "render": function ( data, type, full ) {
-		 *            return '<a href="'+data+'">Download</a>';
-		 *          }
-		 *        } ]
-		 *      } );
-		 *    } );
-		 */
-		"mRender": null,
-	
-	
-		/**
-		 * Change the cell type created for the column - either TD cells or TH cells. This
-		 * can be useful as TH cells have semantic meaning in the table body, allowing them
-		 * to act as a header for a row (you may wish to add scope='row' to the TH elements).
-		 *  @type string
-		 *  @default td
-		 *
-		 *  @name DataTable.defaults.column.cellType
-		 *  @dtopt Columns
-		 *
-		 *  @example
-		 *    // Make the first column use TH cells
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columnDefs": [ {
-		 *          "targets": [ 0 ],
-		 *          "cellType": "th"
-		 *        } ]
-		 *      } );
-		 *    } );
-		 */
-		"sCellType": "td",
-	
-	
-		/**
-		 * Class to give to each cell in this column.
-		 *  @type string
-		 *  @default <i>Empty string</i>
-		 *
-		 *  @name DataTable.defaults.column.class
-		 *  @dtopt Columns
-		 *
-		 *  @example
-		 *    // Using `columnDefs`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columnDefs": [
-		 *          { "class": "my_class", "targets": [ 0 ] }
-		 *        ]
-		 *      } );
-		 *    } );
-		 *
-		 *  @example
-		 *    // Using `columns`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columns": [
-		 *          { "class": "my_class" },
-		 *          null,
-		 *          null,
-		 *          null,
-		 *          null
-		 *        ]
-		 *      } );
-		 *    } );
-		 */
-		"sClass": "",
-	
-		/**
-		 * When DataTables calculates the column widths to assign to each column,
-		 * it finds the longest string in each column and then constructs a
-		 * temporary table and reads the widths from that. The problem with this
-		 * is that "mmm" is much wider then "iiii", but the latter is a longer
-		 * string - thus the calculation can go wrong (doing it properly and putting
-		 * it into an DOM object and measuring that is horribly(!) slow). Thus as
-		 * a "work around" we provide this option. It will append its value to the
-		 * text that is found to be the longest string for the column - i.e. padding.
-		 * Generally you shouldn't need this!
-		 *  @type string
-		 *  @default <i>Empty string<i>
-		 *
-		 *  @name DataTable.defaults.column.contentPadding
-		 *  @dtopt Columns
-		 *
-		 *  @example
-		 *    // Using `columns`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columns": [
-		 *          null,
-		 *          null,
-		 *          null,
-		 *          {
-		 *            "contentPadding": "mmm"
-		 *          }
-		 *        ]
-		 *      } );
-		 *    } );
-		 */
-		"sContentPadding": "",
-	
-	
-		/**
-		 * Allows a default value to be given for a column's data, and will be used
-		 * whenever a null data source is encountered (this can be because `data`
-		 * is set to null, or because the data source itself is null).
-		 *  @type string
-		 *  @default null
-		 *
-		 *  @name DataTable.defaults.column.defaultContent
-		 *  @dtopt Columns
-		 *
-		 *  @example
-		 *    // Using `columnDefs`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columnDefs": [
-		 *          {
-		 *            "data": null,
-		 *            "defaultContent": "Edit",
-		 *            "targets": [ -1 ]
-		 *          }
-		 *        ]
-		 *      } );
-		 *    } );
-		 *
-		 *  @example
-		 *    // Using `columns`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columns": [
-		 *          null,
-		 *          null,
-		 *          null,
-		 *          {
-		 *            "data": null,
-		 *            "defaultContent": "Edit"
-		 *          }
-		 *        ]
-		 *      } );
-		 *    } );
-		 */
-		"sDefaultContent": null,
-	
-	
-		/**
-		 * This parameter is only used in DataTables' server-side processing. It can
-		 * be exceptionally useful to know what columns are being displayed on the
-		 * client side, and to map these to database fields. When defined, the names
-		 * also allow DataTables to reorder information from the server if it comes
-		 * back in an unexpected order (i.e. if you switch your columns around on the
-		 * client-side, your server-side code does not also need updating).
-		 *  @type string
-		 *  @default <i>Empty string</i>
-		 *
-		 *  @name DataTable.defaults.column.name
-		 *  @dtopt Columns
-		 *
-		 *  @example
-		 *    // Using `columnDefs`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columnDefs": [
-		 *          { "name": "engine", "targets": [ 0 ] },
-		 *          { "name": "browser", "targets": [ 1 ] },
-		 *          { "name": "platform", "targets": [ 2 ] },
-		 *          { "name": "version", "targets": [ 3 ] },
-		 *          { "name": "grade", "targets": [ 4 ] }
-		 *        ]
-		 *      } );
-		 *    } );
-		 *
-		 *  @example
-		 *    // Using `columns`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columns": [
-		 *          { "name": "engine" },
-		 *          { "name": "browser" },
-		 *          { "name": "platform" },
-		 *          { "name": "version" },
-		 *          { "name": "grade" }
-		 *        ]
-		 *      } );
-		 *    } );
-		 */
-		"sName": "",
-	
-	
-		/**
-		 * Defines a data source type for the ordering which can be used to read
-		 * real-time information from the table (updating the internally cached
-		 * version) prior to ordering. This allows ordering to occur on user
-		 * editable elements such as form inputs.
-		 *  @type string
-		 *  @default std
-		 *
-		 *  @name DataTable.defaults.column.orderDataType
-		 *  @dtopt Columns
-		 *
-		 *  @example
-		 *    // Using `columnDefs`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columnDefs": [
-		 *          { "orderDataType": "dom-text", "targets": [ 2, 3 ] },
-		 *          { "type": "numeric", "targets": [ 3 ] },
-		 *          { "orderDataType": "dom-select", "targets": [ 4 ] },
-		 *          { "orderDataType": "dom-checkbox", "targets": [ 5 ] }
-		 *        ]
-		 *      } );
-		 *    } );
-		 *
-		 *  @example
-		 *    // Using `columns`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columns": [
-		 *          null,
-		 *          null,
-		 *          { "orderDataType": "dom-text" },
-		 *          { "orderDataType": "dom-text", "type": "numeric" },
-		 *          { "orderDataType": "dom-select" },
-		 *          { "orderDataType": "dom-checkbox" }
-		 *        ]
-		 *      } );
-		 *    } );
-		 */
-		"sSortDataType": "std",
-	
-	
-		/**
-		 * The title of this column.
-		 *  @type string
-		 *  @default null <i>Derived from the 'TH' value for this column in the
-		 *    original HTML table.</i>
-		 *
-		 *  @name DataTable.defaults.column.title
-		 *  @dtopt Columns
-		 *
-		 *  @example
-		 *    // Using `columnDefs`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columnDefs": [
-		 *          { "title": "My column title", "targets": [ 0 ] }
-		 *        ]
-		 *      } );
-		 *    } );
-		 *
-		 *  @example
-		 *    // Using `columns`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columns": [
-		 *          { "title": "My column title" },
-		 *          null,
-		 *          null,
-		 *          null,
-		 *          null
-		 *        ]
-		 *      } );
-		 *    } );
-		 */
-		"sTitle": null,
-	
-	
-		/**
-		 * The type allows you to specify how the data for this column will be
-		 * ordered. Four types (string, numeric, date and html (which will strip
-		 * HTML tags before ordering)) are currently available. Note that only date
-		 * formats understood by Javascript's Date() object will be accepted as type
-		 * date. For example: "Mar 26, 2008 5:03 PM". May take the values: 'string',
-		 * 'numeric', 'date' or 'html' (by default). Further types can be adding
-		 * through plug-ins.
-		 *  @type string
-		 *  @default null <i>Auto-detected from raw data</i>
-		 *
-		 *  @name DataTable.defaults.column.type
-		 *  @dtopt Columns
-		 *
-		 *  @example
-		 *    // Using `columnDefs`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columnDefs": [
-		 *          { "type": "html", "targets": [ 0 ] }
-		 *        ]
-		 *      } );
-		 *    } );
-		 *
-		 *  @example
-		 *    // Using `columns`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columns": [
-		 *          { "type": "html" },
-		 *          null,
-		 *          null,
-		 *          null,
-		 *          null
-		 *        ]
-		 *      } );
-		 *    } );
-		 */
-		"sType": null,
-	
-	
-		/**
-		 * Defining the width of the column, this parameter may take any CSS value
-		 * (3em, 20px etc). DataTables applies 'smart' widths to columns which have not
-		 * been given a specific width through this interface ensuring that the table
-		 * remains readable.
-		 *  @type string
-		 *  @default null <i>Automatic</i>
-		 *
-		 *  @name DataTable.defaults.column.width
-		 *  @dtopt Columns
-		 *
-		 *  @example
-		 *    // Using `columnDefs`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columnDefs": [
-		 *          { "width": "20%", "targets": [ 0 ] }
-		 *        ]
-		 *      } );
-		 *    } );
-		 *
-		 *  @example
-		 *    // Using `columns`
-		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "columns": [
-		 *          { "width": "20%" },
-		 *          null,
-		 *          null,
-		 *          null,
-		 *          null
-		 *        ]
-		 *      } );
-		 *    } );
-		 */
-		"sWidth": null
-	};
-	
-	_fnHungarianMap( DataTable.defaults.column );
-	
-	
-	
-	/**
-	 * DataTables settings object - this holds all the information needed for a
-	 * given table, including configuration, data and current application of the
-	 * table options. DataTables does not have a single instance for each DataTable
-	 * with the settings attached to that instance, but rather instances of the
-	 * DataTable "class" are created on-the-fly as needed (typically by a
-	 * $().dataTable() call) and the settings object is then applied to that
-	 * instance.
-	 *
-	 * Note that this object is related to {@link DataTable.defaults} but this
-	 * one is the internal data store for DataTables's cache of columns. It should
-	 * NOT be manipulated outside of DataTables. Any configuration should be done
-	 * through the initialisation options.
-	 *  @namespace
-	 *  @todo Really should attach the settings object to individual instances so we
-	 *    don't need to create new instances on each $().dataTable() call (if the
-	 *    table already exists). It would also save passing oSettings around and
-	 *    into every single function. However, this is a very significant
-	 *    architecture change for DataTables and will almost certainly break
-	 *    backwards compatibility with older installations. This is something that
-	 *    will be done in 2.0.
-	 */
-	DataTable.models.oSettings = {
-		/**
-		 * Primary features of DataTables and their enablement state.
-		 *  @namespace
-		 */
-		"oFeatures": {
-	
+		DataTable.models.oSettings = {
 			/**
-			 * Flag to say if DataTables should automatically try to calculate the
-			 * optimum table and columns widths (true) or not (false).
+			 * Primary features of DataTables and their enablement state.
+			 *  @namespace
+			 */
+			"oFeatures": {
+		
+				/**
+				 * Flag to say if DataTables should automatically try to calculate the
+				 * optimum table and columns widths (true) or not (false).
+				 * Note that this parameter will be set by the initialisation routine. To
+				 * set a default use {@link DataTable.defaults}.
+				 *  @type boolean
+				 */
+				"bAutoWidth": null,
+		
+				/**
+				 * Delay the creation of TR and TD elements until they are actually
+				 * needed by a driven page draw. This can give a significant speed
+				 * increase for Ajax source and Javascript source data, but makes no
+				 * difference at all for DOM and server-side processing tables.
+				 * Note that this parameter will be set by the initialisation routine. To
+				 * set a default use {@link DataTable.defaults}.
+				 *  @type boolean
+				 */
+				"bDeferRender": null,
+		
+				/**
+				 * Enable filtering on the table or not. Note that if this is disabled
+				 * then there is no filtering at all on the table, including fnFilter.
+				 * To just remove the filtering input use sDom and remove the 'f' option.
+				 * Note that this parameter will be set by the initialisation routine. To
+				 * set a default use {@link DataTable.defaults}.
+				 *  @type boolean
+				 */
+				"bFilter": null,
+		
+				/**
+				 * Table information element (the 'Showing x of y records' div) enable
+				 * flag.
+				 * Note that this parameter will be set by the initialisation routine. To
+				 * set a default use {@link DataTable.defaults}.
+				 *  @type boolean
+				 */
+				"bInfo": null,
+		
+				/**
+				 * Present a user control allowing the end user to change the page size
+				 * when pagination is enabled.
+				 * Note that this parameter will be set by the initialisation routine. To
+				 * set a default use {@link DataTable.defaults}.
+				 *  @type boolean
+				 */
+				"bLengthChange": null,
+		
+				/**
+				 * Pagination enabled or not. Note that if this is disabled then length
+				 * changing must also be disabled.
+				 * Note that this parameter will be set by the initialisation routine. To
+				 * set a default use {@link DataTable.defaults}.
+				 *  @type boolean
+				 */
+				"bPaginate": null,
+		
+				/**
+				 * Processing indicator enable flag whenever DataTables is enacting a
+				 * user request - typically an Ajax request for server-side processing.
+				 * Note that this parameter will be set by the initialisation routine. To
+				 * set a default use {@link DataTable.defaults}.
+				 *  @type boolean
+				 */
+				"bProcessing": null,
+		
+				/**
+				 * Server-side processing enabled flag - when enabled DataTables will
+				 * get all data from the server for every draw - there is no filtering,
+				 * sorting or paging done on the client-side.
+				 * Note that this parameter will be set by the initialisation routine. To
+				 * set a default use {@link DataTable.defaults}.
+				 *  @type boolean
+				 */
+				"bServerSide": null,
+		
+				/**
+				 * Sorting enablement flag.
+				 * Note that this parameter will be set by the initialisation routine. To
+				 * set a default use {@link DataTable.defaults}.
+				 *  @type boolean
+				 */
+				"bSort": null,
+		
+				/**
+				 * Multi-column sorting
+				 * Note that this parameter will be set by the initialisation routine. To
+				 * set a default use {@link DataTable.defaults}.
+				 *  @type boolean
+				 */
+				"bSortMulti": null,
+		
+				/**
+				 * Apply a class to the columns which are being sorted to provide a
+				 * visual highlight or not. This can slow things down when enabled since
+				 * there is a lot of DOM interaction.
+				 * Note that this parameter will be set by the initialisation routine. To
+				 * set a default use {@link DataTable.defaults}.
+				 *  @type boolean
+				 */
+				"bSortClasses": null,
+		
+				/**
+				 * State saving enablement flag.
+				 * Note that this parameter will be set by the initialisation routine. To
+				 * set a default use {@link DataTable.defaults}.
+				 *  @type boolean
+				 */
+				"bStateSave": null
+			},
+		
+		
+			/**
+			 * Scrolling settings for a table.
+			 *  @namespace
+			 */
+			"oScroll": {
+				/**
+				 * When the table is shorter in height than sScrollY, collapse the
+				 * table container down to the height of the table (when true).
+				 * Note that this parameter will be set by the initialisation routine. To
+				 * set a default use {@link DataTable.defaults}.
+				 *  @type boolean
+				 */
+				"bCollapse": null,
+		
+				/**
+				 * Width of the scrollbar for the web-browser's platform. Calculated
+				 * during table initialisation.
+				 *  @type int
+				 *  @default 0
+				 */
+				"iBarWidth": 0,
+		
+				/**
+				 * Viewport width for horizontal scrolling. Horizontal scrolling is
+				 * disabled if an empty string.
+				 * Note that this parameter will be set by the initialisation routine. To
+				 * set a default use {@link DataTable.defaults}.
+				 *  @type string
+				 */
+				"sX": null,
+		
+				/**
+				 * Width to expand the table to when using x-scrolling. Typically you
+				 * should not need to use this.
+				 * Note that this parameter will be set by the initialisation routine. To
+				 * set a default use {@link DataTable.defaults}.
+				 *  @type string
+				 *  @deprecated
+				 */
+				"sXInner": null,
+		
+				/**
+				 * Viewport height for vertical scrolling. Vertical scrolling is disabled
+				 * if an empty string.
+				 * Note that this parameter will be set by the initialisation routine. To
+				 * set a default use {@link DataTable.defaults}.
+				 *  @type string
+				 */
+				"sY": null
+			},
+		
+			/**
+			 * Language information for the table.
+			 *  @namespace
+			 *  @extends DataTable.defaults.oLanguage
+			 */
+			"oLanguage": {
+				/**
+				 * Information callback function. See
+				 * {@link DataTable.defaults.fnInfoCallback}
+				 *  @type function
+				 *  @default null
+				 */
+				"fnInfoCallback": null
+			},
+		
+			/**
+			 * Browser support parameters
+			 *  @namespace
+			 */
+			"oBrowser": {
+				/**
+				 * Indicate if the browser incorrectly calculates width:100% inside a
+				 * scrolling element (IE6/7)
+				 *  @type boolean
+				 *  @default false
+				 */
+				"bScrollOversize": false,
+		
+				/**
+				 * Determine if the vertical scrollbar is on the right or left of the
+				 * scrolling container - needed for rtl language layout, although not
+				 * all browsers move the scrollbar (Safari).
+				 *  @type boolean
+				 *  @default false
+				 */
+				"bScrollbarLeft": false,
+		
+				/**
+				 * Flag for if `getBoundingClientRect` is fully supported or not
+				 *  @type boolean
+				 *  @default false
+				 */
+				"bBounding": false,
+		
+				/**
+				 * Browser scrollbar width
+				 *  @type integer
+				 *  @default 0
+				 */
+				"barWidth": 0
+			},
+		
+		
+			"ajax": null,
+		
+		
+			/**
+			 * Array referencing the nodes which are used for the features. The
+			 * parameters of this object match what is allowed by sDom - i.e.
+			 *   <ul>
+			 *     <li>'l' - Length changing</li>
+			 *     <li>'f' - Filtering input</li>
+			 *     <li>'t' - The table!</li>
+			 *     <li>'i' - Information</li>
+			 *     <li>'p' - Pagination</li>
+			 *     <li>'r' - pRocessing</li>
+			 *   </ul>
+			 *  @type array
+			 *  @default []
+			 */
+			"aanFeatures": [],
+		
+			/**
+			 * Store data information - see {@link DataTable.models.oRow} for detailed
+			 * information.
+			 *  @type array
+			 *  @default []
+			 */
+			"aoData": [],
+		
+			/**
+			 * Array of indexes which are in the current display (after filtering etc)
+			 *  @type array
+			 *  @default []
+			 */
+			"aiDisplay": [],
+		
+			/**
+			 * Array of indexes for display - no filtering
+			 *  @type array
+			 *  @default []
+			 */
+			"aiDisplayMaster": [],
+		
+			/**
+			 * Map of row ids to data indexes
+			 *  @type object
+			 *  @default {}
+			 */
+			"aIds": {},
+		
+			/**
+			 * Store information about each column that is in use
+			 *  @type array
+			 *  @default []
+			 */
+			"aoColumns": [],
+		
+			/**
+			 * Store information about the table's header
+			 *  @type array
+			 *  @default []
+			 */
+			"aoHeader": [],
+		
+			/**
+			 * Store information about the table's footer
+			 *  @type array
+			 *  @default []
+			 */
+			"aoFooter": [],
+		
+			/**
+			 * Store the applied global search information in case we want to force a
+			 * research or compare the old search to a new one.
 			 * Note that this parameter will be set by the initialisation routine. To
 			 * set a default use {@link DataTable.defaults}.
-			 *  @type boolean
+			 *  @namespace
+			 *  @extends DataTable.models.oSearch
 			 */
-			"bAutoWidth": null,
-	
+			"oPreviousSearch": {},
+		
 			/**
-			 * Delay the creation of TR and TD elements until they are actually
-			 * needed by a driven page draw. This can give a significant speed
-			 * increase for Ajax source and Javascript source data, but makes no
-			 * difference at all for DOM and server-side processing tables.
+			 * Store the applied search for each column - see
+			 * {@link DataTable.models.oSearch} for the format that is used for the
+			 * filtering information for each column.
+			 *  @type array
+			 *  @default []
+			 */
+			"aoPreSearchCols": [],
+		
+			/**
+			 * Sorting that is applied to the table. Note that the inner arrays are
+			 * used in the following manner:
+			 * <ul>
+			 *   <li>Index 0 - column number</li>
+			 *   <li>Index 1 - current sorting direction</li>
+			 * </ul>
 			 * Note that this parameter will be set by the initialisation routine. To
 			 * set a default use {@link DataTable.defaults}.
-			 *  @type boolean
+			 *  @type array
+			 *  @todo These inner arrays should really be objects
 			 */
-			"bDeferRender": null,
-	
+			"aaSorting": null,
+		
 			/**
-			 * Enable filtering on the table or not. Note that if this is disabled
-			 * then there is no filtering at all on the table, including fnFilter.
-			 * To just remove the filtering input use sDom and remove the 'f' option.
+			 * Sorting that is always applied to the table (i.e. prefixed in front of
+			 * aaSorting).
 			 * Note that this parameter will be set by the initialisation routine. To
 			 * set a default use {@link DataTable.defaults}.
-			 *  @type boolean
+			 *  @type array
+			 *  @default []
 			 */
-			"bFilter": null,
-	
+			"aaSortingFixed": [],
+		
 			/**
-			 * Table information element (the 'Showing x of y records' div) enable
-			 * flag.
+			 * Classes to use for the striping of a table.
 			 * Note that this parameter will be set by the initialisation routine. To
 			 * set a default use {@link DataTable.defaults}.
-			 *  @type boolean
+			 *  @type array
+			 *  @default []
 			 */
-			"bInfo": null,
-	
+			"asStripeClasses": null,
+		
 			/**
-			 * Present a user control allowing the end user to change the page size
-			 * when pagination is enabled.
-			 * Note that this parameter will be set by the initialisation routine. To
-			 * set a default use {@link DataTable.defaults}.
-			 *  @type boolean
+			 * If restoring a table - we should restore its striping classes as well
+			 *  @type array
+			 *  @default []
 			 */
-			"bLengthChange": null,
-	
+			"asDestroyStripes": [],
+		
 			/**
-			 * Pagination enabled or not. Note that if this is disabled then length
-			 * changing must also be disabled.
-			 * Note that this parameter will be set by the initialisation routine. To
-			 * set a default use {@link DataTable.defaults}.
-			 *  @type boolean
-			 */
-			"bPaginate": null,
-	
-			/**
-			 * Processing indicator enable flag whenever DataTables is enacting a
-			 * user request - typically an Ajax request for server-side processing.
-			 * Note that this parameter will be set by the initialisation routine. To
-			 * set a default use {@link DataTable.defaults}.
-			 *  @type boolean
-			 */
-			"bProcessing": null,
-	
-			/**
-			 * Server-side processing enabled flag - when enabled DataTables will
-			 * get all data from the server for every draw - there is no filtering,
-			 * sorting or paging done on the client-side.
-			 * Note that this parameter will be set by the initialisation routine. To
-			 * set a default use {@link DataTable.defaults}.
-			 *  @type boolean
-			 */
-			"bServerSide": null,
-	
-			/**
-			 * Sorting enablement flag.
-			 * Note that this parameter will be set by the initialisation routine. To
-			 * set a default use {@link DataTable.defaults}.
-			 *  @type boolean
-			 */
-			"bSort": null,
-	
-			/**
-			 * Multi-column sorting
-			 * Note that this parameter will be set by the initialisation routine. To
-			 * set a default use {@link DataTable.defaults}.
-			 *  @type boolean
-			 */
-			"bSortMulti": null,
-	
-			/**
-			 * Apply a class to the columns which are being sorted to provide a
-			 * visual highlight or not. This can slow things down when enabled since
-			 * there is a lot of DOM interaction.
-			 * Note that this parameter will be set by the initialisation routine. To
-			 * set a default use {@link DataTable.defaults}.
-			 *  @type boolean
-			 */
-			"bSortClasses": null,
-	
-			/**
-			 * State saving enablement flag.
-			 * Note that this parameter will be set by the initialisation routine. To
-			 * set a default use {@link DataTable.defaults}.
-			 *  @type boolean
-			 */
-			"bStateSave": null
-		},
-	
-	
-		/**
-		 * Scrolling settings for a table.
-		 *  @namespace
-		 */
-		"oScroll": {
-			/**
-			 * When the table is shorter in height than sScrollY, collapse the
-			 * table container down to the height of the table (when true).
-			 * Note that this parameter will be set by the initialisation routine. To
-			 * set a default use {@link DataTable.defaults}.
-			 *  @type boolean
-			 */
-			"bCollapse": null,
-	
-			/**
-			 * Width of the scrollbar for the web-browser's platform. Calculated
-			 * during table initialisation.
+			 * If restoring a table - we should restore its width
 			 *  @type int
 			 *  @default 0
 			 */
-			"iBarWidth": 0,
-	
+			"sDestroyWidth": 0,
+		
 			/**
-			 * Viewport width for horizontal scrolling. Horizontal scrolling is
-			 * disabled if an empty string.
+			 * Callback functions array for every time a row is inserted (i.e. on a draw).
+			 *  @type array
+			 *  @default []
+			 */
+			"aoRowCallback": [],
+		
+			/**
+			 * Callback functions for the header on each draw.
+			 *  @type array
+			 *  @default []
+			 */
+			"aoHeaderCallback": [],
+		
+			/**
+			 * Callback function for the footer on each draw.
+			 *  @type array
+			 *  @default []
+			 */
+			"aoFooterCallback": [],
+		
+			/**
+			 * Array of callback functions for draw callback functions
+			 *  @type array
+			 *  @default []
+			 */
+			"aoDrawCallback": [],
+		
+			/**
+			 * Array of callback functions for row created function
+			 *  @type array
+			 *  @default []
+			 */
+			"aoRowCreatedCallback": [],
+		
+			/**
+			 * Callback functions for just before the table is redrawn. A return of
+			 * false will be used to cancel the draw.
+			 *  @type array
+			 *  @default []
+			 */
+			"aoPreDrawCallback": [],
+		
+			/**
+			 * Callback functions for when the table has been initialised.
+			 *  @type array
+			 *  @default []
+			 */
+			"aoInitComplete": [],
+		
+		
+			/**
+			 * Callbacks for modifying the settings to be stored for state saving, prior to
+			 * saving state.
+			 *  @type array
+			 *  @default []
+			 */
+			"aoStateSaveParams": [],
+		
+			/**
+			 * Callbacks for modifying the settings that have been stored for state saving
+			 * prior to using the stored values to restore the state.
+			 *  @type array
+			 *  @default []
+			 */
+			"aoStateLoadParams": [],
+		
+			/**
+			 * Callbacks for operating on the settings object once the saved state has been
+			 * loaded
+			 *  @type array
+			 *  @default []
+			 */
+			"aoStateLoaded": [],
+		
+			/**
+			 * Cache the table ID for quick access
+			 *  @type string
+			 *  @default <i>Empty string</i>
+			 */
+			"sTableId": "",
+		
+			/**
+			 * The TABLE node for the main table
+			 *  @type node
+			 *  @default null
+			 */
+			"nTable": null,
+		
+			/**
+			 * Permanent ref to the thead element
+			 *  @type node
+			 *  @default null
+			 */
+			"nTHead": null,
+		
+			/**
+			 * Permanent ref to the tfoot element - if it exists
+			 *  @type node
+			 *  @default null
+			 */
+			"nTFoot": null,
+		
+			/**
+			 * Permanent ref to the tbody element
+			 *  @type node
+			 *  @default null
+			 */
+			"nTBody": null,
+		
+			/**
+			 * Cache the wrapper node (contains all DataTables controlled elements)
+			 *  @type node
+			 *  @default null
+			 */
+			"nTableWrapper": null,
+		
+			/**
+			 * Indicate if when using server-side processing the loading of data
+			 * should be deferred until the second draw.
+			 * Note that this parameter will be set by the initialisation routine. To
+			 * set a default use {@link DataTable.defaults}.
+			 *  @type boolean
+			 *  @default false
+			 */
+			"bDeferLoading": false,
+		
+			/**
+			 * Indicate if all required information has been read in
+			 *  @type boolean
+			 *  @default false
+			 */
+			"bInitialised": false,
+		
+			/**
+			 * Information about open rows. Each object in the array has the parameters
+			 * 'nTr' and 'nParent'
+			 *  @type array
+			 *  @default []
+			 */
+			"aoOpenRows": [],
+		
+			/**
+			 * Dictate the positioning of DataTables' control elements - see
+			 * {@link DataTable.model.oInit.sDom}.
+			 * Note that this parameter will be set by the initialisation routine. To
+			 * set a default use {@link DataTable.defaults}.
+			 *  @type string
+			 *  @default null
+			 */
+			"sDom": null,
+		
+			/**
+			 * Search delay (in mS)
+			 *  @type integer
+			 *  @default null
+			 */
+			"searchDelay": null,
+		
+			/**
+			 * Which type of pagination should be used.
+			 * Note that this parameter will be set by the initialisation routine. To
+			 * set a default use {@link DataTable.defaults}.
+			 *  @type string
+			 *  @default two_button
+			 */
+			"sPaginationType": "two_button",
+		
+			/**
+			 * The state duration (for `stateSave`) in seconds.
+			 * Note that this parameter will be set by the initialisation routine. To
+			 * set a default use {@link DataTable.defaults}.
+			 *  @type int
+			 *  @default 0
+			 */
+			"iStateDuration": 0,
+		
+			/**
+			 * Array of callback functions for state saving. Each array element is an
+			 * object with the following parameters:
+			 *   <ul>
+			 *     <li>function:fn - function to call. Takes two parameters, oSettings
+			 *       and the JSON string to save that has been thus far created. Returns
+			 *       a JSON string to be inserted into a json object
+			 *       (i.e. '"param": [ 0, 1, 2]')</li>
+			 *     <li>string:sName - name of callback</li>
+			 *   </ul>
+			 *  @type array
+			 *  @default []
+			 */
+			"aoStateSave": [],
+		
+			/**
+			 * Array of callback functions for state loading. Each array element is an
+			 * object with the following parameters:
+			 *   <ul>
+			 *     <li>function:fn - function to call. Takes two parameters, oSettings
+			 *       and the object stored. May return false to cancel state loading</li>
+			 *     <li>string:sName - name of callback</li>
+			 *   </ul>
+			 *  @type array
+			 *  @default []
+			 */
+			"aoStateLoad": [],
+		
+			/**
+			 * State that was saved. Useful for back reference
+			 *  @type object
+			 *  @default null
+			 */
+			"oSavedState": null,
+		
+			/**
+			 * State that was loaded. Useful for back reference
+			 *  @type object
+			 *  @default null
+			 */
+			"oLoadedState": null,
+		
+			/**
+			 * Source url for AJAX data for the table.
+			 * Note that this parameter will be set by the initialisation routine. To
+			 * set a default use {@link DataTable.defaults}.
+			 *  @type string
+			 *  @default null
+			 */
+			"sAjaxSource": null,
+		
+			/**
+			 * Property from a given object from which to read the table data from. This
+			 * can be an empty string (when not server-side processing), in which case
+			 * it is  assumed an an array is given directly.
 			 * Note that this parameter will be set by the initialisation routine. To
 			 * set a default use {@link DataTable.defaults}.
 			 *  @type string
 			 */
-			"sX": null,
-	
+			"sAjaxDataProp": null,
+		
 			/**
-			 * Width to expand the table to when using x-scrolling. Typically you
-			 * should not need to use this.
+			 * The last jQuery XHR object that was used for server-side data gathering.
+			 * This can be used for working with the XHR information in one of the
+			 * callbacks
+			 *  @type object
+			 *  @default null
+			 */
+			"jqXHR": null,
+		
+			/**
+			 * JSON returned from the server in the last Ajax request
+			 *  @type object
+			 *  @default undefined
+			 */
+			"json": undefined,
+		
+			/**
+			 * Data submitted as part of the last Ajax request
+			 *  @type object
+			 *  @default undefined
+			 */
+			"oAjaxData": undefined,
+		
+			/**
+			 * Function to get the server-side data.
+			 * Note that this parameter will be set by the initialisation routine. To
+			 * set a default use {@link DataTable.defaults}.
+			 *  @type function
+			 */
+			"fnServerData": null,
+		
+			/**
+			 * Functions which are called prior to sending an Ajax request so extra
+			 * parameters can easily be sent to the server
+			 *  @type array
+			 *  @default []
+			 */
+			"aoServerParams": [],
+		
+			/**
+			 * Send the XHR HTTP method - GET or POST (could be PUT or DELETE if
+			 * required).
 			 * Note that this parameter will be set by the initialisation routine. To
 			 * set a default use {@link DataTable.defaults}.
 			 *  @type string
+			 */
+			"sServerMethod": null,
+		
+			/**
+			 * Format numbers for display.
+			 * Note that this parameter will be set by the initialisation routine. To
+			 * set a default use {@link DataTable.defaults}.
+			 *  @type function
+			 */
+			"fnFormatNumber": null,
+		
+			/**
+			 * List of options that can be used for the user selectable length menu.
+			 * Note that this parameter will be set by the initialisation routine. To
+			 * set a default use {@link DataTable.defaults}.
+			 *  @type array
+			 *  @default []
+			 */
+			"aLengthMenu": null,
+		
+			/**
+			 * Counter for the draws that the table does. Also used as a tracker for
+			 * server-side processing
+			 *  @type int
+			 *  @default 0
+			 */
+			"iDraw": 0,
+		
+			/**
+			 * Indicate if a redraw is being done - useful for Ajax
+			 *  @type boolean
+			 *  @default false
+			 */
+			"bDrawing": false,
+		
+			/**
+			 * Draw index (iDraw) of the last error when parsing the returned data
+			 *  @type int
+			 *  @default -1
+			 */
+			"iDrawError": -1,
+		
+			/**
+			 * Paging display length
+			 *  @type int
+			 *  @default 10
+			 */
+			"_iDisplayLength": 10,
+		
+			/**
+			 * Paging start point - aiDisplay index
+			 *  @type int
+			 *  @default 0
+			 */
+			"_iDisplayStart": 0,
+		
+			/**
+			 * Server-side processing - number of records in the result set
+			 * (i.e. before filtering), Use fnRecordsTotal rather than
+			 * this property to get the value of the number of records, regardless of
+			 * the server-side processing setting.
+			 *  @type int
+			 *  @default 0
+			 *  @private
+			 */
+			"_iRecordsTotal": 0,
+		
+			/**
+			 * Server-side processing - number of records in the current display set
+			 * (i.e. after filtering). Use fnRecordsDisplay rather than
+			 * this property to get the value of the number of records, regardless of
+			 * the server-side processing setting.
+			 *  @type boolean
+			 *  @default 0
+			 *  @private
+			 */
+			"_iRecordsDisplay": 0,
+		
+			/**
+			 * The classes to use for the table
+			 *  @type object
+			 *  @default {}
+			 */
+			"oClasses": {},
+		
+			/**
+			 * Flag attached to the settings object so you can check in the draw
+			 * callback if filtering has been done in the draw. Deprecated in favour of
+			 * events.
+			 *  @type boolean
+			 *  @default false
 			 *  @deprecated
 			 */
-			"sXInner": null,
-	
+			"bFiltered": false,
+		
 			/**
-			 * Viewport height for vertical scrolling. Vertical scrolling is disabled
-			 * if an empty string.
+			 * Flag attached to the settings object so you can check in the draw
+			 * callback if sorting has been done in the draw. Deprecated in favour of
+			 * events.
+			 *  @type boolean
+			 *  @default false
+			 *  @deprecated
+			 */
+			"bSorted": false,
+		
+			/**
+			 * Indicate that if multiple rows are in the header and there is more than
+			 * one unique cell per column, if the top one (true) or bottom one (false)
+			 * should be used for sorting / title by DataTables.
 			 * Note that this parameter will be set by the initialisation routine. To
 			 * set a default use {@link DataTable.defaults}.
-			 *  @type string
+			 *  @type boolean
 			 */
-			"sY": null
-		},
-	
-		/**
-		 * Language information for the table.
-		 *  @namespace
-		 *  @extends DataTable.defaults.oLanguage
-		 */
-		"oLanguage": {
+			"bSortCellsTop": null,
+		
 			/**
-			 * Information callback function. See
-			 * {@link DataTable.defaults.fnInfoCallback}
+			 * Initialisation object that is used for the table
+			 *  @type object
+			 *  @default null
+			 */
+			"oInit": null,
+		
+			/**
+			 * Destroy callback functions - for plug-ins to attach themselves to the
+			 * destroy so they can clean up markup and events.
+			 *  @type array
+			 *  @default []
+			 */
+			"aoDestroyCallback": [],
+		
+		
+			/**
+			 * Get the number of records in the current record set, before filtering
+			 *  @type function
+			 */
+			"fnRecordsTotal": function ()
+			{
+				return _fnDataSource( this ) == 'ssp' ?
+					this._iRecordsTotal * 1 :
+					this.aiDisplayMaster.length;
+			},
+		
+			/**
+			 * Get the number of records in the current record set, after filtering
+			 *  @type function
+			 */
+			"fnRecordsDisplay": function ()
+			{
+				return _fnDataSource( this ) == 'ssp' ?
+					this._iRecordsDisplay * 1 :
+					this.aiDisplay.length;
+			},
+		
+			/**
+			 * Get the display end point - aiDisplay index
+			 *  @type function
+			 */
+			"fnDisplayEnd": function ()
+			{
+				var
+					len      = this._iDisplayLength,
+					start    = this._iDisplayStart,
+					calc     = start + len,
+					records  = this.aiDisplay.length,
+					features = this.oFeatures,
+					paginate = features.bPaginate;
+		
+				if ( features.bServerSide ) {
+					return paginate === false || len === -1 ?
+						start + records :
+						Math.min( start+len, this._iRecordsDisplay );
+				}
+				else {
+					return ! paginate || calc>records || len===-1 ?
+						records :
+						calc;
+				}
+			},
+		
+			/**
+			 * The DataTables object for this table
+			 *  @type object
+			 *  @default null
+			 */
+			"oInstance": null,
+		
+			/**
+			 * Unique identifier for each instance of the DataTables object. If there
+			 * is an ID on the table node, then it takes that value, otherwise an
+			 * incrementing internal counter is used.
+			 *  @type string
+			 *  @default null
+			 */
+			"sInstance": null,
+		
+			/**
+			 * tabindex attribute value that is added to DataTables control elements, allowing
+			 * keyboard navigation of the table and its controls.
+			 */
+			"iTabIndex": 0,
+		
+			/**
+			 * DIV container for the footer scrolling table if scrolling
+			 */
+			"nScrollHead": null,
+		
+			/**
+			 * DIV container for the footer scrolling table if scrolling
+			 */
+			"nScrollFoot": null,
+		
+			/**
+			 * Last applied sort
+			 *  @type array
+			 *  @default []
+			 */
+			"aLastSort": [],
+		
+			/**
+			 * Stored plug-in instances
+			 *  @type object
+			 *  @default {}
+			 */
+			"oPlugins": {},
+		
+			/**
+			 * Function used to get a row's id from the row's data
 			 *  @type function
 			 *  @default null
 			 */
-			"fnInfoCallback": null
-		},
-	
-		/**
-		 * Browser support parameters
-		 *  @namespace
-		 */
-		"oBrowser": {
+			"rowIdFn": null,
+		
 			/**
-			 * Indicate if the browser incorrectly calculates width:100% inside a
-			 * scrolling element (IE6/7)
-			 *  @type boolean
-			 *  @default false
-			 */
-			"bScrollOversize": false,
-	
-			/**
-			 * Determine if the vertical scrollbar is on the right or left of the
-			 * scrolling container - needed for rtl language layout, although not
-			 * all browsers move the scrollbar (Safari).
-			 *  @type boolean
-			 *  @default false
-			 */
-			"bScrollbarLeft": false,
-	
-			/**
-			 * Flag for if `getBoundingClientRect` is fully supported or not
-			 *  @type boolean
-			 *  @default false
-			 */
-			"bBounding": false,
-	
-			/**
-			 * Browser scrollbar width
-			 *  @type integer
-			 *  @default 0
-			 */
-			"barWidth": 0
-		},
-	
-	
-		"ajax": null,
-	
-	
-		/**
-		 * Array referencing the nodes which are used for the features. The
-		 * parameters of this object match what is allowed by sDom - i.e.
-		 *   <ul>
-		 *     <li>'l' - Length changing</li>
-		 *     <li>'f' - Filtering input</li>
-		 *     <li>'t' - The table!</li>
-		 *     <li>'i' - Information</li>
-		 *     <li>'p' - Pagination</li>
-		 *     <li>'r' - pRocessing</li>
-		 *   </ul>
-		 *  @type array
-		 *  @default []
-		 */
-		"aanFeatures": [],
-	
-		/**
-		 * Store data information - see {@link DataTable.models.oRow} for detailed
-		 * information.
-		 *  @type array
-		 *  @default []
-		 */
-		"aoData": [],
-	
-		/**
-		 * Array of indexes which are in the current display (after filtering etc)
-		 *  @type array
-		 *  @default []
-		 */
-		"aiDisplay": [],
-	
-		/**
-		 * Array of indexes for display - no filtering
-		 *  @type array
-		 *  @default []
-		 */
-		"aiDisplayMaster": [],
-	
-		/**
-		 * Map of row ids to data indexes
-		 *  @type object
-		 *  @default {}
-		 */
-		"aIds": {},
-	
-		/**
-		 * Store information about each column that is in use
-		 *  @type array
-		 *  @default []
-		 */
-		"aoColumns": [],
-	
-		/**
-		 * Store information about the table's header
-		 *  @type array
-		 *  @default []
-		 */
-		"aoHeader": [],
-	
-		/**
-		 * Store information about the table's footer
-		 *  @type array
-		 *  @default []
-		 */
-		"aoFooter": [],
-	
-		/**
-		 * Store the applied global search information in case we want to force a
-		 * research or compare the old search to a new one.
-		 * Note that this parameter will be set by the initialisation routine. To
-		 * set a default use {@link DataTable.defaults}.
-		 *  @namespace
-		 *  @extends DataTable.models.oSearch
-		 */
-		"oPreviousSearch": {},
-	
-		/**
-		 * Store the applied search for each column - see
-		 * {@link DataTable.models.oSearch} for the format that is used for the
-		 * filtering information for each column.
-		 *  @type array
-		 *  @default []
-		 */
-		"aoPreSearchCols": [],
-	
-		/**
-		 * Sorting that is applied to the table. Note that the inner arrays are
-		 * used in the following manner:
-		 * <ul>
-		 *   <li>Index 0 - column number</li>
-		 *   <li>Index 1 - current sorting direction</li>
-		 * </ul>
-		 * Note that this parameter will be set by the initialisation routine. To
-		 * set a default use {@link DataTable.defaults}.
-		 *  @type array
-		 *  @todo These inner arrays should really be objects
-		 */
-		"aaSorting": null,
-	
-		/**
-		 * Sorting that is always applied to the table (i.e. prefixed in front of
-		 * aaSorting).
-		 * Note that this parameter will be set by the initialisation routine. To
-		 * set a default use {@link DataTable.defaults}.
-		 *  @type array
-		 *  @default []
-		 */
-		"aaSortingFixed": [],
-	
-		/**
-		 * Classes to use for the striping of a table.
-		 * Note that this parameter will be set by the initialisation routine. To
-		 * set a default use {@link DataTable.defaults}.
-		 *  @type array
-		 *  @default []
-		 */
-		"asStripeClasses": null,
-	
-		/**
-		 * If restoring a table - we should restore its striping classes as well
-		 *  @type array
-		 *  @default []
-		 */
-		"asDestroyStripes": [],
-	
-		/**
-		 * If restoring a table - we should restore its width
-		 *  @type int
-		 *  @default 0
-		 */
-		"sDestroyWidth": 0,
-	
-		/**
-		 * Callback functions array for every time a row is inserted (i.e. on a draw).
-		 *  @type array
-		 *  @default []
-		 */
-		"aoRowCallback": [],
-	
-		/**
-		 * Callback functions for the header on each draw.
-		 *  @type array
-		 *  @default []
-		 */
-		"aoHeaderCallback": [],
-	
-		/**
-		 * Callback function for the footer on each draw.
-		 *  @type array
-		 *  @default []
-		 */
-		"aoFooterCallback": [],
-	
-		/**
-		 * Array of callback functions for draw callback functions
-		 *  @type array
-		 *  @default []
-		 */
-		"aoDrawCallback": [],
-	
-		/**
-		 * Array of callback functions for row created function
-		 *  @type array
-		 *  @default []
-		 */
-		"aoRowCreatedCallback": [],
-	
-		/**
-		 * Callback functions for just before the table is redrawn. A return of
-		 * false will be used to cancel the draw.
-		 *  @type array
-		 *  @default []
-		 */
-		"aoPreDrawCallback": [],
-	
-		/**
-		 * Callback functions for when the table has been initialised.
-		 *  @type array
-		 *  @default []
-		 */
-		"aoInitComplete": [],
-	
-	
-		/**
-		 * Callbacks for modifying the settings to be stored for state saving, prior to
-		 * saving state.
-		 *  @type array
-		 *  @default []
-		 */
-		"aoStateSaveParams": [],
-	
-		/**
-		 * Callbacks for modifying the settings that have been stored for state saving
-		 * prior to using the stored values to restore the state.
-		 *  @type array
-		 *  @default []
-		 */
-		"aoStateLoadParams": [],
-	
-		/**
-		 * Callbacks for operating on the settings object once the saved state has been
-		 * loaded
-		 *  @type array
-		 *  @default []
-		 */
-		"aoStateLoaded": [],
-	
-		/**
-		 * Cache the table ID for quick access
-		 *  @type string
-		 *  @default <i>Empty string</i>
-		 */
-		"sTableId": "",
-	
-		/**
-		 * The TABLE node for the main table
-		 *  @type node
-		 *  @default null
-		 */
-		"nTable": null,
-	
-		/**
-		 * Permanent ref to the thead element
-		 *  @type node
-		 *  @default null
-		 */
-		"nTHead": null,
-	
-		/**
-		 * Permanent ref to the tfoot element - if it exists
-		 *  @type node
-		 *  @default null
-		 */
-		"nTFoot": null,
-	
-		/**
-		 * Permanent ref to the tbody element
-		 *  @type node
-		 *  @default null
-		 */
-		"nTBody": null,
-	
-		/**
-		 * Cache the wrapper node (contains all DataTables controlled elements)
-		 *  @type node
-		 *  @default null
-		 */
-		"nTableWrapper": null,
-	
-		/**
-		 * Indicate if when using server-side processing the loading of data
-		 * should be deferred until the second draw.
-		 * Note that this parameter will be set by the initialisation routine. To
-		 * set a default use {@link DataTable.defaults}.
-		 *  @type boolean
-		 *  @default false
-		 */
-		"bDeferLoading": false,
-	
-		/**
-		 * Indicate if all required information has been read in
-		 *  @type boolean
-		 *  @default false
-		 */
-		"bInitialised": false,
-	
-		/**
-		 * Information about open rows. Each object in the array has the parameters
-		 * 'nTr' and 'nParent'
-		 *  @type array
-		 *  @default []
-		 */
-		"aoOpenRows": [],
-	
-		/**
-		 * Dictate the positioning of DataTables' control elements - see
-		 * {@link DataTable.model.oInit.sDom}.
-		 * Note that this parameter will be set by the initialisation routine. To
-		 * set a default use {@link DataTable.defaults}.
-		 *  @type string
-		 *  @default null
-		 */
-		"sDom": null,
-	
-		/**
-		 * Search delay (in mS)
-		 *  @type integer
-		 *  @default null
-		 */
-		"searchDelay": null,
-	
-		/**
-		 * Which type of pagination should be used.
-		 * Note that this parameter will be set by the initialisation routine. To
-		 * set a default use {@link DataTable.defaults}.
-		 *  @type string
-		 *  @default two_button
-		 */
-		"sPaginationType": "two_button",
-	
-		/**
-		 * The state duration (for `stateSave`) in seconds.
-		 * Note that this parameter will be set by the initialisation routine. To
-		 * set a default use {@link DataTable.defaults}.
-		 *  @type int
-		 *  @default 0
-		 */
-		"iStateDuration": 0,
-	
-		/**
-		 * Array of callback functions for state saving. Each array element is an
-		 * object with the following parameters:
-		 *   <ul>
-		 *     <li>function:fn - function to call. Takes two parameters, oSettings
-		 *       and the JSON string to save that has been thus far created. Returns
-		 *       a JSON string to be inserted into a json object
-		 *       (i.e. '"param": [ 0, 1, 2]')</li>
-		 *     <li>string:sName - name of callback</li>
-		 *   </ul>
-		 *  @type array
-		 *  @default []
-		 */
-		"aoStateSave": [],
-	
-		/**
-		 * Array of callback functions for state loading. Each array element is an
-		 * object with the following parameters:
-		 *   <ul>
-		 *     <li>function:fn - function to call. Takes two parameters, oSettings
-		 *       and the object stored. May return false to cancel state loading</li>
-		 *     <li>string:sName - name of callback</li>
-		 *   </ul>
-		 *  @type array
-		 *  @default []
-		 */
-		"aoStateLoad": [],
-	
-		/**
-		 * State that was saved. Useful for back reference
-		 *  @type object
-		 *  @default null
-		 */
-		"oSavedState": null,
-	
-		/**
-		 * State that was loaded. Useful for back reference
-		 *  @type object
-		 *  @default null
-		 */
-		"oLoadedState": null,
-	
-		/**
-		 * Source url for AJAX data for the table.
-		 * Note that this parameter will be set by the initialisation routine. To
-		 * set a default use {@link DataTable.defaults}.
-		 *  @type string
-		 *  @default null
-		 */
-		"sAjaxSource": null,
-	
-		/**
-		 * Property from a given object from which to read the table data from. This
-		 * can be an empty string (when not server-side processing), in which case
-		 * it is  assumed an an array is given directly.
-		 * Note that this parameter will be set by the initialisation routine. To
-		 * set a default use {@link DataTable.defaults}.
-		 *  @type string
-		 */
-		"sAjaxDataProp": null,
-	
-		/**
-		 * The last jQuery XHR object that was used for server-side data gathering.
-		 * This can be used for working with the XHR information in one of the
-		 * callbacks
-		 *  @type object
-		 *  @default null
-		 */
-		"jqXHR": null,
-	
-		/**
-		 * JSON returned from the server in the last Ajax request
-		 *  @type object
-		 *  @default undefined
-		 */
-		"json": undefined,
-	
-		/**
-		 * Data submitted as part of the last Ajax request
-		 *  @type object
-		 *  @default undefined
-		 */
-		"oAjaxData": undefined,
-	
-		/**
-		 * Function to get the server-side data.
-		 * Note that this parameter will be set by the initialisation routine. To
-		 * set a default use {@link DataTable.defaults}.
-		 *  @type function
-		 */
-		"fnServerData": null,
-	
-		/**
-		 * Functions which are called prior to sending an Ajax request so extra
-		 * parameters can easily be sent to the server
-		 *  @type array
-		 *  @default []
-		 */
-		"aoServerParams": [],
-	
-		/**
-		 * Send the XHR HTTP method - GET or POST (could be PUT or DELETE if
-		 * required).
-		 * Note that this parameter will be set by the initialisation routine. To
-		 * set a default use {@link DataTable.defaults}.
-		 *  @type string
-		 */
-		"sServerMethod": null,
-	
-		/**
-		 * Format numbers for display.
-		 * Note that this parameter will be set by the initialisation routine. To
-		 * set a default use {@link DataTable.defaults}.
-		 *  @type function
-		 */
-		"fnFormatNumber": null,
-	
-		/**
-		 * List of options that can be used for the user selectable length menu.
-		 * Note that this parameter will be set by the initialisation routine. To
-		 * set a default use {@link DataTable.defaults}.
-		 *  @type array
-		 *  @default []
-		 */
-		"aLengthMenu": null,
-	
-		/**
-		 * Counter for the draws that the table does. Also used as a tracker for
-		 * server-side processing
-		 *  @type int
-		 *  @default 0
-		 */
-		"iDraw": 0,
-	
-		/**
-		 * Indicate if a redraw is being done - useful for Ajax
-		 *  @type boolean
-		 *  @default false
-		 */
-		"bDrawing": false,
-	
-		/**
-		 * Draw index (iDraw) of the last error when parsing the returned data
-		 *  @type int
-		 *  @default -1
-		 */
-		"iDrawError": -1,
-	
-		/**
-		 * Paging display length
-		 *  @type int
-		 *  @default 10
-		 */
-		"_iDisplayLength": 10,
-	
-		/**
-		 * Paging start point - aiDisplay index
-		 *  @type int
-		 *  @default 0
-		 */
-		"_iDisplayStart": 0,
-	
-		/**
-		 * Server-side processing - number of records in the result set
-		 * (i.e. before filtering), Use fnRecordsTotal rather than
-		 * this property to get the value of the number of records, regardless of
-		 * the server-side processing setting.
-		 *  @type int
-		 *  @default 0
-		 *  @private
-		 */
-		"_iRecordsTotal": 0,
-	
-		/**
-		 * Server-side processing - number of records in the current display set
-		 * (i.e. after filtering). Use fnRecordsDisplay rather than
-		 * this property to get the value of the number of records, regardless of
-		 * the server-side processing setting.
-		 *  @type boolean
-		 *  @default 0
-		 *  @private
-		 */
-		"_iRecordsDisplay": 0,
-	
-		/**
-		 * The classes to use for the table
-		 *  @type object
-		 *  @default {}
-		 */
-		"oClasses": {},
-	
-		/**
-		 * Flag attached to the settings object so you can check in the draw
-		 * callback if filtering has been done in the draw. Deprecated in favour of
-		 * events.
-		 *  @type boolean
-		 *  @default false
-		 *  @deprecated
-		 */
-		"bFiltered": false,
-	
-		/**
-		 * Flag attached to the settings object so you can check in the draw
-		 * callback if sorting has been done in the draw. Deprecated in favour of
-		 * events.
-		 *  @type boolean
-		 *  @default false
-		 *  @deprecated
-		 */
-		"bSorted": false,
-	
-		/**
-		 * Indicate that if multiple rows are in the header and there is more than
-		 * one unique cell per column, if the top one (true) or bottom one (false)
-		 * should be used for sorting / title by DataTables.
-		 * Note that this parameter will be set by the initialisation routine. To
-		 * set a default use {@link DataTable.defaults}.
-		 *  @type boolean
-		 */
-		"bSortCellsTop": null,
-	
-		/**
-		 * Initialisation object that is used for the table
-		 *  @type object
-		 *  @default null
-		 */
-		"oInit": null,
-	
-		/**
-		 * Destroy callback functions - for plug-ins to attach themselves to the
-		 * destroy so they can clean up markup and events.
-		 *  @type array
-		 *  @default []
-		 */
-		"aoDestroyCallback": [],
-	
-	
-		/**
-		 * Get the number of records in the current record set, before filtering
-		 *  @type function
-		 */
-		"fnRecordsTotal": function ()
-		{
-			return _fnDataSource( this ) == 'ssp' ?
-				this._iRecordsTotal * 1 :
-				this.aiDisplayMaster.length;
-		},
-	
-		/**
-		 * Get the number of records in the current record set, after filtering
-		 *  @type function
-		 */
-		"fnRecordsDisplay": function ()
-		{
-			return _fnDataSource( this ) == 'ssp' ?
-				this._iRecordsDisplay * 1 :
-				this.aiDisplay.length;
-		},
-	
-		/**
-		 * Get the display end point - aiDisplay index
-		 *  @type function
-		 */
-		"fnDisplayEnd": function ()
-		{
-			var
-				len      = this._iDisplayLength,
-				start    = this._iDisplayStart,
-				calc     = start + len,
-				records  = this.aiDisplay.length,
-				features = this.oFeatures,
-				paginate = features.bPaginate;
-	
-			if ( features.bServerSide ) {
-				return paginate === false || len === -1 ?
-					start + records :
-					Math.min( start+len, this._iRecordsDisplay );
-			}
-			else {
-				return ! paginate || calc>records || len===-1 ?
-					records :
-					calc;
-			}
-		},
-	
-		/**
-		 * The DataTables object for this table
-		 *  @type object
-		 *  @default null
-		 */
-		"oInstance": null,
-	
-		/**
-		 * Unique identifier for each instance of the DataTables object. If there
-		 * is an ID on the table node, then it takes that value, otherwise an
-		 * incrementing internal counter is used.
-		 *  @type string
-		 *  @default null
-		 */
-		"sInstance": null,
-	
-		/**
-		 * tabindex attribute value that is added to DataTables control elements, allowing
-		 * keyboard navigation of the table and its controls.
-		 */
-		"iTabIndex": 0,
-	
-		/**
-		 * DIV container for the footer scrolling table if scrolling
-		 */
-		"nScrollHead": null,
-	
-		/**
-		 * DIV container for the footer scrolling table if scrolling
-		 */
-		"nScrollFoot": null,
-	
-		/**
-		 * Last applied sort
-		 *  @type array
-		 *  @default []
-		 */
-		"aLastSort": [],
-	
-		/**
-		 * Stored plug-in instances
-		 *  @type object
-		 *  @default {}
-		 */
-		"oPlugins": {},
-	
-		/**
-		 * Function used to get a row's id from the row's data
-		 *  @type function
-		 *  @default null
-		 */
-		"rowIdFn": null,
-	
-		/**
-		 * Data location where to store a row's id
-		 *  @type string
-		 *  @default null
-		 */
-		"rowId": null
-	};
-
-	/**
-	 * Extension object for DataTables that is used to provide all extension
-	 * options.
-	 *
-	 * Note that the `DataTable.ext` object is available through
-	 * `jQuery.fn.dataTable.ext` where it may be accessed and manipulated. It is
-	 * also aliased to `jQuery.fn.dataTableExt` for historic reasons.
-	 *  @namespace
-	 *  @extends DataTable.models.ext
-	 */
-	
-	
-	/**
-	 * DataTables extensions
-	 * 
-	 * This namespace acts as a collection area for plug-ins that can be used to
-	 * extend DataTables capabilities. Indeed many of the build in methods
-	 * use this method to provide their own capabilities (sorting methods for
-	 * example).
-	 *
-	 * Note that this namespace is aliased to `jQuery.fn.dataTableExt` for legacy
-	 * reasons
-	 *
-	 *  @namespace
-	 */
-	DataTable.ext = _ext = {
-		/**
-		 * Buttons. For use with the Buttons extension for DataTables. This is
-		 * defined here so other extensions can define buttons regardless of load
-		 * order. It is _not_ used by DataTables core.
-		 *
-		 *  @type object
-		 *  @default {}
-		 */
-		buttons: {},
-	
-	
-		/**
-		 * Element class names
-		 *
-		 *  @type object
-		 *  @default {}
-		 */
-		classes: {},
-	
-	
-		/**
-		 * DataTables build type (expanded by the download builder)
-		 *
-		 *  @type string
-		 */
-		builder: "-source-",
-	
-	
-		/**
-		 * Error reporting.
-		 * 
-		 * How should DataTables report an error. Can take the value 'alert',
-		 * 'throw', 'none' or a function.
-		 *
-		 *  @type string|function
-		 *  @default alert
-		 */
-		errMode: "alert",
-	
-	
-		/**
-		 * Feature plug-ins.
-		 * 
-		 * This is an array of objects which describe the feature plug-ins that are
-		 * available to DataTables. These feature plug-ins are then available for
-		 * use through the `dom` initialisation option.
-		 * 
-		 * Each feature plug-in is described by an object which must have the
-		 * following properties:
-		 * 
-		 * * `fnInit` - function that is used to initialise the plug-in,
-		 * * `cFeature` - a character so the feature can be enabled by the `dom`
-		 *   instillation option. This is case sensitive.
-		 *
-		 * The `fnInit` function has the following input parameters:
-		 *
-		 * 1. `{object}` DataTables settings object: see
-		 *    {@link DataTable.models.oSettings}
-		 *
-		 * And the following return is expected:
-		 * 
-		 * * {node|null} The element which contains your feature. Note that the
-		 *   return may also be void if your plug-in does not require to inject any
-		 *   DOM elements into DataTables control (`dom`) - for example this might
-		 *   be useful when developing a plug-in which allows table control via
-		 *   keyboard entry
-		 *
-		 *  @type array
-		 *
-		 *  @example
-		 *    $.fn.dataTable.ext.features.push( {
-		 *      "fnInit": function( oSettings ) {
-		 *        return new TableTools( { "oDTSettings": oSettings } );
-		 *      },
-		 *      "cFeature": "T"
-		 *    } );
-		 */
-		feature: [],
-	
-	
-		/**
-		 * Row searching.
-		 * 
-		 * This method of searching is complimentary to the default type based
-		 * searching, and a lot more comprehensive as it allows you complete control
-		 * over the searching logic. Each element in this array is a function
-		 * (parameters described below) that is called for every row in the table,
-		 * and your logic decides if it should be included in the searching data set
-		 * or not.
-		 *
-		 * Searching functions have the following input parameters:
-		 *
-		 * 1. `{object}` DataTables settings object: see
-		 *    {@link DataTable.models.oSettings}
-		 * 2. `{array|object}` Data for the row to be processed (same as the
-		 *    original format that was passed in as the data source, or an array
-		 *    from a DOM data source
-		 * 3. `{int}` Row index ({@link DataTable.models.oSettings.aoData}), which
-		 *    can be useful to retrieve the `TR` element if you need DOM interaction.
-		 *
-		 * And the following return is expected:
-		 *
-		 * * {boolean} Include the row in the searched result set (true) or not
-		 *   (false)
-		 *
-		 * Note that as with the main search ability in DataTables, technically this
-		 * is "filtering", since it is subtractive. However, for consistency in
-		 * naming we call it searching here.
-		 *
-		 *  @type array
-		 *  @default []
-		 *
-		 *  @example
-		 *    // The following example shows custom search being applied to the
-		 *    // fourth column (i.e. the data[3] index) based on two input values
-		 *    // from the end-user, matching the data in a certain range.
-		 *    $.fn.dataTable.ext.search.push(
-		 *      function( settings, data, dataIndex ) {
-		 *        var min = document.getElementById('min').value * 1;
-		 *        var max = document.getElementById('max').value * 1;
-		 *        var version = data[3] == "-" ? 0 : data[3]*1;
-		 *
-		 *        if ( min == "" && max == "" ) {
-		 *          return true;
-		 *        }
-		 *        else if ( min == "" && version < max ) {
-		 *          return true;
-		 *        }
-		 *        else if ( min < version && "" == max ) {
-		 *          return true;
-		 *        }
-		 *        else if ( min < version && version < max ) {
-		 *          return true;
-		 *        }
-		 *        return false;
-		 *      }
-		 *    );
-		 */
-		search: [],
-	
-	
-		/**
-		 * Selector extensions
-		 *
-		 * The `selector` option can be used to extend the options available for the
-		 * selector modifier options (`selector-modifier` object data type) that
-		 * each of the three built in selector types offer (row, column and cell +
-		 * their plural counterparts). For example the Select extension uses this
-		 * mechanism to provide an option to select only rows, columns and cells
-		 * that have been marked as selected by the end user (`{selected: true}`),
-		 * which can be used in conjunction with the existing built in selector
-		 * options.
-		 *
-		 * Each property is an array to which functions can be pushed. The functions
-		 * take three attributes:
-		 *
-		 * * Settings object for the host table
-		 * * Options object (`selector-modifier` object type)
-		 * * Array of selected item indexes
-		 *
-		 * The return is an array of the resulting item indexes after the custom
-		 * selector has been applied.
-		 *
-		 *  @type object
-		 */
-		selector: {
-			cell: [],
-			column: [],
-			row: []
-		},
-	
-	
-		/**
-		 * Internal functions, exposed for used in plug-ins.
-		 * 
-		 * Please note that you should not need to use the internal methods for
-		 * anything other than a plug-in (and even then, try to avoid if possible).
-		 * The internal function may change between releases.
-		 *
-		 *  @type object
-		 *  @default {}
-		 */
-		internal: {},
-	
-	
-		/**
-		 * Legacy configuration options. Enable and disable legacy options that
-		 * are available in DataTables.
-		 *
-		 *  @type object
-		 */
-		legacy: {
-			/**
-			 * Enable / disable DataTables 1.9 compatible server-side processing
-			 * requests
-			 *
-			 *  @type boolean
+			 * Data location where to store a row's id
+			 *  @type string
 			 *  @default null
 			 */
-			ajax: null
-		},
-	
-	
+			"rowId": null
+		};
+		
 		/**
-		 * Pagination plug-in methods.
-		 * 
-		 * Each entry in this object is a function and defines which buttons should
-		 * be shown by the pagination rendering method that is used for the table:
-		 * {@link DataTable.ext.renderer.pageButton}. The renderer addresses how the
-		 * buttons are displayed in the document, while the functions here tell it
-		 * what buttons to display. This is done by returning an array of button
-		 * descriptions (what each button will do).
+		 * Extension object for DataTables that is used to provide all extension
+		 * options.
 		 *
-		 * Pagination types (the four built in options and any additional plug-in
-		 * options defined here) can be used through the `paginationType`
-		 * initialisation parameter.
-		 *
-		 * The functions defined take two parameters:
-		 *
-		 * 1. `{int} page` The current page index
-		 * 2. `{int} pages` The number of pages in the table
-		 *
-		 * Each function is expected to return an array where each element of the
-		 * array can be one of:
-		 *
-		 * * `first` - Jump to first page when activated
-		 * * `last` - Jump to last page when activated
-		 * * `previous` - Show previous page when activated
-		 * * `next` - Show next page when activated
-		 * * `{int}` - Show page of the index given
-		 * * `{array}` - A nested array containing the above elements to add a
-		 *   containing 'DIV' element (might be useful for styling).
-		 *
-		 * Note that DataTables v1.9- used this object slightly differently whereby
-		 * an object with two functions would be defined for each plug-in. That
-		 * ability is still supported by DataTables 1.10+ to provide backwards
-		 * compatibility, but this option of use is now decremented and no longer
-		 * documented in DataTables 1.10+.
-		 *
-		 *  @type object
-		 *  @default {}
-		 *
-		 *  @example
-		 *    // Show previous, next and current page buttons only
-		 *    $.fn.dataTableExt.oPagination.current = function ( page, pages ) {
-		 *      return [ 'previous', page, 'next' ];
-		 *    };
+		 * Note that the `DataTable.ext` object is available through
+		 * `jQuery.fn.dataTable.ext` where it may be accessed and manipulated. It is
+		 * also aliased to `jQuery.fn.dataTableExt` for historic reasons.
+		 *  @namespace
+		 *  @extends DataTable.models.ext
 		 */
-		pager: {},
-	
-	
-		renderer: {
-			pageButton: {},
-			header: {}
-		},
-	
-	
+		
+		
 		/**
-		 * Ordering plug-ins - custom data source
+		 * DataTables extensions
 		 * 
-		 * The extension options for ordering of data available here is complimentary
-		 * to the default type based ordering that DataTables typically uses. It
-		 * allows much greater control over the the data that is being used to
-		 * order a column, but is necessarily therefore more complex.
-		 * 
-		 * This type of ordering is useful if you want to do ordering based on data
-		 * live from the DOM (for example the contents of an 'input' element) rather
-		 * than just the static string that DataTables knows of.
-		 * 
-		 * The way these plug-ins work is that you create an array of the values you
-		 * wish to be ordering for the column in question and then return that
-		 * array. The data in the array much be in the index order of the rows in
-		 * the table (not the currently ordering order!). Which order data gathering
-		 * function is run here depends on the `dt-init columns.orderDataType`
-		 * parameter that is used for the column (if any).
+		 * This namespace acts as a collection area for plug-ins that can be used to
+		 * extend DataTables capabilities. Indeed many of the build in methods
+		 * use this method to provide their own capabilities (sorting methods for
+		 * example).
 		 *
-		 * The functions defined take two parameters:
+		 * Note that this namespace is aliased to `jQuery.fn.dataTableExt` for legacy
+		 * reasons
 		 *
-		 * 1. `{object}` DataTables settings object: see
-		 *    {@link DataTable.models.oSettings}
-		 * 2. `{int}` Target column index
-		 *
-		 * Each function is expected to return an array:
-		 *
-		 * * `{array}` Data for the column to be ordering upon
-		 *
-		 *  @type array
-		 *
-		 *  @example
-		 *    // Ordering using `input` node values
-		 *    $.fn.dataTable.ext.order['dom-text'] = function  ( settings, col )
-		 *    {
-		 *      return this.api().column( col, {order:'index'} ).nodes().map( function ( td, i ) {
-		 *        return $('input', td).val();
-		 *      } );
-		 *    }
+		 *  @namespace
 		 */
-		order: {},
-	
-	
-		/**
-		 * Type based plug-ins.
-		 *
-		 * Each column in DataTables has a type assigned to it, either by automatic
-		 * detection or by direct assignment using the `type` option for the column.
-		 * The type of a column will effect how it is ordering and search (plug-ins
-		 * can also make use of the column type if required).
-		 *
-		 * @namespace
-		 */
-		type: {
+		DataTable.ext = _ext = {
 			/**
-			 * Type detection functions.
+			 * Buttons. For use with the Buttons extension for DataTables. This is
+			 * defined here so other extensions can define buttons regardless of load
+			 * order. It is _not_ used by DataTables core.
 			 *
-			 * The functions defined in this object are used to automatically detect
-			 * a column's type, making initialisation of DataTables super easy, even
-			 * when complex data is in the table.
+			 *  @type object
+			 *  @default {}
+			 */
+			buttons: {},
+		
+		
+			/**
+			 * Element class names
 			 *
-			 * The functions defined take two parameters:
+			 *  @type object
+			 *  @default {}
+			 */
+			classes: {},
+		
+		
+			/**
+			 * DataTables build type (expanded by the download builder)
 			 *
-		     *  1. `{*}` Data from the column cell to be analysed
-		     *  2. `{settings}` DataTables settings object. This can be used to
-		     *     perform context specific type detection - for example detection
-		     *     based on language settings such as using a comma for a decimal
-		     *     place. Generally speaking the options from the settings will not
-		     *     be required
+			 *  @type string
+			 */
+			builder: "-source-",
+		
+		
+			/**
+			 * Error reporting.
+			 * 
+			 * How should DataTables report an error. Can take the value 'alert',
+			 * 'throw', 'none' or a function.
 			 *
-			 * Each function is expected to return:
+			 *  @type string|function
+			 *  @default alert
+			 */
+			errMode: "alert",
+		
+		
+			/**
+			 * Feature plug-ins.
+			 * 
+			 * This is an array of objects which describe the feature plug-ins that are
+			 * available to DataTables. These feature plug-ins are then available for
+			 * use through the `dom` initialisation option.
+			 * 
+			 * Each feature plug-in is described by an object which must have the
+			 * following properties:
+			 * 
+			 * * `fnInit` - function that is used to initialise the plug-in,
+			 * * `cFeature` - a character so the feature can be enabled by the `dom`
+			 *   instillation option. This is case sensitive.
 			 *
-			 * * `{string|null}` Data type detected, or null if unknown (and thus
-			 *   pass it on to the other type detection functions.
+			 * The `fnInit` function has the following input parameters:
+			 *
+			 * 1. `{object}` DataTables settings object: see
+			 *    {@link DataTable.models.oSettings}
+			 *
+			 * And the following return is expected:
+			 * 
+			 * * {node|null} The element which contains your feature. Note that the
+			 *   return may also be void if your plug-in does not require to inject any
+			 *   DOM elements into DataTables control (`dom`) - for example this might
+			 *   be useful when developing a plug-in which allows table control via
+			 *   keyboard entry
 			 *
 			 *  @type array
 			 *
 			 *  @example
-			 *    // Currency type detection plug-in:
-			 *    $.fn.dataTable.ext.type.detect.push(
-			 *      function ( data, settings ) {
-			 *        // Check the numeric part
-			 *        if ( ! data.substring(1).match(/[0-9]/) ) {
-			 *          return null;
-			 *        }
+			 *    $.fn.dataTable.ext.features.push( {
+			 *      "fnInit": function( oSettings ) {
+			 *        return new TableTools( { "oDTSettings": oSettings } );
+			 *      },
+			 *      "cFeature": "T"
+			 *    } );
+			 */
+			feature: [],
+		
+		
+			/**
+			 * Row searching.
+			 * 
+			 * This method of searching is complimentary to the default type based
+			 * searching, and a lot more comprehensive as it allows you complete control
+			 * over the searching logic. Each element in this array is a function
+			 * (parameters described below) that is called for every row in the table,
+			 * and your logic decides if it should be included in the searching data set
+			 * or not.
 			 *
-			 *        // Check prefixed by currency
-			 *        if ( data.charAt(0) == '$' || data.charAt(0) == '&pound;' ) {
-			 *          return 'currency';
+			 * Searching functions have the following input parameters:
+			 *
+			 * 1. `{object}` DataTables settings object: see
+			 *    {@link DataTable.models.oSettings}
+			 * 2. `{array|object}` Data for the row to be processed (same as the
+			 *    original format that was passed in as the data source, or an array
+			 *    from a DOM data source
+			 * 3. `{int}` Row index ({@link DataTable.models.oSettings.aoData}), which
+			 *    can be useful to retrieve the `TR` element if you need DOM interaction.
+			 *
+			 * And the following return is expected:
+			 *
+			 * * {boolean} Include the row in the searched result set (true) or not
+			 *   (false)
+			 *
+			 * Note that as with the main search ability in DataTables, technically this
+			 * is "filtering", since it is subtractive. However, for consistency in
+			 * naming we call it searching here.
+			 *
+			 *  @type array
+			 *  @default []
+			 *
+			 *  @example
+			 *    // The following example shows custom search being applied to the
+			 *    // fourth column (i.e. the data[3] index) based on two input values
+			 *    // from the end-user, matching the data in a certain range.
+			 *    $.fn.dataTable.ext.search.push(
+			 *      function( settings, data, dataIndex ) {
+			 *        var min = document.getElementById('min').value * 1;
+			 *        var max = document.getElementById('max').value * 1;
+			 *        var version = data[3] == "-" ? 0 : data[3]*1;
+			 *
+			 *        if ( min == "" && max == "" ) {
+			 *          return true;
 			 *        }
-			 *        return null;
+			 *        else if ( min == "" && version < max ) {
+			 *          return true;
+			 *        }
+			 *        else if ( min < version && "" == max ) {
+			 *          return true;
+			 *        }
+			 *        else if ( min < version && version < max ) {
+			 *          return true;
+			 *        }
+			 *        return false;
 			 *      }
 			 *    );
 			 */
-			detect: [],
-	
-	
+			search: [],
+		
+		
 			/**
-			 * Type based search formatting.
+			 * Selector extensions
 			 *
-			 * The type based searching functions can be used to pre-format the
-			 * data to be search on. For example, it can be used to strip HTML
-			 * tags or to de-format telephone numbers for numeric only searching.
+			 * The `selector` option can be used to extend the options available for the
+			 * selector modifier options (`selector-modifier` object data type) that
+			 * each of the three built in selector types offer (row, column and cell +
+			 * their plural counterparts). For example the Select extension uses this
+			 * mechanism to provide an option to select only rows, columns and cells
+			 * that have been marked as selected by the end user (`{selected: true}`),
+			 * which can be used in conjunction with the existing built in selector
+			 * options.
 			 *
-			 * Note that is a search is not defined for a column of a given type,
-			 * no search formatting will be performed.
+			 * Each property is an array to which functions can be pushed. The functions
+			 * take three attributes:
+			 *
+			 * * Settings object for the host table
+			 * * Options object (`selector-modifier` object type)
+			 * * Array of selected item indexes
+			 *
+			 * The return is an array of the resulting item indexes after the custom
+			 * selector has been applied.
+			 *
+			 *  @type object
+			 */
+			selector: {
+				cell: [],
+				column: [],
+				row: []
+			},
+		
+		
+			/**
+			 * Internal functions, exposed for used in plug-ins.
 			 * 
-			 * Pre-processing of searching data plug-ins - When you assign the sType
-			 * for a column (or have it automatically detected for you by DataTables
-			 * or a type detection plug-in), you will typically be using this for
-			 * custom sorting, but it can also be used to provide custom searching
-			 * by allowing you to pre-processing the data and returning the data in
-			 * the format that should be searched upon. This is done by adding
-			 * functions this object with a parameter name which matches the sType
-			 * for that target column. This is the corollary of <i>afnSortData</i>
-			 * for searching data.
+			 * Please note that you should not need to use the internal methods for
+			 * anything other than a plug-in (and even then, try to avoid if possible).
+			 * The internal function may change between releases.
 			 *
-			 * The functions defined take a single parameter:
+			 *  @type object
+			 *  @default {}
+			 */
+			internal: {},
+		
+		
+			/**
+			 * Legacy configuration options. Enable and disable legacy options that
+			 * are available in DataTables.
 			 *
-		     *  1. `{*}` Data from the column cell to be prepared for searching
+			 *  @type object
+			 */
+			legacy: {
+				/**
+				 * Enable / disable DataTables 1.9 compatible server-side processing
+				 * requests
+				 *
+				 *  @type boolean
+				 *  @default null
+				 */
+				ajax: null
+			},
+		
+		
+			/**
+			 * Pagination plug-in methods.
+			 * 
+			 * Each entry in this object is a function and defines which buttons should
+			 * be shown by the pagination rendering method that is used for the table:
+			 * {@link DataTable.ext.renderer.pageButton}. The renderer addresses how the
+			 * buttons are displayed in the document, while the functions here tell it
+			 * what buttons to display. This is done by returning an array of button
+			 * descriptions (what each button will do).
 			 *
-			 * Each function is expected to return:
+			 * Pagination types (the four built in options and any additional plug-in
+			 * options defined here) can be used through the `paginationType`
+			 * initialisation parameter.
 			 *
-			 * * `{string|null}` Formatted string that will be used for the searching.
+			 * The functions defined take two parameters:
+			 *
+			 * 1. `{int} page` The current page index
+			 * 2. `{int} pages` The number of pages in the table
+			 *
+			 * Each function is expected to return an array where each element of the
+			 * array can be one of:
+			 *
+			 * * `first` - Jump to first page when activated
+			 * * `last` - Jump to last page when activated
+			 * * `previous` - Show previous page when activated
+			 * * `next` - Show next page when activated
+			 * * `{int}` - Show page of the index given
+			 * * `{array}` - A nested array containing the above elements to add a
+			 *   containing 'DIV' element (might be useful for styling).
+			 *
+			 * Note that DataTables v1.9- used this object slightly differently whereby
+			 * an object with two functions would be defined for each plug-in. That
+			 * ability is still supported by DataTables 1.10+ to provide backwards
+			 * compatibility, but this option of use is now decremented and no longer
+			 * documented in DataTables 1.10+.
 			 *
 			 *  @type object
 			 *  @default {}
 			 *
 			 *  @example
-			 *    $.fn.dataTable.ext.type.search['title-numeric'] = function ( d ) {
-			 *      return d.replace(/\n/g," ").replace( /<.*?>/g, "" );
+			 *    // Show previous, next and current page buttons only
+			 *    $.fn.dataTableExt.oPagination.current = function ( page, pages ) {
+			 *      return [ 'previous', page, 'next' ];
+			 *    };
+			 */
+			pager: {},
+		
+		
+			renderer: {
+				pageButton: {},
+				header: {}
+			},
+		
+		
+			/**
+			 * Ordering plug-ins - custom data source
+			 * 
+			 * The extension options for ordering of data available here is complimentary
+			 * to the default type based ordering that DataTables typically uses. It
+			 * allows much greater control over the the data that is being used to
+			 * order a column, but is necessarily therefore more complex.
+			 * 
+			 * This type of ordering is useful if you want to do ordering based on data
+			 * live from the DOM (for example the contents of an 'input' element) rather
+			 * than just the static string that DataTables knows of.
+			 * 
+			 * The way these plug-ins work is that you create an array of the values you
+			 * wish to be ordering for the column in question and then return that
+			 * array. The data in the array much be in the index order of the rows in
+			 * the table (not the currently ordering order!). Which order data gathering
+			 * function is run here depends on the `dt-init columns.orderDataType`
+			 * parameter that is used for the column (if any).
+			 *
+			 * The functions defined take two parameters:
+			 *
+			 * 1. `{object}` DataTables settings object: see
+			 *    {@link DataTable.models.oSettings}
+			 * 2. `{int}` Target column index
+			 *
+			 * Each function is expected to return an array:
+			 *
+			 * * `{array}` Data for the column to be ordering upon
+			 *
+			 *  @type array
+			 *
+			 *  @example
+			 *    // Ordering using `input` node values
+			 *    $.fn.dataTable.ext.order['dom-text'] = function  ( settings, col )
+			 *    {
+			 *      return this.api().column( col, {order:'index'} ).nodes().map( function ( td, i ) {
+			 *        return $('input', td).val();
+			 *      } );
 			 *    }
 			 */
-			search: {},
-	
-	
-			/**
-			 * Type based ordering.
-			 *
-			 * The column type tells DataTables what ordering to apply to the table
-			 * when a column is sorted upon. The order for each type that is defined,
-			 * is defined by the functions available in this object.
-			 *
-			 * Each ordering option can be described by three properties added to
-			 * this object:
-			 *
-			 * * `{type}-pre` - Pre-formatting function
-			 * * `{type}-asc` - Ascending order function
-			 * * `{type}-desc` - Descending order function
-			 *
-			 * All three can be used together, only `{type}-pre` or only
-			 * `{type}-asc` and `{type}-desc` together. It is generally recommended
-			 * that only `{type}-pre` is used, as this provides the optimal
-			 * implementation in terms of speed, although the others are provided
-			 * for compatibility with existing Javascript sort functions.
-			 *
-			 * `{type}-pre`: Functions defined take a single parameter:
-			 *
-		     *  1. `{*}` Data from the column cell to be prepared for ordering
-			 *
-			 * And return:
-			 *
-			 * * `{*}` Data to be sorted upon
-			 *
-			 * `{type}-asc` and `{type}-desc`: Functions are typical Javascript sort
-			 * functions, taking two parameters:
-			 *
-		     *  1. `{*}` Data to compare to the second parameter
-		     *  2. `{*}` Data to compare to the first parameter
-			 *
-			 * And returning:
-			 *
-			 * * `{*}` Ordering match: <0 if first parameter should be sorted lower
-			 *   than the second parameter, ===0 if the two parameters are equal and
-			 *   >0 if the first parameter should be sorted height than the second
-			 *   parameter.
-			 * 
-			 *  @type object
-			 *  @default {}
-			 *
-			 *  @example
-			 *    // Numeric ordering of formatted numbers with a pre-formatter
-			 *    $.extend( $.fn.dataTable.ext.type.order, {
-			 *      "string-pre": function(x) {
-			 *        a = (a === "-" || a === "") ? 0 : a.replace( /[^\d\-\.]/g, "" );
-			 *        return parseFloat( a );
-			 *      }
-			 *    } );
-			 *
-			 *  @example
-			 *    // Case-sensitive string ordering, with no pre-formatting method
-			 *    $.extend( $.fn.dataTable.ext.order, {
-			 *      "string-case-asc": function(x,y) {
-			 *        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-			 *      },
-			 *      "string-case-desc": function(x,y) {
-			 *        return ((x < y) ? 1 : ((x > y) ? -1 : 0));
-			 *      }
-			 *    } );
-			 */
-			order: {}
-		},
-	
-		/**
-		 * Unique DataTables instance counter
-		 *
-		 * @type int
-		 * @private
-		 */
-		_unique: 0,
-	
-	
-		//
-		// Depreciated
-		// The following properties are retained for backwards compatibility only.
-		// The should not be used in new projects and will be removed in a future
-		// version
-		//
-	
-		/**
-		 * Version check function.
-		 *  @type function
-		 *  @depreciated Since 1.10
-		 */
-		fnVersionCheck: DataTable.fnVersionCheck,
-	
-	
-		/**
-		 * Index for what 'this' index API functions should use
-		 *  @type int
-		 *  @deprecated Since v1.10
-		 */
-		iApiIndex: 0,
-	
-	
-		/**
-		 * jQuery UI class container
-		 *  @type object
-		 *  @deprecated Since v1.10
-		 */
-		oJUIClasses: {},
-	
-	
-		/**
-		 * Software version
-		 *  @type string
-		 *  @deprecated Since v1.10
-		 */
-		sVersion: DataTable.version
-	};
-	
-	
-	//
-	// Backwards compatibility. Alias to pre 1.10 Hungarian notation counter parts
-	//
-	$.extend( _ext, {
-		afnFiltering: _ext.search,
-		aTypes:       _ext.type.detect,
-		ofnSearch:    _ext.type.search,
-		oSort:        _ext.type.order,
-		afnSortData:  _ext.order,
-		aoFeatures:   _ext.feature,
-		oApi:         _ext.internal,
-		oStdClasses:  _ext.classes,
-		oPagination:  _ext.pager
-	} );
-	
-	
-	$.extend( DataTable.ext.classes, {
-		"sTable": "dataTable",
-		"sNoFooter": "no-footer",
-	
-		/* Paging buttons */
-		"sPageButton": "paginate_button",
-		"sPageButtonActive": "current",
-		"sPageButtonDisabled": "disabled",
-	
-		/* Striping classes */
-		"sStripeOdd": "odd",
-		"sStripeEven": "even",
-	
-		/* Empty row */
-		"sRowEmpty": "dataTables_empty",
-	
-		/* Features */
-		"sWrapper": "dataTables_wrapper",
-		"sFilter": "dataTables_filter",
-		"sInfo": "dataTables_info",
-		"sPaging": "dataTables_paginate paging_", /* Note that the type is postfixed */
-		"sLength": "dataTables_length",
-		"sProcessing": "dataTables_processing",
-	
-		/* Sorting */
-		"sSortAsc": "sorting_asc",
-		"sSortDesc": "sorting_desc",
-		"sSortable": "sorting", /* Sortable in both directions */
-		"sSortableAsc": "sorting_desc_disabled",
-		"sSortableDesc": "sorting_asc_disabled",
-		"sSortableNone": "sorting_disabled",
-		"sSortColumn": "sorting_", /* Note that an int is postfixed for the sorting order */
-	
-		/* Filtering */
-		"sFilterInput": "",
-	
-		/* Page length */
-		"sLengthSelect": "",
-	
-		/* Scrolling */
-		"sScrollWrapper": "dataTables_scroll",
-		"sScrollHead": "dataTables_scrollHead",
-		"sScrollHeadInner": "dataTables_scrollHeadInner",
-		"sScrollBody": "dataTables_scrollBody",
-		"sScrollFoot": "dataTables_scrollFoot",
-		"sScrollFootInner": "dataTables_scrollFootInner",
-	
-		/* Misc */
-		"sHeaderTH": "",
-		"sFooterTH": "",
-	
-		// Deprecated
-		"sSortJUIAsc": "",
-		"sSortJUIDesc": "",
-		"sSortJUI": "",
-		"sSortJUIAscAllowed": "",
-		"sSortJUIDescAllowed": "",
-		"sSortJUIWrapper": "",
-		"sSortIcon": "",
-		"sJUIHeader": "",
-		"sJUIFooter": ""
-	} );
-	
-	
-	var extPagination = DataTable.ext.pager;
-	
-	function _numbers ( page, pages ) {
-		var
-			numbers = [],
-			buttons = extPagination.numbers_length,
-			half = Math.floor( buttons / 2 ),
-			i = 1;
-	
-		if ( pages <= buttons ) {
-			numbers = _range( 0, pages );
-		}
-		else if ( page <= half ) {
-			numbers = _range( 0, buttons-2 );
-			numbers.push( 'ellipsis' );
-			numbers.push( pages-1 );
-		}
-		else if ( page >= pages - 1 - half ) {
-			numbers = _range( pages-(buttons-2), pages );
-			numbers.splice( 0, 0, 'ellipsis' ); // no unshift in ie6
-			numbers.splice( 0, 0, 0 );
-		}
-		else {
-			numbers = _range( page-half+2, page+half-1 );
-			numbers.push( 'ellipsis' );
-			numbers.push( pages-1 );
-			numbers.splice( 0, 0, 'ellipsis' );
-			numbers.splice( 0, 0, 0 );
-		}
-	
-		numbers.DT_el = 'span';
-		return numbers;
-	}
-	
-	
-	$.extend( extPagination, {
-		simple: function ( page, pages ) {
-			return [ 'previous', 'next' ];
-		},
-	
-		full: function ( page, pages ) {
-			return [  'first', 'previous', 'next', 'last' ];
-		},
-	
-		numbers: function ( page, pages ) {
-			return [ _numbers(page, pages) ];
-		},
-	
-		simple_numbers: function ( page, pages ) {
-			return [ 'previous', _numbers(page, pages), 'next' ];
-		},
-	
-		full_numbers: function ( page, pages ) {
-			return [ 'first', 'previous', _numbers(page, pages), 'next', 'last' ];
-		},
+			order: {},
 		
-		first_last_numbers: function (page, pages) {
-	 		return ['first', _numbers(page, pages), 'last'];
-	 	},
-	
-		// For testing and plug-ins to use
-		_numbers: _numbers,
-	
-		// Number of number buttons (including ellipsis) to show. _Must be odd!_
-		numbers_length: 7
-	} );
-	
-	
-	$.extend( true, DataTable.ext.renderer, {
-		pageButton: {
-			_: function ( settings, host, idx, buttons, page, pages ) {
-				var classes = settings.oClasses;
-				var lang = settings.oLanguage.oPaginate;
-				var aria = settings.oLanguage.oAria.paginate || {};
-				var btnDisplay, btnClass, counter=0;
-	
-				var attach = function( container, buttons ) {
-					var i, ien, node, button, tabIndex;
-					var disabledClass = classes.sPageButtonDisabled;
-					var clickHandler = function ( e ) {
-						_fnPageChange( settings, e.data.action, true );
-					};
-	
-					for ( i=0, ien=buttons.length ; i<ien ; i++ ) {
-						button = buttons[i];
-	
-						if ( Array.isArray( button ) ) {
-							var inner = $( '<'+(button.DT_el || 'div')+'/>' )
-								.appendTo( container );
-							attach( inner, button );
-						}
-						else {
-							btnDisplay = null;
-							btnClass = button;
-							tabIndex = settings.iTabIndex;
-	
-							switch ( button ) {
-								case 'ellipsis':
-									container.append('<span class="ellipsis">&#x2026;</span>');
-									break;
-	
-								case 'first':
-									btnDisplay = lang.sFirst;
-	
-									if ( page === 0 ) {
-										tabIndex = -1;
-										btnClass += ' ' + disabledClass;
-									}
-									break;
-	
-								case 'previous':
-									btnDisplay = lang.sPrevious;
-	
-									if ( page === 0 ) {
-										tabIndex = -1;
-										btnClass += ' ' + disabledClass;
-									}
-									break;
-	
-								case 'next':
-									btnDisplay = lang.sNext;
-	
-									if ( pages === 0 || page === pages-1 ) {
-										tabIndex = -1;
-										btnClass += ' ' + disabledClass;
-									}
-									break;
-	
-								case 'last':
-									btnDisplay = lang.sLast;
-	
-									if ( pages === 0 || page === pages-1 ) {
-										tabIndex = -1;
-										btnClass += ' ' + disabledClass;
-									}
-									break;
-	
-								default:
-									btnDisplay = settings.fnFormatNumber( button + 1 );
-									btnClass = page === button ?
-										classes.sPageButtonActive : '';
-									break;
-							}
-	
-							if ( btnDisplay !== null ) {
-								node = $('<a>', {
-										'class': classes.sPageButton+' '+btnClass,
-										'aria-controls': settings.sTableId,
-										'aria-label': aria[ button ],
-										'data-dt-idx': counter,
-										'tabindex': tabIndex,
-										'id': idx === 0 && typeof button === 'string' ?
-											settings.sTableId +'_'+ button :
-											null
-									} )
-									.html( btnDisplay )
+		
+			/**
+			 * Type based plug-ins.
+			 *
+			 * Each column in DataTables has a type assigned to it, either by automatic
+			 * detection or by direct assignment using the `type` option for the column.
+			 * The type of a column will effect how it is ordering and search (plug-ins
+			 * can also make use of the column type if required).
+			 *
+			 * @namespace
+			 */
+			type: {
+				/**
+				 * Type detection functions.
+				 *
+				 * The functions defined in this object are used to automatically detect
+				 * a column's type, making initialisation of DataTables super easy, even
+				 * when complex data is in the table.
+				 *
+				 * The functions defined take two parameters:
+				 *
+			     *  1. `{*}` Data from the column cell to be analysed
+			     *  2. `{settings}` DataTables settings object. This can be used to
+			     *     perform context specific type detection - for example detection
+			     *     based on language settings such as using a comma for a decimal
+			     *     place. Generally speaking the options from the settings will not
+			     *     be required
+				 *
+				 * Each function is expected to return:
+				 *
+				 * * `{string|null}` Data type detected, or null if unknown (and thus
+				 *   pass it on to the other type detection functions.
+				 *
+				 *  @type array
+				 *
+				 *  @example
+				 *    // Currency type detection plug-in:
+				 *    $.fn.dataTable.ext.type.detect.push(
+				 *      function ( data, settings ) {
+				 *        // Check the numeric part
+				 *        if ( ! data.substring(1).match(/[0-9]/) ) {
+				 *          return null;
+				 *        }
+				 *
+				 *        // Check prefixed by currency
+				 *        if ( data.charAt(0) == '$' || data.charAt(0) == '&pound;' ) {
+				 *          return 'currency';
+				 *        }
+				 *        return null;
+				 *      }
+				 *    );
+				 */
+				detect: [],
+		
+		
+				/**
+				 * Type based search formatting.
+				 *
+				 * The type based searching functions can be used to pre-format the
+				 * data to be search on. For example, it can be used to strip HTML
+				 * tags or to de-format telephone numbers for numeric only searching.
+				 *
+				 * Note that is a search is not defined for a column of a given type,
+				 * no search formatting will be performed.
+				 * 
+				 * Pre-processing of searching data plug-ins - When you assign the sType
+				 * for a column (or have it automatically detected for you by DataTables
+				 * or a type detection plug-in), you will typically be using this for
+				 * custom sorting, but it can also be used to provide custom searching
+				 * by allowing you to pre-processing the data and returning the data in
+				 * the format that should be searched upon. This is done by adding
+				 * functions this object with a parameter name which matches the sType
+				 * for that target column. This is the corollary of <i>afnSortData</i>
+				 * for searching data.
+				 *
+				 * The functions defined take a single parameter:
+				 *
+			     *  1. `{*}` Data from the column cell to be prepared for searching
+				 *
+				 * Each function is expected to return:
+				 *
+				 * * `{string|null}` Formatted string that will be used for the searching.
+				 *
+				 *  @type object
+				 *  @default {}
+				 *
+				 *  @example
+				 *    $.fn.dataTable.ext.type.search['title-numeric'] = function ( d ) {
+				 *      return d.replace(/\n/g," ").replace( /<.*?>/g, "" );
+				 *    }
+				 */
+				search: {},
+		
+		
+				/**
+				 * Type based ordering.
+				 *
+				 * The column type tells DataTables what ordering to apply to the table
+				 * when a column is sorted upon. The order for each type that is defined,
+				 * is defined by the functions available in this object.
+				 *
+				 * Each ordering option can be described by three properties added to
+				 * this object:
+				 *
+				 * * `{type}-pre` - Pre-formatting function
+				 * * `{type}-asc` - Ascending order function
+				 * * `{type}-desc` - Descending order function
+				 *
+				 * All three can be used together, only `{type}-pre` or only
+				 * `{type}-asc` and `{type}-desc` together. It is generally recommended
+				 * that only `{type}-pre` is used, as this provides the optimal
+				 * implementation in terms of speed, although the others are provided
+				 * for compatibility with existing Javascript sort functions.
+				 *
+				 * `{type}-pre`: Functions defined take a single parameter:
+				 *
+			     *  1. `{*}` Data from the column cell to be prepared for ordering
+				 *
+				 * And return:
+				 *
+				 * * `{*}` Data to be sorted upon
+				 *
+				 * `{type}-asc` and `{type}-desc`: Functions are typical Javascript sort
+				 * functions, taking two parameters:
+				 *
+			     *  1. `{*}` Data to compare to the second parameter
+			     *  2. `{*}` Data to compare to the first parameter
+				 *
+				 * And returning:
+				 *
+				 * * `{*}` Ordering match: <0 if first parameter should be sorted lower
+				 *   than the second parameter, ===0 if the two parameters are equal and
+				 *   >0 if the first parameter should be sorted height than the second
+				 *   parameter.
+				 * 
+				 *  @type object
+				 *  @default {}
+				 *
+				 *  @example
+				 *    // Numeric ordering of formatted numbers with a pre-formatter
+				 *    $.extend( $.fn.dataTable.ext.type.order, {
+				 *      "string-pre": function(x) {
+				 *        a = (a === "-" || a === "") ? 0 : a.replace( /[^\d\-\.]/g, "" );
+				 *        return parseFloat( a );
+				 *      }
+				 *    } );
+				 *
+				 *  @example
+				 *    // Case-sensitive string ordering, with no pre-formatting method
+				 *    $.extend( $.fn.dataTable.ext.order, {
+				 *      "string-case-asc": function(x,y) {
+				 *        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+				 *      },
+				 *      "string-case-desc": function(x,y) {
+				 *        return ((x < y) ? 1 : ((x > y) ? -1 : 0));
+				 *      }
+				 *    } );
+				 */
+				order: {}
+			},
+		
+			/**
+			 * Unique DataTables instance counter
+			 *
+			 * @type int
+			 * @private
+			 */
+			_unique: 0,
+		
+		
+			//
+			// Depreciated
+			// The following properties are retained for backwards compatibility only.
+			// The should not be used in new projects and will be removed in a future
+			// version
+			//
+		
+			/**
+			 * Version check function.
+			 *  @type function
+			 *  @depreciated Since 1.10
+			 */
+			fnVersionCheck: DataTable.fnVersionCheck,
+		
+		
+			/**
+			 * Index for what 'this' index API functions should use
+			 *  @type int
+			 *  @deprecated Since v1.10
+			 */
+			iApiIndex: 0,
+		
+		
+			/**
+			 * jQuery UI class container
+			 *  @type object
+			 *  @deprecated Since v1.10
+			 */
+			oJUIClasses: {},
+		
+		
+			/**
+			 * Software version
+			 *  @type string
+			 *  @deprecated Since v1.10
+			 */
+			sVersion: DataTable.version
+		};
+		
+		
+		//
+		// Backwards compatibility. Alias to pre 1.10 Hungarian notation counter parts
+		//
+		$.extend( _ext, {
+			afnFiltering: _ext.search,
+			aTypes:       _ext.type.detect,
+			ofnSearch:    _ext.type.search,
+			oSort:        _ext.type.order,
+			afnSortData:  _ext.order,
+			aoFeatures:   _ext.feature,
+			oApi:         _ext.internal,
+			oStdClasses:  _ext.classes,
+			oPagination:  _ext.pager
+		} );
+		
+		
+		$.extend( DataTable.ext.classes, {
+			"sTable": "dataTable",
+			"sNoFooter": "no-footer",
+		
+			/* Paging buttons */
+			"sPageButton": "paginate_button",
+			"sPageButtonActive": "current",
+			"sPageButtonDisabled": "disabled",
+		
+			/* Striping classes */
+			"sStripeOdd": "odd",
+			"sStripeEven": "even",
+		
+			/* Empty row */
+			"sRowEmpty": "dataTables_empty",
+		
+			/* Features */
+			"sWrapper": "dataTables_wrapper",
+			"sFilter": "dataTables_filter",
+			"sInfo": "dataTables_info",
+			"sPaging": "dataTables_paginate paging_", /* Note that the type is postfixed */
+			"sLength": "dataTables_length",
+			"sProcessing": "dataTables_processing",
+		
+			/* Sorting */
+			"sSortAsc": "sorting_asc",
+			"sSortDesc": "sorting_desc",
+			"sSortable": "sorting", /* Sortable in both directions */
+			"sSortableAsc": "sorting_desc_disabled",
+			"sSortableDesc": "sorting_asc_disabled",
+			"sSortableNone": "sorting_disabled",
+			"sSortColumn": "sorting_", /* Note that an int is postfixed for the sorting order */
+		
+			/* Filtering */
+			"sFilterInput": "",
+		
+			/* Page length */
+			"sLengthSelect": "",
+		
+			/* Scrolling */
+			"sScrollWrapper": "dataTables_scroll",
+			"sScrollHead": "dataTables_scrollHead",
+			"sScrollHeadInner": "dataTables_scrollHeadInner",
+			"sScrollBody": "dataTables_scrollBody",
+			"sScrollFoot": "dataTables_scrollFoot",
+			"sScrollFootInner": "dataTables_scrollFootInner",
+		
+			/* Misc */
+			"sHeaderTH": "",
+			"sFooterTH": "",
+		
+			// Deprecated
+			"sSortJUIAsc": "",
+			"sSortJUIDesc": "",
+			"sSortJUI": "",
+			"sSortJUIAscAllowed": "",
+			"sSortJUIDescAllowed": "",
+			"sSortJUIWrapper": "",
+			"sSortIcon": "",
+			"sJUIHeader": "",
+			"sJUIFooter": ""
+		} );
+		
+		
+		var extPagination = DataTable.ext.pager;
+		
+		function _numbers ( page, pages ) {
+			var
+				numbers = [],
+				buttons = extPagination.numbers_length,
+				half = Math.floor( buttons / 2 ),
+				i = 1;
+		
+			if ( pages <= buttons ) {
+				numbers = _range( 0, pages );
+			}
+			else if ( page <= half ) {
+				numbers = _range( 0, buttons-2 );
+				numbers.push( 'ellipsis' );
+				numbers.push( pages-1 );
+			}
+			else if ( page >= pages - 1 - half ) {
+				numbers = _range( pages-(buttons-2), pages );
+				numbers.splice( 0, 0, 'ellipsis' ); // no unshift in ie6
+				numbers.splice( 0, 0, 0 );
+			}
+			else {
+				numbers = _range( page-half+2, page+half-1 );
+				numbers.push( 'ellipsis' );
+				numbers.push( pages-1 );
+				numbers.splice( 0, 0, 'ellipsis' );
+				numbers.splice( 0, 0, 0 );
+			}
+		
+			numbers.DT_el = 'span';
+			return numbers;
+		}
+		
+		
+		$.extend( extPagination, {
+			simple: function ( page, pages ) {
+				return [ 'previous', 'next' ];
+			},
+		
+			full: function ( page, pages ) {
+				return [  'first', 'previous', 'next', 'last' ];
+			},
+		
+			numbers: function ( page, pages ) {
+				return [ _numbers(page, pages) ];
+			},
+		
+			simple_numbers: function ( page, pages ) {
+				return [ 'previous', _numbers(page, pages), 'next' ];
+			},
+		
+			full_numbers: function ( page, pages ) {
+				return [ 'first', 'previous', _numbers(page, pages), 'next', 'last' ];
+			},
+			
+			first_last_numbers: function (page, pages) {
+		 		return ['first', _numbers(page, pages), 'last'];
+		 	},
+		
+			// For testing and plug-ins to use
+			_numbers: _numbers,
+		
+			// Number of number buttons (including ellipsis) to show. _Must be odd!_
+			numbers_length: 7
+		} );
+		
+		
+		$.extend( true, DataTable.ext.renderer, {
+			pageButton: {
+				_: function ( settings, host, idx, buttons, page, pages ) {
+					var classes = settings.oClasses;
+					var lang = settings.oLanguage.oPaginate;
+					var aria = settings.oLanguage.oAria.paginate || {};
+					var btnDisplay, btnClass, counter=0;
+		
+					var attach = function( container, buttons ) {
+						var i, ien, node, button, tabIndex;
+						var disabledClass = classes.sPageButtonDisabled;
+						var clickHandler = function ( e ) {
+							_fnPageChange( settings, e.data.action, true );
+						};
+		
+						for ( i=0, ien=buttons.length ; i<ien ; i++ ) {
+							button = buttons[i];
+		
+							if ( Array.isArray( button ) ) {
+								var inner = $( '<'+(button.DT_el || 'div')+'/>' )
 									.appendTo( container );
-	
-								_fnBindAction(
-									node, {action: button}, clickHandler
-								);
-	
-								counter++;
+								attach( inner, button );
+							}
+							else {
+								btnDisplay = null;
+								btnClass = button;
+								tabIndex = settings.iTabIndex;
+		
+								switch ( button ) {
+									case 'ellipsis':
+										container.append('<span class="ellipsis">&#x2026;</span>');
+										break;
+		
+									case 'first':
+										btnDisplay = lang.sFirst;
+		
+										if ( page === 0 ) {
+											tabIndex = -1;
+											btnClass += ' ' + disabledClass;
+										}
+										break;
+		
+									case 'previous':
+										btnDisplay = lang.sPrevious;
+		
+										if ( page === 0 ) {
+											tabIndex = -1;
+											btnClass += ' ' + disabledClass;
+										}
+										break;
+		
+									case 'next':
+										btnDisplay = lang.sNext;
+		
+										if ( pages === 0 || page === pages-1 ) {
+											tabIndex = -1;
+											btnClass += ' ' + disabledClass;
+										}
+										break;
+		
+									case 'last':
+										btnDisplay = lang.sLast;
+		
+										if ( pages === 0 || page === pages-1 ) {
+											tabIndex = -1;
+											btnClass += ' ' + disabledClass;
+										}
+										break;
+		
+									default:
+										btnDisplay = settings.fnFormatNumber( button + 1 );
+										btnClass = page === button ?
+											classes.sPageButtonActive : '';
+										break;
+								}
+		
+								if ( btnDisplay !== null ) {
+									node = $('<a>', {
+											'class': classes.sPageButton+' '+btnClass,
+											'aria-controls': settings.sTableId,
+											'aria-label': aria[ button ],
+											'data-dt-idx': counter,
+											'tabindex': tabIndex,
+											'id': idx === 0 && typeof button === 'string' ?
+												settings.sTableId +'_'+ button :
+												null
+										} )
+										.html( btnDisplay )
+										.appendTo( container );
+		
+									_fnBindAction(
+										node, {action: button}, clickHandler
+									);
+		
+									counter++;
+								}
 							}
 						}
+					};
+		
+					// IE9 throws an 'unknown error' if document.activeElement is used
+					// inside an iframe or frame. Try / catch the error. Not good for
+					// accessibility, but neither are frames.
+					var activeEl;
+		
+					try {
+						// Because this approach is destroying and recreating the paging
+						// elements, focus is lost on the select button which is bad for
+						// accessibility. So we want to restore focus once the draw has
+						// completed
+						activeEl = $(host).find(document.activeElement).data('dt-idx');
+					}
+					catch (e) {}
+		
+					attach( $(host).empty(), buttons );
+		
+					if ( activeEl !== undefined ) {
+						$(host).find( '[data-dt-idx='+activeEl+']' ).trigger('focus');
+					}
+				}
+			}
+		} );
+		
+		
+		
+		// Built in type detection. See model.ext.aTypes for information about
+		// what is required from this methods.
+		$.extend( DataTable.ext.type.detect, [
+			// Plain numbers - first since V8 detects some plain numbers as dates
+			// e.g. Date.parse('55') (but not all, e.g. Date.parse('22')...).
+			function ( d, settings )
+			{
+				var decimal = settings.oLanguage.sDecimal;
+				return _isNumber( d, decimal ) ? 'num'+decimal : null;
+			},
+		
+			// Dates (only those recognised by the browser's Date.parse)
+			function ( d, settings )
+			{
+				// V8 tries _very_ hard to make a string passed into `Date.parse()`
+				// valid, so we need to use a regex to restrict date formats. Use a
+				// plug-in for anything other than ISO8601 style strings
+				if ( d && !(d instanceof Date) && ! _re_date.test(d) ) {
+					return null;
+				}
+				var parsed = Date.parse(d);
+				return (parsed !== null && !isNaN(parsed)) || _empty(d) ? 'date' : null;
+			},
+		
+			// Formatted numbers
+			function ( d, settings )
+			{
+				var decimal = settings.oLanguage.sDecimal;
+				return _isNumber( d, decimal, true ) ? 'num-fmt'+decimal : null;
+			},
+		
+			// HTML numeric
+			function ( d, settings )
+			{
+				var decimal = settings.oLanguage.sDecimal;
+				return _htmlNumeric( d, decimal ) ? 'html-num'+decimal : null;
+			},
+		
+			// HTML numeric, formatted
+			function ( d, settings )
+			{
+				var decimal = settings.oLanguage.sDecimal;
+				return _htmlNumeric( d, decimal, true ) ? 'html-num-fmt'+decimal : null;
+			},
+		
+			// HTML (this is strict checking - there must be html)
+			function ( d, settings )
+			{
+				return _empty( d ) || (typeof d === 'string' && d.indexOf('<') !== -1) ?
+					'html' : null;
+			}
+		] );
+		
+		
+		
+		// Filter formatting functions. See model.ext.ofnSearch for information about
+		// what is required from these methods.
+		// 
+		// Note that additional search methods are added for the html numbers and
+		// html formatted numbers by `_addNumericSort()` when we know what the decimal
+		// place is
+		
+		
+		$.extend( DataTable.ext.type.search, {
+			html: function ( data ) {
+				return _empty(data) ?
+					data :
+					typeof data === 'string' ?
+						data
+							.replace( _re_new_lines, " " )
+							.replace( _re_html, "" ) :
+						'';
+			},
+		
+			string: function ( data ) {
+				return _empty(data) ?
+					data :
+					typeof data === 'string' ?
+						data.replace( _re_new_lines, " " ) :
+						data;
+			}
+		} );
+		
+		
+		
+		var __numericReplace = function ( d, decimalPlace, re1, re2 ) {
+			if ( d !== 0 && (!d || d === '-') ) {
+				return -Infinity;
+			}
+		
+			// If a decimal place other than `.` is used, it needs to be given to the
+			// function so we can detect it and replace with a `.` which is the only
+			// decimal place Javascript recognises - it is not locale aware.
+			if ( decimalPlace ) {
+				d = _numToDecimal( d, decimalPlace );
+			}
+		
+			if ( d.replace ) {
+				if ( re1 ) {
+					d = d.replace( re1, '' );
+				}
+		
+				if ( re2 ) {
+					d = d.replace( re2, '' );
+				}
+			}
+		
+			return d * 1;
+		};
+		
+		
+		// Add the numeric 'deformatting' functions for sorting and search. This is done
+		// in a function to provide an easy ability for the language options to add
+		// additional methods if a non-period decimal place is used.
+		function _addNumericSort ( decimalPlace ) {
+			$.each(
+				{
+					// Plain numbers
+					"num": function ( d ) {
+						return __numericReplace( d, decimalPlace );
+					},
+		
+					// Formatted numbers
+					"num-fmt": function ( d ) {
+						return __numericReplace( d, decimalPlace, _re_formatted_numeric );
+					},
+		
+					// HTML numeric
+					"html-num": function ( d ) {
+						return __numericReplace( d, decimalPlace, _re_html );
+					},
+		
+					// HTML numeric, formatted
+					"html-num-fmt": function ( d ) {
+						return __numericReplace( d, decimalPlace, _re_html, _re_formatted_numeric );
+					}
+				},
+				function ( key, fn ) {
+					// Add the ordering method
+					_ext.type.order[ key+decimalPlace+'-pre' ] = fn;
+		
+					// For HTML types add a search formatter that will strip the HTML
+					if ( key.match(/^html\-/) ) {
+						_ext.type.search[ key+decimalPlace ] = _ext.type.search.html;
+					}
+				}
+			);
+		}
+		
+		
+		// Default sort methods
+		$.extend( _ext.type.order, {
+			// Dates
+			"date-pre": function ( d ) {
+				var ts = Date.parse( d );
+				return isNaN(ts) ? -Infinity : ts;
+			},
+		
+			// html
+			"html-pre": function ( a ) {
+				return _empty(a) ?
+					'' :
+					a.replace ?
+						a.replace( /<.*?>/g, "" ).toLowerCase() :
+						a+'';
+			},
+		
+			// string
+			"string-pre": function ( a ) {
+				// This is a little complex, but faster than always calling toString,
+				// http://jsperf.com/tostring-v-check
+				return _empty(a) ?
+					'' :
+					typeof a === 'string' ?
+						a.toLowerCase() :
+						! a.toString ?
+							'' :
+							a.toString();
+			},
+		
+			// string-asc and -desc are retained only for compatibility with the old
+			// sort methods
+			"string-asc": function ( x, y ) {
+				return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+			},
+		
+			"string-desc": function ( x, y ) {
+				return ((x < y) ? 1 : ((x > y) ? -1 : 0));
+			}
+		} );
+		
+		
+		// Numeric sorting types - order doesn't matter here
+		_addNumericSort( '' );
+		
+		
+		$.extend( true, DataTable.ext.renderer, {
+			header: {
+				_: function ( settings, cell, column, classes ) {
+					// No additional mark-up required
+					// Attach a sort listener to update on sort - note that using the
+					// `DT` namespace will allow the event to be removed automatically
+					// on destroy, while the `dt` namespaced event is the one we are
+					// listening for
+					$(settings.nTable).on( 'order.dt.DT', function ( e, ctx, sorting, columns ) {
+						if ( settings !== ctx ) { // need to check this this is the host
+							return;               // table, not a nested one
+						}
+		
+						var colIdx = column.idx;
+		
+						cell
+							.removeClass(
+								classes.sSortAsc +' '+
+								classes.sSortDesc
+							)
+							.addClass( columns[ colIdx ] == 'asc' ?
+								classes.sSortAsc : columns[ colIdx ] == 'desc' ?
+									classes.sSortDesc :
+									column.sSortingClass
+							);
+					} );
+				},
+		
+				jqueryui: function ( settings, cell, column, classes ) {
+					$('<div/>')
+						.addClass( classes.sSortJUIWrapper )
+						.append( cell.contents() )
+						.append( $('<span/>')
+							.addClass( classes.sSortIcon+' '+column.sSortingClassJUI )
+						)
+						.appendTo( cell );
+		
+					// Attach a sort listener to update on sort
+					$(settings.nTable).on( 'order.dt.DT', function ( e, ctx, sorting, columns ) {
+						if ( settings !== ctx ) {
+							return;
+						}
+		
+						var colIdx = column.idx;
+		
+						cell
+							.removeClass( classes.sSortAsc +" "+classes.sSortDesc )
+							.addClass( columns[ colIdx ] == 'asc' ?
+								classes.sSortAsc : columns[ colIdx ] == 'desc' ?
+									classes.sSortDesc :
+									column.sSortingClass
+							);
+		
+						cell
+							.find( 'span.'+classes.sSortIcon )
+							.removeClass(
+								classes.sSortJUIAsc +" "+
+								classes.sSortJUIDesc +" "+
+								classes.sSortJUI +" "+
+								classes.sSortJUIAscAllowed +" "+
+								classes.sSortJUIDescAllowed
+							)
+							.addClass( columns[ colIdx ] == 'asc' ?
+								classes.sSortJUIAsc : columns[ colIdx ] == 'desc' ?
+									classes.sSortJUIDesc :
+									column.sSortingClassJUI
+							);
+					} );
+				}
+			}
+		} );
+		
+		/*
+		 * Public helper functions. These aren't used internally by DataTables, or
+		 * called by any of the options passed into DataTables, but they can be used
+		 * externally by developers working with DataTables. They are helper functions
+		 * to make working with DataTables a little bit easier.
+		 */
+		
+		var __htmlEscapeEntities = function ( d ) {
+			if (Array.isArray(d)) {
+				d = d.join(',');
+			}
+		
+			return typeof d === 'string' ?
+				d
+					.replace(/&/g, '&amp;')
+					.replace(/</g, '&lt;')
+					.replace(/>/g, '&gt;')
+					.replace(/"/g, '&quot;') :
+				d;
+		};
+		
+		/**
+		 * Helpers for `columns.render`.
+		 *
+		 * The options defined here can be used with the `columns.render` initialisation
+		 * option to provide a display renderer. The following functions are defined:
+		 *
+		 * * `number` - Will format numeric data (defined by `columns.data`) for
+		 *   display, retaining the original unformatted data for sorting and filtering.
+		 *   It takes 5 parameters:
+		 *   * `string` - Thousands grouping separator
+		 *   * `string` - Decimal point indicator
+		 *   * `integer` - Number of decimal points to show
+		 *   * `string` (optional) - Prefix.
+		 *   * `string` (optional) - Postfix (/suffix).
+		 * * `text` - Escape HTML to help prevent XSS attacks. It has no optional
+		 *   parameters.
+		 *
+		 * @example
+		 *   // Column definition using the number renderer
+		 *   {
+		 *     data: "salary",
+		 *     render: $.fn.dataTable.render.number( '\'', '.', 0, '$' )
+		 *   }
+		 *
+		 * @namespace
+		 */
+		DataTable.render = {
+			number: function ( thousands, decimal, precision, prefix, postfix ) {
+				return {
+					display: function ( d ) {
+						if ( typeof d !== 'number' && typeof d !== 'string' ) {
+							return d;
+						}
+		
+						var negative = d < 0 ? '-' : '';
+						var flo = parseFloat( d );
+		
+						// If NaN then there isn't much formatting that we can do - just
+						// return immediately, escaping any HTML (this was supposed to
+						// be a number after all)
+						if ( isNaN( flo ) ) {
+							return __htmlEscapeEntities( d );
+						}
+		
+						flo = flo.toFixed( precision );
+						d = Math.abs( flo );
+		
+						var intPart = parseInt( d, 10 );
+						var floatPart = precision ?
+							decimal+(d - intPart).toFixed( precision ).substring( 2 ):
+							'';
+		
+						// If zero, then can't have a negative prefix
+						if (intPart === 0 && parseFloat(floatPart) === 0) {
+							negative = '';
+						}
+		
+						return negative + (prefix||'') +
+							intPart.toString().replace(
+								/\B(?=(\d{3})+(?!\d))/g, thousands
+							) +
+							floatPart +
+							(postfix||'');
 					}
 				};
-	
-				// IE9 throws an 'unknown error' if document.activeElement is used
-				// inside an iframe or frame. Try / catch the error. Not good for
-				// accessibility, but neither are frames.
-				var activeEl;
-	
-				try {
-					// Because this approach is destroying and recreating the paging
-					// elements, focus is lost on the select button which is bad for
-					// accessibility. So we want to restore focus once the draw has
-					// completed
-					activeEl = $(host).find(document.activeElement).data('dt-idx');
-				}
-				catch (e) {}
-	
-				attach( $(host).empty(), buttons );
-	
-				if ( activeEl !== undefined ) {
-					$(host).find( '[data-dt-idx='+activeEl+']' ).trigger('focus');
-				}
-			}
-		}
-	} );
-	
-	
-	
-	// Built in type detection. See model.ext.aTypes for information about
-	// what is required from this methods.
-	$.extend( DataTable.ext.type.detect, [
-		// Plain numbers - first since V8 detects some plain numbers as dates
-		// e.g. Date.parse('55') (but not all, e.g. Date.parse('22')...).
-		function ( d, settings )
-		{
-			var decimal = settings.oLanguage.sDecimal;
-			return _isNumber( d, decimal ) ? 'num'+decimal : null;
-		},
-	
-		// Dates (only those recognised by the browser's Date.parse)
-		function ( d, settings )
-		{
-			// V8 tries _very_ hard to make a string passed into `Date.parse()`
-			// valid, so we need to use a regex to restrict date formats. Use a
-			// plug-in for anything other than ISO8601 style strings
-			if ( d && !(d instanceof Date) && ! _re_date.test(d) ) {
-				return null;
-			}
-			var parsed = Date.parse(d);
-			return (parsed !== null && !isNaN(parsed)) || _empty(d) ? 'date' : null;
-		},
-	
-		// Formatted numbers
-		function ( d, settings )
-		{
-			var decimal = settings.oLanguage.sDecimal;
-			return _isNumber( d, decimal, true ) ? 'num-fmt'+decimal : null;
-		},
-	
-		// HTML numeric
-		function ( d, settings )
-		{
-			var decimal = settings.oLanguage.sDecimal;
-			return _htmlNumeric( d, decimal ) ? 'html-num'+decimal : null;
-		},
-	
-		// HTML numeric, formatted
-		function ( d, settings )
-		{
-			var decimal = settings.oLanguage.sDecimal;
-			return _htmlNumeric( d, decimal, true ) ? 'html-num-fmt'+decimal : null;
-		},
-	
-		// HTML (this is strict checking - there must be html)
-		function ( d, settings )
-		{
-			return _empty( d ) || (typeof d === 'string' && d.indexOf('<') !== -1) ?
-				'html' : null;
-		}
-	] );
-	
-	
-	
-	// Filter formatting functions. See model.ext.ofnSearch for information about
-	// what is required from these methods.
-	// 
-	// Note that additional search methods are added for the html numbers and
-	// html formatted numbers by `_addNumericSort()` when we know what the decimal
-	// place is
-	
-	
-	$.extend( DataTable.ext.type.search, {
-		html: function ( data ) {
-			return _empty(data) ?
-				data :
-				typeof data === 'string' ?
-					data
-						.replace( _re_new_lines, " " )
-						.replace( _re_html, "" ) :
-					'';
-		},
-	
-		string: function ( data ) {
-			return _empty(data) ?
-				data :
-				typeof data === 'string' ?
-					data.replace( _re_new_lines, " " ) :
-					data;
-		}
-	} );
-	
-	
-	
-	var __numericReplace = function ( d, decimalPlace, re1, re2 ) {
-		if ( d !== 0 && (!d || d === '-') ) {
-			return -Infinity;
-		}
-	
-		// If a decimal place other than `.` is used, it needs to be given to the
-		// function so we can detect it and replace with a `.` which is the only
-		// decimal place Javascript recognises - it is not locale aware.
-		if ( decimalPlace ) {
-			d = _numToDecimal( d, decimalPlace );
-		}
-	
-		if ( d.replace ) {
-			if ( re1 ) {
-				d = d.replace( re1, '' );
-			}
-	
-			if ( re2 ) {
-				d = d.replace( re2, '' );
-			}
-		}
-	
-		return d * 1;
-	};
-	
-	
-	// Add the numeric 'deformatting' functions for sorting and search. This is done
-	// in a function to provide an easy ability for the language options to add
-	// additional methods if a non-period decimal place is used.
-	function _addNumericSort ( decimalPlace ) {
-		$.each(
-			{
-				// Plain numbers
-				"num": function ( d ) {
-					return __numericReplace( d, decimalPlace );
-				},
-	
-				// Formatted numbers
-				"num-fmt": function ( d ) {
-					return __numericReplace( d, decimalPlace, _re_formatted_numeric );
-				},
-	
-				// HTML numeric
-				"html-num": function ( d ) {
-					return __numericReplace( d, decimalPlace, _re_html );
-				},
-	
-				// HTML numeric, formatted
-				"html-num-fmt": function ( d ) {
-					return __numericReplace( d, decimalPlace, _re_html, _re_formatted_numeric );
-				}
 			},
-			function ( key, fn ) {
-				// Add the ordering method
-				_ext.type.order[ key+decimalPlace+'-pre' ] = fn;
-	
-				// For HTML types add a search formatter that will strip the HTML
-				if ( key.match(/^html\-/) ) {
-					_ext.type.search[ key+decimalPlace ] = _ext.type.search.html;
-				}
+		
+			text: function () {
+				return {
+					display: __htmlEscapeEntities,
+					filter: __htmlEscapeEntities
+				};
 			}
-		);
-	}
-	
-	
-	// Default sort methods
-	$.extend( _ext.type.order, {
-		// Dates
-		"date-pre": function ( d ) {
-			var ts = Date.parse( d );
-			return isNaN(ts) ? -Infinity : ts;
-		},
-	
-		// html
-		"html-pre": function ( a ) {
-			return _empty(a) ?
-				'' :
-				a.replace ?
-					a.replace( /<.*?>/g, "" ).toLowerCase() :
-					a+'';
-		},
-	
-		// string
-		"string-pre": function ( a ) {
-			// This is a little complex, but faster than always calling toString,
-			// http://jsperf.com/tostring-v-check
-			return _empty(a) ?
-				'' :
-				typeof a === 'string' ?
-					a.toLowerCase() :
-					! a.toString ?
-						'' :
-						a.toString();
-		},
-	
-		// string-asc and -desc are retained only for compatibility with the old
-		// sort methods
-		"string-asc": function ( x, y ) {
-			return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-		},
-	
-		"string-desc": function ( x, y ) {
-			return ((x < y) ? 1 : ((x > y) ? -1 : 0));
-		}
-	} );
-	
-	
-	// Numeric sorting types - order doesn't matter here
-	_addNumericSort( '' );
-	
-	
-	$.extend( true, DataTable.ext.renderer, {
-		header: {
-			_: function ( settings, cell, column, classes ) {
-				// No additional mark-up required
-				// Attach a sort listener to update on sort - note that using the
-				// `DT` namespace will allow the event to be removed automatically
-				// on destroy, while the `dt` namespaced event is the one we are
-				// listening for
-				$(settings.nTable).on( 'order.dt.DT', function ( e, ctx, sorting, columns ) {
-					if ( settings !== ctx ) { // need to check this this is the host
-						return;               // table, not a nested one
-					}
-	
-					var colIdx = column.idx;
-	
-					cell
-						.removeClass(
-							classes.sSortAsc +' '+
-							classes.sSortDesc
-						)
-						.addClass( columns[ colIdx ] == 'asc' ?
-							classes.sSortAsc : columns[ colIdx ] == 'desc' ?
-								classes.sSortDesc :
-								column.sSortingClass
-						);
-				} );
-			},
-	
-			jqueryui: function ( settings, cell, column, classes ) {
-				$('<div/>')
-					.addClass( classes.sSortJUIWrapper )
-					.append( cell.contents() )
-					.append( $('<span/>')
-						.addClass( classes.sSortIcon+' '+column.sSortingClassJUI )
-					)
-					.appendTo( cell );
-	
-				// Attach a sort listener to update on sort
-				$(settings.nTable).on( 'order.dt.DT', function ( e, ctx, sorting, columns ) {
-					if ( settings !== ctx ) {
-						return;
-					}
-	
-					var colIdx = column.idx;
-	
-					cell
-						.removeClass( classes.sSortAsc +" "+classes.sSortDesc )
-						.addClass( columns[ colIdx ] == 'asc' ?
-							classes.sSortAsc : columns[ colIdx ] == 'desc' ?
-								classes.sSortDesc :
-								column.sSortingClass
-						);
-	
-					cell
-						.find( 'span.'+classes.sSortIcon )
-						.removeClass(
-							classes.sSortJUIAsc +" "+
-							classes.sSortJUIDesc +" "+
-							classes.sSortJUI +" "+
-							classes.sSortJUIAscAllowed +" "+
-							classes.sSortJUIDescAllowed
-						)
-						.addClass( columns[ colIdx ] == 'asc' ?
-							classes.sSortJUIAsc : columns[ colIdx ] == 'desc' ?
-								classes.sSortJUIDesc :
-								column.sSortingClassJUI
-						);
-				} );
-			}
-		}
-	} );
-	
-	/*
-	 * Public helper functions. These aren't used internally by DataTables, or
-	 * called by any of the options passed into DataTables, but they can be used
-	 * externally by developers working with DataTables. They are helper functions
-	 * to make working with DataTables a little bit easier.
-	 */
-	
-	var __htmlEscapeEntities = function ( d ) {
-		if (Array.isArray(d)) {
-			d = d.join(',');
-		}
-	
-		return typeof d === 'string' ?
-			d
-				.replace(/&/g, '&amp;')
-				.replace(/</g, '&lt;')
-				.replace(/>/g, '&gt;')
-				.replace(/"/g, '&quot;') :
-			d;
-	};
-	
-	/**
-	 * Helpers for `columns.render`.
-	 *
-	 * The options defined here can be used with the `columns.render` initialisation
-	 * option to provide a display renderer. The following functions are defined:
-	 *
-	 * * `number` - Will format numeric data (defined by `columns.data`) for
-	 *   display, retaining the original unformatted data for sorting and filtering.
-	 *   It takes 5 parameters:
-	 *   * `string` - Thousands grouping separator
-	 *   * `string` - Decimal point indicator
-	 *   * `integer` - Number of decimal points to show
-	 *   * `string` (optional) - Prefix.
-	 *   * `string` (optional) - Postfix (/suffix).
-	 * * `text` - Escape HTML to help prevent XSS attacks. It has no optional
-	 *   parameters.
-	 *
-	 * @example
-	 *   // Column definition using the number renderer
-	 *   {
-	 *     data: "salary",
-	 *     render: $.fn.dataTable.render.number( '\'', '.', 0, '$' )
-	 *   }
-	 *
-	 * @namespace
-	 */
-	DataTable.render = {
-		number: function ( thousands, decimal, precision, prefix, postfix ) {
-			return {
-				display: function ( d ) {
-					if ( typeof d !== 'number' && typeof d !== 'string' ) {
-						return d;
-					}
-	
-					var negative = d < 0 ? '-' : '';
-					var flo = parseFloat( d );
-	
-					// If NaN then there isn't much formatting that we can do - just
-					// return immediately, escaping any HTML (this was supposed to
-					// be a number after all)
-					if ( isNaN( flo ) ) {
-						return __htmlEscapeEntities( d );
-					}
-	
-					flo = flo.toFixed( precision );
-					d = Math.abs( flo );
-	
-					var intPart = parseInt( d, 10 );
-					var floatPart = precision ?
-						decimal+(d - intPart).toFixed( precision ).substring( 2 ):
-						'';
-	
-					// If zero, then can't have a negative prefix
-					if (intPart === 0 && parseFloat(floatPart) === 0) {
-						negative = '';
-					}
-	
-					return negative + (prefix||'') +
-						intPart.toString().replace(
-							/\B(?=(\d{3})+(?!\d))/g, thousands
-						) +
-						floatPart +
-						(postfix||'');
-				}
-			};
-		},
-	
-		text: function () {
-			return {
-				display: __htmlEscapeEntities,
-				filter: __htmlEscapeEntities
-			};
-		}
-	};
-	
-	
-	/*
-	 * This is really a good bit rubbish this method of exposing the internal methods
-	 * publicly... - To be fixed in 2.0 using methods on the prototype
-	 */
-	
-	
-	/**
-	 * Create a wrapper function for exporting an internal functions to an external API.
-	 *  @param {string} fn API function name
-	 *  @returns {function} wrapped function
-	 *  @memberof DataTable#internal
-	 */
-	function _fnExternApiFunc (fn)
-	{
-		return function() {
-			var args = [_fnSettingsFromNode( this[DataTable.ext.iApiIndex] )].concat(
-				Array.prototype.slice.call(arguments)
-			);
-			return DataTable.ext.internal[fn].apply( this, args );
 		};
-	}
+		
+		
+		/*
+		 * This is really a good bit rubbish this method of exposing the internal methods
+		 * publicly... - To be fixed in 2.0 using methods on the prototype
+		 */
+		
+		
+		/**
+		 * Create a wrapper function for exporting an internal functions to an external API.
+		 *  @param {string} fn API function name
+		 *  @returns {function} wrapped function
+		 *  @memberof DataTable#internal
+		 */
+		function _fnExternApiFunc (fn)
+		{
+			return function() {
+				var args = [_fnSettingsFromNode( this[DataTable.ext.iApiIndex] )].concat(
+					Array.prototype.slice.call(arguments)
+				);
+				return DataTable.ext.internal[fn].apply( this, args );
+			};
+		}
+		
+		
+		/**
+		 * Reference to internal functions for use by plug-in developers. Note that
+		 * these methods are references to internal functions and are considered to be
+		 * private. If you use these methods, be aware that they are liable to change
+		 * between versions.
+		 *  @namespace
+		 */
+		$.extend( DataTable.ext.internal, {
+			_fnExternApiFunc: _fnExternApiFunc,
+			_fnBuildAjax: _fnBuildAjax,
+			_fnAjaxUpdate: _fnAjaxUpdate,
+			_fnAjaxParameters: _fnAjaxParameters,
+			_fnAjaxUpdateDraw: _fnAjaxUpdateDraw,
+			_fnAjaxDataSrc: _fnAjaxDataSrc,
+			_fnAddColumn: _fnAddColumn,
+			_fnColumnOptions: _fnColumnOptions,
+			_fnAdjustColumnSizing: _fnAdjustColumnSizing,
+			_fnVisibleToColumnIndex: _fnVisibleToColumnIndex,
+			_fnColumnIndexToVisible: _fnColumnIndexToVisible,
+			_fnVisbleColumns: _fnVisbleColumns,
+			_fnGetColumns: _fnGetColumns,
+			_fnColumnTypes: _fnColumnTypes,
+			_fnApplyColumnDefs: _fnApplyColumnDefs,
+			_fnHungarianMap: _fnHungarianMap,
+			_fnCamelToHungarian: _fnCamelToHungarian,
+			_fnLanguageCompat: _fnLanguageCompat,
+			_fnBrowserDetect: _fnBrowserDetect,
+			_fnAddData: _fnAddData,
+			_fnAddTr: _fnAddTr,
+			_fnNodeToDataIndex: _fnNodeToDataIndex,
+			_fnNodeToColumnIndex: _fnNodeToColumnIndex,
+			_fnGetCellData: _fnGetCellData,
+			_fnSetCellData: _fnSetCellData,
+			_fnSplitObjNotation: _fnSplitObjNotation,
+			_fnGetObjectDataFn: _fnGetObjectDataFn,
+			_fnSetObjectDataFn: _fnSetObjectDataFn,
+			_fnGetDataMaster: _fnGetDataMaster,
+			_fnClearTable: _fnClearTable,
+			_fnDeleteIndex: _fnDeleteIndex,
+			_fnInvalidate: _fnInvalidate,
+			_fnGetRowElements: _fnGetRowElements,
+			_fnCreateTr: _fnCreateTr,
+			_fnBuildHead: _fnBuildHead,
+			_fnDrawHead: _fnDrawHead,
+			_fnDraw: _fnDraw,
+			_fnReDraw: _fnReDraw,
+			_fnAddOptionsHtml: _fnAddOptionsHtml,
+			_fnDetectHeader: _fnDetectHeader,
+			_fnGetUniqueThs: _fnGetUniqueThs,
+			_fnFeatureHtmlFilter: _fnFeatureHtmlFilter,
+			_fnFilterComplete: _fnFilterComplete,
+			_fnFilterCustom: _fnFilterCustom,
+			_fnFilterColumn: _fnFilterColumn,
+			_fnFilter: _fnFilter,
+			_fnFilterCreateSearch: _fnFilterCreateSearch,
+			_fnEscapeRegex: _fnEscapeRegex,
+			_fnFilterData: _fnFilterData,
+			_fnFeatureHtmlInfo: _fnFeatureHtmlInfo,
+			_fnUpdateInfo: _fnUpdateInfo,
+			_fnInfoMacros: _fnInfoMacros,
+			_fnInitialise: _fnInitialise,
+			_fnInitComplete: _fnInitComplete,
+			_fnLengthChange: _fnLengthChange,
+			_fnFeatureHtmlLength: _fnFeatureHtmlLength,
+			_fnFeatureHtmlPaginate: _fnFeatureHtmlPaginate,
+			_fnPageChange: _fnPageChange,
+			_fnFeatureHtmlProcessing: _fnFeatureHtmlProcessing,
+			_fnProcessingDisplay: _fnProcessingDisplay,
+			_fnFeatureHtmlTable: _fnFeatureHtmlTable,
+			_fnScrollDraw: _fnScrollDraw,
+			_fnApplyToChildren: _fnApplyToChildren,
+			_fnCalculateColumnWidths: _fnCalculateColumnWidths,
+			_fnThrottle: _fnThrottle,
+			_fnConvertToWidth: _fnConvertToWidth,
+			_fnGetWidestNode: _fnGetWidestNode,
+			_fnGetMaxLenString: _fnGetMaxLenString,
+			_fnStringToCss: _fnStringToCss,
+			_fnSortFlatten: _fnSortFlatten,
+			_fnSort: _fnSort,
+			_fnSortAria: _fnSortAria,
+			_fnSortListener: _fnSortListener,
+			_fnSortAttachListener: _fnSortAttachListener,
+			_fnSortingClasses: _fnSortingClasses,
+			_fnSortData: _fnSortData,
+			_fnSaveState: _fnSaveState,
+			_fnLoadState: _fnLoadState,
+			_fnImplementState: _fnImplementState,
+			_fnSettingsFromNode: _fnSettingsFromNode,
+			_fnLog: _fnLog,
+			_fnMap: _fnMap,
+			_fnBindAction: _fnBindAction,
+			_fnCallbackReg: _fnCallbackReg,
+			_fnCallbackFire: _fnCallbackFire,
+			_fnLengthOverflow: _fnLengthOverflow,
+			_fnRenderer: _fnRenderer,
+			_fnDataSource: _fnDataSource,
+			_fnRowAttributes: _fnRowAttributes,
+			_fnExtend: _fnExtend,
+			_fnCalculateEnd: function () {} // Used by a lot of plug-ins, but redundant
+			                                // in 1.10, so this dead-end function is
+			                                // added to prevent errors
+		} );
+		
+		
+		// jQuery access
+		$.fn.dataTable = DataTable;
+		
+		// Provide access to the host jQuery object (circular reference)
+		DataTable.$ = $;
+		
+		// Legacy aliases
+		$.fn.dataTableSettings = DataTable.settings;
+		$.fn.dataTableExt = DataTable.ext;
+		
+		// With a capital `D` we return a DataTables API instance rather than a
+		// jQuery object
+		$.fn.DataTable = function ( opts ) {
+			return $(this).dataTable( opts ).api();
+		};
+		
+		// All properties that are available to $.fn.dataTable should also be
+		// available on $.fn.DataTable
+		$.each( DataTable, function ( prop, val ) {
+			$.fn.DataTable[ prop ] = val;
+		} );
 	
-	
-	/**
-	 * Reference to internal functions for use by plug-in developers. Note that
-	 * these methods are references to internal functions and are considered to be
-	 * private. If you use these methods, be aware that they are liable to change
-	 * between versions.
-	 *  @namespace
-	 */
-	$.extend( DataTable.ext.internal, {
-		_fnExternApiFunc: _fnExternApiFunc,
-		_fnBuildAjax: _fnBuildAjax,
-		_fnAjaxUpdate: _fnAjaxUpdate,
-		_fnAjaxParameters: _fnAjaxParameters,
-		_fnAjaxUpdateDraw: _fnAjaxUpdateDraw,
-		_fnAjaxDataSrc: _fnAjaxDataSrc,
-		_fnAddColumn: _fnAddColumn,
-		_fnColumnOptions: _fnColumnOptions,
-		_fnAdjustColumnSizing: _fnAdjustColumnSizing,
-		_fnVisibleToColumnIndex: _fnVisibleToColumnIndex,
-		_fnColumnIndexToVisible: _fnColumnIndexToVisible,
-		_fnVisbleColumns: _fnVisbleColumns,
-		_fnGetColumns: _fnGetColumns,
-		_fnColumnTypes: _fnColumnTypes,
-		_fnApplyColumnDefs: _fnApplyColumnDefs,
-		_fnHungarianMap: _fnHungarianMap,
-		_fnCamelToHungarian: _fnCamelToHungarian,
-		_fnLanguageCompat: _fnLanguageCompat,
-		_fnBrowserDetect: _fnBrowserDetect,
-		_fnAddData: _fnAddData,
-		_fnAddTr: _fnAddTr,
-		_fnNodeToDataIndex: _fnNodeToDataIndex,
-		_fnNodeToColumnIndex: _fnNodeToColumnIndex,
-		_fnGetCellData: _fnGetCellData,
-		_fnSetCellData: _fnSetCellData,
-		_fnSplitObjNotation: _fnSplitObjNotation,
-		_fnGetObjectDataFn: _fnGetObjectDataFn,
-		_fnSetObjectDataFn: _fnSetObjectDataFn,
-		_fnGetDataMaster: _fnGetDataMaster,
-		_fnClearTable: _fnClearTable,
-		_fnDeleteIndex: _fnDeleteIndex,
-		_fnInvalidate: _fnInvalidate,
-		_fnGetRowElements: _fnGetRowElements,
-		_fnCreateTr: _fnCreateTr,
-		_fnBuildHead: _fnBuildHead,
-		_fnDrawHead: _fnDrawHead,
-		_fnDraw: _fnDraw,
-		_fnReDraw: _fnReDraw,
-		_fnAddOptionsHtml: _fnAddOptionsHtml,
-		_fnDetectHeader: _fnDetectHeader,
-		_fnGetUniqueThs: _fnGetUniqueThs,
-		_fnFeatureHtmlFilter: _fnFeatureHtmlFilter,
-		_fnFilterComplete: _fnFilterComplete,
-		_fnFilterCustom: _fnFilterCustom,
-		_fnFilterColumn: _fnFilterColumn,
-		_fnFilter: _fnFilter,
-		_fnFilterCreateSearch: _fnFilterCreateSearch,
-		_fnEscapeRegex: _fnEscapeRegex,
-		_fnFilterData: _fnFilterData,
-		_fnFeatureHtmlInfo: _fnFeatureHtmlInfo,
-		_fnUpdateInfo: _fnUpdateInfo,
-		_fnInfoMacros: _fnInfoMacros,
-		_fnInitialise: _fnInitialise,
-		_fnInitComplete: _fnInitComplete,
-		_fnLengthChange: _fnLengthChange,
-		_fnFeatureHtmlLength: _fnFeatureHtmlLength,
-		_fnFeatureHtmlPaginate: _fnFeatureHtmlPaginate,
-		_fnPageChange: _fnPageChange,
-		_fnFeatureHtmlProcessing: _fnFeatureHtmlProcessing,
-		_fnProcessingDisplay: _fnProcessingDisplay,
-		_fnFeatureHtmlTable: _fnFeatureHtmlTable,
-		_fnScrollDraw: _fnScrollDraw,
-		_fnApplyToChildren: _fnApplyToChildren,
-		_fnCalculateColumnWidths: _fnCalculateColumnWidths,
-		_fnThrottle: _fnThrottle,
-		_fnConvertToWidth: _fnConvertToWidth,
-		_fnGetWidestNode: _fnGetWidestNode,
-		_fnGetMaxLenString: _fnGetMaxLenString,
-		_fnStringToCss: _fnStringToCss,
-		_fnSortFlatten: _fnSortFlatten,
-		_fnSort: _fnSort,
-		_fnSortAria: _fnSortAria,
-		_fnSortListener: _fnSortListener,
-		_fnSortAttachListener: _fnSortAttachListener,
-		_fnSortingClasses: _fnSortingClasses,
-		_fnSortData: _fnSortData,
-		_fnSaveState: _fnSaveState,
-		_fnLoadState: _fnLoadState,
-		_fnImplementState: _fnImplementState,
-		_fnSettingsFromNode: _fnSettingsFromNode,
-		_fnLog: _fnLog,
-		_fnMap: _fnMap,
-		_fnBindAction: _fnBindAction,
-		_fnCallbackReg: _fnCallbackReg,
-		_fnCallbackFire: _fnCallbackFire,
-		_fnLengthOverflow: _fnLengthOverflow,
-		_fnRenderer: _fnRenderer,
-		_fnDataSource: _fnDataSource,
-		_fnRowAttributes: _fnRowAttributes,
-		_fnExtend: _fnExtend,
-		_fnCalculateEnd: function () {} // Used by a lot of plug-ins, but redundant
-		                                // in 1.10, so this dead-end function is
-		                                // added to prevent errors
-	} );
-	
-
-	// jQuery access
-	$.fn.dataTable = DataTable;
-
-	// Provide access to the host jQuery object (circular reference)
-	DataTable.$ = $;
-
-	// Legacy aliases
-	$.fn.dataTableSettings = DataTable.settings;
-	$.fn.dataTableExt = DataTable.ext;
-
-	// With a capital `D` we return a DataTables API instance rather than a
-	// jQuery object
-	$.fn.DataTable = function ( opts ) {
-		return $(this).dataTable( opts ).api();
-	};
-
-	// All properties that are available to $.fn.dataTable should also be
-	// available on $.fn.DataTable
-	$.each( DataTable, function ( prop, val ) {
-		$.fn.DataTable[ prop ] = val;
-	} );
-
-	return DataTable;
+		return DataTable;
 }));
 
 
@@ -55808,6 +61561,23 @@ module.exports = function (list, options) {
 
 /***/ }),
 
+/***/ "./node_modules/vue-functional-data-merge/dist/lib.esm.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/vue-functional-data-merge/dist/lib.esm.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "mergeData": () => (/* binding */ a)
+/* harmony export */ });
+var e=function(){return(e=Object.assign||function(e){for(var t,r=1,s=arguments.length;r<s;r++)for(var a in t=arguments[r])Object.prototype.hasOwnProperty.call(t,a)&&(e[a]=t[a]);return e}).apply(this,arguments)},t={kebab:/-(\w)/g,styleProp:/:(.*)/,styleList:/;(?![^(]*\))/g};function r(e,t){return t?t.toUpperCase():""}function s(e){for(var s,a={},c=0,o=e.split(t.styleList);c<o.length;c++){var n=o[c].split(t.styleProp),i=n[0],l=n[1];(i=i.trim())&&("string"==typeof l&&(l=l.trim()),a[(s=i,s.replace(t.kebab,r))]=l)}return a}function a(){for(var t,r,a={},c=arguments.length;c--;)for(var o=0,n=Object.keys(arguments[c]);o<n.length;o++)switch(t=n[o]){case"class":case"style":case"directives":if(Array.isArray(a[t])||(a[t]=[]),"style"===t){var i=void 0;i=Array.isArray(arguments[c].style)?arguments[c].style:[arguments[c].style];for(var l=0;l<i.length;l++){var y=i[l];"string"==typeof y&&(i[l]=s(y))}arguments[c].style=i}a[t]=a[t].concat(arguments[c][t]);break;case"staticClass":if(!arguments[c][t])break;void 0===a[t]&&(a[t]=""),a[t]&&(a[t]+=" "),a[t]+=arguments[c][t].trim();break;case"on":case"nativeOn":a[t]||(a[t]={});for(var p=0,f=Object.keys(arguments[c][t]||{});p<f.length;p++)r=f[p],a[t][r]?a[t][r]=[].concat(a[t][r],arguments[c][t][r]):a[t][r]=arguments[c][t][r];break;case"attrs":case"props":case"domProps":case"scopedSlots":case"staticStyle":case"hook":case"transition":a[t]||(a[t]={}),a[t]=e({},arguments[c][t],a[t]);break;case"slot":case"key":case"ref":case"tag":case"show":case"keepAlive":default:a[t]||(a[t]=arguments[c][t])}return a}
+//# sourceMappingURL=lib.esm.js.map
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Alumno.vue":
 /*!********************************************!*\
   !*** ./resources/js/components/Alumno.vue ***!
@@ -56098,6 +61868,45 @@ component.options.__file = "resources/js/components/Home.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/Login.vue":
+/*!*******************************************!*\
+  !*** ./resources/js/components/Login.vue ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Login_vue_vue_type_template_id_6bdc8b8e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Login.vue?vue&type=template&id=6bdc8b8e& */ "./resources/js/components/Login.vue?vue&type=template&id=6bdc8b8e&");
+/* harmony import */ var _Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Login.vue?vue&type=script&lang=js& */ "./resources/js/components/Login.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Login_vue_vue_type_template_id_6bdc8b8e___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Login_vue_vue_type_template_id_6bdc8b8e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Login.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/Register.vue":
 /*!**********************************************!*\
   !*** ./resources/js/components/Register.vue ***!
@@ -56182,6 +61991,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Card_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Card.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Card.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Card_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Login.vue?vue&type=script&lang=js&":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/Login.vue?vue&type=script&lang=js& ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Login.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Login.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -56336,6 +62161,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Login.vue?vue&type=template&id=6bdc8b8e&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/Login.vue?vue&type=template&id=6bdc8b8e& ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_template_id_6bdc8b8e___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_template_id_6bdc8b8e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_template_id_6bdc8b8e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Login.vue?vue&type=template&id=6bdc8b8e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Login.vue?vue&type=template&id=6bdc8b8e&");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Register.vue?vue&type=template&id=97358ae4&":
 /*!*****************************************************************************!*\
   !*** ./resources/js/components/Register.vue?vue&type=template&id=97358ae4& ***!
@@ -56369,27 +62211,82 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h2", [_vm._v("Alumnos")]),
-    _vm._v(" "),
-    _c("table", { staticClass: "table", attrs: { id: "datatable" } }, [
-      _vm._m(0),
+  return _c(
+    "div",
+    [
+      _c(
+        "table",
+        {
+          staticClass: "table table-hover table-bordered",
+          attrs: { id: "example" }
+        },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.users, function(user) {
+              return _c("tr", { key: user.id }, [
+                _c("td", [_vm._v(_vm._s(user.id))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(user.name))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(user.email))])
+              ])
+            }),
+            0
+          )
+        ]
+      ),
       _vm._v(" "),
       _c(
-        "tbody",
-        _vm._l(_vm.products, function(item) {
-          return _c("tr", { key: item.id }, [
-            _c("td", [_vm._v(_vm._s(item.id))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(item.name))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(item.email))])
-          ])
-        }),
-        0
+        "b-button",
+        { attrs: { id: "show-btn" }, on: { click: _vm.showModal } },
+        [_vm._v("Open Modal")]
+      ),
+      _vm._v(" "),
+      _c(
+        "b-button",
+        { attrs: { id: "toggle-btn" }, on: { click: _vm.toggleModal } },
+        [_vm._v("Toggle Modal")]
+      ),
+      _vm._v(" "),
+      _c(
+        "b-modal",
+        {
+          ref: "my-modal",
+          attrs: { "hide-footer": "", title: "Using Component Methods" }
+        },
+        [
+          _c("div", { staticClass: "d-block text-center" }, [
+            _c("h3", [_vm._v("Hello From My Modal!")])
+          ]),
+          _vm._v(" "),
+          _c(
+            "b-button",
+            {
+              staticClass: "mt-3",
+              attrs: { variant: "outline-danger", block: "" },
+              on: { click: _vm.hideModal }
+            },
+            [_vm._v("Close Me")]
+          ),
+          _vm._v(" "),
+          _c(
+            "b-button",
+            {
+              staticClass: "mt-2",
+              attrs: { variant: "outline-warning", block: "" },
+              on: { click: _vm.toggleModal }
+            },
+            [_vm._v("Toggle Me")]
+          )
+        ],
+        1
       )
-    ])
-  ])
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -56694,6 +62591,154 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("p", [_vm._v("Página principal")])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Login.vue?vue&type=template&id=6bdc8b8e&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Login.vue?vue&type=template&id=6bdc8b8e& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _vm.error !== null
+          ? _c(
+              "div",
+              { staticClass: "alert alert-danger", attrs: { role: "alert" } },
+              [
+                _vm._v(
+                  "\n                " + _vm._s(_vm.error) + "\n            "
+                )
+              ]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "card card-default" }, [
+          _c("div", { staticClass: "card-header" }, [_vm._v("Login")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("form", [
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-sm-4 col-form-label text-md-right",
+                    attrs: { for: "email" }
+                  },
+                  [_vm._v("E-Mail Address")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.email,
+                        expression: "email"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      id: "email",
+                      type: "email",
+                      required: "",
+                      autofocus: "",
+                      autocomplete: "off"
+                    },
+                    domProps: { value: _vm.email },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.email = $event.target.value
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-md-4 col-form-label text-md-right",
+                    attrs: { for: "password" }
+                  },
+                  [_vm._v("Password")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.password,
+                        expression: "password"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      id: "password",
+                      type: "password",
+                      required: "",
+                      autocomplete: "off"
+                    },
+                    domProps: { value: _vm.password },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.password = $event.target.value
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row mb-0" }, [
+                _c("div", { staticClass: "col-md-8 offset-md-4" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: { type: "submit" },
+                      on: { click: _vm.handleSubmit }
+                    },
+                    [
+                      _vm._v(
+                        "\n                                    Login\n                                "
+                      )
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -72222,7 +78267,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\proyectos\\\\AttendanceApp\\\\webApp"]],"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["/","/localtunnel"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\proyectos\\\\AttendanceApp\\\\webApp","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#USER","/","/localtunnel"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_shasum":"c67b90dc0568e5c1cf2b0b858c43ba28e2eda575","_spec":"axios@0.21.4","_where":"C:\\\\proyectos\\\\clases","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundleDependencies":false,"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"deprecated":false,"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 

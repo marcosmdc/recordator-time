@@ -10,6 +10,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 Vue.use(VueRouter)
 
+import { BButton} from "bootstrap-vue";
+
+Vue.component('b-button', BButton)
+import { BModal} from "bootstrap-vue";
+
+Vue.component('b-modal', BModal)
+//Vue.component('v-b-modal', BModal)
+
 
 
 import App from './components/App'
@@ -18,9 +26,9 @@ import Home from './components/Home'
 import Card from './components/Card'
 import Alumno from './components/Alumno'
 import Register from './components/Register'
+import Login from './components/Login'
 import Clase from './components/Clase'
 import Asistencia from './components/Asistencia'
-//import JqueryTable from './components/JqueryTable.vue'
 
 const router = new VueRouter({
     mode: 'history',
@@ -51,20 +59,29 @@ const router = new VueRouter({
             component: Register,
         },
         {
-            path: '/clase',
-            name: 'clase',
-            component: Clase,
+            name: 'login',
+            path: '/login',
+            component: Login
         },
         {
-            path: '/asistencia',
+            name: 'clase',
+            path: '/clase',
+            component: Clase
+        },
+        {
             name: 'asistencia',
-            component: Asistencia,
+            path: '/asistencia',
+            component: Asistencia
         },
     ],
 });
 
+//store.dispatch('checkAuth');
+
 const app = new Vue({
     el: '#app',
     components: { App },
-    router
+    router,
 });
+
+
