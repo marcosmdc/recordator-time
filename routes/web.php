@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\AlumnosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,12 @@ Route::post('/getData', [PagesController::class, 'getData']);
 Route::post('/getDataFill', [PagesController::class, 'getDataFill']);
 Route::post('/getAllData', [PagesController::class, 'getAllData']);
 Route::post('register', [UserController::class, 'register']);
+
+Route::post('/getDataFillAlumnos', [AlumnosController::class, 'getDataFillAlumnos']);
+Route::post('/getAllDataAlumnos', [AlumnosController::class, 'getAllDataAlumnos']);
+
+
+Route::post('addUserForm', [PagesController::class, 'addUser']);
 
 
 Route::post('/getDataAlumnos', [PagesController::class, 'getDataAlumnos']);

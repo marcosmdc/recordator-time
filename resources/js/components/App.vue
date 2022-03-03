@@ -1,5 +1,6 @@
 <template>
     <div id="app"  :class="$style.container">
+                
         <h1>Asistencia - WebApp</h1>
         <p>
             <router-link :to="{ name: 'home' }"><button type="button" class="btn btn-primary">Inicio</button></router-link> |
@@ -12,7 +13,16 @@
 
         </p>
         <div class="container">
-            <router-view></router-view>
+            <Toasts
+                :show-progress="true"
+                :rtl="false"
+                :max-messages="5"
+                :time-out="3000"
+                :closeable="true"
+                ></Toasts>
+            <router-view>
+              
+            </router-view>
         </div>
     </div>
 </template>

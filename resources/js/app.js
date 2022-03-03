@@ -29,6 +29,12 @@ import Register from './components/Register'
 import Login from './components/Login'
 import Clase from './components/Clase'
 import Asistencia from './components/Asistencia'
+import VueBootstrapToasts from "vue-bootstrap-toasts"
+
+Vue.use(VueBootstrapToasts);
+
+
+
 
 const router = new VueRouter({
     mode: 'history',
@@ -72,7 +78,7 @@ const router = new VueRouter({
             name: 'asistencia',
             path: '/asistencia',
             component: Asistencia
-        },
+        }
     ],
 });
 

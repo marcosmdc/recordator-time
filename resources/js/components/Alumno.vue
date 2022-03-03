@@ -17,17 +17,49 @@
       </tr>
       
     </tbody>
-  </table>
-       <b-button id="show-btn" @click="showModal">Open Modal</b-button>
+     
+
+    <b-button id="show-btn" @click="showModal">Agregar alumno</b-button>
     <b-button id="toggle-btn" @click="toggleModal">Toggle Modal</b-button>
 
     <b-modal ref="my-modal" hide-footer title="Using Component Methods">
       <div class="d-block text-center">
-        <h3>Hello From My Modal!</h3>
+         <form v-on:submit.prevent="submitForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    
+                    <input
+                        v-model="form.name"
+                        class="form-input"
+                        type="text"
+                        id="name"
+                        name ="name"
+                        required
+                        placeholder="Nombre"
+                      >
+                </div>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input
+                        v-model="form.email"
+                          class="form-input"
+                          type="email"
+                          id="email"
+                          name="email"
+                          required
+                          placeholder="Email"
+                        >
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary"  >Submit</button>
+                </div>
+            </form>
       </div>
       <b-button class="mt-3" variant="outline-danger" block @click="hideModal">Close Me</b-button>
       <b-button class="mt-2" variant="outline-warning" block @click="toggleModal">Toggle Me</b-button>
     </b-modal>
+  </table>
+   
 
   </div>
   
@@ -53,7 +85,7 @@ export default {
   mounted(){
     //API Call
     axios
-    .post("/getAllData")
+    .post("/getAllDataAlumnos")
     .then((res)=>
     {
       this.users = res.data;
@@ -62,7 +94,8 @@ export default {
   },
   data: function() {
         return {
-            users:[]
+            users:[],
+            form:[]
         }
     },
       methods:{
@@ -79,7 +112,7 @@ export default {
             }
           }
       },
-         showModal() {
+      showModal() {
         this.$refs['my-modal'].show()
       },
       hideModal() {
@@ -89,7 +122,35 @@ export default {
         // We pass the ID of the button that we want to return focus to
         // when the modal has hidden
         this.$refs['my-modal'].toggle('#toggle-btn')
-      }
+      },
+      submitForm(){
+         const data = {
+            name: this.form.name,
+            email: this.form.email
+        }
+            axios.post('/addUserForm', data)
+                 .then((res) => {
+                     //Perform Success Action
+                     console.log("exito")
+                    this.$toast.info('your message');
+                    this.toggleModal()
+                   this.users = res.data[0].alumnos;
+                    //console.log(res.data);
+                   //this.mounted();
+                    //$('#example').DataTable();
+                    //$('#example').DataTable().ajax.reload();
+                    //$('#example').DataTable().draw();
+                    //this.users.draw();
+                  /*   $('#example').DataTable().destroy();
+                    $('#example').DataTable().draw(); */
+
+                 })
+                 .catch((error) => {
+                     // error.response.status Check status code
+                 }).finally(() => {
+                     //Perform action in always
+                 });
+        },
      
    }
       

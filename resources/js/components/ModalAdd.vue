@@ -6,10 +6,16 @@
     <b-modal ref="my-modal" hide-footer title="Using Component Methods">
       <div class="d-block text-center">
         <h3>Hello From My Modal!</h3>
+         <form id="form" v-on:submit.prevent="addUser">
+          <input type="text" v-model="newUser.name" placeholder="Username">
+          <input type="email" v-model="newUser.email" placeholder="email@email.com">
+          <input type="submit" value="Add User">
+        </form>
       </div>
       <b-button class="mt-3" variant="outline-danger" block @click="hideModal">Close Me</b-button>
       <b-button class="mt-2" variant="outline-warning" block @click="toggleModal">Toggle Me</b-button>
     </b-modal>
+    
   </div>
 </template>
 
@@ -26,7 +32,7 @@
         // We pass the ID of the button that we want to return focus to
         // when the modal has hidden
         this.$refs['my-modal'].toggle('#toggle-btn')
-      }
+      },
     }
   }
 </script>
